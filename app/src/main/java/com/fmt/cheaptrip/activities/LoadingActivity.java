@@ -47,7 +47,7 @@ public class LoadingActivity extends AppCompatActivity{
                      log.log(null, "TODO");
                 } finally {
                     Intent intent = new Intent();
-                    intent.setClass(getBaseContext(),MainActivity.class);
+                    intent.setClass(getBaseContext(),LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     getBaseContext().startActivity(intent);
