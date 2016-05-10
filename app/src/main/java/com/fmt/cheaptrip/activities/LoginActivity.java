@@ -42,58 +42,37 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.fragments.FacebookFragment;
+import com.fmt.cheaptrip.fragments.GooglePlusFragment;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 
 public class LoginActivity extends AppCompatActivity  {
 
-    private TextView info;
-    private LoginButton loginButton;
-
     private CallbackManager callbackManager;
+
+    FacebookFragment facebookFragment;
+    //GooglePlusFragment googlePlusFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        if (savedInstanceState != null) {
 
-        callbackManager = CallbackManager.Factory.create();
+            facebookFragment  = new FacebookFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(android.R.id.content, facebookFragment).commit();
 
-        setContentView(R.layout.activity_login);
-        loginButton = (LoginButton)findViewById(R.id.login_button);
+           // GooglePlusFragment googlePlusFragment = new GooglePlusFragment();
+            } else {
 
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-
-        if(resultCode == RESULT_OK){
-            Intent intent = new Intent();
-            intent.setClass(getBaseContext(),MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            getBaseContext().startActivity(intent);
+            facebookFragment = (FacebookFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
         }
 
     }
+
+
 }
 
