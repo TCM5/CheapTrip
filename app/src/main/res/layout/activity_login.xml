@@ -11,6 +11,11 @@
     tools:context="com.fmt.cheaptrip.activities.LoginActivity"
     android:weightSum="1">
 
+    <FrameLayout
+        android:id="@+id/login_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="254dp"
@@ -19,5 +24,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:layout_weight="0.05" />
+
+    </FrameLayout>
 
 </LinearLayout>

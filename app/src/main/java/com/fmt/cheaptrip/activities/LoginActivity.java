@@ -59,11 +59,15 @@ public class LoginActivity extends AppCompatActivity  {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (savedInstanceState != null) {
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
-            facebookFragment  = new FacebookFragment();
+            if (savedInstanceState != null) {
+
+
+                facebookFragment  = new FacebookFragment();
+
             getSupportFragmentManager().beginTransaction()
-                    .add(android.R.id.content, facebookFragment).commit();
+                    .add(R.id.login_fragment_container, facebookFragment).commit();
 
            // GooglePlusFragment googlePlusFragment = new GooglePlusFragment();
             } else {
@@ -71,6 +75,7 @@ public class LoginActivity extends AppCompatActivity  {
             facebookFragment = (FacebookFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
         }
 
+        setContentView(R.layout.activity_login);
     }
 
 
