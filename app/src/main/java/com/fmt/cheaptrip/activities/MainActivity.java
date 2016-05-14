@@ -14,9 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.fragments.MapFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private MapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initializeMapFragment(savedInstanceState);
     }
 
     @Override
@@ -57,9 +62,18 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    private void initializeMapFragment(Bundle savedInstanceState) {
 
-    private void createMap(){
+       // if (savedInstanceState != null) {
 
+            mapFragment = new MapFragment();
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.map_fragment_container, mapFragment).commit();
+     /*   } else {
+
+            mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
+        }*/
     }
 
 
@@ -69,9 +83,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int itemId = item.getItemId();
 
-        switch (itemId){
+        switch (itemId) {
 
-            case  R.id.menu_my_trip:
+            case R.id.menu_my_trip:
 
                 break;
 
