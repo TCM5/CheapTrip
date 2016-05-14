@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -52,6 +53,8 @@ public class LoginActivity extends AppCompatActivity  {
 
     private CallbackManager callbackManager;
 
+    Button temporaryButton;
+
     FacebookFragment facebookFragment;
     //GooglePlusFragment googlePlusFragment;
 
@@ -75,7 +78,20 @@ public class LoginActivity extends AppCompatActivity  {
             facebookFragment = (FacebookFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
         }
 
+
         setContentView(R.layout.activity_login);
+
+        temporaryButton =  (Button) findViewById(R.id.temp_button);
+        temporaryButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(),MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(i);
+            }
+        });
+
     }
 
     @Override
