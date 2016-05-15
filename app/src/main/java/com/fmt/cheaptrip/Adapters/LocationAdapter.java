@@ -56,14 +56,18 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (convertView != null) {
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.map_fragment_location_result, parent, false);
-        }
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = layoutInflater.inflate(R.layout.map_fragment_location_result, parent, false);
+
 
         String address = getItem(position).getAddress();
 
-        ((TextView) convertView.findViewById(R.id.map_fragment_location_result_entry)).setText(address);
+        TextView tv = ((TextView) convertView.findViewById(R.id.map_fragment_location_result_entry));
+
+        if (tv != null) {
+            tv.setText(address);
+        }
+
 
         return convertView;
     }
@@ -93,8 +97,9 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
             }
 
         } catch (IOException e) {
-            Log.d("", "");
+            Log.d("", String.valueOf(e.getCause()));
             e.printStackTrace();
+
         }
 
         return locationsResults;
@@ -118,8 +123,8 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
                     filterResults.values = locationsToFilterList;
                     filterResults.count = locationsToFilterList.size();
                 } else {
-                    filterResults.values = Collections.EMPTY_LIST;
-                    filterResults.count = 0;
+                    //    filterResults.values = Collections.emptyList();
+                    //  filterResults.count = 0;
                 }
 
                 return filterResults;

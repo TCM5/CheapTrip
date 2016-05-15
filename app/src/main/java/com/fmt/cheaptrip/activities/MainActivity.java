@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity
 
             mapFragment = new MapFragment();
 
+
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.map_fragment_container, mapFragment).commit();
      /*   } else {

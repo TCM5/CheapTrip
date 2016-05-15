@@ -72,10 +72,12 @@ public class MapFragment extends Fragment {
         MapFragmentListeners mapFragmentListeners = new MapFragmentListeners();
 
         originInput = (LocationAutoCompleteTextView) view.findViewById(R.id.map_fragment_origin_input);
-        originInput.setThreshold(THRESHOLD);
-        originInput.setAdapter(new LocationAdapter(getActivity()));
-        originInput.setOnItemClickListener(mapFragmentListeners.originListener());
 
+        if (originInput != null) {
+            originInput.setThreshold(THRESHOLD);
+            originInput.setAdapter(new LocationAdapter(getActivity()));
+            originInput.setOnItemClickListener(mapFragmentListeners.originListener());
+        }
 
         //  destinyInput = (AutoCompleteTextView) view.findViewById(R.id.map_fragment_destiny_input);
         // destinyInput.setOnItemClickListener(mapFragmentListeners.destinyListener());

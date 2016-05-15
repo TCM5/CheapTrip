@@ -3,6 +3,7 @@ package com.fmt.cheaptrip.CustomViews;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ProgressBar;
@@ -17,7 +18,8 @@ public class LocationAutoCompleteTextView extends AutoCompleteTextView {
 
     private int mAutoCompleteDelay = DEFAULT_AUTOCOMPLETE_DELAY;
     private ProgressBar mLoadingIndicator;
-    private final Handler mHandler = new Handler() {
+
+   private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             LocationAutoCompleteTextView.super.performFiltering((CharSequence) msg.obj, msg.arg1);
@@ -25,8 +27,9 @@ public class LocationAutoCompleteTextView extends AutoCompleteTextView {
     };
 
 
-    public LocationAutoCompleteTextView(Context context) {
-        super(context);
+    public LocationAutoCompleteTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
     }
 
     public void setLoadingIndicator(ProgressBar progressBar) {
@@ -42,8 +45,8 @@ public class LocationAutoCompleteTextView extends AutoCompleteTextView {
         if (mLoadingIndicator != null) {
             mLoadingIndicator.setVisibility(View.VISIBLE);
         }
-        mHandler.removeMessages(MESSAGE_TEXT_CHANGED);
-        mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_TEXT_CHANGED, text), mAutoCompleteDelay);
+      mHandler.removeMessages(MESSAGE_TEXT_CHANGED);
+      mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_TEXT_CHANGED, text), mAutoCompleteDelay);
     }
 
     @Override

@@ -48,7 +48,7 @@ public class FacebookFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        callbackManager = CallbackManager.Factory.create();
         Log.d("TESTE", "TESTE");
     }
 
