@@ -142,7 +142,7 @@ public class MapFragment extends Fragment {
 
                     //map.addMarker(markerOptions);
                 }
-            }
+            };
         }
 
         /**
