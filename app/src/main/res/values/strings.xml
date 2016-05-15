@@ -34,4 +34,11 @@
     <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
 
 
+    <!-- Map Fragment Strings-->
+    <string name="map_fragment_origin_input_text">Origem</string>
+    <string name="map_fragment_destiny_input_text">Destino</string>
+    <string name="map_fragment_search_button_text">Procurar</string>
+    <string name="map_fragment_newtrip_button_text">Criar</string>
+
+
 </resources>
