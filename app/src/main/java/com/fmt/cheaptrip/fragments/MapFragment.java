@@ -1,5 +1,6 @@
 package com.fmt.cheaptrip.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 import com.fmt.cheaptrip.Adapters.LocationAdapter;
 import com.fmt.cheaptrip.CustomViews.LocationAutoCompleteTextView;
@@ -20,6 +22,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -31,7 +34,7 @@ public class MapFragment extends Fragment {
     private GoogleMap map;
 
     private static final int DEFAULT_MAP_ZOOM = 15;
-    private static final double DEFAULT_MAP_LATITUDE = 38.754422;
+    private static final double DEFAULT_MAP_LATITUDE = 0.0;
     private static final double DEFAULT_MAP_LONGITUDE = 0.0;
 
     private LocationAutoCompleteTextView originInput;
@@ -79,8 +82,14 @@ public class MapFragment extends Fragment {
             originInput.setOnItemClickListener(mapFragmentListeners.originListener());
         }
 
-        //  destinyInput = (AutoCompleteTextView) view.findViewById(R.id.map_fragment_destiny_input);
-        // destinyInput.setOnItemClickListener(mapFragmentListeners.destinyListener());
+        destinyInput = (LocationAutoCompleteTextView) view.findViewById(R.id.map_fragment_destiny_input);
+
+        if (destinyInput != null) {
+            destinyInput.setThreshold(THRESHOLD);
+            destinyInput.setAdapter(new LocationAdapter(getActivity()));
+            destinyInput.setOnItemClickListener(mapFragmentListeners.destinyListener());
+        }
+
         return view;
     }
 
@@ -110,7 +119,13 @@ public class MapFragment extends Fragment {
         CameraUpdate center = CameraUpdateFactory.newLatLng(defaultLatLng);
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(DEFAULT_MAP_ZOOM);
 
-        map.moveCamera(center);
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(defaultLatLng).zoom(15).build();
+        map.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
+
+        //map.moveCamera(center);
         map.animateCamera(zoom);
     }
 
@@ -126,6 +141,7 @@ public class MapFragment extends Fragment {
 
             return new AdapterView.OnItemClickListener() {
 
+                MarkerOptions markerOptions = new MarkerOptions();
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -137,12 +153,28 @@ public class MapFragment extends Fragment {
                     //parent.getItemAtPosition(position);
 
                     //LatLng originLatLng = new LatLng(0.0,0.0);
-                    //markerOptions.position(originLatLng);
+                    markerOptions.position(result.getLatLng());
 
                     //BitmapDescriptor originIcon = null;
                     //markerOptions.icon(originIcon);
 
-                    //map.addMarker(markerOptions);
+                    map.addMarker(markerOptions);
+
+
+                    CameraUpdate center = CameraUpdateFactory.newCameraPosition( new CameraPosition(result.getLatLng(), 10, 1f, 1f));
+
+
+                 map.animateCamera(center);
+
+
+
+                    Context context = getActivity();
+                    CharSequence text = String.valueOf( map.getCameraPosition().target.latitude) + "TESTE";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
                 }
             };
         }
@@ -150,11 +182,13 @@ public class MapFragment extends Fragment {
         /**
          * @return
          */
-        public View.OnClickListener destinyListener() {
-
-            return new View.OnClickListener() {
+        public AdapterView.OnItemClickListener destinyListener() {
+            return new AdapterView.OnItemClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
+                    destinyInput.setText(result.getAddress());
 
                 }
             };

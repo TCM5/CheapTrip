@@ -68,7 +68,6 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
             tv.setText(address);
         }
 
-
         return convertView;
     }
 

@@ -11,50 +11,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="top|center"
         android:orientation="horizontal">
 
         <com.fmt.cheaptrip.CustomViews.LocationAutoCompleteTextView
             android:id="@+id/map_fragment_origin_input"
             android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:textColor="@color/black"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="4dp"
-
-            android:layout_marginEnd="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="4dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/text_view_rounded_corners"
             android:dropDownWidth="fill_parent"
             android:imeOptions="flagNoExtractUi|actionSearch"
             android:inputType="textCapSentences"
             android:padding="10dp"
-
-
-            />
+            android:textColor="@color/black" />
 
         <com.fmt.cheaptrip.CustomViews.LocationAutoCompleteTextView
             android:id="@+id/map_fragment_destiny_input"
             android:layout_width="150dp"
-            android:layout_height="match_parent"
-
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="4dp"
-
-            android:layout_marginEnd="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="4dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/text_view_rounded_corners"
             android:dropDownWidth="fill_parent"
             android:imeOptions="flagNoExtractUi|actionSearch"
             android:inputType="textCapSentences"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textColor="@color/black" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -68,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/ic_dialog_email" />
+            android:src="@android:drawable/ic_input_add" />
 
 
     </LinearLayout>

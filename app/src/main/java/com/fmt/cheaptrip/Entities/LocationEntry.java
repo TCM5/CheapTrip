@@ -2,6 +2,8 @@ package com.fmt.cheaptrip.Entities;
 
 import android.location.Address;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by ASUS-TCMS on 15/05/2016.
  */
@@ -9,10 +11,16 @@ public class LocationEntry {
 
     private Address address;
 
+    /**
+     * @param address
+     */
     public LocationEntry(Address address) {
         this.address = address;
     }
 
+    /**
+     * @return
+     */
     public String getAddress() {
 
         String display_address = "";
@@ -28,6 +36,27 @@ public class LocationEntry {
         return display_address;
     }
 
+    /**
+     * @param address
+     */
+    public void setAddress(Address address) {
+
+        this.address = address;
+    }
+
+    /**
+     * @return
+     */
+    public LatLng getLatLng() {
+        Double latitude = address.getLatitude();
+        Double longitude = address.getLongitude();
+
+        return new LatLng(latitude, longitude);
+    }
+
+    /**
+     * @return
+     */
     public String toString() {
         String display_address = "";
 
@@ -43,8 +72,4 @@ public class LocationEntry {
     }
 
 
-    public void setAddress(Address address) {
-
-        this.address = address;
-    }
 }
