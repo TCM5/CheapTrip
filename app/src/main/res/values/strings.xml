@@ -8,7 +8,6 @@
     <string name="title_activity_login">Sign in</string>
 
 
-
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -33,6 +32,11 @@
     <!-- Google Maps keys -->
     <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
 
+    <!-- Menu strings -->
+    <string name="menu_item_trips_title">My trips</string>
+    <string name="menu_item_profile_title">Editar perfil</string>
+    <string name="menu_item_settings_title">Settings</string>
+    <string name="menu_item_about_title">About</string>
 
     <!-- Map Fragment Strings-->
     <string name="map_fragment_origin_input_text">Origem</string>

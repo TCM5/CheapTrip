@@ -3,22 +3,26 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/menu_my_trip"
+            android:id="@+id/menu_item_my_trips"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Minhas viagens" />
+            android:title="@string/menu_item_trips_title" />
+        <item
+            android:id="@+id/menu_item_edit_profile"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_item_profile_title" />
 
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/menu_item_settings"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/menu_item_settings_title" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/menu_item_about"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/menu_item_about_title" />
         </menu>
     </item>
 

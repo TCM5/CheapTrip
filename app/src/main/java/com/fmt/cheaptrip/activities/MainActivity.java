@@ -3,6 +3,7 @@ package com.fmt.cheaptrip.activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,11 +11,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
+import com.fmt.cheaptrip.Fragments.MyTripsFragment;
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.fragments.MapFragment;
+import com.fmt.cheaptrip.Utils.ActivityUtils;
+import com.fmt.cheaptrip.Fragments.MapFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -64,13 +66,13 @@ public class MainActivity extends AppCompatActivity
 
     private void initializeMapFragment(Bundle savedInstanceState) {
 
-       // if (savedInstanceState != null) {
+        // if (savedInstanceState != null) {
 
-            mapFragment = new MapFragment();
+        mapFragment = new MapFragment();
 
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.map_fragment_container, mapFragment).commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.map_fragment_container, mapFragment).commit();
      /*   } else {
 
             mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
@@ -81,15 +83,26 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int itemId = item.getItemId();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch (itemId) {
 
-            case R.id.menu_my_trip:
+            case R.id.menu_item_my_trips:
+
+                MyTripsFragment myTripsFragment = new MyTripsFragment();
+                ActivityUtils.replaceFragment(fragmentManager, myTripsFragment, R.id.mytrips_fragment_container);
 
                 break;
 
+            default:
+
+                MapFragment mapFragment = new MapFragment();
+                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.map_fragment_container);
+
+                break;
         }
 
 
