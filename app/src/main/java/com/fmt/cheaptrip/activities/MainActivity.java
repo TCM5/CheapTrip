@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.fmt.cheaptrip.Fragments.AboutFragment;
 import com.fmt.cheaptrip.Fragments.MyTripsFragment;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.Utils.ActivityUtils;
@@ -97,6 +98,12 @@ public class MainActivity extends AppCompatActivity
 
                 break;
 
+            case R.id.menu_item_about:
+
+                AboutFragment aboutFragment = new AboutFragment();
+                ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.about_fragment_container);
+
+                break;
             default:
 
                 MapFragment mapFragment = new MapFragment();
