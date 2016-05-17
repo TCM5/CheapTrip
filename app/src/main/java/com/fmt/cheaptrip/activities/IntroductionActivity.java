@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.activities;
+package com.fmt.cheaptrip.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

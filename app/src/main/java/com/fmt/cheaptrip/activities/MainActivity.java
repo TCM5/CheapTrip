@@ -1,10 +1,7 @@
-package com.fmt.cheaptrip.activities;
+package com.fmt.cheaptrip.Activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -82,6 +79,13 @@ public class MainActivity extends AppCompatActivity
 
         switch (itemId) {
 
+            case R.id.menu_item_trips:
+
+                MapFragment mapFragment = new MapFragment();
+                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container);
+
+                break;
+
             case R.id.menu_item_my_trips:
 
                 MyTripsFragment myTripsFragment = new MyTripsFragment();
@@ -95,10 +99,10 @@ public class MainActivity extends AppCompatActivity
                 ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.main_content_container);
 
                 break;
+
             default:
 
-                MapFragment mapFragment = new MapFragment();
-                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container);
+                //Nothing to do here
 
                 break;
         }

@@ -31,7 +31,8 @@
     <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
 
     <!-- Menu strings -->
-    <string name="menu_item_trips_title">Minhas viagens</string>
+    <string name="menu_item_trips_title">Boleias cheaptrip!</string>
+    <string name="menu_item_my_trips_title">Minhas viagens</string>
     <string name="menu_item_profile_title">Perfil</string>
     <string name="menu_item_settings_title">Configurações</string>
     <string name="menu_item_about_title">Sobre</string>
@@ -42,6 +43,8 @@
     <string name="map_fragment_destiny_input_text">Destino</string>
     <string name="map_fragment_search_button_text">Procurar</string>
     <string name="map_fragment_newtrip_button_text">Criar</string>
+    <string name="map_fragment_new_trip_text">Criar boleia</string>
+    <string name="map_fragment_find_trip_text">Procurar boleia</string>
 
     <!-- About Fragment Strings-->
     <string name="about_fragment_about_app_title">The app</string>
@@ -51,10 +54,13 @@
     <string name="about_fragment_developer2">Miguel\nNobre</string>
     <string name="about_fragment_developer3">Fernando\nOliveira</string>
     <string name="about_fragment_app_version">Version</string>
-    
+
     <!--My Trip Fragment Strings-->
     <string name="mytrip_item_location_origin_text">Origem</string>
     <string name="mytrip_item_location_destiny_text">Destino</string>
     <string name="mytrip_item_date_text">Data</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

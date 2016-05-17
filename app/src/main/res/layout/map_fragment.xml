@@ -76,22 +76,26 @@
             android:id="@+id/map_fragment_find_trip_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teste" />
+                android:layout_gravity="center"
+                android:background="@color/green3_cheaptrip"
+                android:text="@string/map_fragment_find_trip_text"
+                android:textColor="@android:color/darker_gray" />
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab1"
+                android:id="@+id/map_fragment_find_trip_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_input_add"
+                android:layout_gravity="bottom|right"
+                android:clickable="true"
+                android:src="@android:drawable/ic_menu_search"
+                app:backgroundTint="@color/green4_cheaptrip"
                 app:fabSize="mini" />
 
         </LinearLayout>
@@ -100,23 +104,26 @@
             android:id="@+id/map_fragment_new_trip_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Teste" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/green3_cheaptrip"
+                android:text="@string/map_fragment_new_trip_text"
+                android:textColor="@android:color/darker_gray" />
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab3"
-
+                android:id="@+id/map_fragment_new_trip_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_input_add"
+                android:clickable="true"
+                android:src="@android:drawable/ic_menu_add"
+                app:backgroundTint="@color/green4_cheaptrip"
                 app:fabSize="mini" />
         </LinearLayout>
 
@@ -126,7 +133,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
             android:layout_margin="10dp"
-            android:src="@android:drawable/ic_input_add">
+            android:src="@android:drawable/ic_input_add"
+            app:backgroundTint="@color/green4_cheaptrip">
 
 
         </android.support.design.widget.FloatingActionButton>

@@ -5,18 +5,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.fmt.cheaptrip.Adapters.LocationAdapter;
 import com.fmt.cheaptrip.CustomViews.LocationAutoCompleteTextView;
 import com.fmt.cheaptrip.Entities.LocationEntry;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.Utils.ActivityUtils;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -40,6 +41,12 @@ public class MapFragment extends Fragment {
     private LocationAutoCompleteTextView originInput;
     private LocationAutoCompleteTextView destinyInput;
 
+    private FloatingActionButton newFab;
+    private FloatingActionButton newTripFab;
+    private FloatingActionButton findTripFab;
+    private LinearLayout newTripAction;
+    private LinearLayout findTripAction;
+
     private Integer THRESHOLD = 2;
 
     @Override
@@ -62,9 +69,6 @@ public class MapFragment extends Fragment {
                 setMapDefaultConfigs();
             }
         }
-
-
-
 
 
     }
@@ -92,6 +96,29 @@ public class MapFragment extends Fragment {
             destinyInput.setThreshold(THRESHOLD);
             destinyInput.setAdapter(new LocationAdapter(getActivity()));
             destinyInput.setOnItemClickListener(mapFragmentListeners.destinyListener());
+        }
+
+        newTripAction = (LinearLayout) view.findViewById(R.id.map_fragment_new_trip_ll);
+
+        findTripAction = (LinearLayout) view.findViewById(R.id.map_fragment_find_trip_ll);
+
+
+        newTripFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_new_trip_fab);
+
+        if (newTripFab != null) {
+            newTripFab.setOnClickListener(mapFragmentListeners.newTrip());
+        }
+
+        findTripFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_find_trip_fab);
+
+        if (findTripFab != null) {
+            findTripFab.setOnClickListener(mapFragmentListeners.findTrip());
+        }
+
+        newFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_new_fab);
+
+        if (newFab != null) {
+            newFab.setOnClickListener(mapFragmentListeners.newAction());
         }
 
         return view;
@@ -165,15 +192,14 @@ public class MapFragment extends Fragment {
                     map.addMarker(markerOptions);
 
 
-                    CameraUpdate center = CameraUpdateFactory.newCameraPosition( new CameraPosition(result.getLatLng(), 10, 1f, 1f));
+                    CameraUpdate center = CameraUpdateFactory.newCameraPosition(new CameraPosition(result.getLatLng(), 10, 1f, 1f));
 
 
-                 map.animateCamera(center);
-
+                    map.animateCamera(center);
 
 
                     Context context = getActivity();
-                    CharSequence text = String.valueOf( map.getCameraPosition().target.latitude) + "TESTE";
+                    CharSequence text = String.valueOf(map.getCameraPosition().target.latitude) + "TESTE";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
@@ -198,6 +224,51 @@ public class MapFragment extends Fragment {
             };
         }
 
+        public View.OnClickListener newAction() {
+
+            return new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (LinearLayout.GONE == findTripAction.getVisibility() || LinearLayout.GONE == newTripAction.getVisibility()) {
+                        findTripAction.setVisibility(LinearLayout.VISIBLE);
+                        newTripAction.setVisibility(LinearLayout.VISIBLE);
+                    } else {
+                        findTripAction.setVisibility(LinearLayout.GONE);
+                        newTripAction.setVisibility(LinearLayout.GONE);
+                    }
+                }
+            };
+
+        }
+
+        public View.OnClickListener newTrip() {
+
+            return new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    NewTripFragment newTripFragment = new NewTripFragment();
+                    ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container);
+
+                }
+            };
+        }
+
+        public View.OnClickListener findTrip() {
+
+            return new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    TripsFragment tripsFragment = new TripsFragment();
+                    ActivityUtils.replaceFragment(getFragmentManager(), tripsFragment, R.id.main_content_container);
+
+                }
+
+
+            };
+        }
 
     }
 

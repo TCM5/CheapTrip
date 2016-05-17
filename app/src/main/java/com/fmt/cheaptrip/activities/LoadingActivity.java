@@ -1,6 +1,5 @@
-package com.fmt.cheaptrip.activities;
+package com.fmt.cheaptrip.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;

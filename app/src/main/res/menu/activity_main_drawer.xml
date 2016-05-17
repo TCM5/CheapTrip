@@ -6,9 +6,14 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/menu_item_my_trips"
+            android:id="@+id/menu_item_trips"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_item_trips_title" />
+
+        <item
+            android:id="@+id/menu_item_my_trips"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_item_my_trips_title" />
         <item
             android:id="@+id/menu_item_edit_profile"
             android:icon="@drawable/ic_menu_camera"
