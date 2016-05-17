@@ -31,15 +31,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -73,7 +64,7 @@ public class MainActivity extends AppCompatActivity
 
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.map_fragment_container, mapFragment).commit();
+                .add(R.id.main_content_container, mapFragment).commit();
      /*   } else {
 
             mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
@@ -94,20 +85,20 @@ public class MainActivity extends AppCompatActivity
             case R.id.menu_item_my_trips:
 
                 MyTripsFragment myTripsFragment = new MyTripsFragment();
-                ActivityUtils.replaceFragment(fragmentManager, myTripsFragment, R.id.mytrips_fragment_container);
+                ActivityUtils.replaceFragment(fragmentManager, myTripsFragment, R.id.main_content_container);
 
                 break;
 
             case R.id.menu_item_about:
 
                 AboutFragment aboutFragment = new AboutFragment();
-                ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.about_fragment_container);
+                ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.main_content_container);
 
                 break;
             default:
 
                 MapFragment mapFragment = new MapFragment();
-                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.map_fragment_container);
+                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container);
 
                 break;
         }

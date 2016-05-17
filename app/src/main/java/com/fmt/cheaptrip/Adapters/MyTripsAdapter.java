@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.fmt.cheaptrip.Entities.TripEntry;
 import com.fmt.cheaptrip.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -17,29 +19,74 @@ import java.util.ArrayList;
  */
 public class MyTripsAdapter extends ArrayAdapter<TripEntry> {
 
+    private Context context;
+    private int resourceId;
+    private ArrayList<TripEntry> myTripList;
 
-    public MyTripsAdapter(Context context, ArrayList<TripEntry> myTripsList) {
-        super(context, 0, myTripsList);
+    public MyTripsAdapter(Context context, int resourceId, int resourceViewId, ArrayList<TripEntry> myTripsList) {
+
+        super(context, resourceId, resourceViewId, myTripsList);
+
+        this.context = context;
+        this.resourceId = resourceId;
+        this.myTripList = myTripsList;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         super.getView(position, convertView, parent);
 
+        MyTripsItemHolder myTripsItemHolder = null;
+
+
+        // if (convertView == null) {
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.mytrip_item, parent, false);
+
+        myTripsItemHolder = new MyTripsItemHolder();
+        myTripsItemHolder.originLocation = (TextView) convertView.findViewById(R.id.mytrip_item_location_origin);
+        myTripsItemHolder.destinyLocation = (TextView) convertView.findViewById(R.id.mytrip_item_location_destiny);
+        myTripsItemHolder.date = (TextView) convertView.findViewById(R.id.mytrip_item_date);
+
+        convertView.setTag(myTripsItemHolder);
+        // }
+
+       /* else {
+            myTripsItemHolder = (MyTripsItemHolder) convertView.getTag();
+
+        }*/
+
         TripEntry tripEntry = getItem(position);
-
-        if (convertView != null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.mytrip_item, parent, false);
-        }
-
-        TextView myTripOriginTextView = (TextView) convertView.findViewById(R.id.mytrip_item_location_origin);
-        TextView myTripDestinyTextView = (TextView) convertView.findViewById(R.id.mytrip_item_location_destiny);
-
         // Set the values
-        myTripOriginTextView.setText(tripEntry.getOriginLocation().getLocality());
-        myTripDestinyTextView.setText(tripEntry.getDestinyLocation().getLocality());
+        myTripsItemHolder.originLocation.setText("TESTE");
+        myTripsItemHolder.destinyLocation.setText("TESTE2");
+        myTripsItemHolder.date.setText("21/05/1990 08:00");
 
         return convertView;
 
     }
+
+    @Override
+    public int getCount() {
+        return super.getCount();
+    }
+
+    @Override
+    public TripEntry getItem(int position) {
+        return super.getItem(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
+
+    public static class MyTripsItemHolder {
+
+        TextView originLocation;
+        TextView destinyLocation;
+        TextView date;
+
+    }
+
 }

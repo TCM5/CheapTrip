@@ -35,7 +35,7 @@ public class MyTripsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mytrips_fragment, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.menu_item_my_trips);
+        ListView listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
 
         Address add1 = new Address(Locale.ENGLISH);
         add1.setLatitude(5.0);
@@ -55,19 +55,19 @@ public class MyTripsFragment extends Fragment {
 
 
         ArrayList<TripEntry> dummy = new ArrayList<TripEntry>();
-        dummy.add(tripEntry1 );
-        dummy.add(tripEntry2 );
+        dummy.add(tripEntry1);
+        dummy.add(tripEntry2);
 
 
-
-        myTripsAdapter = new MyTripsAdapter(getActivity(),dummy);
-
-
-
-
+        myTripsAdapter = new MyTripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview, dummy);
         listView.setAdapter(myTripsAdapter);
+
+        View header = inflater.inflate(R.layout.mytrip_header, null);
+        listView.addHeaderView(header);
+
 
         return view;
     }
+
 
 }

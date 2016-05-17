@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+
         <item
             android:id="@+id/menu_item_my_trips"
             android:icon="@drawable/ic_menu_camera"
@@ -13,17 +16,22 @@
 
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/menu_item_settings"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_item_settings_title" />
-            <item
-                android:id="@+id/menu_item_about"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_item_about_title" />
-        </menu>
-    </item>
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none"
+        >
+        <item
+            android:id="@+id/menu_item_settings"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/menu_item_settings_title" />
+        <item
+            android:id="@+id/menu_item_about"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/menu_item_about_title" />
+        <item
+            android:id="@+id/menu_item_feedback"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/menu_item_about_feedback" />
+    </group>
 
 </menu>
