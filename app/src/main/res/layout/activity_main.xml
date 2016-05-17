@@ -5,9 +5,12 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/green3_cheaptrip"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+
+
+    >
 
     <include
         layout="@layout/app_bar_main"
@@ -21,7 +24,6 @@
         android:layout_gravity="start"
         android:background="@drawable/sid_nav_background"
         android:fitsSystemWindows="true"
-        android:theme="menucheap"
         app:headerLayout="@layout/nav_header_main"
         app:itemBackground="@drawable/sid_nav_background"
         app:itemIconTint="@color/green4_cheaptrip"

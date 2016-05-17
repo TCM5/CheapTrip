@@ -31,10 +31,10 @@
     <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
 
     <!-- Menu strings -->
-    <string name="menu_item_trips_title">My trips</string>
-    <string name="menu_item_profile_title">Editar perfil</string>
-    <string name="menu_item_settings_title">Settings</string>
-    <string name="menu_item_about_title">About</string>
+    <string name="menu_item_trips_title">Minhas viagens</string>
+    <string name="menu_item_profile_title">Perfil</string>
+    <string name="menu_item_settings_title">Configurações</string>
+    <string name="menu_item_about_title">Sobre</string>
     <string name="menu_item_about_feedback">Feedback</string>
 
     <!-- Map Fragment Strings-->
@@ -47,9 +47,9 @@
     <string name="about_fragment_about_app_title">The app</string>
     <string name="about_fragment_text">The creaton of this app became as an academic project. The source code is public and we, the team, like to share it! </string>
     <string name="about_fragment_about_team_title">The team</string>
-    <string name="about_fragment_developer1">Tiago Santos</string>
-    <string name="about_fragment_developer2">Miguel Nobre</string>
-    <string name="about_fragment_developer3">Fernando Oliveira</string>
+    <string name="about_fragment_developer1">Tiago\nSantos</string>
+    <string name="about_fragment_developer2">Miguel\nNobre</string>
+    <string name="about_fragment_developer3">Fernando\nOliveira</string>
     <string name="about_fragment_app_version">Version</string>
     
     <!--My Trip Fragment Strings-->

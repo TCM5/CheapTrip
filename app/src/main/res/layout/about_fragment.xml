@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/about_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fmt.cheaptrip.Fragments.AboutFragment"
-    android:id="@+id/about_fragment_container">
+    tools:context="com.fmt.cheaptrip.Fragments.AboutFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +19,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="15dp"
             android:text="@string/about_fragment_about_app_title"
+            android:textColor="@color/green4_cheaptrip"
             android:textSize="25dp" />
 
         <TextView
@@ -26,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="@string/about_fragment_text" />
+            android:text="@string/about_fragment_text"
+            android:textColor="@android:color/darker_gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,12 +44,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:text="@string/about_fragment_app_version"
+                android:textColor="@android:color/darker_gray"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="1.0" />
+                android:text="1.0"
+                android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
 
@@ -59,6 +63,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="15dp"
             android:text="@string/about_fragment_about_team_title"
+            android:textColor="@color/green4_cheaptrip"
             android:textSize="25dp" />
 
 
@@ -80,13 +85,14 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/developer" />
+                    android:src="@drawable/developer" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/about_fragment_developer1"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -100,13 +106,14 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/developer" />
+                    android:src="@drawable/developer" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/about_fragment_developer2"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -120,13 +127,14 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/developer" />
+                    android:src="@drawable/developer" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/about_fragment_developer3"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
 
