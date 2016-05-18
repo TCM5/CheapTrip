@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "22189993770",
+    "project_id": "cheaptrip01"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22189993770:android:38e9a6bff551969a",
+        "android_client_info": {
+          "package_name": "com.fmt.cheaptrip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22189993770-u7195ftdaf8nelku38s07u9ufidksrsc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fmt.cheaptrip",
+            "certificate_hash": "0240437024BE7C912E4B6EC3984719258B2ED35A"
+          }
+        },
+        {
+          "client_id": "22189993770-tb14159detc1sp7ve9gbep4l7prel33r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcX6rUXJC6vQGWRj6DgUaWhVOenKm2B5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

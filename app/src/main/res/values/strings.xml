@@ -26,6 +26,12 @@
     <!-- Strings related to Facebook Login -->
     <string name="facebook_app_id">516872131835256</string>
 
+    <!-- Google + Strings -->
+    <string name="app_name_g">G+ Login</string>
+    <string name="action_settings_">Settings</string>
+    <string name="btn_logout_from_google">Logout from Google</string>
+    <string name="btn_revoke_access">Revoke Access</string>
+
 
     <!-- Google Maps keys -->
     <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>

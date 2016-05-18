@@ -1,70 +1,95 @@
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context="com.fmt.cheaptrip.Activities.LoginActivity"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@color/green3_cheaptrip"
+    android:orientation="vertical"
+    tools:context="com.fmt.cheaptrip.Activities.LoginActivity">
 
     <LinearLayout
         android:id="@+id/login_fragment_container2"
-        android:theme="@android:style/Theme.Light.NoTitleBar"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_gravity="top"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:src="@drawable/wall1" />
 
         <TextView
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/login_welcome_msg1"/>
+            android:text="@string/login_welcome_msg1"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="9.83"
             android:gravity="center"
-            android:text="@string/login_welcome_msg2"/>
+            android:text="@string/login_welcome_msg2"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/login_fragment_container"
-        android:theme="@android:style/Theme.Light.NoTitleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:gravity="bottom" >
+
+        android:gravity="bottom"
+        android:theme="@android:style/Theme.Light.NoTitleBar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            >
 
-                <com.facebook.login.widget.LoginButton
+            <com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button"
                 android:layout_width="254dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
-                android:textSize="15sp"
-                android:paddingTop="15sp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="0.05"
                 android:paddingBottom="15sp"
-                android:layout_weight="0.05" />
+                android:paddingTop="15sp"
+                android:textSize="15sp" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_sign_in"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btn_sign_out"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_logout_from_google"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/btn_revoke_access"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_revoke_access"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/temp_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Temp"/>
+                android:text="Temp" />
 
         </LinearLayout>
 
