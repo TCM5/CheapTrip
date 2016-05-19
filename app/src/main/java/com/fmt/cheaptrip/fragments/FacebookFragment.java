@@ -20,10 +20,8 @@ import com.fmt.cheaptrip.R;
 /**
  * This class controlls the facebook login and is build as a fragment.
  * Here are obtained and stored the values from the facebook login feature
- *
  */
 public class FacebookFragment extends Fragment {
-
 
 
     private CallbackManager callbackManager;
@@ -31,7 +29,7 @@ public class FacebookFragment extends Fragment {
     private LoginButton loginButton;
 
     /**
-     *  Fragment requires a default constructor and should be the only constructor here.
+     * Fragment requires a default constructor and should be the only constructor here.
      */
     public FacebookFragment() {
 
@@ -49,34 +47,33 @@ public class FacebookFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.activity_login, container, false);
 
-       View view = inflater.inflate(R.layout.activity_login, container, false);
-
-        loginButton = (LoginButton)view.findViewById(R.id.login_button);
+        loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setFragment(this);
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
-                @Override
-                public void onSuccess(LoginResult loginResult) {
-                    System.out.println("SUCESSO");
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                System.out.println("SUCESSO");
 
-                }
+            }
 
-                @Override
-                public void onCancel() {
-                    System.out.println("CANCELOU");
-
-
-                }
-
-                @Override
-                public void onError(FacebookException e) {
-                    System.out.println("ERRO");
+            @Override
+            public void onCancel() {
+                System.out.println("CANCELOU");
 
 
-                }
-            });
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                System.out.println("ERRO");
+
+
+            }
+        });
 
         return view;
 
@@ -89,8 +86,7 @@ public class FacebookFragment extends Fragment {
 
         System.out.println("callbackManager on ACt");
         //TODO
-     }
-
+    }
 
 
     @Override

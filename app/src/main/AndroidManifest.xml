@@ -6,8 +6,6 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -22,22 +20,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".Activities.LoadingActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity android:name=".activities.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
-        <activity
-            android:name=".Activities.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+
+        <activity android:name="com.fmt.cheaptrip.activities.LoginActivity" />
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -58,5 +53,6 @@
             android:value="@string/google_api_key" />
 
     </application>
+
 
 </manifest>

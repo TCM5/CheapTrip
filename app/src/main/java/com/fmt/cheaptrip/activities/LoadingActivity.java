@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Activities;
+package com.fmt.cheaptrip.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import java.util.logging.Logger;
 
 /**
  * @author tiagoCMS
- *
- * This activity ... TODO
+ *         <p/>
+ *         This activity ... TODO
  */
-public class LoadingActivity extends AppCompatActivity{
+public class LoadingActivity extends AppCompatActivity {
 
     private Logger log = Logger.getLogger(this.getClass().getName());
 
@@ -30,23 +30,22 @@ public class LoadingActivity extends AppCompatActivity{
 
         setContentView(R.layout.loading_view);
 
-        Thread thread = new Thread(){
+        Thread thread = new Thread() {
 
             @Override
             public void run() {
                 super.run();
 
                 try {
-                    synchronized (this){
+                    synchronized (this) {
                         sleep(LOADING_TIME);
                     }
 
-                }
-                catch (InterruptedException ex){
-                     log.log(null, "TODO");
+                } catch (InterruptedException ex) {
+                    log.log(null, "TODO");
                 } finally {
                     Intent intent = new Intent();
-                    intent.setClass(getBaseContext(),LoginActivity.class);
+                    intent.setClass(getBaseContext(), LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     getBaseContext().startActivity(intent);

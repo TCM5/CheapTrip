@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Activities;
+package com.fmt.cheaptrip.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.Fragments.IntroductionSlideFragment;
+import com.fmt.cheaptrip.R;
 
 /**
  * @author TiagoCMS

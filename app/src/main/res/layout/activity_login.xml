@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:background="@color/green3_cheaptrip"
     android:orientation="vertical"
-    tools:context="com.fmt.cheaptrip.Activities.LoginActivity">
+    tools:context="com.fmt.cheaptrip.activities.LoginActivity">
 
     <LinearLayout
         android:id="@+id/login_fragment_container2"
