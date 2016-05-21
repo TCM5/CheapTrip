@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import com.fmt.cheaptrip.Fragments.AboutFragment;
 import com.fmt.cheaptrip.Fragments.MapFragment;
-import com.fmt.cheaptrip.Fragments.MyTripsFragment;
+import com.fmt.cheaptrip.Fragments.TripsFragment;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.Utils.ActivityUtils;
 
@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.menu_item_my_trips:
 
-                MyTripsFragment myTripsFragment = new MyTripsFragment();
-                ActivityUtils.replaceFragment(fragmentManager, myTripsFragment, R.id.main_content_container);
+                TripsFragment tripsFragment = new TripsFragment();
+                ActivityUtils.replaceFragment(fragmentManager, tripsFragment, R.id.main_content_container);
 
                 break;
 

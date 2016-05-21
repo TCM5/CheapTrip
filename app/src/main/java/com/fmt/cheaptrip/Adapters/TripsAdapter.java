@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Created by santostc on 16-05-2016.
  */
-public class MyTripsAdapter extends ArrayAdapter<TripEntry> {
+public class TripsAdapter extends ArrayAdapter<TripEntry> {
 
     private Context context;
     private int resourceId;
@@ -27,7 +27,7 @@ public class MyTripsAdapter extends ArrayAdapter<TripEntry> {
 
     MyTripsItemHolder myTripsItemHolder;
 
-    public MyTripsAdapter(Context context, int resourceId, int resourceViewId, ArrayList<TripEntry> myTripsList) {
+    public TripsAdapter(Context context, int resourceId, int resourceViewId, ArrayList<TripEntry> myTripsList) {
 
         super(context, resourceId, resourceViewId, myTripsList);
 
