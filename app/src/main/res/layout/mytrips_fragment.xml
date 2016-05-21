@@ -3,7 +3,7 @@
     android:id="@+id/mytrips_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/green3_cheaptrip"
     tools:context="com.fmt.cheaptrip.Fragments.MyTripsFragment">
 
     <ListView
@@ -12,11 +12,11 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:background="@color/green3_cheaptrip"
         android:divider="#C0C0C0"
         android:dividerHeight="0.5dp"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="false">
-
 
     </ListView>
 

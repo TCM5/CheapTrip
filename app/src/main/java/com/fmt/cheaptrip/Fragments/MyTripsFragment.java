@@ -49,15 +49,13 @@ public class MyTripsFragment extends Fragment {
         tripEntry1.setDestinyLocation(add1);
         tripEntry1.setOriginLocation(add2);
 
-        TripEntry tripEntry2 = new TripEntry();
-        tripEntry1.setDestinyLocation(add2);
-        tripEntry1.setOriginLocation(add1);
+
 
 
         ArrayList<TripEntry> dummy = new ArrayList<TripEntry>();
-        dummy.add(tripEntry1);
-        dummy.add(tripEntry2);
-
+        for(int i = 0 ; i < 6; i++) {
+            dummy.add(tripEntry1);
+        }
 
         myTripsAdapter = new MyTripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview, dummy);
         listView.setAdapter(myTripsAdapter);

@@ -19,49 +19,35 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <com.fmt.cheaptrip.CustomViews.LocationAutoCompleteTextView
             android:id="@+id/map_fragment_origin_input"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:layout_weight="2"
+            android:layout_marginBottom="10dp"
             android:background="@color/green4_cheaptrip"
             android:dropDownWidth="fill_parent"
             android:hint="@string/map_fragment_origin_input_text"
             android:imeOptions="flagNoExtractUi|actionSearch"
             android:inputType="textCapSentences"
             android:padding="2dp"
-
-            android:textColor="@color/white" />
-
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:src="@android:drawable/ic_input_add"
-            app:fabSize="mini" />
+            android:textColor="@color/white" android:elevation="10dp"/>
 
         <com.fmt.cheaptrip.CustomViews.LocationAutoCompleteTextView
             android:id="@+id/map_fragment_destiny_input"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:layout_weight="2"
+            android:layout_marginBottom="10dp"
             android:background="@color/green4_cheaptrip"
             android:dropDownWidth="fill_parent"
             android:hint="@string/map_fragment_destiny_input_text"
             android:imeOptions="flagNoExtractUi|actionSearch"
             android:inputType="textCapSentences"
-            android:padding="2dp"
-
-
-            android:textColor="@color/white" />
+            android:padding="2dp" 
+            android:textColor="@color/white" android:elevation="10dp"/>
 
     </LinearLayout>
 
@@ -70,7 +56,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:id="@+id/map_fragment_find_trip_ll"
@@ -114,7 +99,9 @@
                 android:layout_gravity="center"
                 android:background="@color/green3_cheaptrip"
                 android:text="@string/map_fragment_new_trip_text"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+
+                />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/map_fragment_new_trip_fab"
