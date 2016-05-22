@@ -1,7 +1,6 @@
-package com.fmt.cheaptrip.Adapters;
+package com.fmt.cheaptrip.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.fmt.cheaptrip.Entities.TripEntry;
+import com.fmt.cheaptrip.entities.TripEntry;
 import com.fmt.cheaptrip.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

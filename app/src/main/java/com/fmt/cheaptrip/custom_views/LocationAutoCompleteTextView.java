@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.CustomViews;
+package com.fmt.cheaptrip.custom_views;
 
 import android.content.Context;
 import android.os.Handler;

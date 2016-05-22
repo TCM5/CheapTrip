@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Entities;
+package com.fmt.cheaptrip.entities;
 
 import android.location.Address;
 

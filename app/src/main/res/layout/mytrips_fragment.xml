@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green3_cheaptrip"
-    tools:context=".Fragments.TripsFragment">
+    tools:context=".fragments.TripsFragment">
 
     <ListView
         android:id="@+id/my_trips_fragment_list"

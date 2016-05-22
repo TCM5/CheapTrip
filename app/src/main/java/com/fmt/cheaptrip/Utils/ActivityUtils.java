@@ -1,10 +1,8 @@
-package com.fmt.cheaptrip.Utils;
+package com.fmt.cheaptrip.utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-
-import com.fmt.cheaptrip.R;
 
 /**
  * Created by santostc on 16-05-2016.

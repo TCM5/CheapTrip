@@ -10,11 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.fmt.cheaptrip.Fragments.AboutFragment;
-import com.fmt.cheaptrip.Fragments.MapFragment;
-import com.fmt.cheaptrip.Fragments.TripsFragment;
+import com.fmt.cheaptrip.fragments.AboutFragment;
+import com.fmt.cheaptrip.fragments.MapFragment;
+import com.fmt.cheaptrip.fragments.TripsFragment;
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.Utils.ActivityUtils;
+import com.fmt.cheaptrip.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

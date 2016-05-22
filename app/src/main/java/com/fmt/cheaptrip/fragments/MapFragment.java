@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Fragments;
+package com.fmt.cheaptrip.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,11 +13,11 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.fmt.cheaptrip.Adapters.LocationAdapter;
-import com.fmt.cheaptrip.CustomViews.LocationAutoCompleteTextView;
-import com.fmt.cheaptrip.Entities.LocationEntry;
+import com.fmt.cheaptrip.adapters.LocationAdapter;
+import com.fmt.cheaptrip.custom_views.LocationAutoCompleteTextView;
+import com.fmt.cheaptrip.entities.LocationEntry;
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.Utils.ActivityUtils;
+import com.fmt.cheaptrip.utils.ActivityUtils;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

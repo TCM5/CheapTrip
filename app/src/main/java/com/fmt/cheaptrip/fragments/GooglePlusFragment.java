@@ -1,10 +1,7 @@
-package com.fmt.cheaptrip.Fragments;
+package com.fmt.cheaptrip.fragments;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,29 +9,36 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.facebook.login.widget.LoginButton;
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.activities.MainActivity;
+import com.fmt.cheaptrip.activities.LoginActivity;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 
 
-public class GooglePlusFragment extends Fragment implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class GooglePlusFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final int RESULT_OK = 0;
     private GoogleApiClient googleApiClient;
+    private GoogleSignInOptions googleSignInOptions;
+
     private SignInButton googlePlusButton;
 
     private static final int RC_SIGN_IN = 0;
+
+    private static final int RC_SIGN_OUT = -1;
     private boolean mIntentInProgress;
-    private ConnectionResult mConnectionResult = new ConnectionResult(ConnectionResult.SUCCESS);
+    private ConnectionResult mConnectionResult;
     private boolean mSignInClicked;
 
     public GooglePlusFragment() {
@@ -53,15 +57,18 @@ public class GooglePlusFragment extends Fragment implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestProfile().requestEmail().requestScopes(Plus.SCOPE_PLUS_LOGIN, Plus.SCOPE_PLUS_PROFILE, new Scope("https://www.googleapis.com/auth/plus.profile.emails.read"))
+                .build();
 
-      googleApiClient = new GoogleApiClient.Builder(getActivity())
+        googleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
-                .addApi(Plus.API,Plus.PlusOptions.builder().build())
-                .addScope(Plus.SCOPE_PLUS_LOGIN).build();
-
+                .addApi(Plus.API)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions).enableAutoManage(getActivity(), this).build();
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,7 +81,12 @@ public class GooglePlusFragment extends Fragment implements View.OnClickListener
         googlePlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signInWithGplus();
+
+                googleApiClient.connect();
+                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+
+
             }
         });
 
@@ -84,20 +96,12 @@ public class GooglePlusFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        mSignInClicked = false;
-        Toast.makeText(getActivity(), "User is connected!", Toast.LENGTH_LONG).show();
-
-
-        // Get user's information
-        //  getProfileInformation();
-
-
+        Toast.makeText(getActivity(), "Connected", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onConnectionSuspended(int i) {
         googleApiClient.connect();
-
     }
 
     @Override
@@ -108,73 +112,33 @@ public class GooglePlusFragment extends Fragment implements View.OnClickListener
                     0).show();
             return;
         }
-
-        if (!mIntentInProgress) {
-            // Store the ConnectionResult for later usage
-            mConnectionResult = connectionResult;
-
-            if (mSignInClicked) {
-                // The user has already clicked 'sign-in' so we attempt to
-                // resolve all
-                // errors until the user is signed in, or they cancel.
-                resolveSignInError();
-            }
-        }
-
     }
-
-    /**
-     * Sign-in into google
-     */
-    private void signInWithGplus() {
-        if (!googleApiClient.isConnecting()) {
-            mSignInClicked = true;
-            resolveSignInError();
-        }
-
-        Intent i = new Intent();
-        i.setClass(getActivity(),MainActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        getActivity().startActivity(i);
-    }
-
-
-    /**
-     * Method to resolve any signin errors
-     */
-    private void resolveSignInError() {
-        if (mConnectionResult.hasResolution()) {
-            try {
-
-                mIntentInProgress = true;
-                mConnectionResult.startResolutionForResult(getActivity(), RC_SIGN_IN);
-            } catch (IntentSender.SendIntentException e) {
-
-                mIntentInProgress = false;
-                googleApiClient.connect();
-            }
-        }
-    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RC_SIGN_IN) {
-            if (resultCode != RESULT_OK) {
-                mSignInClicked = false;
-            }
 
-            mIntentInProgress = false;
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
 
-            if (!googleApiClient.isConnecting()) {
-                googleApiClient.connect();
+            if (result.isSuccess()) {
+                GoogleSignInAccount gplusAccount = result.getSignInAccount();
+                gplusAccount.getDisplayName();
+                gplusAccount.getEmail();
+                Toast.makeText(getActivity(), gplusAccount.getEmail() + gplusAccount.getDisplayName(), Toast.LENGTH_LONG).show();
+
+                redirectToMain();
             }
+        } else if (requestCode == RC_SIGN_OUT) {
+            PendingResult result = Auth.GoogleSignInApi.signOut(googleApiClient);
+            //TODO
         }
+
+
     }
 
-    @Override
-    public void onClick(View v) {
 
+    public void redirectToMain() {
 
+        ((LoginActivity) getActivity()).redirectToMain();
     }
 }

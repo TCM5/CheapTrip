@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Fragments;
+package com.fmt.cheaptrip.fragments;
 
 
 import android.location.Address;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.fmt.cheaptrip.Adapters.TripsAdapter;
-import com.fmt.cheaptrip.Entities.TripEntry;
+import com.fmt.cheaptrip.adapters.TripsAdapter;
+import com.fmt.cheaptrip.entities.TripEntry;
 import com.fmt.cheaptrip.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Fragments;
+package com.fmt.cheaptrip.fragments;
 
 import android.content.Context;
 import android.content.Intent;

@@ -10,13 +10,12 @@ import android.widget.Button;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
-import com.fmt.cheaptrip.Fragments.FacebookFragment;
-import com.fmt.cheaptrip.Fragments.GooglePlusFragment;
+import com.fmt.cheaptrip.fragments.FacebookFragment;
+import com.fmt.cheaptrip.fragments.GooglePlusFragment;
 import com.fmt.cheaptrip.R;
-import com.google.android.gms.common.GoogleApiAvailability;
 
 
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity {
 
     private CallbackManager callbackManager;
 
@@ -31,16 +30,16 @@ public class LoginActivity extends AppCompatActivity  {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-            if (savedInstanceState != null) {
+        if (savedInstanceState != null) {
 
 
-                facebookFragment  = new FacebookFragment();
+            facebookFragment = new FacebookFragment();
 
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.login_fragment_container, facebookFragment).commit();
 
-           // GooglePlusFragment googlePlusFragment = new GooglePlusFragment();
-            } else {
+            // GooglePlusFragment googlePlusFragment = new GooglePlusFragment();
+        } else {
 
             facebookFragment = (FacebookFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
         }
@@ -52,14 +51,11 @@ public class LoginActivity extends AppCompatActivity  {
 
         setContentView(R.layout.activity_login);
 
-        temporaryButton =  (Button) findViewById(R.id.temp_button);
+        temporaryButton = (Button) findViewById(R.id.temp_button);
         temporaryButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(),MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(i);
+                redirectToMain();
             }
         });
 
@@ -71,6 +67,13 @@ public class LoginActivity extends AppCompatActivity  {
 
         //TODO
 
+    }
+
+    public void redirectToMain() {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(i);
     }
 }
 
