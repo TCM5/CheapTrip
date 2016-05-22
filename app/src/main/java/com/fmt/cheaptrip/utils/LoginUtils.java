@@ -45,7 +45,7 @@ public class LoginUtils {
         editor.commit();
     }
 
-    public void removeSignedLoginType(Context context, LoginType loginType) {
+    public void removeSignedLoginByType(Context context, LoginType loginType) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
 
@@ -61,6 +61,20 @@ public class LoginUtils {
                 break;
         }
 
+
+        editor.commit();
+    }
+
+    /**
+     * @param context
+     */
+    public void removeSignedLogin(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putBoolean("signed_logintype_gplus", false);
+        editor.putBoolean("signed_logintype_facebook", false);
+        editor.putBoolean("signed_logintype_email", false);
 
         editor.commit();
     }

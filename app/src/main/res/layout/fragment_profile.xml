@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green3_cheaptrip"
+    tools:context="com.fmt.cheaptrip.fragments.ProfileFragment">
+
+
+    <Button
+        android:id="@+id/fragment_profile_signout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:text="DISCONNECT" />
+</LinearLayout>

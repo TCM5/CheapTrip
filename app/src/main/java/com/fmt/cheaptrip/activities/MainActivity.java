@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.fmt.cheaptrip.fragments.AboutFragment;
 import com.fmt.cheaptrip.fragments.MapFragment;
+import com.fmt.cheaptrip.fragments.ProfileFragment;
 import com.fmt.cheaptrip.fragments.TripsFragment;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.utils.ActivityUtils;
@@ -82,21 +83,29 @@ public class MainActivity extends AppCompatActivity
             case R.id.menu_item_trips:
 
                 MapFragment mapFragment = new MapFragment();
-                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container);
+                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container ,true);
 
                 break;
 
             case R.id.menu_item_my_trips:
 
                 TripsFragment tripsFragment = new TripsFragment();
-                ActivityUtils.replaceFragment(fragmentManager, tripsFragment, R.id.main_content_container);
+                ActivityUtils.replaceFragment(fragmentManager, tripsFragment, R.id.main_content_container ,true);
+
+                break;
+
+            case R.id.menu_item_edit_profile:
+
+
+                ProfileFragment profileFragment = new ProfileFragment();
+                ActivityUtils.replaceFragment(fragmentManager, profileFragment, R.id.main_content_container , true);
 
                 break;
 
             case R.id.menu_item_about:
 
                 AboutFragment aboutFragment = new AboutFragment();
-                ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.main_content_container);
+                ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.main_content_container , true);
 
                 break;
 

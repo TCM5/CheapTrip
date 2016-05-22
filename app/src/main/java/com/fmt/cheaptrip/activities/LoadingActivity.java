@@ -82,13 +82,6 @@ public class LoadingActivity extends AppCompatActivity {
                     redirectToLogin();
                 }
 
-
-              /*
-                    Intent intent = new Intent();
-                    intent.setClass(getBaseContext(), LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    getBaseContext().startActivity(intent);*/
             }
 
         };
@@ -116,7 +109,6 @@ public class LoadingActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getApplicationContext().startActivity(intent);
     }
-
 
 
 }

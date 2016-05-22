@@ -249,7 +249,7 @@ public class MapFragment extends Fragment {
                 public void onClick(View v) {
 
                     NewTripFragment newTripFragment = new NewTripFragment();
-                    ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container);
+                    ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, true);
 
                 }
             };
@@ -262,7 +262,7 @@ public class MapFragment extends Fragment {
                 public void onClick(View v) {
 
                     TripsFragment tripsFragment = new TripsFragment();
-                    ActivityUtils.replaceFragment(getFragmentManager(), tripsFragment, R.id.main_content_container);
+                    ActivityUtils.replaceFragment(getFragmentManager(), tripsFragment, R.id.main_content_container, true);
 
                 }
 
