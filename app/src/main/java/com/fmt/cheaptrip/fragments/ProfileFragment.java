@@ -48,6 +48,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 LoginUtils.getInstance().removeSignedLogin(getActivity());
+                LoginUtils.getInstance().revokeGplusAccount(getActivity());
 
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), LoginActivity.class);

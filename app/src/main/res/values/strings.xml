@@ -22,6 +22,7 @@
     </string>
     <string name="login_welcome_msg1">Welcome to CheapTrip.</string>
     <string name="login_welcome_msg2">Here you find other people that have the same destiny!</string>
+    <string name="login_btn_text">Log in with </string>
 
     <!-- Strings related to Facebook Login -->
     <string name="facebook_app_id">516872131835256</string>

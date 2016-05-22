@@ -16,6 +16,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import com.fmt.cheaptrip.R;
+import com.google.android.gms.common.SignInButton;
 
 /**
  * This class controlls the facebook login and is build as a fragment.
@@ -101,6 +102,7 @@ public class FacebookFragment extends Fragment {
         super.onDetach();
         //TODO
     }
+
 
 
 }

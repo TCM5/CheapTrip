@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
@@ -20,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -28,6 +30,8 @@ import com.google.android.gms.plus.Plus;
 
 
 public class GooglePlusFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+    private static final String GOOGLE_NAME = "Google";
 
     private static final int RC_SIGN_IN = 0;
     private static final int RC_SIGN_OUT = -1;
@@ -57,7 +61,7 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
 
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestProfile().requestEmail().requestScopes(Plus.SCOPE_PLUS_LOGIN, Plus.SCOPE_PLUS_PROFILE, new Scope("https://www.googleapis.com/auth/plus.profile.emails.read"))
-                .build();
+                .requestScopes(new Scope(Scopes.PLUS_LOGIN)).build();
 
         googleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addConnectionCallbacks(this)
@@ -67,7 +71,6 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,6 +79,9 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
 
         googlePlusButton = (SignInButton) view.findViewById(R.id.btn_sign_in);
 
+        googlePlusButton.setSize(SignInButton.SIZE_STANDARD);
+        googlePlusButton.setScopes(googleSignInOptions.getScopeArray());
+
         googlePlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,14 +89,13 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
                 googleApiClient.connect();
                 Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
                 startActivityForResult(signInIntent, RC_SIGN_IN);
-
-
             }
         });
 
+        setLoginButtonText();
+
         return view;
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -139,5 +144,18 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
     public void redirectToMain() {
 
         ((LoginActivity) getActivity()).redirectToMain();
+    }
+
+
+    private void setLoginButtonText() {
+        for (int i = 0; i < googlePlusButton.getChildCount(); i++) {
+            View v = googlePlusButton.getChildAt(i);
+
+            if (v instanceof TextView) {
+                TextView tv = (TextView) v;
+                tv.setText(getString(R.string.login_btn_text) + " " + GOOGLE_NAME);
+                return;
+            }
+        }
     }
 }

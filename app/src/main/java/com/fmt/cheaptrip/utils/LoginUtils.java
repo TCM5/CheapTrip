@@ -5,6 +5,12 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.fmt.cheaptrip.activities.LoginActivity;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.plus.Plus;
 
 /**
  * Created by santostc on 22-05-2016.
@@ -102,5 +108,21 @@ public class LoginUtils {
         return false;
     }
 
+
+    public void revokeGplusAccount(Context context) {
+
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestProfile().requestEmail().requestScopes(Plus.SCOPE_PLUS_LOGIN, Plus.SCOPE_PLUS_PROFILE, new Scope("https://www.googleapis.com/auth/plus.profile.emails.read"))
+                .build();
+
+        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
+                .addApi(Plus.API)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions).build();
+
+        googleApiClient.connect();
+
+        PendingResult result = Auth.GoogleSignInApi.revokeAccess(googleApiClient);
+
+    }
 
 }
