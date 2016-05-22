@@ -88,8 +88,6 @@ public class LoginUtils {
 
     public <T> boolean isSigned(Context context) {
 
-        LoginActivity loginActivity = null;
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
 

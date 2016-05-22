@@ -1,9 +1,11 @@
 package com.fmt.cheaptrip.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
@@ -25,16 +27,13 @@ public class LoadingActivity extends AppCompatActivity {
 
     private Logger log = Logger.getLogger(this.getClass().getName());
 
-    private final long LOADING_TIME = 100;
+    private final long LOADING_TIME = 10;
     private int loadingStatus = 0;
 
     private ProgressBar activity_loading_pb;
 
     private Handler loadingHandler = new Handler();
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
     private GoogleApiClient client;
 
     public LoadingActivity() {
@@ -76,21 +75,22 @@ public class LoadingActivity extends AppCompatActivity {
                     }
                 }
 
-                if (LoginUtils.getInstance().isSigned(getApplicationContext())) {
-                    redirectToMain();
-                } else {
-                    redirectToLogin();
-                }
+                if (isFirstTime()) {
+                    redirectToIntroduction();
 
+                } else {
+
+                    if (LoginUtils.getInstance().isSigned(getApplicationContext())) {
+                        redirectToMain();
+                    } else {
+                        redirectToLogin();
+                    }
+                }
             }
 
         };
         thread.start();
 
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     /**
@@ -110,5 +110,27 @@ public class LoadingActivity extends AppCompatActivity {
         getApplicationContext().startActivity(intent);
     }
 
+    public void redirectToIntroduction() {
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), IntroductionActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(intent);
+    }
+
+    /**
+     * This method only check in the shared preferences if is the first time that user enters in the application<br>
+     *
+     * @return boolean
+     */
+    private boolean isFirstTime() {
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+        if (sharedPref.getBoolean("signed_firsttime", false) == false) {
+            return true;
+        }
+        return false;
+    }
 
 }
