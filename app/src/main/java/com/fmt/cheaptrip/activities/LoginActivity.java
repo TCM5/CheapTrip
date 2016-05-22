@@ -1,6 +1,8 @@
 package com.fmt.cheaptrip.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,12 +19,12 @@ import com.fmt.cheaptrip.R;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+
     private CallbackManager callbackManager;
 
-    Button temporaryButton;
-
-    FacebookFragment facebookFragment;
-    GooglePlusFragment googlePlusFragment;
+    private FacebookFragment facebookFragment;
+    private GooglePlusFragment googlePlusFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,13 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-        temporaryButton = (Button) findViewById(R.id.temp_button);
-        temporaryButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                redirectToMain();
-            }
-        });
 
     }
 
@@ -69,11 +64,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     public void redirectToMain() {
-        Intent i = new Intent();
-        i.setClass(getApplicationContext(), MainActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        getApplicationContext().startActivity(i);
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(intent);
     }
+
+
+
 }
 

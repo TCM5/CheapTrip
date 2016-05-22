@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
+import com.fmt.cheaptrip.utils.LoginUtils;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,22 +29,19 @@ import com.google.android.gms.plus.Plus;
 
 public class GooglePlusFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static final int RESULT_OK = 0;
+    private static final int RC_SIGN_IN = 0;
+    private static final int RC_SIGN_OUT = -1;
+
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions googleSignInOptions;
 
     private SignInButton googlePlusButton;
 
-    private static final int RC_SIGN_IN = 0;
+    private LoginUtils loginUtils = LoginUtils.getInstance();
 
-    private static final int RC_SIGN_OUT = -1;
-    private boolean mIntentInProgress;
-    private ConnectionResult mConnectionResult;
-    private boolean mSignInClicked;
 
     public GooglePlusFragment() {
-        //
-
+        // Default construcor
     }
 
     public static GooglePlusFragment newInstance() {
@@ -95,6 +93,29 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
 
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RC_SIGN_IN) {
+
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
+            if (result.isSuccess()) {
+                GoogleSignInAccount gplusAccount = result.getSignInAccount();
+                //  gplusAccount.getDisplayName();
+                // gplusAccount.getEmail();
+
+                loginUtils.addSignedLoginType(getActivity(), LoginUtils.LoginType.GPLUS);
+                Toast.makeText(getActivity(), gplusAccount.getEmail() + gplusAccount.getDisplayName(), Toast.LENGTH_LONG).show();
+
+
+                redirectToMain();
+            }
+        } else if (requestCode == RC_SIGN_OUT) {
+            PendingResult result = Auth.GoogleSignInApi.signOut(googleApiClient);
+            //TODO
+        }
+    }
+
+    @Override
     public void onConnected(@Nullable Bundle bundle) {
         Toast.makeText(getActivity(), "Connected", Toast.LENGTH_LONG).show();
     }
@@ -112,28 +133,6 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
                     0).show();
             return;
         }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == RC_SIGN_IN) {
-
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-
-            if (result.isSuccess()) {
-                GoogleSignInAccount gplusAccount = result.getSignInAccount();
-                gplusAccount.getDisplayName();
-                gplusAccount.getEmail();
-                Toast.makeText(getActivity(), gplusAccount.getEmail() + gplusAccount.getDisplayName(), Toast.LENGTH_LONG).show();
-
-                redirectToMain();
-            }
-        } else if (requestCode == RC_SIGN_OUT) {
-            PendingResult result = Auth.GoogleSignInApi.signOut(googleApiClient);
-            //TODO
-        }
-
-
     }
 
 
