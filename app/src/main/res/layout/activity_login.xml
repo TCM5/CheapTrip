@@ -23,11 +23,62 @@
             android:layout_marginRight="50dp"
             android:orientation="vertical">
 
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/cheaptrip_logo" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+
+                    android:layout_weight="1"
+                    android:background="@color/green4_cheaptrip"
+                    android:text="Log in"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/green4_cheaptrip"
+                    android:text="Sign in"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Or you can choose other options" />
 
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button"
@@ -45,38 +96,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center_horizontal"
-                android:text="Or you can choose login with your email" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:singleLine="true" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Nome"
-                android:singleLine="true" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-
-                android:background="@color/green4_cheaptrip"
-                android:text="Log in with your email"
-                android:textColor="@color/white" />
 
         </LinearLayout>
 
