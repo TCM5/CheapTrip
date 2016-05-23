@@ -1,7 +1,9 @@
 package com.fmt.cheaptrip.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -18,7 +20,7 @@ import com.fmt.cheaptrip.activities.LoginActivity;
 /**
  * Created by ASUS-TCMS on 13/05/2016.
  */
-public class IntroductionSlideFragment extends Fragment implements View.OnClickListener{
+public class IntroductionSlideFragment extends Fragment implements View.OnClickListener {
 
     /**
      * The argument key for the page number this fragment represents.
@@ -54,18 +56,29 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_introducion_slide, container, false);
 
+        TextView fragment_introduction_slide_title_tv = (TextView) rootView.findViewById(R.id.fragment_introduction_slide_title_tv);
+        TextView fragment_introduction_slide_desc_tv = (TextView) rootView.findViewById(R.id.fragment_introduction_slide_desc_tv);
 
-        switch (slideNumber){
-            case 0 :
+        switch (slideNumber) {
+            case 0:
                 rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
+                fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title1_text));
+                fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc1_text));
+
                 break;
 
-            case 1 :
+            case 1:
                 rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green3_cheaptrip));
+                fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title2_text));
+                fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc2_text));
+
                 break;
 
-            case 2 :
+            case 2:
                 rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green2_cheaptrip));
+
+                fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title3_text));
+                fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc3_text));
 
                 LinearLayout fragment_introduction_slide_finish = (LinearLayout) rootView.findViewById(R.id.fragment_introduction_slide_finish);
                 fragment_introduction_slide_finish.setVisibility(View.VISIBLE);
@@ -75,10 +88,6 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
 
                 break;
         }
-
-        // Set the title view to show the page number.
-        ((TextView) rootView.findViewById(R.id.text1)).setText(
-                getString(R.string.title_template_step, slideNumber +  1));
 
         return rootView;
     }
@@ -95,10 +104,13 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-            Intent intent = new Intent();
-            intent.setClass(getActivity(), LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getActivity().startActivity(intent);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("signed_firsttime", true);
 
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getActivity().startActivity(intent);
     }
 }

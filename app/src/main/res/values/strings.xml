@@ -45,6 +45,14 @@
     <string name="menu_item_about_title">Sobre</string>
     <string name="menu_item_about_feedback">Feedback</string>
 
+    <!-- Introduction Fragment Strings -->
+    <string name="fragment_introduction_slide_title1_text">Economic</string>
+    <string name="fragment_introduction_slide_title2_text">New friends</string>
+    <string name="fragment_introduction_slide_title3_text">Be green</string>
+    <string name="fragment_introduction_slide_desc1_text">Car sharing is an economical solution. If you want to travel fast and confortable, the cheapest way is this</string>
+    <string name="fragment_introduction_slide_desc2_text">Desc2</string>
+    <string name="fragment_introduction_slide_desc3_text">Desc3</string>
+
     <!-- Map Fragment Strings-->
     <string name="map_fragment_origin_input_text">Origem</string>
     <string name="map_fragment_destiny_input_text">Destino</string>
@@ -70,5 +78,6 @@
 
         <string name="title_template_step">Step <xliff:g id="step_number">%1$d</xliff:g>: Lorem
         Ipsum</string>
+
 
 </resources>
