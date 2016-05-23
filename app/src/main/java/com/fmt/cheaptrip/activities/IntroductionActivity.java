@@ -34,20 +34,7 @@ public class IntroductionActivity extends AppCompatActivity {
         viewPager.setAdapter(introductionSliderAdapter);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.activity_screen_slide, menu);
-
-        menu.findItem(R.id.action_previous).setEnabled(viewPager.getCurrentItem() > 0);
-
-
-        return true;
-    }
-
-
-
-    @Override
+        @Override
     public void onBackPressed() {
         if (viewPager.getCurrentItem() == 0) {
 
