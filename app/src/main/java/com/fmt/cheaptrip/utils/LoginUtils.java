@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.utils;
+package com.fmt.cheaptrip.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -98,11 +98,8 @@ public class LoginUtils {
             return true;
         }
 
-        if (sharedPref.getBoolean("signed_logintype_email", false) == true) {
-            return true;
-        }
+        return sharedPref.getBoolean("signed_logintype_email", false) == true;
 
-        return false;
     }
 
 

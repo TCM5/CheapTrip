@@ -3,7 +3,7 @@
     android:id="@+id/about_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fmt.cheaptrip.Fragments.AboutFragment">
+    tools:context="com.fmt.cheaptrip.Fragments1.AboutFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

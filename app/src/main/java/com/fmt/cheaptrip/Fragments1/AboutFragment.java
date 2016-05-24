@@ -1,8 +1,8 @@
-package com.fmt.cheaptrip.Fragments;
+package com.fmt.cheaptrip.Fragments1;
 
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import com.fmt.cheaptrip.R;
 
 /**
- *
+ * A simple {@link Fragment} subclass.
  */
-public class SettingsFragment extends PreferenceFragment {
+public class AboutFragment extends Fragment {
 
 
-    public SettingsFragment() {
+    public AboutFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,9 @@ public class SettingsFragment extends PreferenceFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
+
+
 
 }

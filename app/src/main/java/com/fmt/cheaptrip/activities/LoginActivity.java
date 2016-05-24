@@ -7,8 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
-import com.fmt.cheaptrip.Fragments.FacebookFragment;
-import com.fmt.cheaptrip.Fragments.GooglePlusFragment;
+import com.fmt.cheaptrip.Fragments1.FacebookFragment;
+import com.fmt.cheaptrip.Fragments1.GooglePlusFragment;
 import com.fmt.cheaptrip.R;
 
 
