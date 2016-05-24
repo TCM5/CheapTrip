@@ -15,7 +15,6 @@ import com.fmt.cheaptrip.fragments.MapFragment;
 import com.fmt.cheaptrip.fragments.ProfileFragment;
 import com.fmt.cheaptrip.fragments.TripsFragment;
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
