@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.fragments;
+package com.fmt.cheaptrip.fragments.login;
 
 
 import android.content.Intent;
@@ -29,7 +29,7 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 
 
-public class GooglePlusFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class GooglePlusLoginFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String GOOGLE_NAME = "Google";
 
@@ -44,13 +44,13 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
     private LoginUtils loginUtils = LoginUtils.getInstance();
 
 
-    public GooglePlusFragment() {
+    public GooglePlusLoginFragment() {
         // Default construcor
     }
 
-    public static GooglePlusFragment newInstance() {
+    public static GooglePlusLoginFragment newInstance() {
 
-        GooglePlusFragment fragment = new GooglePlusFragment();
+        GooglePlusLoginFragment fragment = new GooglePlusLoginFragment();
 
         return fragment;
     }
@@ -77,7 +77,7 @@ public class GooglePlusFragment extends Fragment implements GoogleApiClient.Conn
 
         View view = inflater.inflate(R.layout.activity_login, container, false);
 
-        googlePlusButton = (SignInButton) view.findViewById(R.id.btn_sign_in);
+      //  googlePlusButton = (SignInButton) view.findViewById(R.id.btn_sign_in);
 
         googlePlusButton.setSize(SignInButton.SIZE_STANDARD);
         googlePlusButton.setScopes(googleSignInOptions.getScopeArray());

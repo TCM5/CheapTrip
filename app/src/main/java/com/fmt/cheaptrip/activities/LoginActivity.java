@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 
 import com.facebook.CallbackManager;
 import com.fmt.cheaptrip.entities.User;
+import com.fmt.cheaptrip.fragments.login.DefaultLoginFragment;
 import com.fmt.cheaptrip.fragments.login.FacebookLoginFragment;
 import com.fmt.cheaptrip.fragments.login.GooglePlusLoginFragment;
 import com.fmt.cheaptrip.R;
@@ -22,18 +25,26 @@ public class LoginActivity extends AppCompatActivity {
 
     private CallbackManager callbackManager;
 
-    private Button loginButton;
-    private EditText txtLoginEmail = null;
-    private EditText txtLoginPassword = null;
-
+    private DefaultLoginFragment defaultLoginFragment;
     private FacebookLoginFragment facebookLoginFragment;
     private GooglePlusLoginFragment googlePlusFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
-        if (savedInstanceState == null) {
+
+        defaultLoginFragment = new DefaultLoginFragment();
+
+        FragmentManager manager=getSupportFragmentManager();
+        FragmentTransaction transaction=manager.beginTransaction();
+
+        transaction.add(R.id.activity_login_default_fragment_container, defaultLoginFragment);
+        transaction.commit();
+
+
+       /* if (savedInstanceState == null) {
 
             facebookLoginFragment = new FacebookLoginFragment();
 
@@ -49,10 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.login_fragment_container, googlePlusFragment).commit();
 
-
-        setContentView(R.layout.activity_login);
-
-        initializeUIComponents(getBaseContext());
+*/
     }
 
 
@@ -64,23 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void initializeUIComponents(final Context context) {
-        txtLoginEmail = (EditText) findViewById(R.id.txtLoginEmail);
-        txtLoginPassword = (EditText) findViewById(R.id.txtLoginPassword);
 
-        loginButton = (Button) findViewById(R.id.btnLogin);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                User user = new User();
-                user.setEmail(txtLoginEmail.getText().toString());
-                user.setPassword(txtLoginPassword.getText().toString());
-
-                TripWSInvoker.login(context, user);
-            }
-        });
-    }
 
     /**
      *

@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.fragments;
+package com.fmt.cheaptrip.fragments.login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import com.fmt.cheaptrip.activities.MainActivity;
  * This class controls the facebook login feature.
  * Here are obtained and stored the values from the facebook login feature
  */
-public class FacebookFragment extends Fragment {
+public class FacebookLoginFragment extends Fragment {
 
     private CallbackManager callbackManager;
 
@@ -33,7 +33,7 @@ public class FacebookFragment extends Fragment {
     /**
      * Fragment requires a default constructor and should be the only constructor here.
      */
-    public FacebookFragment() {
+    public FacebookLoginFragment() {
 
     }
 
@@ -53,7 +53,7 @@ public class FacebookFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_login, container, false);
 
-        loginButton = (LoginButton) view.findViewById(R.id.login_button);
+      //  loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setFragment(this);
 
 

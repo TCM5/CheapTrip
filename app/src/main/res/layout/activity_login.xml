@@ -30,51 +30,10 @@
                 android:layout_weight="1"
                 android:src="@drawable/cheaptrip_logo" />
 
-            <EditText
+            <FrameLayout
+                android:id="@+id/activity_login_default_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:id="@+id/txtLoginEmail" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:id="@+id/txtLoginPassword" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="5dp"
-
-                    android:layout_weight="1"
-                    android:background="@color/green4_cheaptrip"
-                    android:text="Log in"
-                    android:textColor="@color/white"
-                    android:id="@+id/btnLogin" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:background="@color/green4_cheaptrip"
-                    android:text="Sign in"
-                    android:textColor="@color/white"
-                    android:elevation="0dp" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"></FrameLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -83,22 +42,6 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
                 android:text="Or you can choose other options" />
-
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="10dp"
-
-                android:paddingBottom="15sp"
-                android:paddingTop="15sp"
-                android:textSize="15sp" />
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/btn_sign_in"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
