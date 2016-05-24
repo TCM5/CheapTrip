@@ -87,7 +87,7 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
 
                 TextView fragment_introduction_slide_finish_tv = (TextView) rootView.findViewById(R.id.fragment_introduction_slide_finish_tv);
                 fragment_introduction_slide_finish_tv.setVisibility(View.VISIBLE);
-                fragment_introduction_slide_title_tv.setOnClickListener(this);
+                fragment_introduction_slide_finish_tv.setOnClickListener(this);
 
                 break;
         }
