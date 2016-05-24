@@ -1,15 +1,20 @@
 package com.fmt.cheaptrip.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
-import com.fmt.cheaptrip.fragments.FacebookFragment;
-import com.fmt.cheaptrip.fragments.GooglePlusFragment;
+import com.fmt.cheaptrip.entities.User;
+import com.fmt.cheaptrip.fragments.login.FacebookLoginFragment;
+import com.fmt.cheaptrip.fragments.login.GooglePlusLoginFragment;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.ws.TripWSInvoker;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -17,8 +22,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private CallbackManager callbackManager;
 
-    private FacebookFragment facebookFragment;
-    private GooglePlusFragment googlePlusFragment;
+    private Button loginButton;
+    private EditText txtLoginEmail = null;
+    private EditText txtLoginPassword = null;
+
+    private FacebookLoginFragment facebookLoginFragment;
+    private GooglePlusLoginFragment googlePlusFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,24 +35,24 @@ public class LoginActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
 
-            facebookFragment = new FacebookFragment();
+            facebookLoginFragment = new FacebookLoginFragment();
 
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.login_fragment_container, facebookFragment).commit();
+                    .add(R.id.login_fragment_container, facebookLoginFragment).commit();
 
         } else {
 
-            facebookFragment = (FacebookFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
+            facebookLoginFragment = (FacebookLoginFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
         }
 
-        googlePlusFragment = new GooglePlusFragment();
+        googlePlusFragment = new GooglePlusLoginFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.login_fragment_container, googlePlusFragment).commit();
 
 
         setContentView(R.layout.activity_login);
 
-
+        initializeUIComponents(getBaseContext());
     }
 
 
@@ -53,6 +62,24 @@ public class LoginActivity extends AppCompatActivity {
 
         //TODO
 
+    }
+
+    private void initializeUIComponents(final Context context) {
+        txtLoginEmail = (EditText) findViewById(R.id.txtLoginEmail);
+        txtLoginPassword = (EditText) findViewById(R.id.txtLoginPassword);
+
+        loginButton = (Button) findViewById(R.id.btnLogin);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                User user = new User();
+                user.setEmail(txtLoginEmail.getText().toString());
+                user.setPassword(txtLoginPassword.getText().toString());
+
+                TripWSInvoker.login(context, user);
+            }
+        });
     }
 
     /**
