@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.fmt.cheaptrip.adapters.TripsAdapter;
-import com.fmt.cheaptrip.entities.TripEntry;
+import com.fmt.cheaptrip.adapters1.TripsAdapter;
+import com.fmt.cheaptrip.entities1.TripEntry;
 import com.fmt.cheaptrip.R;
 
 import java.util.ArrayList;

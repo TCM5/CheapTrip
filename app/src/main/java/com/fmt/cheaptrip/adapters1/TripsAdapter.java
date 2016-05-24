@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.adapters;
+package com.fmt.cheaptrip.adapters1;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.fmt.cheaptrip.entities.TripEntry;
+import com.fmt.cheaptrip.entities1.TripEntry;
 import com.fmt.cheaptrip.R;
 
 import java.util.ArrayList;
