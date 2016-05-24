@@ -51,20 +51,4 @@ public class DefaultLoginFragment extends Fragment {
         return view;
     }
 
-/*
-    <com.facebook.login.widget.LoginButton
-    android:id="@+id/login_button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal|bottom"
-    android:layout_marginBottom="10dp"
-
-    android:paddingBottom="15sp"
-    android:paddingTop="15sp"
-    android:textSize="15sp" />
-
-    <com.google.android.gms.common.SignInButton
-    android:id="@+id/btn_sign_in"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />*/
 }
