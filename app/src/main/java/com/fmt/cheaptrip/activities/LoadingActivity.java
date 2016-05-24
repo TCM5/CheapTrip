@@ -126,8 +126,7 @@ public class LoadingActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-
-        if (sharedPref.getBoolean("signed_firsttime", false) == false) {
+        if (sharedPref.getBoolean("signed_firsttime", true)) {
             return true;
         }
         return false;

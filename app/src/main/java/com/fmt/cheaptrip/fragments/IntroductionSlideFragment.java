@@ -61,30 +61,33 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
 
         switch (slideNumber) {
             case 0:
-                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
+                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(),  R.color.white));
                 fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title1_text));
+                fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc1_text));
+                fragment_introduction_slide_desc_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
 
                 break;
 
             case 1:
-                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green3_cheaptrip));
+                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title2_text));
+                fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc2_text));
-
+                fragment_introduction_slide_desc_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 break;
 
             case 2:
-                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green2_cheaptrip));
+                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
 
                 fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title3_text));
+                fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc3_text));
+                fragment_introduction_slide_desc_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
 
-                LinearLayout fragment_introduction_slide_finish = (LinearLayout) rootView.findViewById(R.id.fragment_introduction_slide_finish);
-                fragment_introduction_slide_finish.setVisibility(View.VISIBLE);
-
-                FloatingActionButton fragment_introduction_slide_finish_fb = (FloatingActionButton) rootView.findViewById(R.id.fragment_introduction_slide_finish_fb);
-                fragment_introduction_slide_finish.setOnClickListener(this);
+                TextView fragment_introduction_slide_finish_tv = (TextView) rootView.findViewById(R.id.fragment_introduction_slide_finish_tv);
+                fragment_introduction_slide_finish_tv.setVisibility(View.VISIBLE);
+                fragment_introduction_slide_title_tv.setOnClickListener(this);
 
                 break;
         }
@@ -106,7 +109,7 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean("signed_firsttime", true);
+        editor.putBoolean("signed_firsttime", false);
 
         Intent intent = new Intent();
         intent.setClass(getActivity(), LoginActivity.class);
