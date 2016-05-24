@@ -12,7 +12,7 @@ public class ActivityUtils {
     private static ActivityUtils instance;
 
     private ActivityUtils() {
-
+        //DEFAULT
     }
 
     /**
