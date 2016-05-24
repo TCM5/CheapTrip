@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.fragments;
+package com.fmt.cheaptrip.Fragments;
 
 
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
-import com.fmt.cheaptrip.utils.LoginUtils;
+import com.fmt.cheaptrip.Utils.LoginUtils;
 
 /**
  * A simple {@link Fragment} subclass.

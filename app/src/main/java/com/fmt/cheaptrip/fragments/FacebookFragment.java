@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.fragments;
+package com.fmt.cheaptrip.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import com.fmt.cheaptrip.R;
-import com.google.android.gms.common.SignInButton;
 
 /**
  * This class controlls the facebook login and is build as a fragment.

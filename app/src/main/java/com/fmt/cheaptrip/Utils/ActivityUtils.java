@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.utils;
+package com.fmt.cheaptrip.Utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

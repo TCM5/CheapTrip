@@ -1,19 +1,14 @@
 package com.fmt.cheaptrip.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
-import com.fmt.cheaptrip.fragments.FacebookFragment;
-import com.fmt.cheaptrip.fragments.GooglePlusFragment;
+import com.fmt.cheaptrip.Fragments.FacebookFragment;
+import com.fmt.cheaptrip.Fragments.GooglePlusFragment;
 import com.fmt.cheaptrip.R;
 
 
