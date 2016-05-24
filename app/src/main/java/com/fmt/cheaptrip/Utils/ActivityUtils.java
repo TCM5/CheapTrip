@@ -28,6 +28,7 @@ public class ActivityUtils {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(fragmentLayoutId, newFragment);
 
+
         if (addToStack) {
             transaction.addToBackStack(null);
         }
