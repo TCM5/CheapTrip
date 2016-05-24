@@ -80,14 +80,12 @@ public class MapFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.map_fragment, container, false);
 
-        MapFragmentListeners mapFragmentListeners = new MapFragmentListeners();
-
         originInput = (LocationAutoCompleteTextView) view.findViewById(R.id.map_fragment_origin_input);
 
         if (originInput != null) {
             originInput.setThreshold(THRESHOLD);
             originInput.setAdapter(new LocationAdapter(getActivity()));
-            originInput.setOnItemClickListener(mapFragmentListeners.originListener());
+            originInput.setOnItemClickListener(originListener());
         }
 
         destinyInput = (LocationAutoCompleteTextView) view.findViewById(R.id.map_fragment_destiny_input);
@@ -95,30 +93,29 @@ public class MapFragment extends Fragment {
         if (destinyInput != null) {
             destinyInput.setThreshold(THRESHOLD);
             destinyInput.setAdapter(new LocationAdapter(getActivity()));
-            destinyInput.setOnItemClickListener(mapFragmentListeners.destinyListener());
+            destinyInput.setOnItemClickListener(destinyListener());
         }
 
         newTripAction = (LinearLayout) view.findViewById(R.id.map_fragment_new_trip_ll);
 
         findTripAction = (LinearLayout) view.findViewById(R.id.map_fragment_find_trip_ll);
 
-
         newTripFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_new_trip_fab);
 
         if (newTripFab != null) {
-            newTripFab.setOnClickListener(mapFragmentListeners.newTrip());
+            newTripFab.setOnClickListener(newTrip());
         }
 
         findTripFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_find_trip_fab);
 
         if (findTripFab != null) {
-            findTripFab.setOnClickListener(mapFragmentListeners.findTrip());
+            findTripFab.setOnClickListener(findTrip());
         }
 
         newFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_new_fab);
 
         if (newFab != null) {
-            newFab.setOnClickListener(mapFragmentListeners.newAction());
+            newFab.setOnClickListener(newAction());
         }
 
         return view;
@@ -161,115 +158,89 @@ public class MapFragment extends Fragment {
     }
 
     /**
-     *
+     * @return
      */
-    private class MapFragmentListeners {
+    private AdapterView.OnItemClickListener originListener() {
 
-        /**
-         * @return
-         */
-        public AdapterView.OnItemClickListener originListener() {
+        return new AdapterView.OnItemClickListener() {
 
-            return new AdapterView.OnItemClickListener() {
+            MarkerOptions markerOptions = new MarkerOptions();
 
-                MarkerOptions markerOptions = new MarkerOptions();
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
+                originInput.setText(result.getAddress());
 
+                markerOptions.position(result.getLatLng());
+                map.addMarker(markerOptions);
 
-                    LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
-                    originInput.setText(result.getAddress());
+                CameraUpdate center = CameraUpdateFactory.newCameraPosition(new CameraPosition(result.getLatLng(), 10, 1f, 1f));
+                map.animateCamera(center);
+            }
+        };
+    }
 
-                    //parent.getItemAtPosition(position);
+    /**
+     * @return
+     */
+    private AdapterView.OnItemClickListener destinyListener() {
+        return new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    //LatLng originLatLng = new LatLng(0.0,0.0);
-                    markerOptions.position(result.getLatLng());
+                LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
+                destinyInput.setText(result.getAddress());
 
-                    //BitmapDescriptor originIcon = null;
-                    //markerOptions.icon(originIcon);
+            }
+        };
+    }
 
-                    map.addMarker(markerOptions);
+    private View.OnClickListener newAction() {
 
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    CameraUpdate center = CameraUpdateFactory.newCameraPosition(new CameraPosition(result.getLatLng(), 10, 1f, 1f));
-
-
-                    map.animateCamera(center);
-
-
-                    Context context = getActivity();
-                    CharSequence text = String.valueOf(map.getCameraPosition().target.latitude) + "TESTE";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-
+                if (LinearLayout.GONE == findTripAction.getVisibility() || LinearLayout.GONE == newTripAction.getVisibility()) {
+                    findTripAction.setVisibility(LinearLayout.VISIBLE);
+                    newTripAction.setVisibility(LinearLayout.VISIBLE);
+                } else {
+                    findTripAction.setVisibility(LinearLayout.GONE);
+                    newTripAction.setVisibility(LinearLayout.GONE);
                 }
-            };
-        }
-
-        /**
-         * @return
-         */
-        public AdapterView.OnItemClickListener destinyListener() {
-            return new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
-                    destinyInput.setText(result.getAddress());
-
-                }
-            };
-        }
-
-        public View.OnClickListener newAction() {
-
-            return new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (LinearLayout.GONE == findTripAction.getVisibility() || LinearLayout.GONE == newTripAction.getVisibility()) {
-                        findTripAction.setVisibility(LinearLayout.VISIBLE);
-                        newTripAction.setVisibility(LinearLayout.VISIBLE);
-                    } else {
-                        findTripAction.setVisibility(LinearLayout.GONE);
-                        newTripAction.setVisibility(LinearLayout.GONE);
-                    }
-                }
-            };
-
-        }
-
-        public View.OnClickListener newTrip() {
-
-            return new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    NewTripFragment newTripFragment = new NewTripFragment();
-                    ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, true);
-
-                }
-            };
-        }
-
-        public View.OnClickListener findTrip() {
-
-            return new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    TripsFragment tripsFragment = new TripsFragment();
-                    ActivityUtils.replaceFragment(getFragmentManager(), tripsFragment, R.id.main_content_container, true);
-
-                }
-
-
-            };
-        }
+            }
+        };
 
     }
+
+    private View.OnClickListener newTrip() {
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NewTripFragment newTripFragment = new NewTripFragment();
+                ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, true);
+
+            }
+        };
+    }
+
+    public View.OnClickListener findTrip() {
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TripsFragment tripsFragment = new TripsFragment();
+                ActivityUtils.replaceFragment(getFragmentManager(), tripsFragment, R.id.main_content_container, true);
+
+            }
+
+
+        };
+    }
+
 
 }
