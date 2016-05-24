@@ -101,13 +101,13 @@ public class MapFragment extends Fragment {
         newTripFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_new_trip_fab);
 
         if (newTripFab != null) {
-            newTripFab.setOnClickListener(newTrip());
+            newTripFab.setOnClickListener(newTripListener());
         }
 
         findTripFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_find_trip_fab);
 
         if (findTripFab != null) {
-            findTripFab.setOnClickListener(findTrip());
+            findTripFab.setOnClickListener(findTripListener());
         }
 
         newFab = (FloatingActionButton) view.findViewById(R.id.map_fragment_new_fab);
@@ -212,7 +212,7 @@ public class MapFragment extends Fragment {
 
     }
 
-    private View.OnClickListener newTrip() {
+    private View.OnClickListener newTripListener() {
 
         return new View.OnClickListener() {
             @Override
@@ -220,12 +220,11 @@ public class MapFragment extends Fragment {
 
                 NewTripFragment newTripFragment = new NewTripFragment();
                 ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, true);
-
             }
         };
     }
 
-    public View.OnClickListener findTrip() {
+    private View.OnClickListener findTripListener() {
 
         return new View.OnClickListener() {
             @Override
@@ -235,8 +234,6 @@ public class MapFragment extends Fragment {
                 ActivityUtils.replaceFragment(getFragmentManager(), tripsFragment, R.id.main_content_container, true);
 
             }
-
-
         };
     }
 
