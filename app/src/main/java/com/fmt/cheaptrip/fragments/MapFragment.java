@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.fmt.cheaptrip.adapters.LocationAdapter;
-import com.fmt.cheaptrip.customviews1.LocationAutoCompleteTextView;
+import com.fmt.cheaptrip.customviews.LocationAutoCompleteTextView;
 import com.fmt.cheaptrip.entities.LocationEntry;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.utils.ActivityUtils;
