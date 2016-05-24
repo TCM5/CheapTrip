@@ -2,7 +2,6 @@ package com.fmt.cheaptrip.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -12,8 +11,6 @@ import android.widget.ProgressBar;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.utils.LoginUtils;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.logging.Logger;

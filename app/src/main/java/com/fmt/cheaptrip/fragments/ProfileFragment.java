@@ -1,11 +1,9 @@
 package com.fmt.cheaptrip.fragments;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.Button;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
-import com.fmt.cheaptrip.utils.ActivityUtils;
 import com.fmt.cheaptrip.utils.LoginUtils;
 
 /**

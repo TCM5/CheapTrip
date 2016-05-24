@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.fmt.cheaptrip.activities.LoginActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -22,7 +21,7 @@ public class LoginUtils {
     private static LoginUtils instance;
 
     private LoginUtils() {
-
+        //DEFAULT
     }
 
     public static LoginUtils getInstance() {
