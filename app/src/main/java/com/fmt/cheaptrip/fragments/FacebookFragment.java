@@ -12,17 +12,19 @@ import android.view.ViewGroup;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.activities.MainActivity;
 
 /**
- * This class controlls the facebook login and is build as a fragment.
+ * This class controls the facebook login feature.
  * Here are obtained and stored the values from the facebook login feature
  */
 public class FacebookFragment extends Fragment {
-
 
     private CallbackManager callbackManager;
 
@@ -39,24 +41,32 @@ public class FacebookFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        callbackManager = CallbackManager.Factory.create();
-        Log.d("TESTE", "TESTE");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        FacebookSdk.sdkInitialize(getActivity());
+        callbackManager = CallbackManager.Factory.create();
+
         View view = inflater.inflate(R.layout.activity_login, container, false);
 
         loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setFragment(this);
+
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
             @Override
             public void onSuccess(LoginResult loginResult) {
                 System.out.println("SUCESSO");
+
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getActivity().startActivity(intent);
 
             }
 
@@ -79,13 +89,12 @@ public class FacebookFragment extends Fragment {
 
     }
 
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-
-        System.out.println("callbackManager on ACt");
-        //TODO
     }
 
 
@@ -93,15 +102,12 @@ public class FacebookFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        //TODO
     }
-
 
 
 }
