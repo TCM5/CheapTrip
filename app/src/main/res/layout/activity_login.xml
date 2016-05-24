@@ -36,7 +36,8 @@
                 android:layout_weight="1"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:id="@+id/txtLoginEmail" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -44,7 +45,8 @@
                 android:layout_weight="1"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:id="@+id/txtLoginPassword" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,7 +61,8 @@
                     android:layout_weight="1"
                     android:background="@color/green4_cheaptrip"
                     android:text="Log in"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:id="@+id/btnLogin" />
 
                 <Button
                     android:layout_width="match_parent"
@@ -68,7 +71,8 @@
                     android:layout_weight="1"
                     android:background="@color/green4_cheaptrip"
                     android:text="Sign in"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:elevation="0dp" />
 
             </LinearLayout>
 
