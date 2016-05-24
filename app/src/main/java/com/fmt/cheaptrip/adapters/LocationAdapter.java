@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.adapters1;
+package com.fmt.cheaptrip.adapters;
 
 import android.content.Context;
 import android.location.Address;
@@ -12,7 +12,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import com.fmt.cheaptrip.entities1.LocationEntry;
+import com.fmt.cheaptrip.entities.LocationEntry;
 import com.fmt.cheaptrip.R;
 
 import java.io.IOException;

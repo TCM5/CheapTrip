@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
-import com.fmt.cheaptrip.adapters1.LocationAdapter;
+import com.fmt.cheaptrip.adapters.LocationAdapter;
 import com.fmt.cheaptrip.customviews.LocationAutoCompleteTextView;
-import com.fmt.cheaptrip.entities1.LocationEntry;
+import com.fmt.cheaptrip.entities.LocationEntry;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.utils.ActivityUtils;
 import com.google.android.gms.maps.CameraUpdate;
