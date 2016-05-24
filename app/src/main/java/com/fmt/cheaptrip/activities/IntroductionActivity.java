@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.fmt.cheaptrip.Fragments1.IntroductionSlideFragment;
+import com.fmt.cheaptrip.fragments.IntroductionSlideFragment;
 import com.fmt.cheaptrip.R;
 
 /**

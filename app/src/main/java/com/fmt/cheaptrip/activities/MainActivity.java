@@ -10,10 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.fmt.cheaptrip.Fragments1.AboutFragment;
-import com.fmt.cheaptrip.Fragments1.MapFragment;
-import com.fmt.cheaptrip.Fragments1.ProfileFragment;
-import com.fmt.cheaptrip.Fragments1.TripsFragment;
+import com.fmt.cheaptrip.fragments.AboutFragment;
+import com.fmt.cheaptrip.fragments.MapFragment;
+import com.fmt.cheaptrip.fragments.ProfileFragment;
+import com.fmt.cheaptrip.fragments.TripsFragment;
 import com.fmt.cheaptrip.R;
 
 public class MainActivity extends AppCompatActivity

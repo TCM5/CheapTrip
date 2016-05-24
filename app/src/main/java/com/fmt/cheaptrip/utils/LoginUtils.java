@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Utils1;
+package com.fmt.cheaptrip.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

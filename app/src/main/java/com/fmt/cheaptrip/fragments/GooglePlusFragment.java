@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Fragments1;
+package com.fmt.cheaptrip.fragments;
 
 
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
-import com.fmt.cheaptrip.Utils1.LoginUtils;
+import com.fmt.cheaptrip.utils.LoginUtils;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;

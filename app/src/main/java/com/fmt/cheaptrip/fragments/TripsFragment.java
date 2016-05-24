@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.Fragments1;
+package com.fmt.cheaptrip.fragments;
 
 
 import android.location.Address;
