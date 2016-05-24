@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.Utils.LoginUtils;
+import com.fmt.cheaptrip.Utils1.LoginUtils;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.logging.Logger;
@@ -123,10 +123,7 @@ public class LoadingActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        if (sharedPref.getBoolean("signed_firsttime", true)) {
-            return true;
-        }
-        return false;
+        return sharedPref.getBoolean("signed_firsttime", true);
     }
 
 }

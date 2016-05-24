@@ -11,7 +11,7 @@ import android.widget.Button;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
-import com.fmt.cheaptrip.Utils.LoginUtils;
+import com.fmt.cheaptrip.Utils1.LoginUtils;
 
 /**
  * A simple {@link Fragment} subclass.
