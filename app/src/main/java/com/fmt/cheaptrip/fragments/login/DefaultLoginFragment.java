@@ -81,22 +81,15 @@ public class DefaultLoginFragment extends Fragment {
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 1) {
-            if (resultCode == Activity.RESULT_OK) {
 
-                //TODO
+            if (resultCode == Activity.RESULT_OK) {
+                String email = data.getStringExtra("email");
+                this.txtLoginEmail.setText(email);
 
             } else if (resultCode == Activity.RESULT_CANCELED) {
-
-
                 //TODO
             }
         }
-
-
     }
-
-
-
 }

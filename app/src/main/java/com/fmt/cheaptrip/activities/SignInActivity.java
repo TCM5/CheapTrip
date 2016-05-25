@@ -54,8 +54,8 @@ public class SignInActivity extends AppCompatActivity {
                 TripWSInvoker.registerUser(getApplicationContext(), user);
 
 
-                // validacao do webservice aqui, mas ha-de ser kk cena assim: .
-//Aqui fazes um intent de volta para o login, mas levas um resultado. Sucesso ou cancelado.
+                // validacao do webservice aqui, mas ha-de ser kk cena assim:
+                // Aqui fazes um intent de volta para o login, mas levas um resultado. Sucesso ou cancelado.
 
         /*        if (registerUser == sucesso) {
                     Intent returnIntent = new Intent();
@@ -70,10 +70,9 @@ public class SignInActivity extends AppCompatActivity {
 */
 
                 Intent returnIntent = new Intent();
-                //    returnIntent.putExtra("email",email); // com esta linha podemos logo preencher o login na actividade do login :)
+                returnIntent.putExtra("email",user.getEmail()); // com esta linha podemos logo preencher o login na actividade do login :)
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();
-
             }
         });
 
