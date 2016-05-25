@@ -75,9 +75,9 @@ public class GooglePlusLoginFragment extends Fragment implements GoogleApiClient
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login_gplus, container, false);
 
-      //  googlePlusButton = (SignInButton) view.findViewById(R.id.btn_sign_in);
+        //  googlePlusButton = (SignInButton) view.findViewById(R.id.btn_sign_in);
 
         googlePlusButton.setSize(SignInButton.SIZE_STANDARD);
         googlePlusButton.setScopes(googleSignInOptions.getScopeArray());

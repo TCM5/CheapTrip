@@ -16,9 +16,6 @@ import com.fmt.cheaptrip.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-
-    private CallbackManager callbackManager;
-
     private DefaultLoginFragment defaultLoginFragment;
     private FacebookLoginFragment facebookLoginFragment;
     private GooglePlusLoginFragment googlePlusFragment;
@@ -30,45 +27,32 @@ public class LoginActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
 
-            defaultLoginFragment = new DefaultLoginFragment();
-
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction transaction = manager.beginTransaction();
 
+            defaultLoginFragment = new DefaultLoginFragment();
+            facebookLoginFragment = new FacebookLoginFragment();
+            googlePlusFragment = new GooglePlusLoginFragment();
+
             transaction.add(R.id.activity_login_default_fragment_container, defaultLoginFragment);
+            transaction.add(R.id.activity_login_facebook_fragment_container, facebookLoginFragment);
+            transaction.add(R.id.activity_login_gplus_fragment_container, googlePlusFragment);
+
             transaction.commit();
 
         } else {
 
-
-        }
-
-
-       /* if (savedInstanceState == null) {
-
-            facebookLoginFragment = new FacebookLoginFragment();
-
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.login_fragment_container, facebookLoginFragment).commit();
-
-        } else {
-
+            defaultLoginFragment = (DefaultLoginFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
             facebookLoginFragment = (FacebookLoginFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
+            googlePlusFragment = (GooglePlusLoginFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
         }
 
-        googlePlusFragment = new GooglePlusLoginFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.login_fragment_container, googlePlusFragment).commit();
-
-*/
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         //TODO
-
     }
 
     /**
@@ -86,20 +70,3 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 }
-
-/*
-    <com.facebook.login.widget.LoginButton
-    android:id="@+id/login_button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal|bottom"
-    android:layout_marginBottom="10dp"
-
-    android:paddingBottom="15sp"
-    android:paddingTop="15sp"
-    android:textSize="15sp" />
-
-    <com.google.android.gms.common.SignInButton
-    android:id="@+id/btn_sign_in"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />*/

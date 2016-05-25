@@ -51,9 +51,9 @@ public class FacebookLoginFragment extends Fragment {
         FacebookSdk.sdkInitialize(getActivity());
         callbackManager = CallbackManager.Factory.create();
 
-        View view = inflater.inflate(R.layout.activity_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login_facebook, container, false);
 
-      //  loginButton = (LoginButton) view.findViewById(R.id.login_button);
+       loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setFragment(this);
 
 
@@ -74,22 +74,17 @@ public class FacebookLoginFragment extends Fragment {
             public void onCancel() {
                 System.out.println("CANCELOU");
 
-
             }
 
             @Override
             public void onError(FacebookException e) {
                 System.out.println("ERRO");
 
-
             }
         });
 
         return view;
-
     }
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

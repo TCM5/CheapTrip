@@ -43,6 +43,16 @@
                 android:gravity="center_horizontal"
                 android:text="Or you can choose other options" />
 
+            <FrameLayout
+                android:id="@+id/activity_login_gplus_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/activity_login_facebook_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></FrameLayout>
+
 
         </LinearLayout>
 
