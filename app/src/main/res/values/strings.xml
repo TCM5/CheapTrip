@@ -1,8 +1,11 @@
 <resources xmlns:xliff="http://schemas.android.com/tools">
     <string name="app_name">CheapTrip</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- Google Maps keys -->
+    <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
+
+    <!-- Facebook Keys -->
+    <string name="facebook_app_id">516872131835256</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
@@ -24,17 +27,12 @@
     <string name="login_btn_text">Log in with </string>
 
     <!-- Strings related to Facebook Login -->
-    <string name="facebook_app_id">516872131835256</string>
 
     <!-- Google + Strings -->
     <string name="app_name_g">G+ Login</string>
     <string name="action_settings_">Settings</string>
     <string name="btn_logout_from_google">Logout from Google</string>
     <string name="btn_revoke_access">Revoke Access</string>
-
-
-    <!-- Google Maps keys -->
-    <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
 
     <!-- Menu strings -->
     <string name="menu_item_trips_title">Boleias cheaptrip!</string>
@@ -73,13 +71,5 @@
     <string name="mytrip_item_location_origin_text">Origem</string>
     <string name="mytrip_item_location_destiny_text">Destino</string>
     <string name="mytrip_item_date_text">Data</string>
-
-
-        <string name="title_template_step">Step <xliff:g id="step_number">%1$d</xliff:g>: Lorem
-        Ipsum</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>
