@@ -55,7 +55,7 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = layoutInflater.inflate(R.layout.map_fragment_location_result, parent, false);
+        convertView = layoutInflater.inflate(R.layout.fragment_map_location_result, parent, false);
 
 
         String address = getItem(position).getAddress();

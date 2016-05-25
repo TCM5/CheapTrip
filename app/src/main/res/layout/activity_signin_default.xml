@@ -1,67 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fmt.cheaptrip.fragments.SignInFragment">
-
+    android:background="@color/red">
 
     <LinearLayout
-        android:orientation="vertical"
+
+        android:background="@color/red"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:text="Name"
+            android:textColor="@color/green4_cheaptrip"
+            android:id="@+id/lblName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lblName" />
+            android:text="Name" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/txtName" />
-
-        <TextView
-            android:text="Contact Number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lblContactNumber" />
-
-        <EditText
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/lblContactNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Number" />
+
+        <EditText
             android:id="@+id/txtContactNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
             android:inputType="phone" />
 
         <TextView
-            android:text="Email"
+            android:id="@+id/lblEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lblEmail" />
+            android:text="Email" />
 
         <EditText
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/txtEmail" />
+            android:inputType="textEmailAddress" />
 
         <TextView
-            android:text="Password"
+            android:id="@+id/lblPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lblPassword" />
+            android:text="Password" />
 
         <EditText
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/txtPassword" />
+            android:inputType="textPassword" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,7 +1,9 @@
 package com.fmt.cheaptrip.fragments.login;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.activities.LoginActivity;
+import com.fmt.cheaptrip.activities.SignInActivity;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.ws.TripWSInvoker;
 
@@ -27,7 +31,7 @@ public class DefaultLoginFragment extends Fragment {
     private EditText txtLoginPassword;
 
     public DefaultLoginFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -55,11 +59,45 @@ public class DefaultLoginFragment extends Fragment {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Sign In", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Sign in called", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), SignInActivity.class);
+
+                startActivityForResult(intent, 1);
+                getActivity().finish();
+
             }
         });
 
         return view;
     }
+
+    /**
+     * This method solves the activity for result called by the Signin button.
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+
+                //TODO
+
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+
+
+                //TODO
+            }
+        }
+
+
+    }
+
+
 
 }
