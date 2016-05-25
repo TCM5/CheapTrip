@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
+import com.fmt.cheaptrip.activities.MainActivity;
 import com.fmt.cheaptrip.activities.SignInActivity;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.ws.TripWSInvoker;
@@ -62,10 +63,8 @@ public class DefaultLoginFragment extends Fragment {
                 Toast.makeText(getContext(), "Sign in called", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), SignInActivity.class);
-
+                intent.setClass(getActivity().getApplicationContext(), SignInActivity.class);
                 startActivityForResult(intent, 1);
-                getActivity().finish();
 
             }
         });
