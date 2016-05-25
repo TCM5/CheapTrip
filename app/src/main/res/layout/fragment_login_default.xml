@@ -51,7 +51,8 @@
                 android:background="@color/green4_cheaptrip"
                 android:elevation="0dp"
                 android:text="Sign in"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:id="@+id/btnSignIn" />
 
         </LinearLayout>
     </LinearLayout>

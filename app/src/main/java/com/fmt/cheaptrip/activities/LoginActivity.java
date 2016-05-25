@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.facebook.CallbackManager;
 import com.fmt.cheaptrip.entities.User;
+import com.fmt.cheaptrip.fragments.SignInFragment;
 import com.fmt.cheaptrip.fragments.login.DefaultLoginFragment;
 import com.fmt.cheaptrip.fragments.login.FacebookLoginFragment;
 import com.fmt.cheaptrip.fragments.login.GooglePlusLoginFragment;
@@ -33,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         defaultLoginFragment = new DefaultLoginFragment();
 

@@ -13,7 +13,7 @@ public class WSConfig {
 
     //POST Parameters
     public static final String PARAM_NAME = "name";
-    public static final String PARAM_AGE = "age";
+    public static final String PARAM_CONTACT_NUMBER = "contact";
     public static final String PARAM_EMAIL = "email";
     public static final String PARAM_PASSWORD = "password";
 }

@@ -10,11 +10,11 @@ public class User implements Serializable {
 
     private Integer userId;
     private String name;
-    private Integer age;
+    private String contactNumber;
     private String email;
     private String password;
-    private Integer driverRank;
-    private Integer passengerRank;
+    private Double driverRank;
+    private Double passengerRank;
 
     public Integer getUserId() {
         return userId;
@@ -32,12 +32,12 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public String getEmail() {
@@ -56,19 +56,19 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Integer getDriverRank() {
+    public Double getDriverRank() {
         return driverRank;
     }
 
-    public void setDriverRank(Integer driverRank) {
+    public void setDriverRank(Double driverRank) {
         this.driverRank = driverRank;
     }
 
-    public Integer getPassengerRank() {
+    public Double getPassengerRank() {
         return passengerRank;
     }
 
-    public void setPassengerRank(Integer passengerRank) {
+    public void setPassengerRank(Double passengerRank) {
         this.passengerRank = passengerRank;
     }
 }

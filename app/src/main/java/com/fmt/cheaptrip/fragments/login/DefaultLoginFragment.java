@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.entities.User;
@@ -20,6 +21,8 @@ import com.fmt.cheaptrip.ws.TripWSInvoker;
 public class DefaultLoginFragment extends Fragment {
 
     private Button loginButton;
+    private Button signInButton;
+
     private EditText txtLoginEmail;
     private EditText txtLoginPassword;
 
@@ -28,8 +31,8 @@ public class DefaultLoginFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_login_default, container, false);
 
         txtLoginEmail = (EditText) view.findViewById(R.id.txtLoginEmail);
@@ -45,6 +48,14 @@ public class DefaultLoginFragment extends Fragment {
                 user.setPassword(txtLoginPassword.getText().toString());
 
                 TripWSInvoker.login(getActivity(), user);
+            }
+        });
+
+        signInButton = (Button) view.findViewById(R.id.btnSignIn);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Sign In", Toast.LENGTH_LONG).show();
             }
         });
 

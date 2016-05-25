@@ -43,7 +43,7 @@ public class TripWSInvoker {
 
         //Parametros POST necessarios para o Login
         newUserRequest.addParam(WSConfig.PARAM_NAME, user.getName());
-        newUserRequest.addParam(WSConfig.PARAM_AGE, user.getAge().toString());
+        newUserRequest.addParam(WSConfig.PARAM_CONTACT_NUMBER, user.getContactNumber().toString());
         newUserRequest.addParam(WSConfig.PARAM_EMAIL, user.getEmail());
         newUserRequest.addParam(WSConfig.PARAM_PASSWORD, user.getPassword());
 
