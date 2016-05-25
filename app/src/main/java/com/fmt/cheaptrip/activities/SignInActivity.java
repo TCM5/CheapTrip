@@ -9,9 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.ws.TripWSInvoker;
+import com.fmt.cheaptrip.ws.response.WSResponseListener;
+import com.fmt.cheaptrip.ws.response.WSResponseObject;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -44,15 +47,32 @@ public class SignInActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User user = new User();
+                final User user = new User();
 
                 user.setName(txtName.getText().toString());
                 user.setContactNumber(txtContactNumber.getText().toString());
                 user.setEmail(txtEmail.getText().toString());
                 user.setPassword(txtPassword.getText().toString());
 
-                TripWSInvoker.registerUser(getApplicationContext(), user);
+                TripWSInvoker.registerUser(getApplicationContext(), user, new WSResponseListener() {
+                    @Override
+                    public void onResponse(WSResponseObject response) {
+                        if (response.getSuccess().equalsIgnoreCase("true")) {
+                            Intent returnIntent = new Intent();
+                            returnIntent.putExtra("email",user.getEmail());
+                            setResult(Activity.RESULT_OK, returnIntent);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), response.getError(), Toast.LENGTH_LONG).show();
+                        }
+                    }
 
+                    @Override
+                    public void onError(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        System.out.println(error);
+                    }
+                });
 
                 // validacao do webservice aqui, mas ha-de ser kk cena assim:
                 // Aqui fazes um intent de volta para o login, mas levas um resultado. Sucesso ou cancelado.
@@ -68,11 +88,6 @@ public class SignInActivity extends AppCompatActivity {
                     finish();
                 }
 */
-
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("email",user.getEmail()); // com esta linha podemos logo preencher o login na actividade do login :)
-                setResult(Activity.RESULT_OK, returnIntent);
-                finish();
             }
         });
 

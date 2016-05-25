@@ -13,12 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
 import com.fmt.cheaptrip.activities.MainActivity;
 import com.fmt.cheaptrip.activities.SignInActivity;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.ws.TripWSInvoker;
+import com.fmt.cheaptrip.ws.response.WSResponseListener;
+import com.fmt.cheaptrip.ws.response.WSResponseObject;
+import com.fmt.cheaptrip.ws.util.CustomJSONParser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,7 +56,23 @@ public class DefaultLoginFragment extends Fragment {
                 user.setEmail(txtLoginEmail.getText().toString());
                 user.setPassword(txtLoginPassword.getText().toString());
 
-                TripWSInvoker.login(getActivity(), user);
+                TripWSInvoker.login(getActivity(), user, new WSResponseListener() {
+                    @Override
+                    public void onResponse(WSResponseObject response) {
+                        if(response.getSuccess().equalsIgnoreCase("true")) {
+                            User user = response.getUser();
+                            Toast.makeText(getContext(), user.getName(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getContext(), response.getError(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(VolleyError error) {
+                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        System.out.println(error);
+                    }
+                });
             }
         });
 
@@ -86,6 +106,7 @@ public class DefaultLoginFragment extends Fragment {
             if (resultCode == Activity.RESULT_OK) {
                 String email = data.getStringExtra("email");
                 this.txtLoginEmail.setText(email);
+                this.txtLoginPassword.setText("");
 
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 //TODO

@@ -39,8 +39,7 @@
                 android:id="@+id/lblName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textColor="@color/green4_cheaptrip" />
+                android:text="Name" />
 
             <EditText
                 android:id="@+id/txtName"

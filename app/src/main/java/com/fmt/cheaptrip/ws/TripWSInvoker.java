@@ -14,6 +14,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.ws.request.CustomStringRequest;
+import com.fmt.cheaptrip.ws.response.WSResponseListener;
+import com.fmt.cheaptrip.ws.response.WSResponseObject;
 import com.fmt.cheaptrip.ws.util.CustomJSONParser;
 import com.fmt.cheaptrip.ws.util.WSConfig;
 
@@ -22,21 +24,28 @@ import com.fmt.cheaptrip.ws.util.WSConfig;
  */
 public class TripWSInvoker {
 
-    public static void registerUser(final Context context, User user) {
+    public static void registerUser(final Context context, User user, final WSResponseListener wsResponse) {
 
         CustomStringRequest newUserRequest = new CustomStringRequest(Request.Method.POST, WSConfig.REGISTER_URL,
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                        /*
                         System.out.println("Resposta de Sucesso: " + response.toString());
                         Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                        */
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                        /*
                         System.out.println("Erro: " + error.getMessage());
                         Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                        */
                     }
                 }
         );
@@ -52,11 +61,14 @@ public class TripWSInvoker {
     }
 
 
-    public static void login(final Context context, User user) {
+    public static void login(final Context context, User user, final WSResponseListener wsResponse) {
         CustomStringRequest loginRequest = new CustomStringRequest(Request.Method.POST, WSConfig.LOGIN_URL,
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                        /*
                         System.out.println("Resposta de Sucesso - " + response.toString());
                         try {
                             User user = CustomJSONParser.getInstance().stringToObject(response.toString(), User.class);
@@ -64,14 +76,17 @@ public class TripWSInvoker {
                         } catch (Exception e) {
                             Toast.makeText(context, "Sucesso Cast Ex - " + response.toString(), Toast.LENGTH_LONG).show();
                         }
+                        */
                     }
                 },
                 new Response.ErrorListener() {
-
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                        /*
                         System.out.println("Erro: " + error.getMessage());
                         Toast.makeText(context, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                        */
                     }
                 }
         );
