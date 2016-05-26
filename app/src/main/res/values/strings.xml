@@ -37,11 +37,11 @@
     <string name="btn_revoke_access">Revoke Access</string>
 
     <!-- Menu strings -->
-    <string name="menu_item_trips_title">Boleias cheaptrip!</string>
-    <string name="menu_item_my_trips_title">Minhas viagens</string>
-    <string name="menu_item_profile_title">Perfil</string>
-    <string name="menu_item_settings_title">Configurações</string>
-    <string name="menu_item_about_title">Sobre</string>
+    <string name="menu_item_trips_title">Cheaptrip rides!</string>
+    <string name="menu_item_my_trips_title">My travels</string>
+    <string name="menu_item_profile_title">Profile</string>
+    <string name="menu_item_settings_title">Settings</string>
+    <string name="menu_item_about_title">About</string>
     <string name="menu_item_about_feedback">Feedback</string>
 
     <!-- Introduction Fragment Strings -->
@@ -53,16 +53,16 @@
     <string name="fragment_introduction_slide_desc3_text">Desc3</string>
 
     <!-- Map Fragment Strings-->
-    <string name="map_fragment_origin_input_text">Origem</string>
-    <string name="map_fragment_destiny_input_text">Destino</string>
-    <string name="map_fragment_search_button_text">Procurar</string>
-    <string name="map_fragment_newtrip_button_text">Criar</string>
-    <string name="map_fragment_new_trip_text">Criar boleia</string>
-    <string name="map_fragment_find_trip_text">Procurar boleia</string>
+    <string name="map_fragment_origin_input_text">Starting point</string>
+    <string name="map_fragment_destiny_input_text">Destination</string>
+    <string name="map_fragment_search_button_text">Search</string>
+    <string name="map_fragment_newtrip_button_text">Create</string>
+    <string name="map_fragment_new_trip_text">Create ride</string>
+    <string name="map_fragment_find_trip_text">Search for a ride</string>
 
     <!-- About Fragment Strings-->
     <string name="about_fragment_about_app_title">The app</string>
-    <string name="about_fragment_text">The creaton of this app became as an academic project. The source code is public and we, the team, like to share it! </string>
+    <string name="about_fragment_text">The creation of this app started as an academic project. The source code is public and we, the team, like to share it! </string>
     <string name="about_fragment_about_team_title">The team</string>
     <string name="about_fragment_developer1">Tiago\nSantos</string>
     <string name="about_fragment_developer2">Miguel\nNobre</string>
@@ -70,8 +70,7 @@
     <string name="about_fragment_app_version">Version</string>
 
     <!--My Trip Fragment Strings-->
-    <string name="mytrip_item_location_origin_text">Origem</string>
-    <string name="mytrip_item_location_destiny_text">Destino</string>
-    <string name="mytrip_item_date_text">Data</string>
-
+    <string name="mytrip_item_location_origin_text">Starting point</string>
+    <string name="mytrip_item_location_destiny_text">Destination</string>
+    <string name="mytrip_item_date_text">Date</string>
 </resources>

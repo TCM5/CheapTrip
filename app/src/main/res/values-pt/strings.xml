@@ -1,2 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <string name="app_name">CheapTrip</string>
+
+    <!-- Google Maps keys -->
+    <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
+
+    <!-- Facebook Keys -->
+    <string name="facebook_app_id">516872131835256</string>
+
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_login">Entrar</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Entre ou registe-se</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">O email não é válido</string>
+    <string name="error_invalid_password">Password demasiado curta</string>
+    <string name="error_incorrect_password">Password incorreta</string>
+    <string name="error_field_required">Campo de preenchimento obrigatório</string>
+    <string name="permission_rationale">"As permissões de contacto são necessárias para fornecimento de informações para a conclusão do registo do email (email completions)."</string>
+    <string name="login_welcome_msg1">Bem-vindo ao CheapTrip.</string>
+    <string name="login_welcome_msg2">Aqui encontra pessoas com o mesmo destino que o seu!</string>
+    <string name="login_btn_text">Entrar com </string>
+
+    <!-- Strings related to Facebook Login -->
+
+    <!-- Google + Strings -->
+    <string name="app_name_g">G+ Entrar</string>
+    <string name="action_settings_">Configurações</string>
+    <string name="btn_logout_from_google">Sair do Google</string>
+    <string name="btn_revoke_access">Negar acesso</string>
+
+    <!-- Menu strings -->
+    <string name="menu_item_trips_title">Boleias cheaptrip!</string>
+    <string name="menu_item_my_trips_title">Minhas viagens</string>
+    <string name="menu_item_profile_title">Perfil</string>
+    <string name="menu_item_settings_title">Configurações</string>
+    <string name="menu_item_about_title">Sobre</string>
+    <string name="menu_item_about_feedback">Feedback</string>
+
+    <!-- Introduction Fragment Strings -->
+    <string name="fragment_introduction_slide_title1_text">Económico</string>
+    <string name="fragment_introduction_slide_title2_text">Novos amigos</string>
+    <string name="fragment_introduction_slide_title3_text">Seja amigo do ambiente</string>
+    <string name="fragment_introduction_slide_desc1_text">A partilha de boleias é uma solução económica. Se deseja viajar de forma rápida e confortável, este é o modo mais económico.</string>
+    <string name="fragment_introduction_slide_desc2_text">Desc2</string>
+    <string name="fragment_introduction_slide_desc3_text">Desc3</string>
+
+    <!-- Map Fragment Strings-->
+    <string name="map_fragment_origin_input_text">Origem</string>
+    <string name="map_fragment_destiny_input_text">Destino</string>
+    <string name="map_fragment_search_button_text">Procurar</string>
+    <string name="map_fragment_newtrip_button_text">Criar</string>
+    <string name="map_fragment_new_trip_text">Criar boleia</string>
+    <string name="map_fragment_find_trip_text">Procurar boleia</string>
+
+    <!-- About Fragment Strings-->
+    <string name="about_fragment_about_app_title">A aplicação</string>
+    <string name="about_fragment_text"> A criação desta aplicação começou como um projeto académico. O código base é público e nós, a equipa, gostamos de o partilhar  consigo!</string>
+    <string name="about_fragment_about_team_title">A equipa</string>
+    <string name="about_fragment_developer1">Tiago\nSantos</string>
+    <string name="about_fragment_developer2">Miguel\nNobre</string>
+    <string name="about_fragment_developer3">Fernando\nOliveira</string>
+    <string name="about_fragment_app_version">Version</string>
+
+    <!--My Trip Fragment Strings-->
+    <string name="mytrip_item_location_origin_text">Origem</string>
+    <string name="mytrip_item_location_destiny_text">Destino</string>
+    <string name="mytrip_item_date_text">Data</string>
+</resources>

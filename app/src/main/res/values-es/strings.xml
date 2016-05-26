@@ -1,2 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">CheapTrip</string>
+
+    <!-- Google Maps keys -->
+    <string name="google_api_key">AIzaSyCQIi2EuQnjdKZZ25uGUJlFHTa088FLj1w</string>
+
+    <!-- Facebook Keys -->
+    <string name="facebook_app_id">516872131835256</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña (opcional)</string>
+    <string name="action_sign_in">Iniciar sesión o registrarse</string>
+    <string name="action_sign_in_short">Iniciar sesión</string>
+    <string name="error_invalid_email">El correo electrónico no es válido</string>
+    <string name="error_invalid_password">Contraseña demasiado corta</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
+    <string name="error_field_required">Campo obligatorio</string>
+    <string name="permission_rationale">"Permisos de contacto son necesarias para transmitir la información para completar el registro de correo electrónico (email completions)."</string>
+    <string name="login_welcome_msg1">Bienvenido al CheapTrip.</string>
+    <string name="login_welcome_msg2">Aquí se encuentran las personas con el mismo destino que su!</string>
+    <string name="login_btn_text">Entrar con </string>
+
+    <!-- Strings related to Facebook Login -->
+
+    <!-- Google + Strings -->
+    <string name="app_name_g">G+ Entrar con </string>
+    <string name="action_settings_">Ajustes</string>
+    <string name="btn_logout_from_google">salir de Google</string>
+    <string name="btn_revoke_access">Denegar el acceso</string>
+
+    <!-- Menu strings -->
+    <string name="menu_item_trips_title">Comparte coche cheaptrip!</string>
+    <string name="menu_item_my_trips_title">Mis viajes</string>
+    <string name="menu_item_profile_title">Perfil</string>
+    <string name="menu_item_settings_title">Ajustes</string>
+    <string name="menu_item_about_title">Sobre</string>
+    <string name="menu_item_about_feedback">Feedback</string>
+
+    <!-- Introduction Fragment Strings -->
+    <string name="fragment_introduction_slide_title1_text">Económico</string>
+    <string name="fragment_introduction_slide_title2_text">Nuevos amigos</string>
+    <string name="fragment_introduction_slide_title3_text">Respetar el medio ambiente</string>
+    <string name="fragment_introduction_slide_desc1_text">El Carpooling es una solución económica. Si desea viajar de forma rápida y cómoda, esta es la forma más barata.</string>
+    <string name="fragment_introduction_slide_desc2_text">Desc2</string>
+    <string name="fragment_introduction_slide_desc3_text">Desc3</string>
+
+    <!-- Map Fragment Strings-->
+    <string name="map_fragment_origin_input_text">El sitio de origen</string>
+    <string name="map_fragment_destiny_input_text">Destino de viaje</string>
+    <string name="map_fragment_search_button_text">Buscar</string>
+    <string name="map_fragment_newtrip_button_text">Crear</string>
+    <string name="map_fragment_new_trip_text">Crear carpooling</string>
+    <string name="map_fragment_find_trip_text">Buscar carpooling</string>
+
+    <!-- About Fragment Strings-->
+    <string name="about_fragment_about_app_title">La aplicación</string>
+    <string name="about_fragment_text">La creación de esta aplicación comenzó como un proyecto académico. El código es público y nosotros, el equipo, nos gustaría compartir con usted!</string>
+    <string name="about_fragment_about_team_title">El equipo</string>
+    <string name="about_fragment_developer1">Tiago\nSantos</string>
+    <string name="about_fragment_developer2">Miguel\nNobre</string>
+    <string name="about_fragment_developer3">Fernando\nOliveira</string>
+    <string name="about_fragment_app_version">Version</string>
+
+    <!--My Trip Fragment Strings-->
+    <string name="mytrip_item_location_origin_text">El sitio de origen</string>
+    <string name="mytrip_item_location_destiny_text">Destino de viaje</string>
+    <string name="mytrip_item_date_text">Data</string>
+
+
+</resources>
