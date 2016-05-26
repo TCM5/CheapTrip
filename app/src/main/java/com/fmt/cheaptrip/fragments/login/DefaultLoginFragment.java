@@ -66,12 +66,8 @@ public class DefaultLoginFragment extends Fragment {
                             DefaultLoginUtils.login(getActivity().getApplicationContext());
                             DefaultLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), user.getEmail());
 
-                            Intent intent = new Intent();
-                            intent.setClass(getActivity(), MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            getActivity().startActivity(intent);
-
-                            Toast.makeText(getContext(), user.getName(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "You have been successfully logged in", Toast.LENGTH_SHORT).show();
+                            redirectToMain(user);
                         } else {
                             Toast.makeText(getContext(), response.getError(), Toast.LENGTH_LONG).show();
                         }
@@ -122,5 +118,13 @@ public class DefaultLoginFragment extends Fragment {
                 //TODO
             }
         }
+    }
+
+    private void redirectToMain(User user) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity().getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("user", user);
+        getActivity().startActivity(intent);
     }
 }

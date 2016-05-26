@@ -58,10 +58,9 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(WSResponseObject response) {
                         if (response.getSuccess().equalsIgnoreCase("true")) {
-                            Intent returnIntent = new Intent();
-                            returnIntent.putExtra("email",user.getEmail());
-                            setResult(Activity.RESULT_OK, returnIntent);
-                            finish();
+
+                            Toast.makeText(getApplicationContext(), "You have been successfully registered", Toast.LENGTH_SHORT).show();
+                            redirectToLogIn(user);
                         } else {
                             Toast.makeText(getApplicationContext(), response.getError(), Toast.LENGTH_LONG).show();
                         }
@@ -100,6 +99,13 @@ public class SignInActivity extends AppCompatActivity {
 
         Intent returnIntent = new Intent();
         setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
+    }
+
+    private void redirectToLogIn(User user) {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("email",user.getEmail());
+        setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
 }
