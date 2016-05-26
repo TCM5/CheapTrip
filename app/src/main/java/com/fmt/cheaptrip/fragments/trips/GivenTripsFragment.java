@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.fragments;
+package com.fmt.cheaptrip.fragments.trips;
 
 
 import android.location.Address;
@@ -19,12 +19,12 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TripsFragment extends Fragment {
+public class GivenTripsFragment extends Fragment {
 
 
     private TripsAdapter tripsAdapter;
 
-    public TripsFragment() {
+    public GivenTripsFragment() {
 
 
     }
@@ -32,7 +32,7 @@ public class TripsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.mytrips_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_given_trips, container, false);
 
         ListView listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
 

@@ -15,6 +15,8 @@ import com.fmt.cheaptrip.adapters.LocationAdapter;
 import com.fmt.cheaptrip.customviews.LocationAutoCompleteTextView;
 import com.fmt.cheaptrip.entities.LocationEntry;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.fragments.trips.GivenTripsFragment;
+import com.fmt.cheaptrip.fragments.trips.NewTripFragment;
 import com.fmt.cheaptrip.utils.ActivityUtils;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -230,8 +232,8 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                TripsFragment tripsFragment = new TripsFragment();
-                ActivityUtils.replaceFragment(getFragmentManager(), tripsFragment, R.id.main_content_container, true);
+                GivenTripsFragment givenTripsFragment = new GivenTripsFragment();
+                ActivityUtils.replaceFragment(getFragmentManager(), givenTripsFragment, R.id.main_content_container, true);
 
             }
         };

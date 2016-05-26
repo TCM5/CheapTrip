@@ -73,4 +73,7 @@
     <string name="mytrip_item_location_origin_text">Starting point</string>
     <string name="mytrip_item_location_destiny_text">Destination</string>
     <string name="mytrip_item_date_text">Date</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

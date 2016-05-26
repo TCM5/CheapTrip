@@ -13,8 +13,9 @@ import android.view.MenuItem;
 import com.fmt.cheaptrip.fragments.AboutFragment;
 import com.fmt.cheaptrip.fragments.MapFragment;
 import com.fmt.cheaptrip.fragments.ProfileFragment;
-import com.fmt.cheaptrip.fragments.TripsFragment;
+import com.fmt.cheaptrip.fragments.trips.GivenTripsFragment;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.fragments.trips.ReceivedTripsFragment;
 import com.fmt.cheaptrip.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity
 
         switch (itemId) {
 
-            case R.id.menu_item_trips:
+            case R.id.menu_item_home:
 
                 MapFragment mapFragment = new MapFragment();
                 ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container ,true);
@@ -89,8 +90,15 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.menu_item_my_trips:
 
-                TripsFragment tripsFragment = new TripsFragment();
-                ActivityUtils.replaceFragment(fragmentManager, tripsFragment, R.id.main_content_container ,true);
+                GivenTripsFragment givenTripsFragment = new GivenTripsFragment();
+                ActivityUtils.replaceFragment(fragmentManager, givenTripsFragment, R.id.main_content_container ,true);
+
+                break;
+
+            case R.id.menu_item_trips:
+
+                ReceivedTripsFragment receivedTripsFragment = new ReceivedTripsFragment();
+                ActivityUtils.replaceFragment(fragmentManager, receivedTripsFragment, R.id.main_content_container ,true);
 
                 break;
 
