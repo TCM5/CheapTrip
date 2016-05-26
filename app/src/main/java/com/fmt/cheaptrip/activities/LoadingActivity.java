@@ -81,6 +81,9 @@ public class LoadingActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPref.edit();
 
                     editor.putBoolean("signed_logintype_gplus", false);
+                    editor.putBoolean("signed_logintype_default", false);
+                    editor.putBoolean("signed_logintype_facebook", false);
+
 
                     editor.commit();
 
