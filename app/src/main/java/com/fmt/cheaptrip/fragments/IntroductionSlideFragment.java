@@ -108,6 +108,7 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("signed_firsttime", false);
+        editor.commit();
 
         Intent intent = new Intent();
         intent.setClass(getActivity(), LoginActivity.class);

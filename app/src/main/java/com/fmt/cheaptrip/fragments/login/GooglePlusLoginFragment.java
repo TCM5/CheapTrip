@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.LoginActivity;
 import com.fmt.cheaptrip.utils.LoginUtils;
+import com.fmt.cheaptrip.utils.login.GplusLoginUtils;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -105,10 +106,12 @@ public class GooglePlusLoginFragment extends Fragment implements GoogleApiClient
 
             if (result.isSuccess()) {
                 GoogleSignInAccount gplusAccount = result.getSignInAccount();
-                //  gplusAccount.getDisplayName();
+                //   gplusAccount.getDisplayName();
                 // gplusAccount.getEmail();
 
-                loginUtils.addSignedLoginType(getActivity(), LoginUtils.LoginType.GPLUS);
+                GplusLoginUtils.login(getActivity().getApplicationContext());
+                GplusLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), gplusAccount.getEmail());
+
                 Toast.makeText(getActivity(), gplusAccount.getEmail() + gplusAccount.getDisplayName(), Toast.LENGTH_LONG).show();
 
 

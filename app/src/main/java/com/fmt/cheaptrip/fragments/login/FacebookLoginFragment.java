@@ -41,7 +41,6 @@ public class FacebookLoginFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
 
     @Override
@@ -53,7 +52,7 @@ public class FacebookLoginFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_login_facebook, container, false);
 
-       loginButton = (LoginButton) view.findViewById(R.id.login_button);
+        loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setFragment(this);
 
 
@@ -61,8 +60,6 @@ public class FacebookLoginFragment extends Fragment {
 
             @Override
             public void onSuccess(LoginResult loginResult) {
-                System.out.println("SUCESSO");
-
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

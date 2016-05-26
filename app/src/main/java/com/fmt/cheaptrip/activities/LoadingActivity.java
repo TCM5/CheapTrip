@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.managers.LoginManager;
 import com.fmt.cheaptrip.utils.LoginUtils;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -77,7 +78,14 @@ public class LoadingActivity extends AppCompatActivity {
 
                 } else {
 
-                    if (LoginUtils.getInstance().isSigned(getApplicationContext())) {
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor editor = sharedPref.edit();
+
+                    editor.putBoolean("signed_logintype_gplus", false);
+
+                    editor.commit();
+
+                    if (LoginManager.isLogged(getApplicationContext())) {
                         redirectToMain();
                     } else {
                         redirectToLogin();

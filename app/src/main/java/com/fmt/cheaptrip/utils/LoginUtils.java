@@ -14,6 +14,7 @@ import com.google.android.gms.plus.Plus;
 /**
  * Created by santostc on 22-05-2016.
  */
+@Deprecated
 public class LoginUtils {
 
     public enum LoginType {GPLUS, FACEBOOK, EMAIL}

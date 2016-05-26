@@ -19,6 +19,7 @@ import com.fmt.cheaptrip.activities.LoginActivity;
 import com.fmt.cheaptrip.activities.MainActivity;
 import com.fmt.cheaptrip.activities.SignInActivity;
 import com.fmt.cheaptrip.entities.User;
+import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
 import com.fmt.cheaptrip.ws.TripWSInvoker;
 import com.fmt.cheaptrip.ws.response.WSResponseListener;
 import com.fmt.cheaptrip.ws.response.WSResponseObject;
@@ -61,6 +62,15 @@ public class DefaultLoginFragment extends Fragment {
                     public void onResponse(WSResponseObject response) {
                         if(response.getSuccess().equalsIgnoreCase("true")) {
                             User user = response.getUser();
+
+                            DefaultLoginUtils.login(getActivity().getApplicationContext());
+                            DefaultLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), user.getEmail());
+
+                            Intent intent = new Intent();
+                            intent.setClass(getActivity(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            getActivity().startActivity(intent);
+
                             Toast.makeText(getContext(), user.getName(), Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(getContext(), response.getError(), Toast.LENGTH_LONG).show();
