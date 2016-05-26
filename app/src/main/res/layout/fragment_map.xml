@@ -77,29 +77,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:id="@+id/map_fragment_find_trip_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
             android:orientation="horizontal"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/green3_cheaptrip"
                 android:text="@string/map_fragment_find_trip_text"
-                android:textColor="@android:color/darker_gray" />
+                android:background="@color/green3_cheaptrip"
+                android:textColor="@color/material_grey_900" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/map_fragment_find_trip_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="bottom|end"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginLeft="3dp"
                 android:clickable="true"
                 android:src="@android:drawable/ic_menu_search"
                 app:backgroundTint="@color/green4_cheaptrip"
@@ -110,7 +116,7 @@
         <LinearLayout
             android:id="@+id/map_fragment_new_trip_ll"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom|right"
             android:orientation="horizontal"
             android:visibility="visible">
@@ -119,9 +125,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/green3_cheaptrip"
                 android:text="@string/map_fragment_new_trip_text"
-                android:textColor="@android:color/darker_gray"
+                android:background="@color/green3_cheaptrip"
+                android:textColor="@color/material_grey_900"
 
                 />
 
@@ -130,6 +136,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginLeft="3dp"
                 android:clickable="true"
                 android:src="@android:drawable/ic_menu_add"
                 app:backgroundTint="@color/green4_cheaptrip"
