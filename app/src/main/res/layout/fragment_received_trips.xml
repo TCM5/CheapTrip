@@ -1,13 +1,23 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mytrips_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green3_cheaptrip"
     tools:context=".fragments.trips.ReceivedTripsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/my_trips_fragment_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/green3_cheaptrip"
+        android:divider="#C0C0C0"
+        android:dividerHeight="0.5dp"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="false">
+
+    </ListView>
 
 </FrameLayout>

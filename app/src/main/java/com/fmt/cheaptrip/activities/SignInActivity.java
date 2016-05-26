@@ -12,9 +12,9 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.entities.User;
-import com.fmt.cheaptrip.ws.TripWSInvoker;
-import com.fmt.cheaptrip.ws.response.WSResponseListener;
-import com.fmt.cheaptrip.ws.response.WSResponseObject;
+import com.fmt.cheaptrip.webservices.TripWSInvoker;
+import com.fmt.cheaptrip.webservices.response.WSResponseListener;
+import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -74,7 +74,7 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 });
 
-                // validacao do webservice aqui, mas ha-de ser kk cena assim:
+                // validacao do webservices aqui, mas ha-de ser kk cena assim:
                 // Aqui fazes um intent de volta para o login, mas levas um resultado. Sucesso ou cancelado.
 
         /*        if (registerUser == sucesso) {

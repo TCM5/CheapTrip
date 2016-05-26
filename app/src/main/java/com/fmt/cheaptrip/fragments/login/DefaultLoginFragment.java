@@ -2,7 +2,6 @@ package com.fmt.cheaptrip.fragments.login;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,15 +14,13 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.activities.LoginActivity;
 import com.fmt.cheaptrip.activities.MainActivity;
 import com.fmt.cheaptrip.activities.SignInActivity;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
-import com.fmt.cheaptrip.ws.TripWSInvoker;
-import com.fmt.cheaptrip.ws.response.WSResponseListener;
-import com.fmt.cheaptrip.ws.response.WSResponseObject;
-import com.fmt.cheaptrip.ws.util.CustomJSONParser;
+import com.fmt.cheaptrip.webservices.TripWSInvoker;
+import com.fmt.cheaptrip.webservices.response.WSResponseListener;
+import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
 /**
  * A simple {@link Fragment} subclass.

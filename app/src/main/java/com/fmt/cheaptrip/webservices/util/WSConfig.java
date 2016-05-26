@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.ws.util;
+package com.fmt.cheaptrip.webservices.util;
 
 /**
  * Created by Miguel on 24/05/16.
@@ -12,8 +12,10 @@ public class WSConfig {
     public static final String TRIPS_URL = "http://miguelnobre.com/php/EasyTrip/Trip.php";
 
     //POST Parameters
+    public static final String PARAM_USERID = "userid";
     public static final String PARAM_NAME = "name";
     public static final String PARAM_CONTACT_NUMBER = "contact";
     public static final String PARAM_EMAIL = "email";
     public static final String PARAM_PASSWORD = "password";
+    public static final String PARAM_ACTION = "action";
 }

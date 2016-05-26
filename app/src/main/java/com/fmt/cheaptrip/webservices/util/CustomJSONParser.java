@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.ws.util;
+package com.fmt.cheaptrip.webservices.util;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;

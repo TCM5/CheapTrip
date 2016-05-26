@@ -1,4 +1,4 @@
-package com.fmt.cheaptrip.ws.response;
+package com.fmt.cheaptrip.webservices.response;
 
 import com.fmt.cheaptrip.entities.User;
 

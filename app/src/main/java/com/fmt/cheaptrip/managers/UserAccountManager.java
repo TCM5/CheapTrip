@@ -2,14 +2,16 @@ package com.fmt.cheaptrip.managers;
 
 import android.content.Context;
 
+import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
 import com.fmt.cheaptrip.utils.login.FacebookLoginUtils;
 import com.fmt.cheaptrip.utils.login.GplusLoginUtils;
+import com.fmt.cheaptrip.utils.login.LoginUtils;
 
 /**
  * Created by santostc on 26-05-2016.
  */
-public class LoginManager {
+public class UserAccountManager {
 
     /**
      * This method checks if the user is logged in any of these login types<br>
@@ -29,4 +31,13 @@ public class LoginManager {
         }
         return false;
     }
+
+    /**
+     * @param context
+     * @return
+     */
+    public static Integer getCurrentUserId(Context context) {
+        return LoginUtils.getCurrentUserId(context);
+    }
+
 }

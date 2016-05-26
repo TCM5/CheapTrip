@@ -1,11 +1,10 @@
-package com.fmt.cheaptrip.ws;
+package com.fmt.cheaptrip.webservices;
 
 /**
  * Created by Miguel on 24/05/16.
  */
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,11 +12,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fmt.cheaptrip.entities.User;
-import com.fmt.cheaptrip.ws.request.CustomStringRequest;
-import com.fmt.cheaptrip.ws.response.WSResponseListener;
-import com.fmt.cheaptrip.ws.response.WSResponseObject;
-import com.fmt.cheaptrip.ws.util.CustomJSONParser;
-import com.fmt.cheaptrip.ws.util.WSConfig;
+import com.fmt.cheaptrip.managers.UserAccountManager;
+import com.fmt.cheaptrip.webservices.request.CustomStringRequest;
+import com.fmt.cheaptrip.webservices.response.WSResponseListener;
+import com.fmt.cheaptrip.webservices.response.WSResponseObject;
+import com.fmt.cheaptrip.webservices.util.CustomJSONParser;
+import com.fmt.cheaptrip.webservices.util.WSConfig;
 
 /**
  * Created by Miguel on 22/05/16.
@@ -98,4 +98,32 @@ public class TripWSInvoker {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(loginRequest);
     }
+
+    public static void receivedTrips(final Context context, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, "myPassengerTrips");
+        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
 }
