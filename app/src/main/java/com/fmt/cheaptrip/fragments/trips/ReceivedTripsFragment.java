@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
@@ -18,7 +19,10 @@ import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +30,9 @@ import java.util.ArrayList;
 public class ReceivedTripsFragment extends Fragment {
 
     public static final String TAG = "RECEIVED_TRIPS_FRAGMENT_TAG";
+
+    private ListView listView;
+    private TextView emptyListTextView;
 
     private TripsAdapter tripsAdapter;
 
@@ -39,7 +46,7 @@ public class ReceivedTripsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        callServiceReceivedTrips();
+
     }
 
 
@@ -49,7 +56,8 @@ public class ReceivedTripsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_received_trips, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
+        listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
+        emptyListTextView = (TextView) view.findViewById(R.id.received_trips_fragment_empty_list_tv);
 
         tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
 
@@ -57,6 +65,8 @@ public class ReceivedTripsFragment extends Fragment {
 
         View header = inflater.inflate(R.layout.mytrip_header, null);
         listView.addHeaderView(header);
+
+        callServiceReceivedTrips();
 
         return view;
     }
@@ -80,14 +90,27 @@ public class ReceivedTripsFragment extends Fragment {
                 if (response == null) {
                     //TODO
                 } else if (response.getTrips() != null) {
-                    tripsAdapter.refreshTripsList(response.getTrips());
-                    greenProgressDialog.dismiss();
+                    List<Trip> receivedTrips = response.getTrips();
+
+                    tripsAdapter.refreshTripsList(receivedTrips);
+
+                    if (receivedTrips.size() < 1) {
+                        emptyListTextView.setVisibility(View.VISIBLE);
+                        listView.setVisibility(View.GONE);
+                    } else {
+                        emptyListTextView.setVisibility(View.GONE);
+                        listView.setVisibility(View.VISIBLE);
+                    }
+
+
                 }
+                greenProgressDialog.dismiss();
             }
 
             @Override
             public void onError(VolleyError error) {
                 //TODO
+                greenProgressDialog.dismiss();
             }
         });
 

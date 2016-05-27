@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.adapters.TripsAdapter;
@@ -32,13 +33,16 @@ public class GivenTripsFragment extends Fragment {
 
     public static final String TAG = "GIVEN_TRIPS_FRAGMENT_TAG";
 
+    private ListView listView;
+    private TextView emptyListTextView;
+
     private TripsAdapter tripsAdapter;
 
     private GreenProgressDialog greenProgressDialog;
 
     public GivenTripsFragment() {
         // Default constructor
-}
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +58,8 @@ public class GivenTripsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_given_trips, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.given_trips_fragment_list);
+        listView = (ListView) view.findViewById(R.id.given_trips_fragment_list);
+        emptyListTextView = (TextView) view.findViewById(R.id.given_trips_fragment_empty_list_tv);
 
         tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
         listView.setAdapter(tripsAdapter);
@@ -81,15 +86,28 @@ public class GivenTripsFragment extends Fragment {
             public void onResponse(WSResponseObject response) {
                 if (response == null) {
                     //TODO
-                } else {
+                } else if (response.getTrips() != null) {
+                    List<Trip> givenTrips = response.getTrips();
+
                     tripsAdapter.refreshTripsList(response.getTrips());
                     greenProgressDialog.dismiss();
+
+                    if (givenTrips.size() < 1) {
+                        emptyListTextView.setVisibility(View.VISIBLE);
+                        listView.setVisibility(View.GONE);
+                    } else {
+                        emptyListTextView.setVisibility(View.GONE);
+                        listView.setVisibility(View.VISIBLE);
+                    }
+
                 }
+                greenProgressDialog.dismiss();
             }
 
             @Override
             public void onError(VolleyError error) {
                 //TODO
+                greenProgressDialog.dismiss();
             }
         });
 

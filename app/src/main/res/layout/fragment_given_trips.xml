@@ -16,8 +16,16 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="5dp"
         android:footerDividersEnabled="true"
-        android:headerDividersEnabled="false">
+        android:headerDividersEnabled="false"
+        android:visibility="visible">
 
     </ListView>
+
+    <TextView
+        android:id="@+id/given_trips_fragment_empty_list_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Não deu nenhuma boleia"
+        android:visibility="gone" />
 
 </FrameLayout>
