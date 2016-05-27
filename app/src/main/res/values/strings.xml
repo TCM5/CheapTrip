@@ -37,8 +37,9 @@
     <string name="btn_revoke_access">Revoke Access</string>
 
     <!-- Menu strings -->
-    <string name="menu_item_trips_title">Cheaptrip rides!</string>
-    <string name="menu_item_my_trips_title">My travels</string>
+    <string name="menu_item_home_title">Home</string>
+    <string name="menu_item_received_trips_title">Received trips</string>
+    <string name="menu_item_given_trips_title">Given trips</string>
     <string name="menu_item_profile_title">Profile</string>
     <string name="menu_item_settings_title">Settings</string>
     <string name="menu_item_about_title">About</string>

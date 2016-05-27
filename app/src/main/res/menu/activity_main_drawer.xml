@@ -8,17 +8,17 @@
         <item
             android:id="@+id/menu_item_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_item_trips_title" />
+            android:title="@string/menu_item_home_title" />
 
         <item
-            android:id="@+id/menu_item_my_trips"
+            android:id="@+id/menu_item_received_trips"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_item_my_trips_title" />
+            android:title="@string/menu_item_received_trips_title" />
 
         <item
-            android:id="@+id/menu_item_trips"
+            android:id="@+id/menu_item_given_trips"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_item_my_trips_title" />
+            android:title="@string/menu_item_given_trips_title" />
 
         <item
             android:id="@+id/menu_item_edit_profile"

@@ -18,6 +18,9 @@ import com.fmt.cheaptrip.utils.LoginUtils;
  */
 public class ProfileFragment extends Fragment {
 
+
+    public static final String TAG = "PROFILE_FRAGMENT_TAG";
+
     private Button fragment_profile_signout_btn;
 
     public ProfileFragment() {

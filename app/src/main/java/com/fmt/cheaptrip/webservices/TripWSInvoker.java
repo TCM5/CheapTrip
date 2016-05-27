@@ -20,7 +20,10 @@ import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 import com.fmt.cheaptrip.webservices.util.CustomJSONParser;
 import com.fmt.cheaptrip.webservices.util.WSConfig;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -105,11 +108,13 @@ public class TripWSInvoker {
 
     public static void receivedTrips(final Context context, final WSResponseListener wsResponse) {
 
+
         CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
-                        List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), List.class);
+                        Type listType = new TypeToken<ArrayList<Trip>>() {}.getType();
+                        List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), listType);
 
                         WSResponseObject responseObject = new WSResponseObject();
                         responseObject.setTrips(trips);

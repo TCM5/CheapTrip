@@ -12,8 +12,8 @@ public class Trip {
     private Integer vehicleId;
     private String StartCity;
     private String EndCity;
-    private Double StartPoint;
-    private Double EndPoint;
+    private String StartPoint;
+    private String EndPoint;
     private Date date;
     private Double Price;
     private String Observations;
@@ -61,19 +61,19 @@ public class Trip {
         EndCity = endCity;
     }
 
-    public Double getStartPoint() {
+    public String getStartPoint() {
         return StartPoint;
     }
 
-    public void setStartPoint(Double startPoint) {
+    public void setStartPoint(String startPoint) {
         StartPoint = startPoint;
     }
 
-    public Double getEndPoint() {
+    public String getEndPoint() {
         return EndPoint;
     }
 
-    public void setEndPoint(Double endPoint) {
+    public void setEndPoint(String endPoint) {
         EndPoint = endPoint;
     }
 

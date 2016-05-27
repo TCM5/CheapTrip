@@ -32,6 +32,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
  */
 public class MapFragment extends Fragment {
 
+    public static final String TAG = "MAP_FRAGMENT_TAG";
+
     private GoogleMap map;
 
     private static final int DEFAULT_MAP_ZOOM = 15;
@@ -221,7 +223,7 @@ public class MapFragment extends Fragment {
             public void onClick(View v) {
 
                 NewTripFragment newTripFragment = new NewTripFragment();
-                ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, true);
+             //   ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, true);
             }
         };
     }
@@ -233,11 +235,14 @@ public class MapFragment extends Fragment {
             public void onClick(View v) {
 
                 GivenTripsFragment givenTripsFragment = new GivenTripsFragment();
-                ActivityUtils.replaceFragment(getFragmentManager(), givenTripsFragment, R.id.main_content_container, true);
+           //     ActivityUtils.replaceFragment(getFragmentManager(), givenTripsFragment, R.id.main_content_container, true);
 
             }
         };
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

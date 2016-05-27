@@ -77,7 +77,7 @@ public class LoadingActivity extends AppCompatActivity {
 
                 } else {
 
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                /*   SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sharedPref.edit();
 
                     editor.putBoolean("signed_logintype_gplus", false);
@@ -86,7 +86,7 @@ public class LoadingActivity extends AppCompatActivity {
 
 
                     editor.commit();
-
+*/
                     if (UserAccountManager.isLogged(getApplicationContext())) {
                         redirectToMain();
                     } else {

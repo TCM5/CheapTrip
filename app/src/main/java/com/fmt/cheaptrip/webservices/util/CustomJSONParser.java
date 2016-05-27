@@ -34,6 +34,10 @@ public class CustomJSONParser {
         return gson.fromJson(jsonString, classType);
     }
 
+    public <T> T stringToObject(String jsonString, Type type) {
+        return gson.fromJson(jsonString, type);
+    }
+
     public <T> T stringToObjectType(String jsonString, Type classType) {
         return gson.fromJson(jsonString, classType);
     }

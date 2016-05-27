@@ -23,11 +23,10 @@ public class ActivityUtils {
         return instance == null ? instance = new ActivityUtils() : instance;
     }
 
-    public static void replaceFragment(FragmentManager fragmentManager, Fragment newFragment, int fragmentLayoutId, boolean addToStack) {
+    public static void replaceFragment(FragmentManager fragmentManager, Fragment newFragment, int fragmentLayoutId, String tag, boolean addToStack) {
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(fragmentLayoutId, newFragment);
-
+        transaction.replace(fragmentLayoutId, newFragment, tag);
 
         if (addToStack) {
             transaction.addToBackStack(null);

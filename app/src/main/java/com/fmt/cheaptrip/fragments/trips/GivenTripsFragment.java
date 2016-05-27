@@ -22,6 +22,8 @@ import java.util.Locale;
 public class GivenTripsFragment extends Fragment {
 
 
+    public static final String TAG = "GIVEN_TRIPS_FRAGMENT_TAG";
+
     private TripsAdapter tripsAdapter;
 
     public GivenTripsFragment() {
@@ -34,7 +36,7 @@ public class GivenTripsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_given_trips, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
+       /* ListView listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
 
         Address add1 = new Address(Locale.ENGLISH);
         add1.setLatitude(5.0);
@@ -60,7 +62,7 @@ public class GivenTripsFragment extends Fragment {
         listView.setAdapter(tripsAdapter);
 
         View header = inflater.inflate(R.layout.mytrip_header, null);
-        listView.addHeaderView(header);
+        listView.addHeaderView(header);*/
 
 
         return view;

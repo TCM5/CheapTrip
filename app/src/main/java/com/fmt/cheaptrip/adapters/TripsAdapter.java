@@ -8,29 +8,31 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.TripEntry;
 import com.fmt.cheaptrip.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by santostc on 16-05-2016.
  */
-public class TripsAdapter extends ArrayAdapter<TripEntry> {
+public class TripsAdapter extends ArrayAdapter<Trip> {
 
     private Context context;
     private int resourceId;
-    private ArrayList<TripEntry> myTripList;
+    private List<Trip> tripsList;
 
-    MyTripsItemHolder myTripsItemHolder;
+    private MyTripsItemHolder myTripsItemHolder;
 
-    public TripsAdapter(Context context, int resourceId, int resourceViewId, ArrayList<TripEntry> myTripsList) {
+    public TripsAdapter(Context context, int resourceId, int resourceViewId, List<Trip> tripsList) {
 
-        super(context, resourceId, resourceViewId, myTripsList);
+        super(context, resourceId, resourceViewId, tripsList);
 
         this.context = context;
         this.resourceId = resourceId;
-        this.myTripList = myTripsList;
+        this.tripsList = tripsList;
     }
 
     @Override
@@ -41,8 +43,6 @@ public class TripsAdapter extends ArrayAdapter<TripEntry> {
         // if (convertView == null) {
         convertView = layoutInflater.inflate(R.layout.mytrip_item, parent, false);
 
-
-        //LayoutInflater.inflate(R.layout.mytrip_item, parent, false);
 
         myTripsItemHolder = new MyTripsItemHolder();
         myTripsItemHolder.originLocation = (TextView) convertView.findViewById(R.id.mytrip_item_location_origin);
@@ -58,12 +58,12 @@ public class TripsAdapter extends ArrayAdapter<TripEntry> {
 
         }*/
 
-        TripEntry tripEntry = getItem(position);
+        Trip trip = getItem(position);
 
         // Set the values
-        myTripsItemHolder.originLocation.setText("TESTE");
-        myTripsItemHolder.destinyLocation.setText("TESTE2");
-        myTripsItemHolder.date.setText("21/05/1990 08:00");
+        myTripsItemHolder.originLocation.setText(trip.getStartCity());
+        myTripsItemHolder.destinyLocation.setText(trip.getEndCity());
+        myTripsItemHolder.date.setText(trip.getDate().toString());
         myTripsItemHolder.status.setText("0");
 
         changeStatusUI();
@@ -73,12 +73,12 @@ public class TripsAdapter extends ArrayAdapter<TripEntry> {
 
     @Override
     public int getCount() {
-        return myTripList.size();
+        return tripsList.size();
     }
 
     @Override
-    public TripEntry getItem(int position) {
-        return myTripList.get(position);
+    public Trip getItem(int position) {
+        return tripsList.get(position);
     }
 
     @Override

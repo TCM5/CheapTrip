@@ -83,22 +83,27 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.menu_item_home:
 
-                MapFragment mapFragment = new MapFragment();
-                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container ,true);
+               // MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(MapFragment.TAG);
+
+                //if (mapFragment == null) {
+                    mapFragment = new MapFragment();
+                //}
+
+                ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container, MapFragment.TAG, true);
 
                 break;
 
-            case R.id.menu_item_my_trips:
-
-                GivenTripsFragment givenTripsFragment = new GivenTripsFragment();
-                ActivityUtils.replaceFragment(fragmentManager, givenTripsFragment, R.id.main_content_container ,true);
-
-                break;
-
-            case R.id.menu_item_trips:
+            case R.id.menu_item_received_trips:
 
                 ReceivedTripsFragment receivedTripsFragment = new ReceivedTripsFragment();
-                ActivityUtils.replaceFragment(fragmentManager, receivedTripsFragment, R.id.main_content_container ,true);
+                ActivityUtils.replaceFragment(fragmentManager, receivedTripsFragment, R.id.main_content_container, ReceivedTripsFragment.TAG, true);
+
+                break;
+
+            case R.id.menu_item_given_trips:
+
+                GivenTripsFragment givenTripsFragment = new GivenTripsFragment();
+                ActivityUtils.replaceFragment(fragmentManager, givenTripsFragment, R.id.main_content_container, GivenTripsFragment.TAG, true);
 
                 break;
 
@@ -106,14 +111,14 @@ public class MainActivity extends AppCompatActivity
 
 
                 ProfileFragment profileFragment = new ProfileFragment();
-                ActivityUtils.replaceFragment(fragmentManager, profileFragment, R.id.main_content_container , true);
+                ActivityUtils.replaceFragment(fragmentManager, profileFragment, R.id.main_content_container, ProfileFragment.TAG, true);
 
                 break;
 
             case R.id.menu_item_about:
 
                 AboutFragment aboutFragment = new AboutFragment();
-                ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.main_content_container , true);
+                ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.main_content_container, AboutFragment.TAG, true);
 
                 break;
 

@@ -15,6 +15,8 @@ import com.fmt.cheaptrip.R;
 public class AboutFragment extends Fragment {
 
 
+    public static final String TAG = "ABOUT_FRAGMENT_TAG";
+
     public AboutFragment() {
         // Required empty public constructor
     }
