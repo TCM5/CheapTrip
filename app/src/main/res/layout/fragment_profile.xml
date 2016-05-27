@@ -2,14 +2,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@color/green3_cheaptrip"
-    tools:context="com.fmt.cheaptrip.fragments.ProfileFragment">
+    android:orientation="vertical"
+    tools:context="com.fmt.cheaptrip.activities.LoginActivity">
 
 
-    <Button
-        android:id="@+id/fragment_profile_signout_btn"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/red"
-        android:text="DISCONNECT" />
+
+        android:gravity="bottom"
+        android:theme="@android:style/Theme.Light.NoTitleBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:text="My Cars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brand" />
+
+            <EditText
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Model" />
+
+            <EditText
+                android:id="@+id/txtContactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Year" />
+
+            <EditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seats" />
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <Button
+                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:background="@color/green4_cheaptrip"
+                android:text="Add Car"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/fragment_profile_signout_btn"
+                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:background="@color/red"
+                android:text="Log Out" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
 </LinearLayout>

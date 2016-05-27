@@ -1,6 +1,10 @@
 package com.fmt.cheaptrip.webservices.response;
 
+import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.User;
+import com.fmt.cheaptrip.entities.Vehicle;
+
+import java.util.List;
 
 /**
  * Created by Miguel on 25/05/16.
@@ -11,6 +15,8 @@ public class WSResponseObject {
     private String success;
     private String error;
     private User user;
+    private List<Trip> trips;
+    private List<Vehicle> vehicles;
 
     public String getSuccess() {
         return success;
@@ -34,5 +40,21 @@ public class WSResponseObject {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 }

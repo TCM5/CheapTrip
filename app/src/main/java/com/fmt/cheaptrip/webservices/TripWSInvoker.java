@@ -11,13 +11,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.User;
+import com.fmt.cheaptrip.entities.Vehicle;
 import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.request.CustomStringRequest;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 import com.fmt.cheaptrip.webservices.util.CustomJSONParser;
 import com.fmt.cheaptrip.webservices.util.WSConfig;
+
+import java.util.List;
 
 /**
  * Created by Miguel on 22/05/16.
@@ -105,7 +109,10 @@ public class TripWSInvoker {
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
-                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), List.class);
+
+                        WSResponseObject responseObject = new WSResponseObject();
+                        responseObject.setTrips(trips);
                         wsResponse.onResponse(responseObject);
                     }
                 },
@@ -117,13 +124,71 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = "40";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
 
-        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, "myPassengerTrips");
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_RECEIVED_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);
     }
 
+    public static void sharedTrips(final Context context, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), List.class);
+
+                        WSResponseObject responseObject = new WSResponseObject();
+                        responseObject.setTrips(trips);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        String currentUserId = "6";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_SHARED_TRIPS);
+        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
+    public static void userVehicles(final Context context, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.VEHICLES_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        List<Vehicle> vehicles = CustomJSONParser.getInstance().stringToObject(response.toString(), List.class);
+
+                        WSResponseObject responseObject = new WSResponseObject();
+                        responseObject.setVehicles(vehicles);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        String currentUserId = "1";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
 }
