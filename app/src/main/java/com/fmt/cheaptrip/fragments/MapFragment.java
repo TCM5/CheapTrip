@@ -1,5 +1,7 @@
 package com.fmt.cheaptrip.fragments;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,6 +30,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 /**
  * Created by ASUS-TCMS on 14/05/2016.
  */
@@ -43,6 +49,9 @@ public class MapFragment extends Fragment {
 
     private LocationAutoCompleteTextView originInput;
     private LocationAutoCompleteTextView destinyInput;
+
+    private String originCity;
+    private String destinyCity;
 
     private FloatingActionButton newFab;
     private FloatingActionButton newTripFab;
@@ -174,12 +183,24 @@ public class MapFragment extends Fragment {
 
                 LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
                 originInput.setText(result.getAddress());
+                originCity = result.getCity();
 
-                markerOptions.position(result.getLatLng());
+             /*  Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                Double latitude = result.getLatitude();
+                Double longitude = result.getLongitude();
+
+                try {
+                    List<Address>= geocoder.getFromLocation(latitude,longitude,1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+
+              /*  markerOptions.position(result.getLatLng());
                 map.addMarker(markerOptions);
 
                 CameraUpdate center = CameraUpdateFactory.newCameraPosition(new CameraPosition(result.getLatLng(), 10, 1f, 1f));
                 map.animateCamera(center);
+            */
             }
         };
     }
@@ -194,6 +215,7 @@ public class MapFragment extends Fragment {
 
                 LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
                 destinyInput.setText(result.getAddress());
+                destinyCity = result.getCity();
 
             }
         };
@@ -236,8 +258,8 @@ public class MapFragment extends Fragment {
             public void onClick(View v) {
 
                 Bundle bundle = new Bundle();
-                bundle.putString("addressOrigin", originInput.getText().toString());
-                bundle.putString("addressDestiny", destinyInput.getText().toString());
+                bundle.putString("addressOrigin", originCity);
+                bundle.putString("addressDestiny", destinyCity);
 
                 SearchTripFragment searchTripFragment = new SearchTripFragment();
                 searchTripFragment.setArguments(bundle);

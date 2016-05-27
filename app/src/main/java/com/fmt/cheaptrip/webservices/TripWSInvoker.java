@@ -113,7 +113,8 @@ public class TripWSInvoker {
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
-                        Type listType = new TypeToken<ArrayList<Trip>>() {}.getType();
+                        Type listType = new TypeToken<ArrayList<Trip>>() {
+                        }.getType();
                         List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), listType);
 
                         WSResponseObject responseObject = new WSResponseObject();
@@ -145,7 +146,8 @@ public class TripWSInvoker {
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
-                        Type listType = new TypeToken<ArrayList<Trip>>() {}.getType();
+                        Type listType = new TypeToken<ArrayList<Trip>>() {
+                        }.getType();
                         List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), listType);
 
                         WSResponseObject responseObject = new WSResponseObject();
@@ -194,6 +196,37 @@ public class TripWSInvoker {
         String currentUserId = "1";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
 
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
+    public static void searchTrip(final Context context, String originCity, String destinyCity, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        Type listType = new TypeToken<ArrayList<Trip>>() {
+                        }.getType();
+                        List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), listType);
+
+                        WSResponseObject responseObject = new WSResponseObject();
+                        responseObject.setTrips(trips);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_FIND_TRIPS);
+        receivedTripsRequest.addParam(WSConfig.PARAM_START_CITY, originCity);
+        receivedTripsRequest.addParam(WSConfig.PARAM_END_CITY, destinyCity);
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);

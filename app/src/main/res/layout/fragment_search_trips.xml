@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mytrips_fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green3_cheaptrip"
+    tools:context=".fragments.trips.SearchTripFragment">
+
+    <ListView
+        android:id="@+id/search_trips_fragment_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/green3_cheaptrip"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="5dp"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="false"
+        android:visibility="visible">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/search_trips_fragment_empty_list_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Não existe nenhuma boleia com essa caracteristica"
+        android:visibility="gone" />
+
+</FrameLayout>

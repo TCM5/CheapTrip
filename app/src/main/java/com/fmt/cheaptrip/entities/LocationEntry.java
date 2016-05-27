@@ -1,6 +1,7 @@
 package com.fmt.cheaptrip.entities;
 
 import android.location.Address;
+import android.location.Geocoder;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -44,15 +45,25 @@ public class LocationEntry {
         this.address = address;
     }
 
+    public Double getLatitude() {
+        return address.getLatitude();
+    }
+
+    public Double getLongitude() {
+        return address.getLongitude();
+    }
+
+    public String getCity(){
+        return address.getLocality();
+    }
+
     /**
      * @return
      */
     public LatLng getLatLng() {
-        Double latitude = address.getLatitude();
-        Double longitude = address.getLongitude();
-
-        return new LatLng(latitude, longitude);
+        return new LatLng(getLatitude(), getLongitude());
     }
+
 
     /**
      * @return

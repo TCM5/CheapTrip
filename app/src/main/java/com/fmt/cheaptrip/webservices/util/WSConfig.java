@@ -19,6 +19,8 @@ public class WSConfig {
     public static final String PARAM_EMAIL = "email";
     public static final String PARAM_PASSWORD = "password";
     public static final String PARAM_ACTION = "action";
+    public static final String PARAM_START_CITY = "startcity";
+    public static final String PARAM_END_CITY = "endcity";
 
     //TRIPS ACTION
     public static final String ACTION_FIND_TRIPS = "findTrips";
