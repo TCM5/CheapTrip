@@ -4,6 +4,7 @@ package com.fmt.cheaptrip.webservices;
  * Created by Miguel on 24/05/16.
  */
 
+import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.android.volley.Request;
@@ -108,7 +109,6 @@ public class TripWSInvoker {
 
     public static void receivedTrips(final Context context, final WSResponseListener wsResponse) {
 
-
         CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
                 new Response.Listener() {
                     @Override
@@ -119,6 +119,7 @@ public class TripWSInvoker {
                         WSResponseObject responseObject = new WSResponseObject();
                         responseObject.setTrips(trips);
                         wsResponse.onResponse(responseObject);
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -138,13 +139,14 @@ public class TripWSInvoker {
         requestQueue.add(receivedTripsRequest);
     }
 
-    public static void sharedTrips(final Context context, final WSResponseListener wsResponse) {
+    public static void givenTrips(final Context context, final WSResponseListener wsResponse) {
 
         CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
-                        List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), List.class);
+                        Type listType = new TypeToken<ArrayList<Trip>>() {}.getType();
+                        List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), listType);
 
                         WSResponseObject responseObject = new WSResponseObject();
                         responseObject.setTrips(trips);

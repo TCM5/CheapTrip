@@ -1,30 +1,24 @@
 package com.fmt.cheaptrip.fragments.trips;
 
 
-import android.location.Address;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.adapters.TripsAdapter;
+import com.fmt.cheaptrip.customviews.GreenProgressDialog;
 import com.fmt.cheaptrip.entities.Trip;
-import com.fmt.cheaptrip.entities.TripEntry;
-import com.fmt.cheaptrip.entities.User;
-import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,8 +29,17 @@ public class ReceivedTripsFragment extends Fragment {
 
     private TripsAdapter tripsAdapter;
 
+    private GreenProgressDialog greenProgressDialog;
+
     public ReceivedTripsFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        callServiceReceivedTrips();
     }
 
 
@@ -48,9 +51,8 @@ public class ReceivedTripsFragment extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
 
-        List<Trip> receivedTrips = receivedTripsList();
+        tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
 
-        tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview, receivedTrips);
         listView.setAdapter(tripsAdapter);
 
         View header = inflater.inflate(R.layout.mytrip_header, null);
@@ -66,17 +68,20 @@ public class ReceivedTripsFragment extends Fragment {
      *
      * @return List of received trips
      */
-    private List<Trip> receivedTripsList() {
+    private void callServiceReceivedTrips() {
 
-        final List<Trip> receivedTrips = new ArrayList<>();
+        greenProgressDialog = new GreenProgressDialog(getActivity());
+        greenProgressDialog.show();
 
         TripWSInvoker.receivedTrips(getActivity(), new WSResponseListener() {
+
             @Override
             public void onResponse(WSResponseObject response) {
                 if (response == null) {
                     //TODO
-                } else {
-                    receivedTrips.addAll(response.getTrips());
+                } else if (response.getTrips() != null) {
+                    tripsAdapter.refreshTripsList(response.getTrips());
+                    greenProgressDialog.dismiss();
                 }
             }
 
@@ -86,8 +91,11 @@ public class ReceivedTripsFragment extends Fragment {
             }
         });
 
-        return receivedTrips;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        //TODO
+    }
 }

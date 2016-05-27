@@ -22,7 +22,7 @@ public class TripsAdapter extends ArrayAdapter<Trip> {
 
     private Context context;
     private int resourceId;
-    private List<Trip> tripsList;
+    private List<Trip> tripsList = new ArrayList<>();
 
     private MyTripsItemHolder myTripsItemHolder;
 
@@ -33,6 +33,14 @@ public class TripsAdapter extends ArrayAdapter<Trip> {
         this.context = context;
         this.resourceId = resourceId;
         this.tripsList = tripsList;
+    }
+
+    public TripsAdapter(Context context, int resourceId, int resourceViewId) {
+        super(context, resourceId, resourceViewId);
+
+        this.context = context;
+        this.resourceId = resourceId;
+
     }
 
     @Override
@@ -84,6 +92,19 @@ public class TripsAdapter extends ArrayAdapter<Trip> {
     @Override
     public long getItemId(int position) {
         return super.getItemId(position);
+    }
+
+    /**
+     * This method is responsible to refresh the list used in this adatpers.
+     * This is specially util because this adapter is called before a response of an webservice.
+     * So after the response, the list has to be updated
+     *
+     * @param newlist
+     */
+    public void refreshTripsList(List<Trip> newlist) {
+        tripsList.clear();
+        tripsList.addAll(newlist);
+        this.notifyDataSetChanged();
     }
 
     /*
