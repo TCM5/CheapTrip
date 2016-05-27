@@ -67,7 +67,16 @@ public class MapFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-        SupportMapFragment supportMapFragment = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment_id);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+        SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment_id);
 
         if (supportMapFragment != null) {
 
@@ -78,20 +87,16 @@ public class MapFragment extends Fragment {
                 }
             });
 
+            // The next piece of code is ugly, but...
+            if (map == null) {
+                map = supportMapFragment.getMap();
+            }
+
             if (map != null) {
                 setMapDefaultConfigs();
             }
         }
 
-
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-
-        View view = inflater.inflate(R.layout.fragment_map, container, false);
 
         originInput = (LocationAutoCompleteTextView) view.findViewById(R.id.map_fragment_origin_input);
 
@@ -145,6 +150,7 @@ public class MapFragment extends Fragment {
 
         map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         map.getUiSettings().setZoomGesturesEnabled(true);
+        map.getUiSettings().setZoomControlsEnabled(true);
 
         LatLng defaultLatLng;
         /*    if( posicao actual existe){
@@ -158,16 +164,13 @@ public class MapFragment extends Fragment {
         defaultLatLng = new LatLng(DEFAULT_MAP_LATITUDE, DEFAULT_MAP_LONGITUDE);
 
         CameraUpdate center = CameraUpdateFactory.newLatLng(defaultLatLng);
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(DEFAULT_MAP_ZOOM);
 
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(30);
 
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(defaultLatLng).zoom(15).build();
-        map.animateCamera(CameraUpdateFactory
-                .newCameraPosition(cameraPosition));
-
-        //map.moveCamera(center);
         map.animateCamera(zoom);
+
+        map.moveCamera(center);
+
     }
 
     /**
@@ -177,7 +180,6 @@ public class MapFragment extends Fragment {
 
         return new AdapterView.OnItemClickListener() {
 
-            MarkerOptions markerOptions = new MarkerOptions();
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -186,22 +188,14 @@ public class MapFragment extends Fragment {
                 originInput.setText(result.getAddress());
                 originCity = result.getCity();
 
-             /*  Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
-                Double latitude = result.getLatitude();
-                Double longitude = result.getLongitude();
-
-                try {
-                    List<Address>= geocoder.getFromLocation(latitude,longitude,1);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-
-              /*  markerOptions.position(result.getLatLng());
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(result.getLatLng());
                 map.addMarker(markerOptions);
+                CameraUpdate zoom = CameraUpdateFactory.zoomTo(20);
 
-                CameraUpdate center = CameraUpdateFactory.newCameraPosition(new CameraPosition(result.getLatLng(), 10, 1f, 1f));
-                map.animateCamera(center);
-            */
+                map.animateCamera(zoom);
+                map.moveCamera(CameraUpdateFactory.newLatLng(result.getLatLng()));
+
             }
         };
     }
@@ -238,8 +232,7 @@ public class MapFragment extends Fragment {
                         findTripAction.setVisibility(LinearLayout.GONE);
                         newTripAction.setVisibility(LinearLayout.GONE);
                     }
-                }
-                else{
+                } else {
                     Toast.makeText(getActivity(), "You have to select a origin and destination city", Toast.LENGTH_SHORT).show();
                 }
             }
