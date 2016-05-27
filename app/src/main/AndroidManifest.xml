@@ -30,7 +30,11 @@
 
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:icon="@drawable/logo"
+            >
+
+            ></activity>
 
         <activity android:name="com.fmt.cheaptrip.activities.LoginActivity" />
 
