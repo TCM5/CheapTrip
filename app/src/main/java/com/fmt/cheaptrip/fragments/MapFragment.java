@@ -17,6 +17,7 @@ import com.fmt.cheaptrip.entities.LocationEntry;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.fragments.trips.GivenTripsFragment;
 import com.fmt.cheaptrip.fragments.trips.NewTripFragment;
+import com.fmt.cheaptrip.fragments.trips.SearchTripFragment;
 import com.fmt.cheaptrip.utils.ActivityUtils;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -223,7 +224,7 @@ public class MapFragment extends Fragment {
             public void onClick(View v) {
 
                 NewTripFragment newTripFragment = new NewTripFragment();
-             //   ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, true);
+                ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, NewTripFragment.TAG, true);
             }
         };
     }
@@ -234,8 +235,14 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                GivenTripsFragment givenTripsFragment = new GivenTripsFragment();
-           //     ActivityUtils.replaceFragment(getFragmentManager(), givenTripsFragment, R.id.main_content_container, true);
+                Bundle bundle = new Bundle();
+                bundle.putString("addressOrigin", originInput.getText().toString());
+                bundle.putString("addressDestiny", destinyInput.getText().toString());
+
+                SearchTripFragment searchTripFragment = new SearchTripFragment();
+                searchTripFragment.setArguments(bundle);
+
+                ActivityUtils.replaceFragment(getFragmentManager(), searchTripFragment, R.id.main_content_container, SearchTripFragment.TAG, true);
 
             }
         };

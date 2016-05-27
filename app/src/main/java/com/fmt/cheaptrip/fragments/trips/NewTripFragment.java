@@ -19,6 +19,8 @@ import com.fmt.cheaptrip.R;
  */
 public class NewTripFragment extends Fragment {
 
+    public static final String TAG = "NEW_TRIPS_FRAGMENT_TAG";
+
     // Date section views
 
     // Price section views
