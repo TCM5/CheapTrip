@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.fmt.cheaptrip.adapters.LocationAdapter;
 import com.fmt.cheaptrip.customviews.LocationAutoCompleteTextView;
@@ -227,12 +228,19 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (LinearLayout.GONE == findTripAction.getVisibility() || LinearLayout.GONE == newTripAction.getVisibility()) {
-                    findTripAction.setVisibility(LinearLayout.VISIBLE);
-                    newTripAction.setVisibility(LinearLayout.VISIBLE);
-                } else {
-                    findTripAction.setVisibility(LinearLayout.GONE);
-                    newTripAction.setVisibility(LinearLayout.GONE);
+                // Later this validation as to change, because its easly hackable
+                if (originCity != null && destinyCity != null) {
+
+                    if (LinearLayout.GONE == findTripAction.getVisibility() || LinearLayout.GONE == newTripAction.getVisibility()) {
+                        findTripAction.setVisibility(LinearLayout.VISIBLE);
+                        newTripAction.setVisibility(LinearLayout.VISIBLE);
+                    } else {
+                        findTripAction.setVisibility(LinearLayout.GONE);
+                        newTripAction.setVisibility(LinearLayout.GONE);
+                    }
+                }
+                else{
+                    Toast.makeText(getActivity(), "You have to select a origin and destination city", Toast.LENGTH_SHORT).show();
                 }
             }
         };
