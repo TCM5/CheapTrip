@@ -49,8 +49,8 @@ public class MapFragment extends Fragment {
     private GoogleMap map;
 
     private static final int DEFAULT_MAP_ZOOM = 15;
-    private static final double DEFAULT_MAP_LATITUDE = 0.0;
-    private static final double DEFAULT_MAP_LONGITUDE = 0.0;
+    private static final double DEFAULT_MAP_LATITUDE = 38.736946;
+    private static final double DEFAULT_MAP_LONGITUDE = 	-9.142685;
 
     private LocationAutoCompleteTextView originInput;
     private LocationAutoCompleteTextView destinyInput;
@@ -167,9 +167,11 @@ public class MapFragment extends Fragment {
 
         defaultLatLng = new LatLng(DEFAULT_MAP_LATITUDE, DEFAULT_MAP_LONGITUDE);
         CameraUpdate center = CameraUpdateFactory.newLatLng(defaultLatLng);
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
-        map.animateCamera(zoom);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(6.5f);
+
         map.moveCamera(center);
+        map.animateCamera(zoom);
+
     }
 
     /**
@@ -194,6 +196,7 @@ public class MapFragment extends Fragment {
 
                 markerOptions.position(result.getLatLng());
                 map.addMarker(markerOptions);
+
                 CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
 
                 map.animateCamera(zoom);
