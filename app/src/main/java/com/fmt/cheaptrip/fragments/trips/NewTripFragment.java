@@ -17,12 +17,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.List;
+
+import com.fmt.cheaptrip.entities.Vehicle;
+
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.entities.Bagage;
 import com.fmt.cheaptrip.entities.Trip;
+import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
@@ -118,6 +124,8 @@ public class NewTripFragment extends Fragment {
 
         // Car section vies
         new_trip_fragment_car_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_car_spinner_value);
+        Toast.makeText(getContext(), "Before fillUserVehiclesSpinner()", Toast.LENGTH_LONG).show();
+        fillUserVehiclesSpinner();
 
         // Bagage
         final ArrayList<Bagage> baggageTypesMap = new ArrayList<>();
@@ -260,5 +268,26 @@ public class NewTripFragment extends Fragment {
         }
     }
 
+    private void fillUserVehiclesSpinner() {
+
+        Integer currentUserId = UserAccountManager.getCurrentUserId(getActivity().getApplicationContext());
+        currentUserId = 1;
+
+        TripWSInvoker.getUserVehicles(getActivity().getApplicationContext(), currentUserId, new WSResponseListener() {
+            @Override
+            public void onResponse(WSResponseObject response) {
+                List<Vehicle> myVehicles = response.getVehicles();
+
+                ArrayAdapter<Vehicle> vehiclesSpinnerAdapter = new ArrayAdapter<Vehicle>(getActivity(), android.R.layout.simple_spinner_item, myVehicles);
+                vehiclesSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                new_trip_fragment_car_spinner_value.setAdapter(vehiclesSpinnerAdapter);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+
+            }
+        });
+    }
 
 }
