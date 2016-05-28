@@ -25,16 +25,18 @@ public class LocationEntry {
     public String getAddress() {
 
         String display_address = "";
+        String countryAddress = "";
 
-        display_address += address.getAddressLine(0) + "\n";
-
+        //display_address += address.getAddressLine(0) + "\n";
+        /*
         for (int i = 1; i < address.getMaxAddressLineIndex(); i++) {
             display_address += address.getAddressLine(i) + ", ";
         }
+        */
 
-        display_address = display_address.substring(0, display_address.length() - 2);
+        //display_address = display_address.substring(0, display_address.length());
 
-        return display_address;
+        return address.getLocality() + ", " + address.getCountryName();
     }
 
     /**
