@@ -12,6 +12,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.fmt.cheaptrip.entities.SubscribeTrip;
 import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.entities.Vehicle;
@@ -265,6 +266,31 @@ public class TripWSInvoker {
         receivedTripsRequest.addParam(WSConfig.PARAM_BAGAGGE_SIZE, trip.getBaggageSize());
         receivedTripsRequest.addParam(WSConfig.PARAM_DELAY_TOLERANCE, trip.getDelayTolerance().toString());
 
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
+    public static void subscribeTrip(final Context context, SubscribeTrip subscribeTrip, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_SUBSCRIBE_TRIP);
+        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, subscribeTrip.getTripId().toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, subscribeTrip.getPassengerId().toString());
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);

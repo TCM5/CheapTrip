@@ -23,7 +23,9 @@ public class WSConfig {
     public static final String PARAM_PASSWORD = "password";
 
     //Trip Parameters
+    public static final String PARAM_TRIP_ID = "tripid";
     public static final String PARAM_DRIVER_ID = "driverid";
+    public static final String PARAM_PASSENGER_ID = "passengerid";
     public static final String PARAM_VEHICLE_ID = "vehicleid";
     public static final String PARAM_START_CITY = "startcity";
     public static final String PARAM_END_CITY = "endcity";
@@ -40,4 +42,5 @@ public class WSConfig {
     public static final String ACTION_FIND_TRIPS = "findTrips";
     public static final String ACTION_RECEIVED_TRIPS = "myPassengerTrips";
     public static final String ACTION_SHARED_TRIPS = "myDriverTrips";
+    public static final String ACTION_SUBSCRIBE_TRIP = "subscribeTrip";
 }
