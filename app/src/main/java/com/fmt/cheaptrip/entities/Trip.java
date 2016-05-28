@@ -1,5 +1,6 @@
 package com.fmt.cheaptrip.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -7,14 +8,6 @@ import java.util.HashMap;
  * Created by santostc on 26-05-2016.
  */
 public class Trip {
-
-    public static HashMap<String, String> baggageTypesMap = new HashMap<>();
-
-    {
-        baggageTypesMap.put("S", "Small");
-        baggageTypesMap.put("M", "Medium");
-        baggageTypesMap.put("L", "Large");
-    }
 
     private Integer tripId;
     private Integer driverId;

@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -16,11 +18,13 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.entities.Bagage;
 import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -113,6 +117,15 @@ public class NewTripFragment extends Fragment {
 
         // Bagage
         new_trip_fragment_bagage_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_bagage_spinner_value);
+
+        ArrayList<Bagage> baggageTypesMap = new ArrayList<>();
+        baggageTypesMap.add(new Bagage("S", "Large"));
+        baggageTypesMap.add(new Bagage("M", "Medium"));
+        baggageTypesMap.add(new Bagage("L", "Large"));
+
+        ArrayAdapter<Bagage> baggagerSpinnerAdapter = new ArrayAdapter<Bagage>(getActivity(), android.R.layout.simple_spinner_item, baggageTypesMap);
+        baggagerSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        new_trip_fragment_bagage_spinner_value.setAdapter(baggagerSpinnerAdapter);
 
         // Time tolerance views
         new_trip_fragment_tolerance_fb_less = (FloatingActionButton) view.findViewById(R.id.new_trip_fragment_tolerance_fb_less);
