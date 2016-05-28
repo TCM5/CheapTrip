@@ -92,13 +92,13 @@ public class NewTripFragment extends Fragment {
         new_trip_fragment_rules_cb_value = (CheckBox) view.findViewById(R.id.new_trip_fragment_rules_cb_value);
 
         btnRegisterTrip = (FloatingActionButton) view.findViewById(R.id.btnRegisterTrip);
+
         btnRegisterTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 registerTrip(view);
             }
         });
-
 
 
         return view;
@@ -118,18 +118,32 @@ public class NewTripFragment extends Fragment {
         trip.setBaggageSize("1");
         trip.setDelayTolerance(15);
 
-        TripWSInvoker.registerTrip(getActivity().getApplicationContext(), trip, new WSResponseListener() {
-            @Override
-            public void onResponse(WSResponseObject response) {
-                if(response.getSuccess().equalsIgnoreCase("true")) {
-                    Toast.makeText(getActivity().getApplicationContext(), "Trip Registered", Toast.LENGTH_SHORT).show();
+        if (trip.getDriverId() == null || trip.getVehicleId() == null ||
+                (trip.getStartCity() == null || trip.getStartCity().isEmpty()) ||
+                (trip.getEndCity() == null || trip.getEndCity().isEmpty()) ||
+                (trip.getStartPoint() == null || trip.getStartPoint().isEmpty()) ||
+                (trip.getEndPoint() == null || trip.getEndPoint().isEmpty()) ||
+                trip.getTripDate() == null || trip.getPrice() == null ||
+                trip.getBaggageSize() == null || trip.getDelayTolerance() == null) {
+
+            Toast.makeText(getActivity(), "You have to bla bla", Toast.LENGTH_LONG);
+
+        } else {
+
+
+            TripWSInvoker.registerTrip(getActivity().getApplicationContext(), trip, new WSResponseListener() {
+                @Override
+                public void onResponse(WSResponseObject response) {
+                    if (response.getSuccess().equalsIgnoreCase("true")) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Trip Registered", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onError(VolleyError error) {
+                @Override
+                public void onError(VolleyError error) {
 
-            }
-        });
+                }
+            });
+        }
     }
 }

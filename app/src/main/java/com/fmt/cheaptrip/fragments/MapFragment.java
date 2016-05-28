@@ -1,5 +1,6 @@
 package com.fmt.cheaptrip.fragments;
 
+import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -27,6 +29,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -189,9 +193,13 @@ public class MapFragment extends Fragment {
                 originCity = result.getCity();
 
                 MarkerOptions markerOptions = new MarkerOptions();
+
+                BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.markericonstart);
+                markerOptions.icon(icon);
+
                 markerOptions.position(result.getLatLng());
                 map.addMarker(markerOptions);
-                CameraUpdate zoom = CameraUpdateFactory.zoomTo(20);
+                CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
 
                 map.animateCamera(zoom);
                 map.moveCamera(CameraUpdateFactory.newLatLng(result.getLatLng()));
@@ -211,6 +219,18 @@ public class MapFragment extends Fragment {
                 LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
                 destinyInput.setText(result.getAddress());
                 destinyCity = result.getCity();
+
+                MarkerOptions markerOptions = new MarkerOptions();
+
+                BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.markericonend);
+                markerOptions.icon(icon);
+
+                markerOptions.position(result.getLatLng());
+                map.addMarker(markerOptions);
+                CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
+
+                map.animateCamera(zoom);
+                map.moveCamera(CameraUpdateFactory.newLatLng(result.getLatLng()));
 
             }
         };
@@ -246,7 +266,13 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Bundle bundle = new Bundle();
+                bundle.putString("addressOrigin", originCity);
+                bundle.putString("addressDestiny", destinyCity);
+
                 NewTripFragment newTripFragment = new NewTripFragment();
+                newTripFragment.setArguments(bundle);
+
                 ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, NewTripFragment.TAG, true);
             }
         };
@@ -266,7 +292,6 @@ public class MapFragment extends Fragment {
                 searchTripFragment.setArguments(bundle);
 
                 ActivityUtils.replaceFragment(getFragmentManager(), searchTripFragment, R.id.main_content_container, SearchTripFragment.TAG, true);
-
             }
         };
     }
