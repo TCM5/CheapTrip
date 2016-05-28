@@ -21,9 +21,7 @@ public class QRCodeVisualizer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_code_visualizer);
 
-        Bitmap myBitmap = QRCode.from("Trip ID = " + getIntent().getExtras().get("tripId")).withSize(600, 600).bitmap();
-        ImageView myImage = (ImageView) findViewById(R.id.qrCodeImageView);
-        myImage.setImageBitmap(myBitmap);
+
 
     }
 }

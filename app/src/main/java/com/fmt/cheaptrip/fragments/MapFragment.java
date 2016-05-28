@@ -1,6 +1,7 @@
 package com.fmt.cheaptrip.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -8,6 +9,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,7 +91,11 @@ public class MapFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment_id);
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        SupportMapFragment supportMapFragment = new SupportMapFragment();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.map_fragment_id, supportMapFragment);
+        ft.commit();
 
         if (supportMapFragment != null) {
 
@@ -94,19 +103,10 @@ public class MapFragment extends Fragment {
                 @Override
                 public void onMapReady(GoogleMap googleMap) {
                     map = googleMap;
+                    setMapDefaultConfigs();
                 }
             });
-
-            // The next piece of code is ugly, but...
-            if (map == null) {
-                map = supportMapFragment.getMap();
-            }
-
-            if (map != null) {
-                setMapDefaultConfigs();
-            }
         }
-
 
         originInput = (LocationAutoCompleteTextView) view.findViewById(R.id.map_fragment_origin_input);
 
@@ -208,7 +208,7 @@ public class MapFragment extends Fragment {
                 map.animateCamera(zoom);
                 map.moveCamera(CameraUpdateFactory.newLatLng(result.getLatLng()));
 
-                InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
             }
@@ -241,7 +241,7 @@ public class MapFragment extends Fragment {
                 map.moveCamera(CameraUpdateFactory.newLatLng(result.getLatLng()));
 
 
-                InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
             }
@@ -315,5 +315,17 @@ public class MapFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        FragmentManager fragManager = getActivity().getSupportFragmentManager();
+        final Fragment fragment = fragManager.findFragmentById(R.id.map_fragment_id);
+        if (fragment != null) {
+            fragManager.beginTransaction().remove(fragment).commit();
+        }
+    }
+
 }

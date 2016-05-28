@@ -351,6 +351,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@color/green3_cheaptrip"
                     android:gravity="top"
+                    android:padding="10dp"
                     android:textColor="@android:color/darker_gray" />
 
 
@@ -396,10 +397,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
-                        android:background="@color/green4_cheaptrip" />
+                        android:buttonTint="@color/green4_cheaptrip" />
 
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/qrCodeImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:scaleType="center"
+                    android:src="@color/abc_search_url_text_normal"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/registerTripTextView"

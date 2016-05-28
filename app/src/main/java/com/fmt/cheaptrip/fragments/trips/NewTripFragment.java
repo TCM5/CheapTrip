@@ -2,6 +2,7 @@ package com.fmt.cheaptrip.fragments.trips;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -86,6 +87,9 @@ public class NewTripFragment extends Fragment {
 
     // Rules views
     private CheckBox new_trip_fragment_rules_cb_value;
+
+    // QRcode view
+    private ImageView qrCodeImageView;
 
     // Register "button"
     private TextView registerTripTextView;
@@ -183,15 +187,36 @@ public class NewTripFragment extends Fragment {
 
         // Rules views
         new_trip_fragment_rules_cb_value = (CheckBox) view.findViewById(R.id.new_trip_fragment_rules_cb_value);
+        new_trip_fragment_rules_cb_value.setOnClickListener(new View.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(View v) {
+
+                                                                    if (new_trip_fragment_rules_cb_value.isChecked()) {
+                                                                        Bitmap myBitmap = QRCode.from("Trip ID = 1").withSize(600, 600).bitmap();
+                                                                        qrCodeImageView.setImageBitmap(myBitmap);
+                                                                        qrCodeImageView.setVisibility(View.VISIBLE);
+                                                                    } else {
+                                                                        qrCodeImageView.setVisibility(View.GONE);
+                                                                    }
+                                                                }
+                                                            }
+        );
+
+        qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
+
 
         registerTripTextView = (TextView) view.findViewById(R.id.registerTripTextView);
 
-        registerTripTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                registerTrip(view);
-            }
-        });
+        registerTripTextView.setOnClickListener(new View.OnClickListener()
+
+                                                {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        registerTrip(view);
+                                                    }
+                                                }
+
+        );
 
 
         return view;
@@ -271,7 +296,7 @@ public class NewTripFragment extends Fragment {
                 Toast.makeText(getActivity(), "You have to agree with the rules", Toast.LENGTH_LONG);
             }
         }
-        generateQRCode(1);
+
     }
 
     private void fillUserVehiclesSpinner() {
@@ -296,11 +321,4 @@ public class NewTripFragment extends Fragment {
         });
     }
 
-    private void generateQRCode(Integer tripId) {
-        Intent intent = new Intent();
-        intent.setClass(getContext(), QRCodeVisualizer.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("tripId", tripId);
-        getContext().startActivity(intent);
-    }
 }
