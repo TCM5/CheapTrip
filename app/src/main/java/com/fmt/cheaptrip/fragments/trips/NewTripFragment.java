@@ -1,6 +1,7 @@
 package com.fmt.cheaptrip.fragments.trips;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -18,8 +19,11 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.List;
 
+import com.fmt.cheaptrip.activities.MainActivity;
+import com.fmt.cheaptrip.activities.QRCodeVisualizer;
 import com.fmt.cheaptrip.entities.Vehicle;
 
 import android.widget.Toast;
@@ -32,6 +36,9 @@ import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
+import com.google.zxing.BarcodeFormat;
+
+import net.glxn.qrgen.android.QRCode;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -265,6 +272,7 @@ public class NewTripFragment extends Fragment {
                 Toast.makeText(getActivity(), "You have to agree with the rules", Toast.LENGTH_LONG);
             }
         }
+        generateQRCode(1);
     }
 
     private void fillUserVehiclesSpinner() {
@@ -289,4 +297,11 @@ public class NewTripFragment extends Fragment {
         });
     }
 
+    private void generateQRCode(Integer tripId) {
+        Intent intent = new Intent();
+        intent.setClass(getContext(), QRCodeVisualizer.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("tripId", tripId);
+        getContext().startActivity(intent);
+    }
 }

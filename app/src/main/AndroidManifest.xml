@@ -39,7 +39,7 @@
         <activity android:name="com.fmt.cheaptrip.activities.SignInActivity" />
 
         <activity android:name="com.fmt.cheaptrip.activities.IntroductionActivity" />
-
+        <activity android:name="com.fmt.cheaptrip.activities.QRCodeVisualizer" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
