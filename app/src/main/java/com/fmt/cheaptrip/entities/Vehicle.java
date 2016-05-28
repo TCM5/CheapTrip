@@ -42,4 +42,9 @@ public class Vehicle {
     public void setSeatsNumber(int seatsNumber) {
         this.seatsNumber = seatsNumber;
     }
+
+    @Override
+    public String toString() {
+        return this.getBrand() + " " + this.getModel();
+    }
 }
