@@ -61,6 +61,9 @@ public class MapFragment extends Fragment {
     private String originCity;
     private String destinyCity;
 
+    private LatLng originLatLng;
+    private LatLng destinyLatLng;
+
     private FloatingActionButton newFab;
     private FloatingActionButton newTripFab;
     private FloatingActionButton findTripFab;
@@ -190,6 +193,7 @@ public class MapFragment extends Fragment {
                 LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
                 originInput.setText(result.getAddress());
                 originCity = result.getCity();
+                originLatLng = result.getLatLng();
 
                 MarkerOptions markerOptions = new MarkerOptions();
 
@@ -219,6 +223,7 @@ public class MapFragment extends Fragment {
                 LocationEntry result = (LocationEntry) parent.getItemAtPosition(position);
                 destinyInput.setText(result.getAddress());
                 destinyCity = result.getCity();
+                destinyLatLng = result.getLatLng();
 
                 MarkerOptions markerOptions = new MarkerOptions();
 
@@ -269,6 +274,10 @@ public class MapFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("addressOrigin", originCity);
                 bundle.putString("addressDestiny", destinyCity);
+                bundle.putDouble("originLatitude", originLatLng.latitude);
+                bundle.putDouble("originLongitude", originLatLng.longitude);
+                bundle.putDouble("destinyLatitude", destinyLatLng.latitude);
+                bundle.putDouble("destinyLongitude", destinyLatLng.longitude);
 
                 NewTripFragment newTripFragment = new NewTripFragment();
                 newTripFragment.setArguments(bundle);
