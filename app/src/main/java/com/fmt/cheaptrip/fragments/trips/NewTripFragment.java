@@ -140,7 +140,7 @@ public class NewTripFragment extends Fragment {
         // Rules views
         new_trip_fragment_rules_cb_value = (CheckBox) view.findViewById(R.id.new_trip_fragment_rules_cb_value);
 
-        registerTripTextView = (TextView) view.findViewById(R.id.btnRegisterTrip);
+        registerTripTextView = (TextView) view.findViewById(R.id.registerTripTextView);
 
         registerTripTextView.setOnClickListener(new View.OnClickListener() {
             @Override
