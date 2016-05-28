@@ -48,9 +48,12 @@ public class MapFragment extends Fragment {
 
     private GoogleMap map;
 
-    private static final int DEFAULT_MAP_ZOOM = 15;
-    private static final double DEFAULT_MAP_LATITUDE = 38.736946;
-    private static final double DEFAULT_MAP_LONGITUDE = 	-9.142685;
+    // Zoom that shows Portugal
+    private static final float DEFAULT_MAP_ZOOM = 6.5f;
+
+    // Center of Portugal
+    private static final double DEFAULT_MAP_LATITUDE = 40.1520666;
+    private static final double DEFAULT_MAP_LONGITUDE = -7.9894828;
 
     private LocationAutoCompleteTextView originInput;
     private LocationAutoCompleteTextView destinyInput;
@@ -154,7 +157,6 @@ public class MapFragment extends Fragment {
 
         map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
         map.getUiSettings().setZoomGesturesEnabled(true);
-        map.getUiSettings().setZoomControlsEnabled(true);
 
         LatLng defaultLatLng;
         /*    if( posicao actual existe){
