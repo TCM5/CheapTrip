@@ -1,5 +1,6 @@
 package com.fmt.cheaptrip.entities;
 
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 
 /**
@@ -9,15 +10,16 @@ public class Bagage {
 
     private String key;
     private String desc;
-    private Icon icon;
+    private Drawable icon;
 
     public Bagage() {
 
     }
 
-    public Bagage(String key, String desc) {
+    public Bagage(String key, String desc, Drawable icon) {
         this.key = key;
         this.desc = desc;
+        this.icon = icon;
     }
 
     public String getKey() {
@@ -36,11 +38,11 @@ public class Bagage {
         this.desc = desc;
     }
 
-    public Icon getIcon() {
+    public Drawable getIcon() {
         return icon;
     }
 
-    public void setIcon(Icon icon) {
+    public void setIcon(Drawable icon) {
         this.icon = icon;
     }
 
