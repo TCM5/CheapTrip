@@ -2,6 +2,7 @@ package com.fmt.cheaptrip.fragments.trips;
 
 
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.entities.Bagage;
 import com.fmt.cheaptrip.entities.Trip;
+import com.fmt.cheaptrip.entities.Vehicle;
+import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
@@ -27,6 +30,7 @@ import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -114,12 +118,13 @@ public class NewTripFragment extends Fragment {
 
         // Car section vies
         new_trip_fragment_car_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_car_spinner_value);
+        Toast.makeText(getContext(), "Before fillUserVehiclesSpinner()", Toast.LENGTH_LONG).show();
+        fillUserVehiclesSpinner();
 
         // Bagage
         new_trip_fragment_bagage_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_bagage_spinner_value);
-
         ArrayList<Bagage> baggageTypesMap = new ArrayList<>();
-        baggageTypesMap.add(new Bagage("S", "Large"));
+        baggageTypesMap.add(new Bagage("S", "Small"));
         baggageTypesMap.add(new Bagage("M", "Medium"));
         baggageTypesMap.add(new Bagage("L", "Large"));
 
@@ -205,7 +210,7 @@ public class NewTripFragment extends Fragment {
         trip.setTripDate(calendar.getTime());
         trip.setPrice(tripPrice);
         trip.setObservations(new_trip_fragment_observation_et_value.getText().toString());
-        trip.setBaggageSize("");
+        trip.setBaggageSize("1");
         trip.setDelayTolerance(15);
 
         if (trip.getDriverId() == null || trip.getVehicleId() == null ||
@@ -240,6 +245,28 @@ public class NewTripFragment extends Fragment {
                 Toast.makeText(getActivity(), "You have to agree with the rules", Toast.LENGTH_LONG);
             }
         }
+    }
+
+    private void fillUserVehiclesSpinner() {
+
+        Integer currentUserId = UserAccountManager.getCurrentUserId(getActivity().getApplicationContext());
+        currentUserId = 1;
+
+        TripWSInvoker.getUserVehicles(getActivity().getApplicationContext(), currentUserId, new WSResponseListener() {
+            @Override
+            public void onResponse(WSResponseObject response) {
+                List<Vehicle> myVehicles = response.getVehicles();
+
+                ArrayAdapter<Vehicle> vehiclesSpinnerAdapter = new ArrayAdapter<Vehicle>(getActivity(), android.R.layout.simple_spinner_item, myVehicles);
+                vehiclesSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                new_trip_fragment_car_spinner_value.setAdapter(vehiclesSpinnerAdapter);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+
+            }
+        });
     }
 
 

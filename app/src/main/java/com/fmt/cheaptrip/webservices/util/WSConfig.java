@@ -43,4 +43,5 @@ public class WSConfig {
     public static final String ACTION_RECEIVED_TRIPS = "myPassengerTrips";
     public static final String ACTION_SHARED_TRIPS = "myDriverTrips";
     public static final String ACTION_SUBSCRIBE_TRIP = "subscribeTrip";
+    public static final String ACTION_GET_USER_VEHICLES = "getUserVehicles";
 }

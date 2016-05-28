@@ -172,13 +172,14 @@ public class TripWSInvoker {
         requestQueue.add(receivedTripsRequest);
     }
 
-    public static void userVehicles(final Context context, final WSResponseListener wsResponse) {
+    public static void getUserVehicles(final Context context, Integer userId, final WSResponseListener wsResponse) {
 
         CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.VEHICLES_URL,
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
-                        List<Vehicle> vehicles = CustomJSONParser.getInstance().stringToObject(response.toString(), List.class);
+                        Type listType = new TypeToken<ArrayList<Vehicle>>() {}.getType();
+                        List<Vehicle> vehicles = CustomJSONParser.getInstance().stringToObject(response.toString(), listType);
 
                         WSResponseObject responseObject = new WSResponseObject();
                         responseObject.setVehicles(vehicles);
@@ -193,9 +194,8 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = "1";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
-
-        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_GET_USER_VEHICLES);
+        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, userId.toString());
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);
