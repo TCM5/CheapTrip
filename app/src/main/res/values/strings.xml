@@ -50,8 +50,8 @@
     <string name="fragment_introduction_slide_title2_text">New friends</string>
     <string name="fragment_introduction_slide_title3_text">Be green</string>
     <string name="fragment_introduction_slide_desc1_text">Car sharing is an economical solution. If you want to travel fast and confortable, the cheapest way is this</string>
-    <string name="fragment_introduction_slide_desc2_text">Desc2</string>
-    <string name="fragment_introduction_slide_desc3_text">A perservação do meio ambiente é um dos assuntos de maior relevância da atualidade. Um dos principais gases poluentes é o dióxido de carbono, libertado pelos automóveis. Através da partilha de boleias é possível diminuir consideravelmente a emissão de co2 libertada pelos automoveis e constribuir para um ambiente sustentável.</string>
+    <string name="fragment_introduction_slide_desc2_text">By sharing a ride you can increase your contact network and build your trust drivers list.</string>
+    <string name="fragment_introduction_slide_desc3_text">The perservação the environment is one of the most relevant of current issues. One of the main greenhouse gas is carbon dioxide, released by cars . By carpooling you can considerably reduce the emission of co2 released by cars and constribuir for a sustainable environment.</string>
     <string name="fragment_introduction_slide_desc4_text">Desc4</string>
 
     <!-- Map Fragment Strings-->

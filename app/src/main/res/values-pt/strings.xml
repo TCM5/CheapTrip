@@ -49,8 +49,8 @@
     <string name="fragment_introduction_slide_title2_text">Novos amigos</string>
     <string name="fragment_introduction_slide_title3_text">Seja amigo do ambiente</string>
     <string name="fragment_introduction_slide_desc1_text">A partilha de boleias é uma solução económica. Se deseja viajar de forma rápida e confortável, este é o modo mais económico.</string>
-    <string name="fragment_introduction_slide_desc2_text">Desc2</string>
-    <string name="fragment_introduction_slide_desc3_text">Desc3</string>
+    <string name="fragment_introduction_slide_desc2_text">Com a partilha de boleia pode aumentar a sua rede de contacto e criar a sua lista de condutores de confiança.</string>
+    <string name="fragment_introduction_slide_desc3_text">A perservação do meio ambiente é um dos assuntos de maior relevância da atualidade. Um dos principais gases poluentes é o dióxido de carbono, libertado pelos automóveis. Através da partilha de boleias é possível diminuir consideravelmente a emissão de co2 libertada pelos automoveis e constribuir para um ambiente sustentável.</string>
 
     <!-- Map Fragment Strings-->
     <string name="map_fragment_origin_input_text">Origem</string>
