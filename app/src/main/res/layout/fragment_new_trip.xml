@@ -134,7 +134,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="center_horizontal"
-                        android:text="15 €"
                         android:textColor="@color/green4_cheaptrip" />
 
                     <android.support.design.widget.FloatingActionButton

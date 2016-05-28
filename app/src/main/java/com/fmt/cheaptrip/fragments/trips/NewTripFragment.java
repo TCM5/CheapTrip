@@ -29,6 +29,12 @@ public class NewTripFragment extends Fragment {
 
     public static final String TAG = "NEW_TRIPS_FRAGMENT_TAG";
 
+    private final String PORTUGAL_CURRENCY = "€";
+    private final String DEFAULT_TRIP_TOLERANTE = "15";
+
+    private int tripPrice = 15;
+
+
     // Location section views
     private TextView new_trip_fragment_origin_city_tv;
     private TextView new_trip_fragment_destiny_city_tv;
@@ -80,8 +86,23 @@ public class NewTripFragment extends Fragment {
 
         // Price section views
         new_trip_fragment_price_fb_less = (FloatingActionButton) view.findViewById(R.id.new_trip_fragment_price_fb_less);
+        new_trip_fragment_price_fb_less.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new_trip_fragment_price_tv_value.setText(String.valueOf(--tripPrice) + " " + PORTUGAL_CURRENCY);
+            }
+        });
+
         new_trip_fragment_price_tv_value = (TextView) view.findViewById(R.id.new_trip_fragment_price_tv_value);
+        new_trip_fragment_price_tv_value.setText(String.valueOf(tripPrice) + " " + PORTUGAL_CURRENCY);
+
         new_trip_fragment_price_fb_more = (FloatingActionButton) view.findViewById(R.id.new_trip_fragment_price_fb_more);
+        new_trip_fragment_price_fb_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new_trip_fragment_price_tv_value.setText(String.valueOf(++tripPrice) + " " + PORTUGAL_CURRENCY);
+            }
+        });
 
         // Car section vies
         new_trip_fragment_car_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_car_spinner_value);
