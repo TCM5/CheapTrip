@@ -1,18 +1,14 @@
 package com.fmt.cheaptrip.fragments.trips;
 
 
-import android.location.Address;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -39,7 +35,7 @@ public class SearchTripFragment extends Fragment {
     private String addressDestiny;
 
     private ListView listView;
-    private TextView emptyListTextView;
+    private LinearLayout emptyListLinearLayout;
 
     private TripsAdapter tripsAdapter;
 
@@ -63,7 +59,7 @@ public class SearchTripFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search_trips, container, false);
 
         listView = (ListView) view.findViewById(R.id.search_trips_fragment_list);
-        emptyListTextView = (TextView) view.findViewById(R.id.search_trips_fragment_empty_list_tv);
+        emptyListLinearLayout = (LinearLayout) view.findViewById(R.id.search_trips_fragment_empty_list_ll);
 
         tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
         listView.setAdapter(tripsAdapter);
@@ -96,10 +92,10 @@ public class SearchTripFragment extends Fragment {
                     greenProgressDialog.dismiss();
 
                     if (givenTrips.size() < 1) {
-                        emptyListTextView.setVisibility(View.VISIBLE);
+                        emptyListLinearLayout.setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {
-                        emptyListTextView.setVisibility(View.GONE);
+                        emptyListLinearLayout.setVisibility(View.GONE);
                         listView.setVisibility(View.VISIBLE);
                     }
 

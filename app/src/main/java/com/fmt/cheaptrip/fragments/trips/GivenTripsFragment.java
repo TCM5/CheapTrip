@@ -1,13 +1,13 @@
 package com.fmt.cheaptrip.fragments.trips;
 
 
-import android.location.Address;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,15 +15,12 @@ import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.adapters.TripsAdapter;
 import com.fmt.cheaptrip.customviews.GreenProgressDialog;
 import com.fmt.cheaptrip.entities.Trip;
-import com.fmt.cheaptrip.entities.TripEntry;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +31,7 @@ public class GivenTripsFragment extends Fragment {
     public static final String TAG = "GIVEN_TRIPS_FRAGMENT_TAG";
 
     private ListView listView;
-    private TextView emptyListTextView;
+    private LinearLayout emptyListLinearLayout;
 
     private TripsAdapter tripsAdapter;
 
@@ -59,7 +56,7 @@ public class GivenTripsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_given_trips, container, false);
 
         listView = (ListView) view.findViewById(R.id.given_trips_fragment_list);
-        emptyListTextView = (TextView) view.findViewById(R.id.given_trips_fragment_empty_list_tv);
+        emptyListLinearLayout = (LinearLayout) view.findViewById(R.id.given_trips_fragment_empty_list_ll);
 
         tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
         listView.setAdapter(tripsAdapter);
@@ -93,10 +90,10 @@ public class GivenTripsFragment extends Fragment {
                     greenProgressDialog.dismiss();
 
                     if (givenTrips.size() < 1) {
-                        emptyListTextView.setVisibility(View.VISIBLE);
+                        emptyListLinearLayout.setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {
-                        emptyListTextView.setVisibility(View.GONE);
+                        emptyListLinearLayout.setVisibility(View.GONE);
                         listView.setVisibility(View.VISIBLE);
                     }
 

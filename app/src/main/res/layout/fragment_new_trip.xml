@@ -262,6 +262,10 @@
                         android:text="15 min"
                         android:textColor="@color/green4_cheaptrip" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                     <android.support.design.widget.FloatingActionButton
                         android:id="@+id/new_trip_fragment_tolerance_fb_more"
                         android:layout_width="wrap_content"

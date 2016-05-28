@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,9 +20,6 @@ import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +30,7 @@ public class ReceivedTripsFragment extends Fragment {
     public static final String TAG = "RECEIVED_TRIPS_FRAGMENT_TAG";
 
     private ListView listView;
-    private TextView emptyListTextView;
+    private LinearLayout emptyListLinearLayout;
 
     private TripsAdapter tripsAdapter;
 
@@ -57,7 +55,7 @@ public class ReceivedTripsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_received_trips, container, false);
 
         listView = (ListView) view.findViewById(R.id.my_trips_fragment_list);
-        emptyListTextView = (TextView) view.findViewById(R.id.received_trips_fragment_empty_list_tv);
+        emptyListLinearLayout = (LinearLayout) view.findViewById(R.id.received_trips_fragment_empty_list_ll);
 
         tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
 
@@ -95,10 +93,10 @@ public class ReceivedTripsFragment extends Fragment {
                     tripsAdapter.refreshTripsList(receivedTrips);
 
                     if (receivedTrips.size() < 1) {
-                        emptyListTextView.setVisibility(View.VISIBLE);
+                        emptyListLinearLayout.setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {
-                        emptyListTextView.setVisibility(View.GONE);
+                        emptyListLinearLayout.setVisibility(View.GONE);
                         listView.setVisibility(View.VISIBLE);
                     }
 
