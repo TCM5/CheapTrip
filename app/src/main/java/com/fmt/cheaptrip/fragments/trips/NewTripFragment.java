@@ -159,8 +159,26 @@ public class NewTripFragment extends Fragment {
         trip.setVehicleId(1);
         trip.setStartCity(new_trip_fragment_origin_city_tv.getText().toString());
         trip.setEndCity(new_trip_fragment_destiny_city_tv.getText().toString());
-        trip.setStartPoint("1");
-        trip.setEndPoint("2");
+
+        String startPoint = null;
+        String endPoint = null;
+        {
+            Double originLatitude = getArguments().getDouble("originLatitude");
+            Double originLongitude = getArguments().getDouble("originLongitude");
+            if (originLatitude != null && originLongitude != null) {
+                startPoint = String.valueOf(originLatitude) + ":" + String.valueOf(originLongitude);
+            }
+
+            Double destinyLatitude = getArguments().getDouble("destinyLatitude");
+            Double destinyLongitude = getArguments().getDouble("destinyLongitude");
+            if (destinyLatitude != null && destinyLongitude != null) {
+                endPoint = String.valueOf(destinyLatitude) + ":" + String.valueOf(destinyLongitude);
+            }
+
+        }
+
+        trip.setStartPoint(startPoint);
+        trip.setEndPoint(endPoint);
 
         Calendar calendar;
         {
