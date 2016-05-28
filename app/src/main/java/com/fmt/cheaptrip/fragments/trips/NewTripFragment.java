@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -20,7 +19,6 @@ import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
-import com.fmt.cheaptrip.webservices.util.WSConfig;
 
 import java.util.Date;
 
@@ -65,7 +63,7 @@ public class NewTripFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.new_trip_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_new_trip, container, false);
 
         // Date section views
 
