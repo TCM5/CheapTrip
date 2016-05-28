@@ -29,6 +29,10 @@ public class NewTripFragment extends Fragment {
 
     public static final String TAG = "NEW_TRIPS_FRAGMENT_TAG";
 
+    // Location section views
+    private TextView new_trip_fragment_origin_city_tv;
+    private TextView new_trip_fragment_destiny_city_tv;
+
     // Date section views
 
     // Price section views
@@ -64,6 +68,13 @@ public class NewTripFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_trip, container, false);
+
+
+        // Location section views
+        new_trip_fragment_origin_city_tv = (TextView) view.findViewById(R.id.new_trip_fragment_origin_city_tv);
+        new_trip_fragment_origin_city_tv.setText(getArguments().get("addressOrigin").toString());
+        new_trip_fragment_destiny_city_tv = (TextView) view.findViewById(R.id.new_trip_fragment_destiny_city_tv);
+        new_trip_fragment_destiny_city_tv.setText(getArguments().get("addressDestiny").toString());
 
         // Date section views
 

@@ -22,6 +22,32 @@
             android:background="@color/white"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Origem"
+                android:textColor="@color/green4_cheaptrip"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/new_trip_fragment_origin_city_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destino"
+                android:textColor="@color/green4_cheaptrip"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/new_trip_fragment_destiny_city_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -299,11 +325,11 @@
                     android:textColor="@android:color/darker_gray" />
 
                 <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/btnRegisterTrip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    app:backgroundTint="@color/green4_cheaptrip"
-                    android:id="@+id/btnRegisterTrip" />
+                    app:backgroundTint="@color/green4_cheaptrip" />
 
             </LinearLayout>
 
