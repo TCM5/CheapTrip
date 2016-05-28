@@ -7,21 +7,22 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.entities.Baggage;
 import com.fmt.cheaptrip.entities.Trip;
+import com.fmt.cheaptrip.entities.Vehicle;
+import com.fmt.cheaptrip.managers.UserAccountManager;
+import com.fmt.cheaptrip.webservices.TripWSInvoker;
+import com.fmt.cheaptrip.webservices.response.WSResponseListener;
+import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,7 +48,7 @@ public class TripDetailFragment extends Fragment {
     private TextView new_trip_fragment_price_tv_value;
 
     // Car section vies
-    private Spinner new_trip_fragment_car_spinner_value;
+    private TextView new_trip_fragment_car_tv_value;
 
     // Baggage
     private ImageView new_trip_fragment_bagage_icon;
@@ -93,7 +94,15 @@ public class TripDetailFragment extends Fragment {
             // Price section views
             new_trip_fragment_price_tv_value = (TextView) view.findViewById(R.id.new_trip_fragment_price_tv_value);
 
+            if (trip.getPrice() != null) {
+                new_trip_fragment_price_tv_value.setText(String.valueOf(trip.getPrice()) + " " + "€");
+            }
             // Car section vies
+            new_trip_fragment_car_tv_value = (TextView) view.findViewById(R.id.new_trip_fragment_car_tv_value);
+
+            if (trip.getVehicleId() != null) {
+                new_trip_fragment_car_tv_value.setText(String.valueOf(trip.getVehicleId()));
+            }
 
             // Baggage
             Baggage baggage = new Baggage(trip.getBaggageSize(), getActivity());
@@ -108,7 +117,7 @@ public class TripDetailFragment extends Fragment {
             new_trip_fragment_tolerance_tv_value = (TextView) view.findViewById(R.id.new_trip_fragment_tolerance_tv_value);
 
             if (trip.getDelayTolerance() != null) {
-                new_trip_fragment_tolerance_tv_value.setText(String.valueOf(trip.getDelayTolerance()));
+                new_trip_fragment_tolerance_tv_value.setText(String.valueOf(trip.getDelayTolerance()) + " " + "min");
             }
 
         } else {
@@ -118,5 +127,25 @@ public class TripDetailFragment extends Fragment {
         return view;
     }
 
+
+    private void getTripVeichle() {
+
+        Integer currentUserId = UserAccountManager.getCurrentUserId(getActivity().getApplicationContext());
+        currentUserId = 1;
+
+        TripWSInvoker.getUserVehicles(getActivity().getApplicationContext(), currentUserId, new WSResponseListener() {
+            @Override
+            public void onResponse(WSResponseObject response) {
+                List<Vehicle> myVehicles = response.getVehicles();
+
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+
+            }
+        });
+    }
 
 }
