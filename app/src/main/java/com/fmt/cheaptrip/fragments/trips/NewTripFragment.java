@@ -124,7 +124,6 @@ public class NewTripFragment extends Fragment {
 
         // Car section vies
         new_trip_fragment_car_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_car_spinner_value);
-        Toast.makeText(getContext(), "Before fillUserVehiclesSpinner()", Toast.LENGTH_LONG).show();
         fillUserVehiclesSpinner();
 
         // Bagage
