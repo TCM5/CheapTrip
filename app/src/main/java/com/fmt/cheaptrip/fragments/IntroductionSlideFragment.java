@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fmt.cheaptrip.R;
@@ -55,6 +56,7 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
                 R.layout.fragment_introducion_slide, container, false);
 
         TextView fragment_introduction_slide_title_tv = (TextView) rootView.findViewById(R.id.fragment_introduction_slide_title_tv);
+        ImageView fragment_introduction_slide_image_iv = (ImageView) rootView.findViewById(R.id.fragment_introduction_slide_image_iv);
         TextView fragment_introduction_slide_desc_tv = (TextView) rootView.findViewById(R.id.fragment_introduction_slide_desc_tv);
 
         switch (slideNumber) {
@@ -64,7 +66,7 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
                 fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc1_text));
                 fragment_introduction_slide_desc_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
-
+                fragment_introduction_slide_image_iv.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.economic));
                 break;
 
             case 1:

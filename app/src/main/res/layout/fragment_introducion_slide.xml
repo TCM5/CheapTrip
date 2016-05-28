@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_introduction_slide_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -35,22 +36,26 @@
                 android:ellipsize="none"
                 android:scrollHorizontally="false"
                 android:textSize="20sp" />
-
         </LinearLayout>
 
         <TextView
             android:id="@+id/fragment_introduction_slide_finish_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="false"
             android:layout_gravity="center"
             android:clickable="true"
             android:text="Continuar"
             android:textColor="@color/green4_cheaptrip"
             android:visibility="gone" />
+
+
+        <ImageView
+            android:id="@+id/fragment_introduction_slide_image_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
 
     </RelativeLayout>
 

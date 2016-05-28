@@ -68,9 +68,9 @@ public class TripDetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new_trip, container, false);
+        View view = inflater.inflate(R.layout.fragment_trip_detail, container, false);
 
-        // Location section views
+       /* // Location section views
         new_trip_fragment_origin_city_tv = (TextView) view.findViewById(R.id.new_trip_fragment_origin_city_tv);
         new_trip_fragment_origin_city_tv.setText(getArguments().get("addressOrigin").toString());
         new_trip_fragment_destiny_city_tv = (TextView) view.findViewById(R.id.new_trip_fragment_destiny_city_tv);
@@ -97,7 +97,7 @@ public class TripDetailFragment extends Fragment {
         new_trip_fragment_tolerance_tv_value = (TextView) view.findViewById(R.id.new_trip_fragment_tolerance_tv_value);
         new_trip_fragment_tolerance_tv_value.setText("");
 
-
+*/
         return view;
     }
 

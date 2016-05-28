@@ -132,7 +132,6 @@ public class ReceivedTripsFragment extends Fragment {
                 TripDetailFragment tripDetailFragment = new TripDetailFragment();
                 tripDetailFragment.setArguments(bundle);
 
-
                 ActivityUtils.replaceFragment(getFragmentManager(), tripDetailFragment, R.id.main_content_container, TripDetailFragment.TAG, true);
 
             }
