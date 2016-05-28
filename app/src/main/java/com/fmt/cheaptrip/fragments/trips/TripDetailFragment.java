@@ -83,11 +83,11 @@ public class TripDetailFragment extends Fragment {
 
             // Date section views
             new_trip_fragment_date_tv = (TextView) view.findViewById(R.id.new_trip_fragment_date_tv);
-            new_trip_fragment_date_tv.setText(DateUtils.formatDateTime(getActivity(), trip.getTripDate().getTime(), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_24HOUR));
+            new_trip_fragment_date_tv.setText(DateUtils.formatDateTime(getActivity(), trip.getTripDate().getTime(), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR));
 
             // Hour section views
             new_trip_fragment_date_tv = (TextView) view.findViewById(R.id.new_trip_fragment_hour_tv);
-            new_trip_fragment_date_tv.setText(DateUtils.formatDateTime(getActivity(), trip.getTripDate().getTime(), DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_24HOUR));
+            new_trip_fragment_date_tv.setText(DateUtils.formatDateTime(getActivity(), trip.getTripDate().getTime(), DateUtils.FORMAT_SHOW_TIME));
 
 
             // Price section views
