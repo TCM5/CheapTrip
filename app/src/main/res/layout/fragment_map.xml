@@ -94,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/green4_cheaptrip"
+                android:elevation="5sp"
                 android:padding="5dp"
                 android:text="@string/map_fragment_find_trip_text"
                 android:textColor="@color/white" />
@@ -127,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/green4_cheaptrip"
+                android:elevation="5sp"
                 android:padding="5dp"
                 android:text="@string/map_fragment_new_trip_text"
                 android:textColor="@color/white" />
