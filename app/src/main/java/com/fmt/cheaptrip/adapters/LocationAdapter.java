@@ -25,7 +25,9 @@ import java.util.Locale;
  */
 public class LocationAdapter extends BaseAdapter implements Filterable {
 
-    private static final int MAX_LOCATIONS_RESULTS = 5;
+    private static final int MAX_LOCATIONS_RESULTS = 8;
+
+    private static final String PORTUGAL_CODE = "PT";
 
     private Context context;
 
@@ -57,7 +59,6 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = layoutInflater.inflate(R.layout.fragment_map_location_result, parent, false);
 
-
         String address = getItem(position).getAddress();
 
         TextView tv = ((TextView) convertView.findViewById(R.id.map_fragment_location_result_entry));
@@ -87,9 +88,12 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
 
             for (Address address : addressesResultList) {
 
-                if (address.getMaxAddressLineIndex() >= 0) {
-                    LocationEntry locationEntry = new LocationEntry(address);
-                    locationsResults.add(locationEntry);
+                if (PORTUGAL_CODE.equals(address.getCountryCode())) {
+
+                    if (address.getMaxAddressLineIndex() >= 0) {
+                        LocationEntry locationEntry = new LocationEntry(address);
+                        locationsResults.add(locationEntry);
+                    }
                 }
             }
 

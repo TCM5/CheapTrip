@@ -166,15 +166,10 @@ public class MapFragment extends Fragment {
         */
 
         defaultLatLng = new LatLng(DEFAULT_MAP_LATITUDE, DEFAULT_MAP_LONGITUDE);
-
         CameraUpdate center = CameraUpdateFactory.newLatLng(defaultLatLng);
-
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(30);
-
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
         map.animateCamera(zoom);
-
         map.moveCamera(center);
-
     }
 
     /**
