@@ -91,6 +91,8 @@
                     android:layout_marginTop="20dp"
                     android:background="@color/green4_cheaptrip"
                     android:calendarViewShown="false"
+
+                    android:datePickerMode="spinner"
                     android:gravity="center_horizontal"></DatePicker>
 
             </LinearLayout>
@@ -225,7 +227,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Here you define the bagage of your trip"
+                    android:text="Here you define the baggage of your trip"
                     android:textColor="@android:color/darker_gray" />
 
                 <LinearLayout

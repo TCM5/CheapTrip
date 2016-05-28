@@ -4,11 +4,9 @@ package com.fmt.cheaptrip.fragments.trips;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -20,13 +18,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import com.fmt.cheaptrip.entities.Baggage;
 import com.fmt.cheaptrip.entities.Vehicle;
 
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
-import com.fmt.cheaptrip.entities.Bagage;
 import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
@@ -35,7 +33,6 @@ import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,7 +63,7 @@ public class NewTripFragment extends Fragment {
     // Car section vies
     private Spinner new_trip_fragment_car_spinner_value;
 
-    // Bagage
+    // Baggage
     private ImageView new_trip_fragment_bagage_icon;
     private Spinner new_trip_fragment_bagage_spinner_value;
 
@@ -126,17 +123,17 @@ public class NewTripFragment extends Fragment {
         new_trip_fragment_car_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_car_spinner_value);
         fillUserVehiclesSpinner();
 
-        // Bagage
-        final ArrayList<Bagage> baggageTypesMap = new ArrayList<>();
-        baggageTypesMap.add(new Bagage("S", "Small", ContextCompat.getDrawable(getActivity(), R.drawable.bagage_icon_small)));
-        baggageTypesMap.add(new Bagage("M", "Medium", ContextCompat.getDrawable(getActivity(), R.drawable.bagage_icon_medium)));
-        baggageTypesMap.add(new Bagage("L", "Large", ContextCompat.getDrawable(getActivity(), R.drawable.bagage_icon_large)));
+        // Baggage
+        final ArrayList<Baggage> baggageTypesMap = new ArrayList<>();
+        baggageTypesMap.add(new Baggage("S", getActivity()));
+        baggageTypesMap.add(new Baggage("M", getActivity()));
+        baggageTypesMap.add(new Baggage("L", getActivity()));
 
         new_trip_fragment_bagage_icon = (ImageView) view.findViewById(R.id.new_trip_fragment_bagage_icon);
         new_trip_fragment_bagage_icon.setImageDrawable(baggageTypesMap.get(0).getIcon());
         new_trip_fragment_bagage_spinner_value = (Spinner) view.findViewById(R.id.new_trip_fragment_bagage_spinner_value);
 
-        ArrayAdapter<Bagage> baggagerSpinnerAdapter = new ArrayAdapter<Bagage>(getActivity(), android.R.layout.simple_spinner_item, baggageTypesMap);
+        ArrayAdapter<Baggage> baggagerSpinnerAdapter = new ArrayAdapter<Baggage>(getActivity(), android.R.layout.simple_spinner_item, baggageTypesMap);
         baggagerSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         new_trip_fragment_bagage_spinner_value.setAdapter(baggagerSpinnerAdapter);
         new_trip_fragment_bagage_spinner_value.setSelection(0);
@@ -230,7 +227,7 @@ public class NewTripFragment extends Fragment {
         trip.setTripDate(calendar.getTime());
         trip.setPrice(tripPrice);
         trip.setObservations(new_trip_fragment_observation_et_value.getText().toString());
-        trip.setBaggageSize(((Bagage) new_trip_fragment_bagage_spinner_value.getSelectedItem()).getKey());
+        trip.setBaggageSize(((Baggage) new_trip_fragment_bagage_spinner_value.getSelectedItem()).getKey());
         trip.setDelayTolerance(15);
 
         if (trip.getDriverId() == null || trip.getVehicleId() == null ||

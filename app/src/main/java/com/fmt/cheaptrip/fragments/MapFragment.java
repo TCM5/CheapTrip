@@ -208,6 +208,9 @@ public class MapFragment extends Fragment {
                 map.animateCamera(zoom);
                 map.moveCamera(CameraUpdateFactory.newLatLng(result.getLatLng()));
 
+                InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
             }
         };
     }
@@ -236,6 +239,10 @@ public class MapFragment extends Fragment {
 
                 map.animateCamera(zoom);
                 map.moveCamera(CameraUpdateFactory.newLatLng(result.getLatLng()));
+
+
+                InputMethodManager imm =  (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
             }
         };
