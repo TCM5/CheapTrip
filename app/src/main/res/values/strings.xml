@@ -52,6 +52,7 @@
     <string name="fragment_introduction_slide_desc1_text">Car sharing is an economical solution. If you want to travel fast and confortable, the cheapest way is this</string>
     <string name="fragment_introduction_slide_desc2_text">Desc2</string>
     <string name="fragment_introduction_slide_desc3_text">Desc3</string>
+    <string name="fragment_introduction_slide_desc4_text">Desc4</string>
 
     <!-- Map Fragment Strings-->
     <string name="map_fragment_origin_input_text">Starting point</string>
