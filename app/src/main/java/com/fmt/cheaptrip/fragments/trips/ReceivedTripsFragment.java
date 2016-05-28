@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.adapters.TripsAdapter;
 import com.fmt.cheaptrip.customviews.GreenProgressDialog;
 import com.fmt.cheaptrip.entities.Trip;
+import com.fmt.cheaptrip.utils.ActivityUtils;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
@@ -58,7 +60,7 @@ public class ReceivedTripsFragment extends Fragment {
         emptyListLinearLayout = (LinearLayout) view.findViewById(R.id.received_trips_fragment_empty_list_ll);
 
         tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
-
+        listView.setOnItemClickListener(tripClickListener());
         listView.setAdapter(tripsAdapter);
 
         View header = inflater.inflate(R.layout.mytrip_header, null);
@@ -118,5 +120,22 @@ public class ReceivedTripsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         //TODO
+    }
+
+    private AdapterView.OnItemClickListener tripClickListener() {
+        return new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Bundle bundle = new Bundle();
+
+                TripDetailFragment tripDetailFragment = new TripDetailFragment();
+                tripDetailFragment.setArguments(bundle);
+
+
+                ActivityUtils.replaceFragment(getFragmentManager(), tripDetailFragment, R.id.main_content_container, TripDetailFragment.TAG, true);
+
+            }
+        };
     }
 }
