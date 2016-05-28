@@ -127,8 +127,10 @@ public class ReceivedTripsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Bundle bundle = new Bundle();
+                Trip trip = (Trip) parent.getItemAtPosition(position);
 
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("trip_detail", trip);
                 TripDetailFragment tripDetailFragment = new TripDetailFragment();
                 tripDetailFragment.setArguments(bundle);
 

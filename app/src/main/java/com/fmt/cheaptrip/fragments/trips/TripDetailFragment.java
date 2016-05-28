@@ -70,6 +70,14 @@ public class TripDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trip_detail, container, false);
 
+        Trip trip = getArguments().getParcelable("trip_detail");
+
+        if (trip != null) {
+
+        } else {
+            Toast.makeText(getActivity(), "", Toast.LENGTH_LONG);
+        }
+
        /* // Location section views
         new_trip_fragment_origin_city_tv = (TextView) view.findViewById(R.id.new_trip_fragment_origin_city_tv);
         new_trip_fragment_origin_city_tv.setText(getArguments().get("addressOrigin").toString());

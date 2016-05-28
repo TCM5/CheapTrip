@@ -1,5 +1,8 @@
 package com.fmt.cheaptrip.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,7 +10,7 @@ import java.util.HashMap;
 /**
  * Created by santostc on 26-05-2016.
  */
-public class Trip {
+public class Trip implements Parcelable {
 
     private Integer tripId;
     private Integer driverId;
@@ -127,5 +130,89 @@ public class Trip {
         Rank = rank;
     }
 
+    public Trip(){
 
+    }
+
+    protected Trip(Parcel in) {
+        tripId = in.readByte() == 0x00 ? null : in.readInt();
+        driverId = in.readByte() == 0x00 ? null : in.readInt();
+        vehicleId = in.readByte() == 0x00 ? null : in.readInt();
+        StartCity = in.readString();
+        EndCity = in.readString();
+        StartPoint = in.readString();
+        EndPoint = in.readString();
+        long tmpTripDate = in.readLong();
+        tripDate = tmpTripDate != -1 ? new Date(tmpTripDate) : null;
+        Price = in.readByte() == 0x00 ? null : in.readDouble();
+        Observations = in.readString();
+        BaggageSize = in.readString();
+        DelayTolerance = in.readByte() == 0x00 ? null : in.readInt();
+        Rank = in.readByte() == 0x00 ? null : in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (tripId == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(tripId);
+        }
+        if (driverId == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(driverId);
+        }
+        if (vehicleId == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(vehicleId);
+        }
+        dest.writeString(StartCity);
+        dest.writeString(EndCity);
+        dest.writeString(StartPoint);
+        dest.writeString(EndPoint);
+        dest.writeLong(tripDate != null ? tripDate.getTime() : -1L);
+        if (Price == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(Price);
+        }
+        dest.writeString(Observations);
+        dest.writeString(BaggageSize);
+        if (DelayTolerance == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(DelayTolerance);
+        }
+        if (Rank == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeInt(Rank);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Trip> CREATOR = new Parcelable.Creator<Trip>() {
+        @Override
+        public Trip createFromParcel(Parcel in) {
+            return new Trip(in);
+        }
+
+        @Override
+        public Trip[] newArray(int size) {
+            return new Trip[size];
+        }
+    };
 }
