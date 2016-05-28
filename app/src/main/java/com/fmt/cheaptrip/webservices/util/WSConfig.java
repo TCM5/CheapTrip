@@ -13,16 +13,30 @@ public class WSConfig {
     public static final String VEHICLES_URL = "http://miguelnobre.com/php/EasyTrip/User/Vehicle.php";
 
     //POST Parameters
+    public static final String PARAM_ACTION = "action";
+
+    //User Parameters
     public static final String PARAM_USERID = "userid";
-    public static final String PARAM_NAME = "name";
     public static final String PARAM_CONTACT_NUMBER = "contact";
+    public static final String PARAM_NAME = "name";
     public static final String PARAM_EMAIL = "email";
     public static final String PARAM_PASSWORD = "password";
-    public static final String PARAM_ACTION = "action";
+
+    //Trip Parameters
+    public static final String PARAM_DRIVER_ID = "driverid";
+    public static final String PARAM_VEHICLE_ID = "vehicleid";
     public static final String PARAM_START_CITY = "startcity";
     public static final String PARAM_END_CITY = "endcity";
+    public static final String PARAM_START_POINT = "startpoint";
+    public static final String PARAM_END_POINT = "endpoint";
+    public static final String PARAM_TRIP_DATE = "date";
+    public static final String PARAM_TRIP_PRICE = "price";
+    public static final String PARAM_TRIP_OBSERVATIONS = "observations";
+    public static final String PARAM_BAGAGGE_SIZE = "baggagesize";
+    public static final String PARAM_DELAY_TOLERANCE = "delaytolerance";
 
     //TRIPS ACTION
+    public static final String ACTION_REGISTER_TRIP = "registerTrip";
     public static final String ACTION_FIND_TRIPS = "findTrips";
     public static final String ACTION_RECEIVED_TRIPS = "myPassengerTrips";
     public static final String ACTION_SHARED_TRIPS = "myDriverTrips";

@@ -14,7 +14,7 @@ public class Trip {
     private String EndCity;
     private String StartPoint;
     private String EndPoint;
-    private Date date;
+    private Date tripDate;
     private Double Price;
     private String Observations;
     private String BaggageSize;
@@ -77,12 +77,12 @@ public class Trip {
         EndPoint = endPoint;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getTripDate() {
+        return tripDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTripDate(Date tripDate) {
+        this.tripDate = tripDate;
     }
 
     public Double getPrice() {

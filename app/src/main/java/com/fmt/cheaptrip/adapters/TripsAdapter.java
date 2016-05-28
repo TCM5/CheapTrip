@@ -71,7 +71,7 @@ public class TripsAdapter extends ArrayAdapter<Trip> {
         // Set the values
         myTripsItemHolder.originLocation.setText(trip.getStartCity());
         myTripsItemHolder.destinyLocation.setText(trip.getEndCity());
-        myTripsItemHolder.date.setText(trip.getDate().toString());
+        myTripsItemHolder.date.setText(trip.getTripDate().toString());
         myTripsItemHolder.status.setText("0");
 
         changeStatusUI();

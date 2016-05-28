@@ -146,8 +146,7 @@ public class TripWSInvoker {
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
-                        Type listType = new TypeToken<ArrayList<Trip>>() {
-                        }.getType();
+                        Type listType = new TypeToken<ArrayList<Trip>>(){}.getType();
                         List<Trip> trips = CustomJSONParser.getInstance().stringToObject(response.toString(), listType);
 
                         WSResponseObject responseObject = new WSResponseObject();
@@ -227,6 +226,45 @@ public class TripWSInvoker {
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_FIND_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_START_CITY, originCity);
         receivedTripsRequest.addParam(WSConfig.PARAM_END_CITY, destinyCity);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
+    public static void registerTrip(final Context context, Trip trip, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_REGISTER_TRIP);
+        receivedTripsRequest.addParam(WSConfig.PARAM_DRIVER_ID, trip.getDriverId().toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_ID, trip.getVehicleId().toString());
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_START_CITY, trip.getStartCity());
+        receivedTripsRequest.addParam(WSConfig.PARAM_END_CITY, trip.getEndCity());
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_START_POINT, trip.getStartPoint());
+        receivedTripsRequest.addParam(WSConfig.PARAM_END_POINT, trip.getEndPoint());
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_DATE, String.valueOf(trip.getTripDate().getTime()));
+        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_PRICE, trip.getPrice().toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_OBSERVATIONS, trip.getObservations());
+        receivedTripsRequest.addParam(WSConfig.PARAM_BAGAGGE_SIZE, trip.getBaggageSize());
+        receivedTripsRequest.addParam(WSConfig.PARAM_DELAY_TOLERANCE, trip.getDelayTolerance().toString());
+
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);
