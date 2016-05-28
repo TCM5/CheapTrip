@@ -59,8 +59,7 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
 
         switch (slideNumber) {
             case 0:
-               // rootView.setBackgroundColor(ContextCompat.getColor(getActivity(),  R.color.white));
-                rootView.setBackgroundResource(R.drawable.economic);
+                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
                 fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title1_text));
                 fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc1_text));
@@ -77,8 +76,7 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
                 break;
 
             case 2:
-               // rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
-                rootView.setBackgroundResource(R.drawable.green);
+                rootView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.white));
                 fragment_introduction_slide_title_tv.setText(getString(R.string.fragment_introduction_slide_title3_text));
                 fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc3_text));
