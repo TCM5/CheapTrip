@@ -16,9 +16,10 @@ import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
-
+/**
+ *
+ */
 public class SignInActivity extends AppCompatActivity {
-
 
     private EditText txtName = null;
     private EditText txtContactNumber = null;
@@ -26,7 +27,6 @@ public class SignInActivity extends AppCompatActivity {
     private EditText txtPassword = null;
 
     private Button registerButton = null;
-
 
     public SignInActivity() {
 
@@ -61,6 +61,7 @@ public class SignInActivity extends AppCompatActivity {
 
                             Toast.makeText(getApplicationContext(), "You have been successfully registered", Toast.LENGTH_SHORT).show();
                             redirectToLogIn(user);
+
                         } else {
                             Toast.makeText(getApplicationContext(), response.getError(), Toast.LENGTH_LONG).show();
                         }
@@ -69,24 +70,8 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onError(VolleyError error) {
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                        System.out.println(error);
                     }
                 });
-
-                // validacao do webservices aqui, mas ha-de ser kk cena assim:
-                // Aqui fazes um intent de volta para o login, mas levas um resultado. Sucesso ou cancelado.
-
-        /*        if (registerUser == sucesso) {
-                    Intent returnIntent = new Intent();
-                    //    returnIntent.putExtra("email",email); // com esta linha podemos logo preencher o login na actividade do login :)
-                    setResult(Activity.RESULT_OK, returnIntent);
-                    finish();
-                } else {
-                    Intent returnIntent = new Intent();
-                    setResult(Activity.RESULT_CANCELED, returnIntent);
-                    finish();
-                }
-*/
             }
         });
 
@@ -104,7 +89,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void redirectToLogIn(User user) {
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("email",user.getEmail());
+        returnIntent.putExtra("email", user.getEmail());
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
