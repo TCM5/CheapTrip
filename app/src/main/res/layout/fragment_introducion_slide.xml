@@ -65,7 +65,7 @@
             android:padding="10dp"
             android:text="@string/fragment_introduction_slide_finish_text"
             android:textColor="@color/white"
-            android:textSize="15dp" android:layout_alignParentRight="true"
+            android:textSize="14dp" android:layout_alignParentRight="true"
             android:visibility="visible" />
 
     </RelativeLayout>
