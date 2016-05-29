@@ -139,22 +139,6 @@ public class TripDetailFragment extends Fragment {
             confirmTrip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    SubscribeTrip s = new SubscribeTrip();
-//                    s.setTripId(1);
-//                    s.setPassengerId(40);
-//
-//                    TripWSInvoker.confirmTrip(getActivity().getApplicationContext(), s, new WSResponseListener() {
-//                        @Override
-//                        public void onResponse(WSResponseObject response) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onError(VolleyError error) {
-//
-//                        }
-//                    });
-
                     redirectToConfirmTripByQRCode();
                 }
             });
@@ -213,22 +197,18 @@ public class TripDetailFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
-                String qrcode = data.getStringExtra("qrcode");
-                Toast.makeText(getContext(), qrcode, Toast.LENGTH_SHORT).show();
+                String tripId = data.getStringExtra("tripId");
 
-                SubscribeTrip s = new SubscribeTrip();
-                s.setTripId(3);
-                s.setPassengerId(40);
-
-                TripWSInvoker.confirmTrip(getActivity().getApplicationContext(), s, new WSResponseListener() {
+                TripWSInvoker.confirmTrip(getActivity().getApplicationContext(), tripId, new WSResponseListener() {
                     @Override
                     public void onResponse(WSResponseObject response) {
-
+                        Toast.makeText(getContext(), "Trip Confirmed", Toast.LENGTH_SHORT).show();
+                        confirmTrip.setText("Trip Confirmed");
+                        confirmTrip.setEnabled(false);
                     }
 
                     @Override
                     public void onError(VolleyError error) {
-
                     }
                 });
             } else if (resultCode == Activity.RESULT_CANCELED) {
