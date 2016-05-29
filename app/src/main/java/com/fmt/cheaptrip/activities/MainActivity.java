@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity
         profilePic.setImageBitmap(UserAccountManager.getCurrentUserProfileImage(this));
 
         TextView profileName = (TextView) view.findViewById(R.id.nav_user_name);
-        profileName.setText(UserAccountManager.getCurrentUserEmail());
+        profileName.setText(UserAccountManager.getCurrentUserName(this.getApplicationContext()));
 
         TextView profileEmail = (TextView) view.findViewById(R.id.nav_user_name);
-        profileEmail.setText(UserAccountManager.getCurrentUserEmail());
+        profileEmail.setText(UserAccountManager.getCurrentUserEmail(this.getApplicationContext()));
 
 
         setActionBarIcon();

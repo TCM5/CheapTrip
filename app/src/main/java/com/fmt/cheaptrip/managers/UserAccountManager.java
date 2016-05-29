@@ -59,7 +59,7 @@ public class UserAccountManager {
         String userName = "N/A";
 
         if (DefaultLoginUtils.isLogged(context)) {
-            //  userName =   DefaultLoginUtils.getCurrentUserName(context);
+          //  userName =   DefaultLoginUtils.getCurrentUserName(context);
         } else if (GplusLoginUtils.isLogged(context)) {
             // userName =  GplusLoginUtils.getCurrentUserName(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
@@ -69,8 +69,8 @@ public class UserAccountManager {
         return userName;
     }
 
-    public static String getCurrentUserEmail() {
-        return null;
+    public static String getCurrentUserEmail(Context context) {
+        return LoginUtils.getCurrentUserEmail(context);
     }
 
     public static void clearAllData(Context context) {

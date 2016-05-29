@@ -26,6 +26,7 @@ import com.facebook.login.widget.LoginButton;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.MainActivity;
+import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
 import com.fmt.cheaptrip.utils.login.FacebookLoginUtils;
 
 import org.json.JSONObject;
@@ -108,6 +109,7 @@ public class FacebookLoginFragment extends Fragment {
                     //TODO
                 }
 
+                String email = "";
 
                 GraphRequest.newMeRequest(
                         loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
@@ -123,7 +125,9 @@ public class FacebookLoginFragment extends Fragment {
                         }).executeAsync();
 
 
-                FacebookLoginUtils.login(getActivity());
+                FacebookLoginUtils.login(getActivity().getApplicationContext());
+                FacebookLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), email);
+            //    FacebookLoginUtils.addCurrentUserId(getActivity().getApplicationContext(), String.valueOf(user.getUserId()));
 
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MainActivity.class);
