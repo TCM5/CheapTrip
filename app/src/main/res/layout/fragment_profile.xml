@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@strings/fragment_profile_seats_txt"
+            android:hint="@string/fragment_profile_seats_txt"
             android:inputType="number"
             android:singleLine="true"
             android:textColor="@android:color/darker_gray"

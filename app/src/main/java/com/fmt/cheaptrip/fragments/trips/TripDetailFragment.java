@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +69,8 @@ public class TripDetailFragment extends Fragment {
 
     // Time tolerance views
     private TextView new_trip_fragment_tolerance_tv_value;
+
+    private EditText new_trip_fragment_observation_et_value;
 
     // QR code
     private ImageView qrCodeImageView;
@@ -138,6 +141,9 @@ public class TripDetailFragment extends Fragment {
             if (trip.getDelayTolerance() != null) {
                 new_trip_fragment_tolerance_tv_value.setText(String.valueOf(trip.getDelayTolerance()) + " " + "min");
             }
+
+            new_trip_fragment_observation_et_value = (EditText) view.findViewById(R.id.new_trip_fragment_observation_et_value);
+            new_trip_fragment_observation_et_value.setText(trip.getObservations());
 
             // Confirm
             confirmTrip = (TextView) view.findViewById(R.id.confirmTrip);
