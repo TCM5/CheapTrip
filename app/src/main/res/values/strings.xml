@@ -79,8 +79,8 @@
     <string name="fragment_profile_hardreset_btn_txt">Hard reset</string>
     <string name="fragment_profile_account_tv_txt">Account</string>
     <string name="fragment_profile_add_car_tv_txt">Add car</string>
-    <string name="fragment_profile_signout_btn_txt">Seats</string>
-    <string name="fragment_profile_year">Year</string>
+    <string name="fragment_profile_seats_txt">Seats</string>
+    <string name="fragment_profile_year_txt">Year</string>
     <string name="fragment_profile_model_txt">Model</string>
     <string name="fragment_profile_brand_txt">Brand car</string>
     <string name="fragment_profile_my_cars_txt">My cars</string>
