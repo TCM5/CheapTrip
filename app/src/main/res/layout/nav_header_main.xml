@@ -40,13 +40,13 @@
                     android:id="@+id/nav_user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cheap trip user"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/green3_cheaptrip" />
 
                 <TextView
                     android:id="@+id/nav_user_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green3_cheaptrip" />
             </LinearLayout>
         </LinearLayout>
 
