@@ -20,6 +20,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -46,7 +47,7 @@
         <activity android:name="com.fmt.cheaptrip.activities.SignInActivity" />
 
         <activity android:name="com.fmt.cheaptrip.activities.IntroductionActivity" />
-        <activity android:name="com.fmt.cheaptrip.activities.QRCodeVisualizer" />
+        <activity android:name="com.fmt.cheaptrip.activities.ConfirmTripByQRCode" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

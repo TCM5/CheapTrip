@@ -1,5 +1,8 @@
 package com.fmt.cheaptrip.webservices.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Miguel on 24/05/16.
  */
@@ -31,7 +34,7 @@ public class WSConfig {
     public static final String PARAM_END_CITY = "endcity";
     public static final String PARAM_START_POINT = "startpoint";
     public static final String PARAM_END_POINT = "endpoint";
-    public static final String PARAM_TRIP_DATE = "date";
+    public static final String PARAM_DATE = "date";
     public static final String PARAM_TRIP_PRICE = "price";
     public static final String PARAM_TRIP_OBSERVATIONS = "observations";
     public static final String PARAM_BAGAGGE_SIZE = "baggagesize";
@@ -43,5 +46,16 @@ public class WSConfig {
     public static final String ACTION_RECEIVED_TRIPS = "myPassengerTrips";
     public static final String ACTION_SHARED_TRIPS = "myDriverTrips";
     public static final String ACTION_SUBSCRIBE_TRIP = "subscribeTrip";
+    public static final String ACTION_CONFIRM_TRIP = "confirmTrip";
+
+
     public static final String ACTION_GET_USER_VEHICLES = "getUserVehicles";
+
+    // Create the MySQL datetime string
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    public static String convertDateToString(Date date) {
+        String dateString = sdf.format(date);
+        return dateString;
+    }
 }

@@ -1,6 +1,8 @@
 package com.fmt.cheaptrip.fragments.trips;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,7 +17,10 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.activities.ConfirmTripByQRCode;
+import com.fmt.cheaptrip.activities.MainActivity;
 import com.fmt.cheaptrip.entities.Baggage;
+import com.fmt.cheaptrip.entities.SubscribeTrip;
 import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.Vehicle;
 import com.fmt.cheaptrip.managers.UserAccountManager;
@@ -134,7 +139,23 @@ public class TripDetailFragment extends Fragment {
             confirmTrip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // CALL QRCODE READER
+//                    SubscribeTrip s = new SubscribeTrip();
+//                    s.setTripId(1);
+//                    s.setPassengerId(40);
+//
+//                    TripWSInvoker.confirmTrip(getActivity().getApplicationContext(), s, new WSResponseListener() {
+//                        @Override
+//                        public void onResponse(WSResponseObject response) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onError(VolleyError error) {
+//
+//                        }
+//                    });
+
+                    redirectToConfirmTripByQRCode();
                 }
             });
 
@@ -142,7 +163,7 @@ public class TripDetailFragment extends Fragment {
             qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
 
             if (DetailType.GIVEN.equals(getDetailType())) {
-                Bitmap myBitmap = QRCode.from("Trip ID = " + String.valueOf(trip.getTripId())).withSize(600, 600).bitmap();
+                Bitmap myBitmap = QRCode.from(String.valueOf(trip.getTripId())).withSize(600, 600).bitmap();
                 qrCodeImageView.setImageBitmap(myBitmap);
                 qrCodeImageView.setVisibility(View.VISIBLE);
             } else if (DetailType.RECEIVED.equals(getDetailType())) {
@@ -182,4 +203,36 @@ public class TripDetailFragment extends Fragment {
         return getArguments().getParcelable("trip_detail_type");
     }
 
+    private void redirectToConfirmTripByQRCode() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity().getApplicationContext(), ConfirmTripByQRCode.class);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                String qrcode = data.getStringExtra("qrcode");
+                Toast.makeText(getContext(), qrcode, Toast.LENGTH_SHORT).show();
+
+                SubscribeTrip s = new SubscribeTrip();
+                s.setTripId(3);
+                s.setPassengerId(40);
+
+                TripWSInvoker.confirmTrip(getActivity().getApplicationContext(), s, new WSResponseListener() {
+                    @Override
+                    public void onResponse(WSResponseObject response) {
+
+                    }
+
+                    @Override
+                    public void onError(VolleyError error) {
+
+                    }
+                });
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+            }
+        }
+    }
 }

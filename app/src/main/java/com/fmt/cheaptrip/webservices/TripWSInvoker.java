@@ -4,7 +4,6 @@ package com.fmt.cheaptrip.webservices;
  * Created by Miguel on 24/05/16.
  */
 
-import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.android.volley.Request;
@@ -16,7 +15,6 @@ import com.fmt.cheaptrip.entities.SubscribeTrip;
 import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.entities.Vehicle;
-import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.request.CustomStringRequest;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
@@ -26,6 +24,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -260,7 +259,7 @@ public class TripWSInvoker {
         receivedTripsRequest.addParam(WSConfig.PARAM_START_POINT, trip.getStartPoint());
         receivedTripsRequest.addParam(WSConfig.PARAM_END_POINT, trip.getEndPoint());
 
-        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_DATE, String.valueOf(trip.getTripDate().getTime()));
+        receivedTripsRequest.addParam(WSConfig.PARAM_DATE, WSConfig.convertDateToString(trip.getTripDate()));
         receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_PRICE, trip.getPrice().toString());
         receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_OBSERVATIONS, trip.getObservations());
         receivedTripsRequest.addParam(WSConfig.PARAM_BAGAGGE_SIZE, trip.getBaggageSize());
@@ -291,6 +290,33 @@ public class TripWSInvoker {
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_SUBSCRIBE_TRIP);
         receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, subscribeTrip.getTripId().toString());
         receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, subscribeTrip.getPassengerId().toString());
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
+    public static void confirmTrip(final Context context, SubscribeTrip confirmTrip, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_CONFIRM_TRIP);
+        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, confirmTrip.getTripId().toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, confirmTrip.getPassengerId().toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_DATE, WSConfig.convertDateToString(new Date()));
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);

@@ -3,10 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:src="@color/abc_search_url_text_normal"
+    <SurfaceView
+        android:id="@+id/camera_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/qrCodeImageView"
-        android:scaleType="center" />
+        android:layout_height="320dp"/>
 </LinearLayout>
