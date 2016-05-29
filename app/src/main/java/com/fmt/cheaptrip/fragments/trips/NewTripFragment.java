@@ -203,7 +203,7 @@ public class NewTripFragment extends Fragment {
 
     private void registerTrip(View view) {
         final Trip trip = new Trip();
-        trip.setDriverId(1);
+        trip.setDriverId(Integer.valueOf(UserAccountManager.getCurrentUserId(getActivity().getApplicationContext())));
         trip.setVehicleId(1);
         trip.setStartCity(new_trip_fragment_origin_city_tv.getText().toString());
         trip.setEndCity(new_trip_fragment_destiny_city_tv.getText().toString());
