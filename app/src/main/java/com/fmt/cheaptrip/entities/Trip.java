@@ -26,6 +26,10 @@ public class Trip implements Parcelable {
     private Integer DelayTolerance;
     private Integer Rank;
 
+    //Contextual Information
+    private String vehicleBrand;
+    private String vehicleModel;
+
     public Integer getTripId() {
         return tripId;
     }
@@ -128,6 +132,22 @@ public class Trip implements Parcelable {
 
     public void setRank(Integer rank) {
         Rank = rank;
+    }
+
+    public String getVehicleBrand() {
+        return vehicleBrand;
+    }
+
+    public void setVehicleBrand(String vehicleBrand) {
+        this.vehicleBrand = vehicleBrand;
+    }
+
+    public String getVehicleModel() {
+        return vehicleModel;
+    }
+
+    public void setVehicleModel(String vehicleModel) {
+        this.vehicleModel = vehicleModel;
     }
 
     public Trip(){
