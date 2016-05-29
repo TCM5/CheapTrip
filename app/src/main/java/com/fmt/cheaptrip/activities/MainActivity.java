@@ -11,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fmt.cheaptrip.fragments.AboutFragment;
@@ -20,6 +22,7 @@ import com.fmt.cheaptrip.fragments.ProfileFragment;
 import com.fmt.cheaptrip.fragments.trips.GivenTripsFragment;
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.fragments.trips.ReceivedTripsFragment;
+import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
@@ -32,10 +35,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -45,6 +46,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View view = navigationView.getHeaderView(0);
+        ImageView profilePic = (ImageView) view.findViewById(R.id.nav_user_pic);
+        profilePic.setImageBitmap(UserAccountManager.getCurrentUserProfileImage(this));
+
+        TextView profileName = (TextView) view.findViewById(R.id.nav_user_name);
+        profileName.setText(UserAccountManager.getCurrentUserEmail());
+
+        TextView profileEmail = (TextView) view.findViewById(R.id.nav_user_name);
+        profileEmail.setText(UserAccountManager.getCurrentUserEmail());
+
 
         setActionBarIcon();
 

@@ -13,12 +13,16 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.MainActivity;
+
+import org.json.JSONObject;
 
 /**
  * This class controls the facebook login feature.
@@ -60,6 +64,21 @@ public class FacebookLoginFragment extends Fragment {
 
             @Override
             public void onSuccess(LoginResult loginResult) {
+
+                GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject me, GraphResponse response) {
+                                if (response.getError() != null) {
+                                    //TODO later
+                                } else {
+                                    String email = me.optString("email");
+
+                                }
+                            }
+                        }).executeAsync();
+
+
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

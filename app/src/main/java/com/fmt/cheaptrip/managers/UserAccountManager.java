@@ -1,6 +1,7 @@
 package com.fmt.cheaptrip.managers;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
@@ -40,6 +41,38 @@ public class UserAccountManager {
         return LoginUtils.getCurrentUserId(context);
     }
 
+    public static Bitmap getCurrentUserProfileImage(Context context) {
+
+        Bitmap userProfilePicture = null;
+
+        if (DefaultLoginUtils.isLogged(context)) {
+            // DefaultLoginUtils.getCurrentUserName(context);
+        } else if (GplusLoginUtils.isLogged(context)) {
+            //  GplusLoginUtils.getCurrentUserName(context);
+        } else if (FacebookLoginUtils.isLogged(context)) {
+            userProfilePicture = FacebookLoginUtils.getCurrentUserProfile(context);
+        }
+        return userProfilePicture;
+    }
+
+    public static String getCurrentUserName(Context context) {
+        String userName = "N/A";
+
+        if (DefaultLoginUtils.isLogged(context)) {
+            //  userName =   DefaultLoginUtils.getCurrentUserName(context);
+        } else if (GplusLoginUtils.isLogged(context)) {
+            // userName =  GplusLoginUtils.getCurrentUserName(context);
+        } else if (FacebookLoginUtils.isLogged(context)) {
+            userName = FacebookLoginUtils.getCurrentUserName(context);
+        }
+
+        return userName;
+    }
+
+    public static String getCurrentUserEmail() {
+        return null;
+    }
+
     public static void clearAllData(Context context) {
         LoginUtils.removeCurrentUserEmail(context);
         logout(context);
@@ -56,8 +89,6 @@ public class UserAccountManager {
         } else if (FacebookLoginUtils.isLogged(context)) {
             FacebookLoginUtils.revoke(context);
         }
-
-
     }
 
 }
