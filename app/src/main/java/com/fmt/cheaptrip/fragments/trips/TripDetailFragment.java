@@ -181,8 +181,7 @@ public class TripDetailFragment extends Fragment {
 
     private void getTripVeichle() {
 
-        Integer currentUserId = UserAccountManager.getCurrentUserId(getActivity().getApplicationContext());
-        currentUserId = 1;
+        Integer currentUserId = Integer.valueOf(UserAccountManager.getCurrentUserId(getActivity().getApplicationContext()));
 
         TripWSInvoker.getUserVehicles(getActivity().getApplicationContext(), currentUserId, new WSResponseListener() {
             @Override

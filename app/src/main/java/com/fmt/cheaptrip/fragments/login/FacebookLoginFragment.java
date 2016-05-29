@@ -2,6 +2,7 @@ package com.fmt.cheaptrip.fragments.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.camera2.params.Face;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,18 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.MainActivity;
+import com.fmt.cheaptrip.utils.login.FacebookLoginUtils;
 
 import org.json.JSONObject;
 
@@ -31,6 +37,8 @@ import org.json.JSONObject;
 public class FacebookLoginFragment extends Fragment {
 
     private CallbackManager callbackManager;
+
+    private AccessTokenTracker mAccessTokenTracker;
 
     private LoginButton loginButton;
 
@@ -65,6 +73,42 @@ public class FacebookLoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
+                ProfileTracker profileTracker = new ProfileTracker() {
+                    @Override
+                    protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+                        this.stopTracking();
+                        Profile.setCurrentProfile(currentProfile);
+
+                    }
+                };
+                profileTracker.startTracking();
+
+                if (AccessToken.getCurrentAccessToken() != null) {
+                    mAccessTokenTracker = new AccessTokenTracker() {
+                        @Override
+                        protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                            mAccessTokenTracker.stopTracking();
+                            if (currentAccessToken == null) {
+                                //(the user has revoked your permissions -
+                                //by going to his settings and deleted your app)
+                                //do the simple login to FaceBook
+                                //case 1
+                            } else {
+                                //you've got the new access token now.
+                                //AccessToken.getToken() could be same for both
+                                //parameters but you should only use "currentAccessToken"
+                                //case 2
+                                FacebookLoginUtils.fetchProfile();
+                            }
+                        }
+                    };
+                    mAccessTokenTracker.startTracking();
+                    AccessToken.refreshCurrentAccessTokenAsync();
+                } else {
+                    //TODO
+                }
+
+
                 GraphRequest.newMeRequest(
                         loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                             @Override
@@ -78,6 +122,8 @@ public class FacebookLoginFragment extends Fragment {
                             }
                         }).executeAsync();
 
+
+                FacebookLoginUtils.login(getActivity());
 
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MainActivity.class);

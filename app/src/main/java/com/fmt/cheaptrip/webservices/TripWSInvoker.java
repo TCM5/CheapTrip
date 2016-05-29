@@ -15,6 +15,7 @@ import com.fmt.cheaptrip.entities.SubscribeTrip;
 import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.entities.Vehicle;
+import com.fmt.cheaptrip.utils.login.LoginUtils;
 import com.fmt.cheaptrip.webservices.request.CustomStringRequest;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
@@ -131,7 +132,7 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = "40";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = LoginUtils.getCurrentUserId(context.getApplicationContext());// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
 
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_RECEIVED_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);

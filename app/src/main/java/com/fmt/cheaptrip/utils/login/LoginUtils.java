@@ -55,20 +55,20 @@ public abstract class LoginUtils {
      * @return
      */
     @NonNull
-    public static Integer getCurrentUserId(Context context) {
+    public static String getCurrentUserId(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        return sharedPref.getInt(SP_LOGIN_CURRENT_USERID_ID, 0);
+        return sharedPref.getString(SP_LOGIN_CURRENT_USERID_ID, "0");
     }
 
     /**
      * @param context
      */
-    public static void addCurrentUserId(Context context, Integer currentUserId) {
+    public static void addCurrentUserId(Context context, String currentUserId) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putInt(SP_LOGIN_CURRENT_USERID_ID, currentUserId);
+        editor.putString(SP_LOGIN_CURRENT_USERID_ID, currentUserId);
 
         editor.commit();
     }

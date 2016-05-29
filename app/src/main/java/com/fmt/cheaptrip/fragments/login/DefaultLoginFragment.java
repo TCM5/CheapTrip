@@ -57,11 +57,12 @@ public class DefaultLoginFragment extends Fragment {
                 TripWSInvoker.login(getActivity(), user, new WSResponseListener() {
                     @Override
                     public void onResponse(WSResponseObject response) {
-                        if(response.getSuccess().equalsIgnoreCase("true")) {
+                        if (response.getSuccess().equalsIgnoreCase("true")) {
                             User user = response.getUser();
 
                             DefaultLoginUtils.login(getActivity().getApplicationContext());
                             DefaultLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), user.getEmail());
+                            DefaultLoginUtils.addCurrentUserId(getActivity().getApplicationContext(), String.valueOf(user.getUserId()));
 
                             Toast.makeText(getContext(), "You have been successfully logged in", Toast.LENGTH_SHORT).show();
                             redirectToMain(user);

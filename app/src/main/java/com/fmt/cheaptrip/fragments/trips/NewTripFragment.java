@@ -280,8 +280,7 @@ public class NewTripFragment extends Fragment {
 
     private void fillUserVehiclesSpinner() {
 
-        Integer currentUserId = UserAccountManager.getCurrentUserId(getActivity().getApplicationContext());
-        currentUserId = 1;
+        Integer currentUserId = Integer.valueOf(UserAccountManager.getCurrentUserId(getActivity().getApplicationContext()));
 
         TripWSInvoker.getUserVehicles(getActivity().getApplicationContext(), currentUserId, new WSResponseListener() {
             @Override

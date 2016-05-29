@@ -37,7 +37,7 @@ public class UserAccountManager {
      * @param context
      * @return
      */
-    public static Integer getCurrentUserId(Context context) {
+    public static String getCurrentUserId(Context context) {
         return LoginUtils.getCurrentUserId(context);
     }
 
