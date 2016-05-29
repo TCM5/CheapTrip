@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Email"
+            android:hint="@string/lblEmail_txt"
             android:inputType="textEmailAddress"
             android:singleLine="true" />
 
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Password"
+            android:hint="@string/lblPassword_txt"
             android:inputType="textPassword"
             android:singleLine="true" />
 
@@ -40,7 +40,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="@color/green4_cheaptrip"
-                android:text="Log in"
+                android:text="@string/btnLogintxt"
                 android:textColor="@color/white" />
 
             <Button
@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:background="@color/green4_cheaptrip"
                 android:elevation="0dp"
-                android:text="Sign in"
+                android:text="@string/action_sign_in_short"
                 android:textColor="@color/white"
                 android:id="@+id/btnSignIn" />
 

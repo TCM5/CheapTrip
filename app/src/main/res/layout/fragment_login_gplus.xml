@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.fmt.cheaptrip.fragments.login.GooglePlusLoginFragment">
 
-
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"

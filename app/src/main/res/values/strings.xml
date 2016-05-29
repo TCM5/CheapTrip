@@ -34,8 +34,9 @@
     <string name="lblContactNumber_txt">Contact number</string>
     <string name="lblEmail_txt">Email </string>
     <string name="lblPassword_txt">Password</string>
-
     <string name="btnRegister_txt">Register</string>
+
+    <string name="btnLogintxt">Login</string>
 
     <!-- Strings related to Facebook Login -->
 
@@ -98,6 +99,10 @@
     <string name="mytrip_item_location_origin_text">Starting point</string>
     <string name="mytrip_item_location_destiny_text">Destination</string>
     <string name="mytrip_item_date_text">Date</string>
+
+    <!-- Given Fragment -->
+    <string name="given_fragment_ups">Ups!</string>
+    <string name="given_fragment_ups_msg">Não deu nenhuma boleia</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
