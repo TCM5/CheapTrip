@@ -47,31 +47,39 @@ public class SignInActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final User user = new User();
 
-                user.setName(txtName.getText().toString());
-                user.setContactNumber(txtContactNumber.getText().toString());
-                user.setEmail(txtEmail.getText().toString());
-                user.setPassword(txtPassword.getText().toString());
+                if(!txtName.getText().toString().equals("") &&
+                        !txtContactNumber.getText().toString().equals("") &&
+                        !txtEmail.getText().toString().equals("") &&
+                        !txtPassword.getText().toString().equals("")) {
+                    final User user = new User();
 
-                TripWSInvoker.registerUser(getApplicationContext(), user, new WSResponseListener() {
-                    @Override
-                    public void onResponse(WSResponseObject response) {
-                        if (response.getSuccess().equalsIgnoreCase("true")) {
+                    user.setName(txtName.getText().toString());
+                    user.setContactNumber(txtContactNumber.getText().toString());
+                    user.setEmail(txtEmail.getText().toString());
+                    user.setPassword(txtPassword.getText().toString());
 
-                            Toast.makeText(getApplicationContext(), "You have been successfully registered", Toast.LENGTH_SHORT).show();
-                            redirectToLogIn(user);
+                    TripWSInvoker.registerUser(getApplicationContext(), user, new WSResponseListener() {
+                        @Override
+                        public void onResponse(WSResponseObject response) {
+                            if (response.getSuccess().equalsIgnoreCase("true")) {
 
-                        } else {
-                            Toast.makeText(getApplicationContext(), response.getError(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "You have been successfully registered", Toast.LENGTH_SHORT).show();
+                                redirectToLogIn(user);
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), response.getError(), Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onError(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onError(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.empty_fields_msg, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
