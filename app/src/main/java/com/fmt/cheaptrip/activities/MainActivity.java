@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity
 
                 break;
             case R.id.menu_item_feedback:
-                Toast.makeText(this, "This feature will be available after Cheaptrip become available at PlayStore", Toast.LENGTH_LONG);
+                Toast.makeText(this, "This feature will be available after Cheaptrip become available at PlayStore", Toast.LENGTH_LONG).show();
                 break;
 
             default:

@@ -27,6 +27,17 @@
     <string name="login_welcome_msg1">Bem-vindo ao CheapTrip.</string>
     <string name="login_welcome_msg2">Aqui encontra pessoas com o mesmo destino que o seu!</string>
     <string name="login_btn_text">Entrar com </string>
+    <string name="activity_login_default_fragment_or_txt">Ou pode escolher outras opções</string>
+
+
+    <!-- Default login -->
+    <string name="lblName_txt">Nome</string>
+    <string name="lblContactNumber_txt">Numero contato</string>
+    <string name="lblEmail_txt">Email</string>
+    <string name="lblPassword_txt">Password</string>
+    <string name="btnRegister_txt">Registar</string>
+
+    <string name="btnLogintxt">Login</string>
 
     <!-- Strings related to Facebook Login -->
 
@@ -37,7 +48,7 @@
     <string name="btn_revoke_access">Negar acesso</string>
 
     <!-- Menu strings -->
-    <string name="menu_item_trips_title">Boleias cheaptrip!</string>
+    <string name="menu_item_trips_title">Vai para o mapa!</string>
     <string name="menu_item_my_trips_title">Minhas viagens</string>
     <string name="menu_item_profile_title">Perfil</string>
     <string name="menu_item_settings_title">Configurações</string>
@@ -51,6 +62,9 @@
     <string name="fragment_introduction_slide_desc1_text">A partilha de boleias é uma solução económica. Se deseja viajar de forma rápida e confortável, este é o modo mais económico.</string>
     <string name="fragment_introduction_slide_desc2_text">Com a partilha de boleia pode aumentar a sua rede de contacto e criar a sua lista de condutores de confiança.</string>
     <string name="fragment_introduction_slide_desc3_text">A perservação do meio ambiente é um dos assuntos de maior relevância da atualidade. Um dos principais gases poluentes é o dióxido de carbono, libertado pelos automóveis. Através da partilha de boleias é possível diminuir consideravelmente a emissão de co2 libertada pelos automoveis e constribuir para um ambiente sustentável.</string>
+    <string name="fragment_introduction_slide_finish_text">Começa a usar o CheapTrip</string>
+
+
 
     <!-- Map Fragment Strings-->
     <string name="map_fragment_origin_input_text">Origem</string>
@@ -59,6 +73,18 @@
     <string name="map_fragment_newtrip_button_text">Criar</string>
     <string name="map_fragment_new_trip_text">Criar boleia</string>
     <string name="map_fragment_find_trip_text">Procurar boleia</string>
+
+    <!-- Profile Fragment Strings -->
+
+    <string name="fragment_profile_signout_btn_txt">Logout</string>
+    <string name="fragment_profile_hardreset_btn_txt">Limpar tud</string>
+    <string name="fragment_profile_account_tv_txt">Conta</string>
+    <string name="fragment_profile_add_car_tv_txt">Adicionar carro</string>
+    <string name="fragment_profile_seats_txt">Lugares</string>
+    <string name="fragment_profile_year_txt">Ano</string>
+    <string name="fragment_profile_model_txt">Modelo</string>
+    <string name="fragment_profile_brand_txt">Marca</string>
+    <string name="fragment_profile_my_cars_txt">Os meus carros</string>
 
     <!-- About Fragment Strings-->
     <string name="about_fragment_about_app_title">A aplicação</string>
@@ -73,4 +99,39 @@
     <string name="mytrip_item_location_origin_text">Origem</string>
     <string name="mytrip_item_location_destiny_text">Destino</string>
     <string name="mytrip_item_date_text">Data</string>
+
+    <!-- Given Fragment -->
+    <string name="given_fragment_ups">Ups!</string>
+    <string name="given_fragment_ups_msg">Não deu nenhuma boleia</string>
+
+    <!-- Received Fragment -->
+    <string name="received_fragment_ups">Ups!</string>
+    <string name="received_fragment_ups_msg">Não deu nenhuma boleia</string>
+
+    <!-- Search Fragment -->
+    <string name="search_fragment_ups">Ups!</string>
+    <string name="search_fragment_ups_msg">Não existem boleias disponiveis</string>
+
+    <!-- New trip -->
+    <string name="new_trip_frag_route_txt">Rota</string>
+    <string name="new_trip_frag_date_txt">Data</string>
+    <string name="new_trip_frag_date_msg_txt">Aqui podes definir a data da viagem</string>
+    <string name="new_trip_frag_hour_txt">Hora</string>
+    <string name="new_trip_frag_hour_msg_txt">Aqui podes definir a hora da viagem</string>
+    <string name="new_trip_frag_price_txt">Preço</string>
+    <string name="new_trip_frag_price_msg_txt">Aqui podes definir o preço da viagem</string>
+    <string name="new_trip_frag_car_txt">Carro</string>
+    <string name="new_trip_frag_car_msg_txt">Aqui podes definir o carro da viagem</string>
+    <string name="new_trip_frag_baggage_txt">Limite de bagagem</string>
+    <string name="new_trip_frag_baggage_msg_txt">Aqui podes definir o limite de bagagem</string>
+    <string name="new_trip_frag_tolerance_txt">Tolerância de atraso</string>
+    <string name="new_trip_frag_tolerance_msg_txt">Aqui podes definir a tolerância limite</string>
+    <string name="new_trip_frag_observation_txt">Observações</string>
+    <string name="new_trip_frag_observation_msg_txt">Aqui podes definir as observações</string>
+    <string name="new_trip_frag_rules_msg_txt">Eu Aceito os termos e condições de utilização desta aplicação. Compreendo que em qualquer viagem podem acontecer momentos menos felizes, sendo que a CheapTrip não se responsabiliza por tal.</string>
+
+    <string name="new_trip_frag_create_txt">Criar boleia</string>
+    <string name="new_trip_frag_confirm_txt">Confirmar</string>
+    <string name="new_trip_frag_subscribe_txt">Participar</string>
+
 </resources>

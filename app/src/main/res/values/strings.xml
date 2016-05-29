@@ -102,15 +102,15 @@
 
     <!-- Given Fragment -->
     <string name="given_fragment_ups">Ups!</string>
-    <string name="given_fragment_ups_msg">Não deu nenhuma boleia</string>
+    <string name="given_fragment_ups_msg">You didn't gave any trip</string>
 
     <!-- Received Fragment -->
     <string name="received_fragment_ups">Ups!</string>
-    <string name="received_fragment_ups_msg">Não deu nenhuma boleia</string>
+    <string name="received_fragment_ups_msg">You didn't received any trip</string>
 
     <!-- Search Fragment -->
     <string name="search_fragment_ups">Ups!</string>
-    <string name="search_fragment_ups_msg">Não deu nenhuma boleia</string>
+    <string name="search_fragment_ups_msg">No trips available</string>
 
     <!-- New trip -->
     <string name="new_trip_frag_route_txt">Route</string>
@@ -128,7 +128,7 @@
     <string name="new_trip_frag_tolerance_msg_txt">Here you define the late time of your trip</string>
     <string name="new_trip_frag_observation_txt">Observations</string>
     <string name="new_trip_frag_observation_msg_txt">Here you define the late time of your trip</string>
-    <string name="new_trip_frag_rules_msg_txt">Eu aceito as regras bla blas e as regras que coisao que tenho de aceiar e mais nao sei o uqie </string>
+    <string name="new_trip_frag_rules_msg_txt">I accept the terms and conditions of use of this application . I understand that on any trip can happen less happy times , and the CheapTrip is not responsible for such.</string>
 
     <string name="new_trip_frag_create_txt">Create new trip</string>
     <string name="new_trip_frag_confirm_txt">Confirm</string>
