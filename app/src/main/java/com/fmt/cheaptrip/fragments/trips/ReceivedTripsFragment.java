@@ -110,6 +110,9 @@ public class ReceivedTripsFragment extends Fragment {
             @Override
             public void onError(VolleyError error) {
                 //TODO
+
+                emptyListLinearLayout.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
                 greenProgressDialog.dismiss();
             }
         });
