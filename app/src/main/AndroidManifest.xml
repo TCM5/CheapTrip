@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fmt.cheaptrip"
     android:versionCode="1"
-    android:versionName="1.1"
-    >
+    android:versionName="1.1">
+
     <uses-sdk
         android:maxSdkVersion="23"
         android:minSdkVersion="17"
@@ -29,7 +29,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activities.LoadingActivity">
+        <activity
+            android:name=".activities.LoadingActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -38,16 +41,30 @@
 
         <activity
             android:name=".activities.MainActivity"
+            android:configChanges="orientation"
             android:icon="@drawable/logo"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan|adjustResize"></activity>
 
-        <activity android:name="com.fmt.cheaptrip.activities.LoginActivity" />
+        <activity
+            android:name="com.fmt.cheaptrip.activities.LoginActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.fmt.cheaptrip.activities.SignInActivity" />
+        <activity
+            android:name="com.fmt.cheaptrip.activities.SignInActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.fmt.cheaptrip.activities.IntroductionActivity" />
-        <activity android:name="com.fmt.cheaptrip.activities.ConfirmTripByQRCode" />
+        <activity
+            android:name="com.fmt.cheaptrip.activities.IntroductionActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fmt.cheaptrip.activities.ConfirmTripByQRCode"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

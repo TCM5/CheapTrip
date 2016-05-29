@@ -59,14 +59,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
 
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
             android:background="@color/green4_cheaptrip"
             android:clickable="true"
-            android:elevation="10dp"
+            android:elevation="15dp"
             android:padding="10dp"
             android:text="@string/fragment_introduction_slide_finish_text"
             android:textColor="@color/white"
-            android:textSize="14dp" android:layout_alignParentRight="true"
-            android:visibility="visible" />
+            android:textSize="14dp"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
