@@ -15,6 +15,7 @@ import com.fmt.cheaptrip.entities.SubscribeTrip;
 import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.entities.Vehicle;
+import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.utils.login.LoginUtils;
 import com.fmt.cheaptrip.webservices.request.CustomStringRequest;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
@@ -132,7 +133,7 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = LoginUtils.getCurrentUserId(context.getApplicationContext());// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = "40";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
 
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_RECEIVED_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
@@ -296,7 +297,7 @@ public class TripWSInvoker {
         requestQueue.add(receivedTripsRequest);
     }
 
-    public static void confirmTrip(final Context context, SubscribeTrip confirmTrip, final WSResponseListener wsResponse) {
+    public static void confirmTrip(final Context context, String tripId, final WSResponseListener wsResponse) {
 
         CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
                 new Response.Listener() {
@@ -314,10 +315,11 @@ public class TripWSInvoker {
                 }
         );
 
+        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_CONFIRM_TRIP);
-        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, confirmTrip.getTripId().toString());
-        receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, confirmTrip.getPassengerId().toString());
-        receivedTripsRequest.addParam(WSConfig.PARAM_DATE, WSConfig.convertDateToString(new Date()));
+        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, tripId);
+        receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, currentUserId);
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);

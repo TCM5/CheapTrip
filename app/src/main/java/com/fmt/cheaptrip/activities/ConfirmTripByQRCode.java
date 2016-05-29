@@ -43,7 +43,7 @@ public class ConfirmTripByQRCode extends AppCompatActivity implements ZXingScann
     @Override
     public void handleResult(Result rawResult) {
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("qrcode", rawResult.getText());
+        returnIntent.putExtra("tripId", rawResult.getText());
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
 
