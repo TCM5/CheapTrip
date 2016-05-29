@@ -22,8 +22,10 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="15dp"
-                android:textSize="25sp" />
+                android:layout_marginTop="30dp"
+                android:text="@string/fragment_introduction_slide_title2_text"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/fragment_introduction_slide_desc_tv"
@@ -32,9 +34,10 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:ellipsize="none"
                 android:scrollHorizontally="false"
+                android:text="@string/fragment_introduction_slide_desc2_text"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -44,8 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="true"
+
             android:text="Continuar"
-            android:textColor="@color/green4_cheaptrip"
+            android:textColor="@android:color/darker_gray"
             android:visibility="gone" />
 
 
@@ -55,7 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/green" />
 
     </RelativeLayout>
 

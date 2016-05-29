@@ -1,7 +1,12 @@
 package com.fmt.cheaptrip.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -66,7 +71,15 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
                 fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc1_text));
                 fragment_introduction_slide_desc_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
-                fragment_introduction_slide_image_iv.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.economic));
+
+                Drawable myIcon0 = ContextCompat.getDrawable(getActivity(), R.drawable.economic);
+                int color0 = ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip);
+
+                ColorFilter filter0 = new LightingColorFilter(color0, color0);
+                myIcon0.setColorFilter(filter0);
+
+                fragment_introduction_slide_image_iv.setImageDrawable(myIcon0);
+
                 break;
 
             case 1:
@@ -75,6 +88,14 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
                 fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc2_text));
                 fragment_introduction_slide_desc_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+
+                Drawable myIcon = ContextCompat.getDrawable(getActivity(), R.drawable.friends);
+                int color = ContextCompat.getColor(getActivity(), R.color.white);
+
+                ColorFilter filter = new LightingColorFilter(color, color);
+                myIcon.setColorFilter(filter);
+
+                fragment_introduction_slide_image_iv.setImageDrawable(myIcon);
                 break;
 
             case 2:
@@ -83,6 +104,15 @@ public class IntroductionSlideFragment extends Fragment implements View.OnClickL
                 fragment_introduction_slide_title_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
                 fragment_introduction_slide_desc_tv.setText(getString(R.string.fragment_introduction_slide_desc3_text));
                 fragment_introduction_slide_desc_tv.setTextColor(ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip));
+
+                Drawable myIcon2 = ContextCompat.getDrawable(getActivity(), R.drawable.green);
+                int color2 = ContextCompat.getColor(getActivity(), R.color.green4_cheaptrip);
+
+                ColorFilter filter2 = new LightingColorFilter(color2, color2);
+                myIcon2.setColorFilter(filter2);
+
+
+                fragment_introduction_slide_image_iv.setImageDrawable(myIcon2);
 
                 TextView fragment_introduction_slide_finish_tv = (TextView) rootView.findViewById(R.id.fragment_introduction_slide_finish_tv);
                 fragment_introduction_slide_finish_tv.setVisibility(View.VISIBLE);

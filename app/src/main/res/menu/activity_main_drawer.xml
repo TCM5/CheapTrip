@@ -34,7 +34,7 @@
             android:title="@string/menu_item_settings_title" /> -->
         <item
             android:id="@+id/menu_item_about"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_error_outline_black_48dp"
             android:title="@string/menu_item_about_title" />
         <item
             android:id="@+id/menu_item_feedback"
