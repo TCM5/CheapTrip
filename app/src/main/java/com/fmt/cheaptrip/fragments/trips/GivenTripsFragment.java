@@ -22,6 +22,7 @@ import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,8 +90,11 @@ public class GivenTripsFragment extends Fragment {
                 } else if (response.getTrips() != null) {
                     List<Trip> givenTrips = response.getTrips();
 
-                    tripsAdapter.refreshTripsList(response.getTrips());
-                    greenProgressDialog.dismiss();
+                    if (listView == null) {
+                        givenTrips = new ArrayList<Trip>();
+                    }
+
+                    tripsAdapter.refreshTripsList(givenTrips);
 
                     if (givenTrips.size() < 1) {
                         emptyListLinearLayout.setVisibility(View.VISIBLE);
@@ -99,6 +103,7 @@ public class GivenTripsFragment extends Fragment {
                         emptyListLinearLayout.setVisibility(View.GONE);
                         listView.setVisibility(View.VISIBLE);
                     }
+                    greenProgressDialog.dismiss();
 
                 }
                 greenProgressDialog.dismiss();
