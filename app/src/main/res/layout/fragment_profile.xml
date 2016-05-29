@@ -17,12 +17,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
-            android:text="My cars"
+            android:text="My Cars"
             android:textColor="@color/green4_cheaptrip"
             android:textSize="25dp" />
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/fragment_profile_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -34,7 +34,7 @@
 
 
         <EditText
-            android:id="@+id/txtContactNumber"
+            android:id="@+id/fragment_profile_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -45,7 +45,7 @@
 
 
         <EditText
-            android:id="@+id/txtEmail"
+            android:id="@+id/fragment_profile_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -56,7 +56,7 @@
             android:textColorHint="@android:color/darker_gray" />
 
         <EditText
-            android:id="@+id/txtPassword"
+            android:id="@+id/fragment_profile_seats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -74,7 +74,8 @@
             android:elevation="10sp"
             android:text="Add Car"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:id="@+id/fragment_profile_addcar_btn" />
 
 
         <TextView

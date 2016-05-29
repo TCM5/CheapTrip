@@ -162,26 +162,6 @@ public class TripDetailFragment extends Fragment {
         return view;
     }
 
-
-    private void getTripVeichle() {
-
-        Integer currentUserId = Integer.valueOf(UserAccountManager.getCurrentUserId(getActivity().getApplicationContext()));
-
-        TripWSInvoker.getUserVehicles(getActivity().getApplicationContext(), currentUserId, new WSResponseListener() {
-            @Override
-            public void onResponse(WSResponseObject response) {
-                List<Vehicle> myVehicles = response.getVehicles();
-
-
-            }
-
-            @Override
-            public void onError(VolleyError error) {
-
-            }
-        });
-    }
-
     public DetailType getDetailType() {
         return getArguments().getParcelable("trip_detail_type");
     }
