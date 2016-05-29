@@ -1,99 +1,132 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/green3_cheaptrip"
-    android:orientation="vertical"
-    tools:context="com.fmt.cheaptrip.activities.LoginActivity">
+    android:background="@color/green3_cheaptrip">
 
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/green3_cheaptrip"
+        android:orientation="vertical">
 
-        android:gravity="bottom"
-        android:theme="@android:style/Theme.Light.NoTitleBar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+
+            android:layout_marginTop="15dp"
+            android:text="My cars"
+            android:textColor="@color/green4_cheaptrip"
+            android:textSize="25dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Brand" />
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Model" />
+
+        <EditText
+            android:id="@+id/txtContactNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Year" />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seats" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:background="@color/green4_cheaptrip"
+            android:text="Add Car"
+            android:textColor="@color/white"  android:elevation="10sp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+
+            android:layout_marginTop="15dp"
+            android:text="Account"
+            android:textColor="@color/green4_cheaptrip"
+            android:textSize="25dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-
-            <TextView
-                android:text="My Cars"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Brand" />
-
-            <EditText
-                android:id="@+id/txtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Model" />
-
-            <EditText
-                android:id="@+id/txtContactNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Year" />
-
-            <EditText
-                android:id="@+id/txtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Seats" />
-
-            <EditText
-                android:id="@+id/txtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword" />
-
-            <Button
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
-                android:background="@color/green4_cheaptrip"
-                android:text="Add Car"
-                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/fragment_profile_signout_btn"
-                android:layout_height="30dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:background="@color/red"
-                android:text="Log Out" />
+                android:elevation="5sp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
+            <Button
+                android:id="@+id/fragment_profile_hardreset_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/darker_gray"
+                android:elevation="5sp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Hard reset"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
         </LinearLayout>
 
-    </FrameLayout>
 
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

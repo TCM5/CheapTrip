@@ -25,10 +25,14 @@
 
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/cheaptrip_logo" />
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/logo" />
 
             <FrameLayout
                 android:id="@+id/activity_login_default_fragment_container"
@@ -42,6 +46,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
                 android:text="Or you can choose other options" />
+
 
             <FrameLayout
                 android:id="@+id/activity_login_gplus_fragment_container"
