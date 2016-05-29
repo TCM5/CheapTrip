@@ -36,7 +36,7 @@ public class LocationEntry {
 
         //display_address = display_address.substring(0, display_address.length());
 
-        return address.getLocality() + ", " + address.getCountryName();
+        return address.getFeatureName() + ", " + address.getCountryName();
     }
 
     /**
