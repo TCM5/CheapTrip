@@ -16,9 +16,12 @@ import com.google.android.gms.plus.Plus;
  */
 public class GplusLoginUtils extends LoginUtils {
 
+
+    public final static String SP_LOGIN_TYPE_ID = "signed_logintype_gplus";
+
     /**
      * This method checks if the current user is logged with an google + account.
-     * <p>
+     * <p/>
      * NOTE: Gplus api should have a better way to check this, but for now is unknown
      *
      * @param context
@@ -31,10 +34,9 @@ public class GplusLoginUtils extends LoginUtils {
     }
 
     /**
-     *
      * @param context
      */
-    public static void login(Context context){
+    public static void login(Context context) {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -44,11 +46,8 @@ public class GplusLoginUtils extends LoginUtils {
         editor.commit();
     }
 
-    /**
-     *
-     * @param context
-     */
-    public static void revokeAccount(Context context) {
+
+    public static void revoke(Context context) {
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestProfile().requestEmail().requestScopes(Plus.SCOPE_PLUS_LOGIN, Plus.SCOPE_PLUS_PROFILE, new Scope("https://www.googleapis.com/auth/plus.profile.emails.read"))
@@ -65,7 +64,9 @@ public class GplusLoginUtils extends LoginUtils {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putBoolean("signed_logintype_gplus", false);
+        editor.putBoolean(SP_LOGIN_TYPE_ID, false);
+
+        editor.commit();
 
     }
 

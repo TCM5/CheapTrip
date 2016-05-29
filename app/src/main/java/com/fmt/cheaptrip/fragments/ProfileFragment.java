@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.activities.IntroductionActivity;
 import com.fmt.cheaptrip.activities.LoginActivity;
 import com.fmt.cheaptrip.activities.MainActivity;
 import com.fmt.cheaptrip.utils.LoginUtils;
@@ -74,18 +75,23 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
                 new AlertDialog.Builder(getActivity())
-                        .setTitle("Title")
-                        .setMessage("Do you really want to whatever?")
+                        .setTitle("Hard reset")
+                        .setMessage("Do you really want to make an hardreset? If yes, all yout data will be cleared")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                Toast.makeText(getActivity(), "Yaay", Toast.LENGTH_SHORT).show();
-                            }})
-                        .setNegativeButton(android.R.string.no, null).show();
 
+
+                                Intent intent = new Intent();
+                                intent.setClass(getActivity(), IntroductionActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                getActivity().startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null).show();
 
 
             }

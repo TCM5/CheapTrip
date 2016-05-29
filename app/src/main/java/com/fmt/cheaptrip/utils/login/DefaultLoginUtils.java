@@ -9,7 +9,8 @@ import android.preference.PreferenceManager;
  */
 public class DefaultLoginUtils extends LoginUtils {
 
-    private final static String SP_LOGIN_TYPE_ID = "signed_logintype_default";
+    public final static String SP_LOGIN_TYPE_ID = "signed_logintype_default";
+
 
     public static boolean isLogged(Context context) {
 
@@ -19,7 +20,6 @@ public class DefaultLoginUtils extends LoginUtils {
     }
 
     /**
-     *
      * @param context
      */
     public static void login(Context context) {
@@ -31,5 +31,12 @@ public class DefaultLoginUtils extends LoginUtils {
         editor.commit();
     }
 
+    public static void revoke(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
+        editor.putBoolean(SP_LOGIN_TYPE_ID, false);
+
+        editor.commit();
+    }
 }

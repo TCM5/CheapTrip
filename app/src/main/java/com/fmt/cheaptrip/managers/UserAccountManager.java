@@ -40,4 +40,23 @@ public class UserAccountManager {
         return LoginUtils.getCurrentUserId(context);
     }
 
+    public static void clearAllData(Context context) {
+        LoginUtils.removeCurrentUserEmail(context);
+
+    }
+
+    public static void logout(Context context) {
+
+        if (DefaultLoginUtils.isLogged(context)) {
+            DefaultLoginUtils.revoke(context);
+        } else if (GplusLoginUtils.isLogged(context)) {
+            GplusLoginUtils.revoke(context);
+        } else if (FacebookLoginUtils.isLogged(context)) {
+            FacebookLoginUtils.revoke(context);
+        }
+
+
+
+    }
+
 }

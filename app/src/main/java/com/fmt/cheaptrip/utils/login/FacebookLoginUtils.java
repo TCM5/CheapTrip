@@ -1,6 +1,8 @@
 package com.fmt.cheaptrip.utils.login;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
@@ -10,6 +12,8 @@ import com.facebook.Profile;
  * Created by santostc on 26-05-2016.
  */
 public class FacebookLoginUtils extends LoginUtils {
+
+    public final static String SP_LOGIN_TYPE_ID = "signed_logintype_facebook";
 
     private static void initializeFacebookSdk(Context context) {
         if (!FacebookSdk.isInitialized()) {
@@ -31,9 +35,15 @@ public class FacebookLoginUtils extends LoginUtils {
         return Profile.getCurrentProfile();
     }
 
-    public static boolean revokeAccount(){
-        //TODOS
-        return true;
-    }
 
+    public static void revoke(Context context) {
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putBoolean(SP_LOGIN_TYPE_ID, false);
+
+        editor.commit();
+
+    }
 }

@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 /**
  * Created by santostc on 26-05-2016.
  */
-public class LoginUtils {
+public abstract class LoginUtils {
 
     private final static String SP_LOGIN_CURRENT_USERID_ID = "current_userid_id";
     private final static String SP_LOGIN_CURRENT_USER_EMAIL_ID = "current_user_email";
@@ -48,6 +48,7 @@ public class LoginUtils {
 
         editor.commit();
     }
+
 
     /**
      * @param context
