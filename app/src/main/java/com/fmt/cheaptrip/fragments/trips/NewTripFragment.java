@@ -21,6 +21,7 @@ import java.util.List;
 import com.fmt.cheaptrip.entities.Baggage;
 import com.fmt.cheaptrip.entities.Vehicle;
 
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -54,6 +55,8 @@ public class NewTripFragment extends Fragment {
     // Date section views
     private DatePicker new_trip_fragment_date_dp;
 
+    //Time section
+    private TimePicker new_trip_fragment_time_tp;
 
     // Price section views
     private FloatingActionButton new_trip_fragment_price_fb_less;
@@ -98,6 +101,9 @@ public class NewTripFragment extends Fragment {
 
         // Date section views
         new_trip_fragment_date_dp = (DatePicker) view.findViewById(R.id.new_trip_fragment_date_dp);
+
+        new_trip_fragment_time_tp = (TimePicker) view.findViewById(R.id.new_trip_fragment_time_tp);
+        new_trip_fragment_time_tp.setIs24HourView(true);
 
         // Price section views
         new_trip_fragment_price_fb_less = (FloatingActionButton) view.findViewById(R.id.new_trip_fragment_price_fb_less);
@@ -233,8 +239,11 @@ public class NewTripFragment extends Fragment {
             int day = new_trip_fragment_date_dp.getDayOfMonth();
             int month = new_trip_fragment_date_dp.getMonth();
             int year = new_trip_fragment_date_dp.getYear();
+            int hour = new_trip_fragment_time_tp.getCurrentHour();
+            int minute = new_trip_fragment_time_tp.getCurrentMinute();
+
             calendar = Calendar.getInstance();
-            calendar.set(year, month, day);
+            calendar.set(year, month, day, hour, minute);
         }
 
         trip.setTripDate(calendar.getTime());
