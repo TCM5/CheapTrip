@@ -45,7 +45,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_horizontal"
-                android:text="Or you can choose other options" />
+                android:text="@string/activity_login_default_fragment_or_txt" />
 
 
             <FrameLayout

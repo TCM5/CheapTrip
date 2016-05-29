@@ -27,6 +27,15 @@
     <string name="login_welcome_msg1">Welcome to CheapTrip.</string>
     <string name="login_welcome_msg2">Here you find other people that have the same destiny!</string>
     <string name="login_btn_text">Log in with </string>
+    <string name="activity_login_default_fragment_or_txt">Or you can choose other options</string>
+
+    <!-- Default login -->
+    <string name="lblName_txt">Name</string>
+    <string name="lblContactNumber_txt">Contact number</string>
+    <string name="lblEmail_txt">Email </string>
+    <string name="lblPassword_txt">Password</string>
+
+    <string name="btnRegister_txt">Register</string>
 
     <!-- Strings related to Facebook Login -->
 
