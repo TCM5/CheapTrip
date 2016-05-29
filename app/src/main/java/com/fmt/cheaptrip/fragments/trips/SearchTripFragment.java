@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.adapters.TripsAdapter;
 import com.fmt.cheaptrip.customviews.GreenProgressDialog;
 import com.fmt.cheaptrip.entities.Trip;
+import com.fmt.cheaptrip.utils.ActivityUtils;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
@@ -60,6 +62,7 @@ public class SearchTripFragment extends Fragment {
 
         listView = (ListView) view.findViewById(R.id.search_trips_fragment_list);
         emptyListLinearLayout = (LinearLayout) view.findViewById(R.id.search_trips_fragment_empty_list_ll);
+        listView.setOnItemClickListener(tripClickListener());
 
         tripsAdapter = new TripsAdapter(getActivity(), R.layout.mytrip_header, R.id.mytrip_header_textview);
         listView.setAdapter(tripsAdapter);
@@ -110,6 +113,26 @@ public class SearchTripFragment extends Fragment {
             }
         });
 
+    }
+
+    private AdapterView.OnItemClickListener tripClickListener() {
+        return new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Trip trip = (Trip) parent.getItemAtPosition(position);
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("trip_detail", trip);
+                bundle.putParcelable("trip_detail_type", DetailType.SEARCHED);
+
+                TripDetailFragment tripDetailFragment = new TripDetailFragment();
+                tripDetailFragment.setArguments(bundle);
+
+                ActivityUtils.replaceFragment(getFragmentManager(), tripDetailFragment, R.id.main_content_container, TripDetailFragment.TAG, true);
+
+            }
+        };
     }
 
 }

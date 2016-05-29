@@ -30,6 +30,8 @@ import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
 import net.glxn.qrgen.android.QRCode;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -70,6 +72,8 @@ public class TripDetailFragment extends Fragment {
     private ImageView qrCodeImageView;
 
     private TextView confirmTrip;
+
+    private TextView joinTrip;
 
 
     public TripDetailFragment() {
@@ -143,6 +147,18 @@ public class TripDetailFragment extends Fragment {
                 }
             });
 
+            // Join
+            joinTrip = (TextView) view.findViewById(R.id.joinTrip);
+            joinTrip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    // CALL SERVICE
+
+
+                }
+            });
+
             // QR Code
             qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
 
@@ -153,12 +169,13 @@ public class TripDetailFragment extends Fragment {
             } else if (DetailType.RECEIVED.equals(getDetailType())) {
                 confirmTrip.setVisibility(View.VISIBLE);
 
-                if(trip.getConfirmDate() != null) {
+                if (trip.getConfirmDate() != null) {
                     confirmTrip.setText("Trip Confirmed");
                     confirmTrip.setEnabled(false);
                 }
+            } else if (DetailType.SEARCHED.equals(getDetailType())) {
+                joinTrip.setVisibility(View.VISIBLE);
             }
-
 
         } else {
             Toast.makeText(getActivity(), "", Toast.LENGTH_LONG);
