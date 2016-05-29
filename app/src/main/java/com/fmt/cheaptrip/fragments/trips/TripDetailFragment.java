@@ -1,6 +1,7 @@
 package com.fmt.cheaptrip.fragments.trips;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
@@ -21,6 +22,8 @@ import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
+
+import net.glxn.qrgen.android.QRCode;
 
 import java.util.List;
 
@@ -128,6 +131,12 @@ public class TripDetailFragment extends Fragment {
 
             // QR Code
             qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
+
+            if(DetailType.GIVEN.equals(getDetailType())){
+                Bitmap myBitmap = QRCode.from("Trip ID = " + String.valueOf(trip.getTripId())).withSize(600, 600).bitmap();
+                qrCodeImageView.setImageBitmap(myBitmap);
+                qrCodeImageView.setVisibility(View.VISIBLE);
+            }
 
 
             confirmTrip = (TextView) view.findViewById(R.id.confirmTrip);
