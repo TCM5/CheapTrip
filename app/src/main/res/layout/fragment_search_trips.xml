@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Ups!"
+            android:text="@string/search_fragment_ups"
             android:textColor="@color/green4_cheaptrip"
             android:textSize="25dp" />
 
@@ -41,7 +41,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Não existe nenhuma boleia com essa caracteristica" />
+            android:text="@string/search_fragment_ups_msg" />
 
     </LinearLayout>
 

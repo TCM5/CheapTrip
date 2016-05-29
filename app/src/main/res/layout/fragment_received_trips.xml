@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ups!"
+            android:text="@string/received_fragment_ups"
             android:textColor="@color/green4_cheaptrip"
             android:textSize="25dp" />
 
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/darker_gray"
-            android:text="Não participou em nenhuma boleia" />
+            android:text="@string/received_fragment_ups_msg" />
 
     </LinearLayout>
 
