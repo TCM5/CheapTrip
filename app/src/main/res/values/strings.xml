@@ -102,11 +102,11 @@
 
     <!-- Given Fragment -->
     <string name="given_fragment_ups">Ups!</string>
-    <string name="given_fragment_ups_msg">You didn't gave any trip</string>
+    <string name="given_fragment_ups_msg">You didn\'t gave any trip</string>
 
     <!-- Received Fragment -->
     <string name="received_fragment_ups">Ups!</string>
-    <string name="received_fragment_ups_msg">You didn't received any trip</string>
+    <string name="received_fragment_ups_msg">You didn\'t received any trip</string>
 
     <!-- Search Fragment -->
     <string name="search_fragment_ups">Ups!</string>
