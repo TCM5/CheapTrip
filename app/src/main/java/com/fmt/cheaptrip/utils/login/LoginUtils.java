@@ -21,7 +21,7 @@ public abstract class LoginUtils {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        String email = sharedPref.getString(SP_LOGIN_CURRENT_USER_EMAIL_ID, "");
+        String email = sharedPref.getString(SP_LOGIN_CURRENT_USER_EMAIL_ID, null);
 
         return email;
     }
@@ -46,7 +46,7 @@ public abstract class LoginUtils {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putString("SP_LOGIN_CURRENT_USER_EMAIL_ID", "");
+        editor.putString(SP_LOGIN_CURRENT_USER_EMAIL_ID, "");
 
         editor.commit();
     }
