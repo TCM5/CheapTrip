@@ -2,7 +2,6 @@ package com.fmt.cheaptrip.entities;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
 import android.support.v4.content.ContextCompat;
 
 import com.fmt.cheaptrip.R;
@@ -12,9 +11,13 @@ import com.fmt.cheaptrip.R;
  */
 public class Baggage {
 
-    public static final String BAGGAGE_TYPE_SMALL = "1";
-    public static final String BAGGAGE_TYPE_MEDIUM = "2";
-    public static final String BAGGAGE_TYPE_LARGE = "3";
+    public static final String BAGGAGE_TYPE_SMALL_KEY = "1";
+    public static final String BAGGAGE_TYPE_MEDIUM_KEY = "2";
+    public static final String BAGGAGE_TYPE_LARGE_KEY = "3";
+
+    private static final String BAGGAGE_TYPE_SMALL_DESC = "Small";
+    private static final String BAGGAGE_TYPE_MEDIUM_DESC = "Medium";
+    private static final String BAGGAGE_TYPE_LARGE_DESC = "Large";
 
     private String key;
     private String desc;
@@ -57,14 +60,14 @@ public class Baggage {
 
     public void setDescByKey(String key) {
         switch (key) {
-            case "1":
-                this.desc = BAGGAGE_TYPE_SMALL;
+            case BAGGAGE_TYPE_SMALL_KEY:
+                this.desc = BAGGAGE_TYPE_SMALL_DESC;
                 break;
-            case "2":
-                this.desc = BAGGAGE_TYPE_MEDIUM;
+            case BAGGAGE_TYPE_MEDIUM_KEY:
+                this.desc = BAGGAGE_TYPE_MEDIUM_DESC;
                 break;
-            case "3":
-                this.desc = BAGGAGE_TYPE_LARGE;
+            case BAGGAGE_TYPE_LARGE_KEY:
+                this.desc = BAGGAGE_TYPE_LARGE_DESC;
                 break;
             default:
                 this.desc = "N/A";
@@ -74,13 +77,13 @@ public class Baggage {
 
     public void setIconByKey(String key, Context context) {
         switch (key) {
-            case "1":
+            case BAGGAGE_TYPE_SMALL_KEY:
                 this.icon = ContextCompat.getDrawable(context, R.drawable.bagage_icon_small);
                 break;
-            case "2":
+            case BAGGAGE_TYPE_MEDIUM_KEY:
                 this.icon = ContextCompat.getDrawable(context, R.drawable.bagage_icon_medium);
                 break;
-            case "3":
+            case BAGGAGE_TYPE_LARGE_KEY:
                 this.icon = ContextCompat.getDrawable(context, R.drawable.bagage_icon_large);
                 break;
             default:

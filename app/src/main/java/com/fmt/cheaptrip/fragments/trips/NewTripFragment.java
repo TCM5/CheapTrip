@@ -1,16 +1,12 @@
 package com.fmt.cheaptrip.fragments.trips;
 
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -20,12 +16,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.io.File;
 import java.util.List;
 
 import com.fmt.cheaptrip.entities.Baggage;
-import com.fmt.cheaptrip.activities.MainActivity;
-import com.fmt.cheaptrip.activities.QRCodeVisualizer;
 import com.fmt.cheaptrip.entities.Vehicle;
 
 import android.widget.Toast;
@@ -37,9 +30,6 @@ import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
-import com.google.zxing.BarcodeFormat;
-
-import net.glxn.qrgen.android.QRCode;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -135,7 +125,7 @@ public class NewTripFragment extends Fragment {
 
         // Baggage
         final ArrayList<Baggage> baggageTypesMap = new ArrayList<>();
-        baggageTypesMap.add(new Baggage(Baggage.BAGGAGE_TYPE_SMALL, getActivity()));
+        baggageTypesMap.add(new Baggage(Baggage.BAGGAGE_TYPE_SMALL_KEY, getActivity()));
         baggageTypesMap.add(new Baggage(Baggage.BAGGAGE_TYPE_MEDIUM, getActivity()));
         baggageTypesMap.add(new Baggage(Baggage.BAGGAGE_TYPE_LARGE, getActivity()));
 
