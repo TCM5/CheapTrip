@@ -104,6 +104,24 @@
     <string name="given_fragment_ups">Ups!</string>
     <string name="given_fragment_ups_msg">Não deu nenhuma boleia</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- New trip -->
+    <string name="new_trip_frag_route_txt">Route</string>
+    <string name="new_trip_frag_date_txt">Date</string>
+    <string name="new_trip_frag_date_msg_txt">Here you define the date of your trip</string>
+    <string name="new_trip_frag_price_txt">Price</string>
+    <string name="new_trip_frag_price_msg_txt">Here you define the price of your trip</string>
+    <string name="new_trip_frag_car_txt">Car</string>
+    <string name="new_trip_frag_car_msg_txt">Here you define the car of your trip</string>
+    <string name="new_trip_frag_baggage_txt">Baggage limit</string>
+    <string name="new_trip_frag_baggage_msg_txt">Here you define the baggage limit of your trip</string>
+    <string name="new_trip_frag_tolerance_txt">Time tolerance</string>
+    <string name="new_trip_frag_tolerance_msg_txt">Here you define the late time of your trip</string>
+    <string name="new_trip_frag_observation_txt">Observations</string>
+    <string name="new_trip_frag_tolerance_msg_txt">Here you define the late time of your trip</string>
+    <string name="new_trip_frag_observation_msg_txt">Time tolerance</string>
+    <string name="new_trip_frag_tolerance_msg_txt">Here you define the late time of your trip</string>
+    <string name="new_trip_frag_rules_msg_txt">Eu aceito as regras bla blas e as regras que coisao que tenho de aceiar e mais nao sei o uqie </string>
+
+    <string name="new_trip_frag_create_txt">Create new trip</string>
+
 </resources>
