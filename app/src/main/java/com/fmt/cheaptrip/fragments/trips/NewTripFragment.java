@@ -180,15 +180,6 @@ public class NewTripFragment extends Fragment {
 
         // Rules views
         new_trip_fragment_rules_cb_value = (CheckBox) view.findViewById(R.id.new_trip_fragment_rules_cb_value);
-        new_trip_fragment_rules_cb_value.setOnClickListener(new View.OnClickListener() {
-                                                                @Override
-                                                                public void onClick(View v) {
-                                                                    //TODO permitir que se possa carregar no registar
-                                                                }
-                                                            }
-
-        );
-
 
         registerTripTextView = (TextView) view.findViewById(R.id.registerTripTextView);
 
@@ -294,7 +285,7 @@ public class NewTripFragment extends Fragment {
             public void onResponse(WSResponseObject response) {
                 List<Vehicle> myVehicles = response.getVehicles();
 
-                if(myVehicles == null){
+                if (myVehicles == null) {
                     myVehicles = new ArrayList<Vehicle>();
                 }
 

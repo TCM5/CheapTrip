@@ -145,14 +145,14 @@
                     android:textColor="@android:color/darker_gray" />
 
                 <TimePicker
+                    android:id="@+id/new_trip_fragment_time_tp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/green4_cheaptrip"
-                    android:layout_gravity="center"
-                    android:id="@+id/new_trip_fragment_time_tp"
-                    android:timePickerMode="spinner"/>
+                    android:timePickerMode="spinner" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -456,7 +456,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
-                        android:buttonTint="@color/green4_cheaptrip" />
+                        android:gravity="center"
+                        android:theme="@style/cheapTripCheckBoxsStyle" />
 
                 </LinearLayout>
 

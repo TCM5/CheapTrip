@@ -27,5 +27,10 @@
 
     </style>
 
+    <style name="cheapTripCheckBoxsStyle" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorControlNormal">@color/green4_cheaptrip</item>
+        <item name="colorControlActivated">@color/green4_cheaptrip</item> <!-- activated color change as you wish -->
+        <item name="android:textColor">@color/green4_cheaptrip</item> <!-- checkbox text color -->
+    </style>
 
 </resources>
