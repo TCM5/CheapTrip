@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +85,7 @@ public class TripDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trip_detail, container, false);
 
-        Trip trip = getArguments().getParcelable("trip_detail");
+        final Trip trip = getArguments().getParcelable("trip_detail");
 
         if (trip != null) {
 
@@ -149,15 +150,6 @@ public class TripDetailFragment extends Fragment {
 
             // Join
             joinTrip = (TextView) view.findViewById(R.id.joinTrip);
-            joinTrip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    // CALL SERVICE
-
-
-                }
-            });
 
             // QR Code
             qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
@@ -169,11 +161,39 @@ public class TripDetailFragment extends Fragment {
             } else if (DetailType.RECEIVED.equals(getDetailType())) {
                 confirmTrip.setVisibility(View.VISIBLE);
 
-                if (trip.getConfirmDate() != null) {
+                if (trip.getConfirmedDate() != null) {
                     confirmTrip.setText("Trip Confirmed");
                     confirmTrip.setEnabled(false);
                 }
             } else if (DetailType.SEARCHED.equals(getDetailType())) {
+                joinTrip.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TripWSInvoker.subscribeTrip(getContext(), trip.getTripId(), new WSResponseListener() {
+                            @Override
+                            public void onResponse(WSResponseObject response) {
+                                if(response.getSuccess().equalsIgnoreCase("true")) {
+                                    Toast.makeText(getContext(), "You are now subscribed", Toast.LENGTH_SHORT).show();
+                                    joinTrip.setEnabled(false);
+                                    joinTrip.setText("Subscribed");
+                                } else {
+                                    Log.e("subscribeTrip", response.getError());
+                                    Toast.makeText(getContext(), "An error occurred", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onError(VolleyError error) {
+
+                            }
+                        });
+                    }
+                });
+
+                if(trip.getSubscribed().equalsIgnoreCase("1")) {
+                    joinTrip.setEnabled(false);
+                    joinTrip.setText("Subscribed");
+                }
                 joinTrip.setVisibility(View.VISIBLE);
             }
 
