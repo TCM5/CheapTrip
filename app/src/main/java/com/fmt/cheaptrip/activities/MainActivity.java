@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.fmt.cheaptrip.fragments.AboutFragment;
 import com.fmt.cheaptrip.fragments.MapFragment;
@@ -90,10 +91,10 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.menu_item_home:
 
-               // MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(MapFragment.TAG);
+                // MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentByTag(MapFragment.TAG);
 
                 //if (mapFragment == null) {
-                    mapFragment = new MapFragment();
+                mapFragment = new MapFragment();
                 //}
 
                 ActivityUtils.replaceFragment(fragmentManager, mapFragment, R.id.main_content_container, MapFragment.TAG, true);
@@ -128,6 +129,9 @@ public class MainActivity extends AppCompatActivity
                 ActivityUtils.replaceFragment(fragmentManager, aboutFragment, R.id.main_content_container, AboutFragment.TAG, true);
 
                 break;
+            case R.id.menu_item_feedback:
+                Toast.makeText(this, "This feature will be available after Cheaptrip become available at PlayStore", Toast.LENGTH_LONG);
+                break;
 
             default:
 
@@ -142,9 +146,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void setActionBarIcon(){
+    private void setActionBarIcon() {
 
-      getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("");
     /*    getSupportActionBar().setIcon(R.drawable.logo_simple);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
 */
@@ -158,7 +162,7 @@ public class MainActivity extends AppCompatActivity
         ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(
                 ActionBar.LayoutParams.WRAP_CONTENT,
                 ActionBar.LayoutParams.WRAP_CONTENT, Gravity.RIGHT
-                | Gravity.CENTER_VERTICAL );
+                | Gravity.CENTER_VERTICAL);
 
         imageView.setLayoutParams(layoutParams);
         getSupportActionBar().setCustomView(imageView);
