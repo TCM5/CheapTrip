@@ -133,7 +133,7 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = "40";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
 
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_RECEIVED_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
@@ -164,7 +164,7 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = "6";// String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
 
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_SHARED_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);

@@ -287,6 +287,10 @@ public class NewTripFragment extends Fragment {
             public void onResponse(WSResponseObject response) {
                 List<Vehicle> myVehicles = response.getVehicles();
 
+                if(myVehicles == null){
+                    myVehicles = new ArrayList<Vehicle>();
+                }
+
                 ArrayAdapter<Vehicle> vehiclesSpinnerAdapter = new ArrayAdapter<Vehicle>(getActivity(), android.R.layout.simple_spinner_item, myVehicles);
                 vehiclesSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 new_trip_fragment_car_spinner_value.setAdapter(vehiclesSpinnerAdapter);

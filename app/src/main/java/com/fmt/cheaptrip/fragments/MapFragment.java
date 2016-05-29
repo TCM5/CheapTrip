@@ -321,11 +321,7 @@ public class MapFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        FragmentManager fragManager = getActivity().getSupportFragmentManager();
-        final Fragment fragment = fragManager.findFragmentById(R.id.map_fragment_id);
-        if (fragment != null) {
-            fragManager.beginTransaction().remove(fragment).commit();
-        }
+
     }
 
 }
