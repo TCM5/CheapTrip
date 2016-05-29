@@ -129,17 +129,25 @@ public class TripDetailFragment extends Fragment {
                 new_trip_fragment_tolerance_tv_value.setText(String.valueOf(trip.getDelayTolerance()) + " " + "min");
             }
 
+            // Confirm
+            confirmTrip = (TextView) view.findViewById(R.id.confirmTrip);
+            confirmTrip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // CALL QRCODE READER
+                }
+            });
+
             // QR Code
             qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
 
-            if(DetailType.GIVEN.equals(getDetailType())){
+            if (DetailType.GIVEN.equals(getDetailType())) {
                 Bitmap myBitmap = QRCode.from("Trip ID = " + String.valueOf(trip.getTripId())).withSize(600, 600).bitmap();
                 qrCodeImageView.setImageBitmap(myBitmap);
                 qrCodeImageView.setVisibility(View.VISIBLE);
+            } else if (DetailType.RECEIVED.equals(getDetailType())) {
+                confirmTrip.setVisibility(View.VISIBLE);
             }
-
-
-            confirmTrip = (TextView) view.findViewById(R.id.confirmTrip);
 
 
         } else {
