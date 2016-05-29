@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -38,9 +39,9 @@ public class ProfileFragment extends Fragment {
     private EditText fragment_profile_year;
     private EditText fragment_profile_seats;
 
-    private Button fragment_profile_signout_btn;
-    private Button fragment_profile_hardreset_btn;
-    private Button fragment_profile_addcar_btn;
+    private TextView fragment_profile_signout_btn;
+    private TextView fragment_profile_hardreset_btn;
+    private TextView fragment_profile_addcar_btn;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -56,13 +57,13 @@ public class ProfileFragment extends Fragment {
         fragment_profile_year = (EditText) view.findViewById(R.id.fragment_profile_year);
         fragment_profile_seats = (EditText) view.findViewById(R.id.fragment_profile_seats);
 
-        fragment_profile_signout_btn = (Button) view.findViewById(R.id.fragment_profile_signout_btn);
+        fragment_profile_signout_btn = (TextView) view.findViewById(R.id.fragment_profile_signout_btn);
         fragment_profile_signout_btn.setOnClickListener(signOutListener());
 
-        fragment_profile_hardreset_btn = (Button) view.findViewById(R.id.fragment_profile_hardreset_btn);
+        fragment_profile_hardreset_btn = (TextView) view.findViewById(R.id.fragment_profile_hardreset_btn);
         fragment_profile_hardreset_btn.setOnClickListener(hardResetListener());
 
-        fragment_profile_addcar_btn = (Button) view.findViewById(R.id.fragment_profile_addcar_btn);
+        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
         fragment_profile_addcar_btn.setOnClickListener(addCarListener());
         return view;
     }
