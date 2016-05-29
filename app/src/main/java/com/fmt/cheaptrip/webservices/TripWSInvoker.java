@@ -226,7 +226,10 @@ public class TripWSInvoker {
                 }
         );
 
+        String currentUserId = UserAccountManager.getCurrentUserId(context);
+
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_FIND_TRIPS);
+        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
         receivedTripsRequest.addParam(WSConfig.PARAM_START_CITY, originCity);
         receivedTripsRequest.addParam(WSConfig.PARAM_END_CITY, destinyCity);
 
@@ -272,7 +275,7 @@ public class TripWSInvoker {
         requestQueue.add(receivedTripsRequest);
     }
 
-    public static void subscribeTrip(final Context context, SubscribeTrip subscribeTrip, final WSResponseListener wsResponse) {
+    public static void subscribeTrip(final Context context, Integer tripId, final WSResponseListener wsResponse) {
 
         CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.TRIPS_URL,
                 new Response.Listener() {
@@ -290,9 +293,11 @@ public class TripWSInvoker {
                 }
         );
 
+        String currentUserId = UserAccountManager.getCurrentUserId(context.getApplicationContext());
+
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_SUBSCRIBE_TRIP);
-        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, subscribeTrip.getTripId().toString());
-        receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, subscribeTrip.getPassengerId().toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, tripId.toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, currentUserId);
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);
