@@ -42,6 +42,8 @@ public class UserAccountManager {
 
     public static void clearAllData(Context context) {
         LoginUtils.removeCurrentUserEmail(context);
+        logout(context);
+
 
     }
 
@@ -54,7 +56,6 @@ public class UserAccountManager {
         } else if (FacebookLoginUtils.isLogged(context)) {
             FacebookLoginUtils.revoke(context);
         }
-
 
 
     }

@@ -16,6 +16,7 @@ import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.IntroductionActivity;
 import com.fmt.cheaptrip.activities.LoginActivity;
 import com.fmt.cheaptrip.activities.MainActivity;
+import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.utils.LoginUtils;
 
 /**
@@ -55,13 +56,25 @@ public class ProfileFragment extends Fragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginUtils.getInstance().removeSignedLogin(getActivity());
-                LoginUtils.getInstance().revokeGplusAccount(getActivity());
 
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getActivity().startActivity(intent);
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("Hard reset")
+                        .setMessage("Do you really want to logout?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+
+                                UserAccountManager.logout(getActivity());
+
+                                Intent intent = new Intent();
+                                intent.setClass(getActivity(), LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                getActivity().startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null).show();
 
             }
         };
@@ -83,6 +96,7 @@ public class ProfileFragment extends Fragment {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
 
+                                UserAccountManager.clearAllData(getActivity());
 
                                 Intent intent = new Intent();
                                 intent.setClass(getActivity(), IntroductionActivity.class);
