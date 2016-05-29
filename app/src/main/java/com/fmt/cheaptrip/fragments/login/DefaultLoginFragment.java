@@ -64,7 +64,7 @@ public class DefaultLoginFragment extends Fragment {
                             DefaultLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), user.getEmail());
                             DefaultLoginUtils.addCurrentUserId(getActivity().getApplicationContext(), String.valueOf(user.getUserId()));
 
-                            Toast.makeText(getContext(), "You have been successfully logged in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.success_loggin_msg, Toast.LENGTH_SHORT).show();
                             redirectToMain(user);
                         } else {
                             Toast.makeText(getContext(), response.getError(), Toast.LENGTH_LONG).show();
@@ -84,7 +84,7 @@ public class DefaultLoginFragment extends Fragment {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Sign in called", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), "Sign in called", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent();
                 intent.setClass(getActivity().getApplicationContext(), SignInActivity.class);

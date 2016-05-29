@@ -81,7 +81,11 @@ public class ProfileFragment extends Fragment {
                 TripWSInvoker.registerUserVehicle(getContext(), vehicle, new WSResponseListener() {
                     @Override
                     public void onResponse(WSResponseObject response) {
-                        Toast.makeText(getContext(), "Vehicle Registed Successfully", Toast.LENGTH_SHORT);
+                        if(response.getSuccess().equalsIgnoreCase("true")) {
+                            Toast.makeText(getContext(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override

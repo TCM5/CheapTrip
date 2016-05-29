@@ -134,4 +134,13 @@
     <string name="new_trip_frag_confirm_txt">Confirm</string>
     <string name="new_trip_frag_subscribe_txt">Subscribe</string>
 
+    <!-- Toast Messagens -->
+    <string name="need_vehicle_msg">You need to register a Vehicle. Go to the Profile to register one</string>
+    <string name="empty_fields_msg">Empty Fields</string>
+    <string name="trip_registered_msg">Trip Registered!</string>
+    <string name="accept_rules_msg">You have to agree with the rules</string>
+    <string name="success_loggin_msg">You have been successfully logged in</string>
+    <string name="vechicle_registered_msg">Vehicle Registed Successfully</string>
+    <string name="unknow_error_msg">An error occurred</string>
+
 </resources>

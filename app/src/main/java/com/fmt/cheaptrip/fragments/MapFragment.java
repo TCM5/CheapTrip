@@ -301,7 +301,7 @@ public class MapFragment extends Fragment {
 
                             ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, NewTripFragment.TAG, true);
                         } else {
-                            Toast.makeText(getContext(), "Need to register a Vehicle. Go to you Profile", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.need_vehicle_msg, Toast.LENGTH_SHORT).show();
                         }
                     }
 

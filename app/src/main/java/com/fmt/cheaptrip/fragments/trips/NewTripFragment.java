@@ -260,7 +260,7 @@ public class NewTripFragment extends Fragment {
                 trip.getTripDate() == null || trip.getPrice() == null ||
                 trip.getBaggageSize() == null || trip.getDelayTolerance() == null) {
 
-            Toast.makeText(getActivity(), "You have to bla bla", Toast.LENGTH_LONG);
+            Toast.makeText(getActivity(), R.string.empty_fields_msg, Toast.LENGTH_LONG);
 
         } else {
 
@@ -270,7 +270,7 @@ public class NewTripFragment extends Fragment {
                     @Override
                     public void onResponse(WSResponseObject response) {
                         if (response.getSuccess().equalsIgnoreCase("true")) {
-                            Toast.makeText(getActivity().getApplicationContext(), "Trip Registered", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), R.string.trip_registered_msg, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -281,7 +281,7 @@ public class NewTripFragment extends Fragment {
                 });
             } else {
 
-                Toast.makeText(getActivity(), "You have to agree with the rules", Toast.LENGTH_LONG);
+                Toast.makeText(getActivity(), R.string.accept_rules_msg, Toast.LENGTH_LONG);
             }
         }
 
