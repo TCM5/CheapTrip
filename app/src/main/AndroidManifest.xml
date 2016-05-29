@@ -4,7 +4,6 @@
     android:versionCode="1"
     android:versionName="1.1"
     >
-
     <uses-sdk
         android:maxSdkVersion="23"
         android:minSdkVersion="17"
