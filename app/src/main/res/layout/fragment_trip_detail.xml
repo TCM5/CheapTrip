@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rota"
+                    android:text="@string/new_trip_frag_route_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Data"
+                    android:text="@string/new_trip_frag_date_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hora"
+                    android:text="@string/new_trip_frag_hour_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -129,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preço"
+                    android:text="@string/new_trip_frag_price_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -166,7 +166,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Carro"
+                    android:text="@string/new_trip_frag_car_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -185,7 +185,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="16dp"
-                    android:text="Limite bagagem "
+                    android:text="@string/new_trip_frag_baggage_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -234,7 +234,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tolerancia de atraso"
+                    android:text="@string/new_trip_frag_tolerance_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -255,7 +255,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="20dp"
-                    android:text="Observações"
+                    android:text="@string/new_trip_frag_observation_txt"
                     android:textColor="@color/green4_cheaptrip"
                     android:textSize="25dp" />
 
@@ -307,7 +307,7 @@
                 android:background="@color/green4_cheaptrip"
                 android:elevation="5sp"
                 android:padding="5dp"
-                android:text="Confirmar boleia"
+                android:text="@string/new_trip_frag_confirm_txt"
                 android:textColor="@color/white"
                 android:textSize="25dp"
                 android:visibility="gone" />
@@ -323,7 +323,7 @@
                 android:background="@color/green4_cheaptrip"
                 android:elevation="5sp"
                 android:padding="5dp"
-                android:text="Participar"
+                android:text="@string/new_trip_frag_subscribe_txt"
                 android:textColor="@color/white"
                 android:textSize="25dp"
                 android:visibility="gone" />

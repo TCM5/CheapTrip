@@ -116,6 +116,8 @@
     <string name="new_trip_frag_route_txt">Route</string>
     <string name="new_trip_frag_date_txt">Date</string>
     <string name="new_trip_frag_date_msg_txt">Here you define the date of your trip</string>
+    <string name="new_trip_frag_date_txt">Hour</string>
+    <string name="new_trip_frag_date_msg_txt">Here you define the hour of your trip</string>
     <string name="new_trip_frag_price_txt">Price</string>
     <string name="new_trip_frag_price_msg_txt">Here you define the price of your trip</string>
     <string name="new_trip_frag_car_txt">Car</string>
@@ -131,5 +133,7 @@
     <string name="new_trip_frag_rules_msg_txt">Eu aceito as regras bla blas e as regras que coisao que tenho de aceiar e mais nao sei o uqie </string>
 
     <string name="new_trip_frag_create_txt">Create new trip</string>
+    <string name="new_trip_frag_confirm_txt">Confirm</string>
+    <string name="new_trip_frag_subscribe_txt">Subscribe</string>
 
 </resources>
