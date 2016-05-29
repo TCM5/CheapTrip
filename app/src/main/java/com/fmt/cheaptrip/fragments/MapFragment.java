@@ -21,14 +21,20 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.fmt.cheaptrip.adapters.LocationAdapter;
 import com.fmt.cheaptrip.customviews.LocationAutoCompleteTextView;
 import com.fmt.cheaptrip.entities.LocationEntry;
 import com.fmt.cheaptrip.R;
+import com.fmt.cheaptrip.entities.Vehicle;
 import com.fmt.cheaptrip.fragments.trips.GivenTripsFragment;
 import com.fmt.cheaptrip.fragments.trips.NewTripFragment;
 import com.fmt.cheaptrip.fragments.trips.SearchTripFragment;
 import com.fmt.cheaptrip.utils.ActivityUtils;
+import com.fmt.cheaptrip.webservices.TripWSInvoker;
+import com.fmt.cheaptrip.webservices.response.WSResponseListener;
+import com.fmt.cheaptrip.webservices.response.WSResponseObject;
+import com.fmt.cheaptrip.webservices.util.WSConfig;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -278,18 +284,32 @@ public class MapFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Bundle bundle = new Bundle();
-                bundle.putString("addressOrigin", originCity);
-                bundle.putString("addressDestiny", destinyCity);
-                bundle.putDouble("originLatitude", originLatLng.latitude);
-                bundle.putDouble("originLongitude", originLatLng.longitude);
-                bundle.putDouble("destinyLatitude", destinyLatLng.latitude);
-                bundle.putDouble("destinyLongitude", destinyLatLng.longitude);
+                TripWSInvoker.getUserVehicles(getContext(), new WSResponseListener() {
+                    @Override
+                    public void onResponse(WSResponseObject response) {
+                        if(response.getVehicles() != null && response.getVehicles().size() > 0) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("addressOrigin", originCity);
+                            bundle.putString("addressDestiny", destinyCity);
+                            bundle.putDouble("originLatitude", originLatLng.latitude);
+                            bundle.putDouble("originLongitude", originLatLng.longitude);
+                            bundle.putDouble("destinyLatitude", destinyLatLng.latitude);
+                            bundle.putDouble("destinyLongitude", destinyLatLng.longitude);
 
-                NewTripFragment newTripFragment = new NewTripFragment();
-                newTripFragment.setArguments(bundle);
+                            NewTripFragment newTripFragment = new NewTripFragment();
+                            newTripFragment.setArguments(bundle);
 
-                ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, NewTripFragment.TAG, true);
+                            ActivityUtils.replaceFragment(getFragmentManager(), newTripFragment, R.id.main_content_container, NewTripFragment.TAG, true);
+                        } else {
+                            Toast.makeText(getContext(), "Need to register a Vehicle. Go to you Profile", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(VolleyError error) {
+
+                    }
+                });
             }
         };
     }
