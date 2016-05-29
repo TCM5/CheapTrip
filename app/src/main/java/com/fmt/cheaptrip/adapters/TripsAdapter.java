@@ -2,6 +2,7 @@ package com.fmt.cheaptrip.adapters;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +72,9 @@ public class TripsAdapter extends ArrayAdapter<Trip> {
         // Set the values
         myTripsItemHolder.originLocation.setText(trip.getStartCity());
         myTripsItemHolder.destinyLocation.setText(trip.getEndCity());
-        myTripsItemHolder.date.setText(trip.getTripDate().toString());
+
+
+        myTripsItemHolder.date.setText(DateUtils.formatDateTime(context, trip.getTripDate().getTime(), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME));
         myTripsItemHolder.status.setText("0");
 
         changeStatusUI();
