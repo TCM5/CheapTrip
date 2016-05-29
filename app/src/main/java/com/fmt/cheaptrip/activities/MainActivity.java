@@ -1,5 +1,6 @@
 package com.fmt.cheaptrip.activities;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -49,7 +50,11 @@ public class MainActivity extends AppCompatActivity
 
         View view = navigationView.getHeaderView(0);
         ImageView profilePic = (ImageView) view.findViewById(R.id.nav_user_pic);
-        profilePic.setImageBitmap(UserAccountManager.getCurrentUserProfileImage(this));
+
+        Bitmap currentProfile = UserAccountManager.getCurrentUserProfileImage(getApplicationContext());
+        if (currentProfile != null) {
+            profilePic.setImageBitmap(UserAccountManager.getCurrentUserProfileImage(getApplicationContext()));
+        }
 
         TextView profileName = (TextView) view.findViewById(R.id.nav_user_name);
         profileName.setText(UserAccountManager.getCurrentUserName(getApplicationContext()));
