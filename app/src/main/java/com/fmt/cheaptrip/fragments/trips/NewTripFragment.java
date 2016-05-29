@@ -138,9 +138,9 @@ public class NewTripFragment extends Fragment {
 
         // Baggage
         final ArrayList<Baggage> baggageTypesMap = new ArrayList<>();
-        baggageTypesMap.add(new Baggage("S", getActivity()));
-        baggageTypesMap.add(new Baggage("M", getActivity()));
-        baggageTypesMap.add(new Baggage("L", getActivity()));
+        baggageTypesMap.add(new Baggage(Baggage.BAGGAGE_TYPE_SMALL, getActivity()));
+        baggageTypesMap.add(new Baggage(Baggage.BAGGAGE_TYPE_MEDIUM, getActivity()));
+        baggageTypesMap.add(new Baggage(Baggage.BAGGAGE_TYPE_LARGE, getActivity()));
 
         new_trip_fragment_bagage_icon = (ImageView) view.findViewById(R.id.new_trip_fragment_bagage_icon);
         new_trip_fragment_bagage_icon.setImageDrawable(baggageTypesMap.get(0).getIcon());

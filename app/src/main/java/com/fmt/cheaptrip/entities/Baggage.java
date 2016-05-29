@@ -12,9 +12,9 @@ import com.fmt.cheaptrip.R;
  */
 public class Baggage {
 
-    private final String BAGGAGE_TYPE_SMALL = "Small";
-    private final String BAGGAGE_TYPE_MEDIUM = "Medium";
-    private final String BAGGAGE_TYPE_LARGE = "Large";
+    public static final String BAGGAGE_TYPE_SMALL = "1";
+    public static final String BAGGAGE_TYPE_MEDIUM = "2";
+    public static final String BAGGAGE_TYPE_LARGE = "3";
 
     private String key;
     private String desc;
