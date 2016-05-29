@@ -401,14 +401,6 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/qrCodeImageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:scaleType="center"
-                    android:src="@color/abc_search_url_text_normal"
-                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/registerTripTextView"

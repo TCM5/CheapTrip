@@ -88,9 +88,6 @@ public class NewTripFragment extends Fragment {
     // Rules views
     private CheckBox new_trip_fragment_rules_cb_value;
 
-    // QRcode view
-    private ImageView qrCodeImageView;
-
     // Register "button"
     private TextView registerTripTextView;
 
@@ -190,19 +187,11 @@ public class NewTripFragment extends Fragment {
         new_trip_fragment_rules_cb_value.setOnClickListener(new View.OnClickListener() {
                                                                 @Override
                                                                 public void onClick(View v) {
-
-                                                                    if (new_trip_fragment_rules_cb_value.isChecked()) {
-                                                                        Bitmap myBitmap = QRCode.from("Trip ID = 1").withSize(600, 600).bitmap();
-                                                                        qrCodeImageView.setImageBitmap(myBitmap);
-                                                                        qrCodeImageView.setVisibility(View.VISIBLE);
-                                                                    } else {
-                                                                        qrCodeImageView.setVisibility(View.GONE);
-                                                                    }
+                                                                    //TODO permitir que se possa carregar no registar
                                                                 }
                                                             }
-        );
 
-        qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
+        );
 
 
         registerTripTextView = (TextView) view.findViewById(R.id.registerTripTextView);
