@@ -104,6 +104,14 @@
     <string name="given_fragment_ups">Ups!</string>
     <string name="given_fragment_ups_msg">Não deu nenhuma boleia</string>
 
+    <!-- Received Fragment -->
+    <string name="received_fragment_ups">Ups!</string>
+    <string name="received_fragment_ups_msg">Não deu nenhuma boleia</string>
+
+    <!-- Search Fragment -->
+    <string name="search_fragment_ups">Ups!</string>
+    <string name="search_fragment_ups_msg">Não deu nenhuma boleia</string>
+
     <!-- New trip -->
     <string name="new_trip_frag_route_txt">Route</string>
     <string name="new_trip_frag_date_txt">Date</string>
