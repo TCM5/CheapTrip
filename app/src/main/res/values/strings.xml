@@ -48,11 +48,12 @@
     <!-- Introduction Fragment Strings -->
     <string name="fragment_introduction_slide_title1_text">Economic</string>
     <string name="fragment_introduction_slide_title2_text">New friends</string>
-    <string name="fragment_introduction_slide_title3_text">Be green</string>
+    <string name="fragment_introduction_slide_title3_text">Be green!</string>
     <string name="fragment_introduction_slide_desc1_text">Car sharing is an economical solution. If you want to travel fast and confortable, the cheapest way is this</string>
     <string name="fragment_introduction_slide_desc2_text">By sharing a ride you can increase your contact network and build your trust drivers list.</string>
     <string name="fragment_introduction_slide_desc3_text">By carpooling you can considerably reduce the emission of co2 released by cars and constribuir for a sustainable environment.</string>
-    <string name="fragment_introduction_slide_desc4_text">Desc4</string>
+    <string name="fragment_introduction_slide_finish_text">Start using CheapTrip</string>
+
 
     <!-- Map Fragment Strings-->
     <string name="map_fragment_origin_input_text">Starting point</string>
@@ -61,6 +62,19 @@
     <string name="map_fragment_newtrip_button_text">Create</string>
     <string name="map_fragment_new_trip_text">Create ride</string>
     <string name="map_fragment_find_trip_text">Search for a ride</string>
+
+    <!-- Profile Fragment Strings -->
+
+    <string name="fragment_profile_seats_txt">Logout</string>
+    <string name="fragment_profile_hardreset_btn_txt">Hard reset</string>
+    <string name="fragment_profile_account_tv_txt">Account</string>
+    <string name="fragment_profile_add_car_tv_txt">Add car</string>
+    <string name="fragment_profile_signout_btn_txt">Seats</string>
+    <string name="fragment_profile_year">Year</string>
+    <string name="fragment_profile_model_txt">Model</string>
+    <string name="fragment_profile_brand_txt">Brand car</string>
+    <string name="fragment_profile_my_cars_txt">My cars</string>
+
 
     <!-- About Fragment Strings-->
     <string name="about_fragment_about_app_title">The app</string>

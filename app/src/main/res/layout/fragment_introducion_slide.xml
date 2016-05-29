@@ -49,7 +49,7 @@
                 android:clickable="true"
                 android:elevation="10dp"
                 android:padding="10dp"
-                android:text="Start using CheapTrip"
+                android:text="@string/fragment_introduction_slide_finish_text"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:visibility="gone" />
