@@ -109,8 +109,8 @@ public class TripDetailFragment extends Fragment {
             // Car section vies
             new_trip_fragment_car_tv_value = (TextView) view.findViewById(R.id.new_trip_fragment_car_tv_value);
 
-            if (trip.getVehicleId() != null) {
-                new_trip_fragment_car_tv_value.setText(String.valueOf(trip.getVehicleId()));
+            if (trip.getVehicleBrand() != null && trip.getVehicleModel() != null) {
+                new_trip_fragment_car_tv_value.setText(trip.getVehicleBrand() + " " + trip.getVehicleModel());
             }
 
             // Baggage
