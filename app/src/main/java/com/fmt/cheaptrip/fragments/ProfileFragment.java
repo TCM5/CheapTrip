@@ -72,27 +72,36 @@ public class ProfileFragment extends Fragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Vehicle vehicle = new Vehicle();
-                vehicle.setBrand(fragment_profile_brand.getText().toString());
-                vehicle.setModel(fragment_profile_model.getText().toString());
-                vehicle.setYear(fragment_profile_year.getText().toString());
-                vehicle.setSeatsNumber(Integer.valueOf(fragment_profile_seats.getText().toString()));
 
-                TripWSInvoker.registerUserVehicle(getContext(), vehicle, new WSResponseListener() {
-                    @Override
-                    public void onResponse(WSResponseObject response) {
-                        if(response.getSuccess().equalsIgnoreCase("true")) {
-                            Toast.makeText(getContext(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getContext(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
+                if(!fragment_profile_brand.getText().toString().equals("")
+                        && !fragment_profile_model.getText().toString().equals("")
+                        && !fragment_profile_year.getText().toString().equals("")
+                        && !fragment_profile_seats.getText().toString().equals("")) {
+
+                    final Vehicle vehicle = new Vehicle();
+                    vehicle.setBrand(fragment_profile_brand.getText().toString());
+                    vehicle.setModel(fragment_profile_model.getText().toString());
+                    vehicle.setYear(fragment_profile_year.getText().toString());
+                    vehicle.setSeatsNumber(Integer.parseInt(fragment_profile_seats.getText().toString()));
+
+                    TripWSInvoker.registerUserVehicle(getContext(), vehicle, new WSResponseListener() {
+                        @Override
+                        public void onResponse(WSResponseObject response) {
+                            if (response.getSuccess().equalsIgnoreCase("true")) {
+                                Toast.makeText(getContext(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onError(VolleyError error) {
+                        @Override
+                        public void onError(VolleyError error) {
 
-                    }
-                });
+                        }
+                    });
+                } else {
+                    Toast.makeText(getContext(), R.string.empty_fields_msg, Toast.LENGTH_SHORT).show();
+                }
             }
         };
     }
