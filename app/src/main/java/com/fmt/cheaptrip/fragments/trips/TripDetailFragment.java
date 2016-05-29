@@ -29,6 +29,7 @@ import java.util.List;
  */
 public class TripDetailFragment extends Fragment {
 
+
     public static final String TAG = "TRIP_DETAIL_FRAGMENT_TAG";
 
     private final String PORTUGAL_CURRENCY = "€";
@@ -56,6 +57,11 @@ public class TripDetailFragment extends Fragment {
 
     // Time tolerance views
     private TextView new_trip_fragment_tolerance_tv_value;
+
+    // QR code
+    private ImageView qrCodeImageView;
+
+    private TextView confirmTrip;
 
 
     public TripDetailFragment() {
@@ -120,6 +126,13 @@ public class TripDetailFragment extends Fragment {
                 new_trip_fragment_tolerance_tv_value.setText(String.valueOf(trip.getDelayTolerance()) + " " + "min");
             }
 
+            // QR Code
+            qrCodeImageView = (ImageView) view.findViewById(R.id.qrCodeImageView);
+
+
+            confirmTrip = (TextView) view.findViewById(R.id.confirmTrip);
+
+
         } else {
             Toast.makeText(getActivity(), "", Toast.LENGTH_LONG);
         }
@@ -146,6 +159,10 @@ public class TripDetailFragment extends Fragment {
 
             }
         });
+    }
+
+    public DetailType getDetailType() {
+        return getArguments().getParcelable("trip_detail_type");
     }
 
 }

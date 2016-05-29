@@ -131,6 +131,7 @@ public class ReceivedTripsFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("trip_detail", trip);
+                bundle.putParcelable("trip_detail_type", DetailType.RECEIVED);
                 TripDetailFragment tripDetailFragment = new TripDetailFragment();
                 tripDetailFragment.setArguments(bundle);
 

@@ -123,6 +123,7 @@ public class GivenTripsFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("trip_detail", trip);
+                bundle.putParcelable("trip_detail_type", DetailType.GIVEN);
                 TripDetailFragment tripDetailFragment = new TripDetailFragment();
                 tripDetailFragment.setArguments(bundle);
 

@@ -321,4 +321,5 @@ public class NewTripFragment extends Fragment {
         });
     }
 
+
 }
