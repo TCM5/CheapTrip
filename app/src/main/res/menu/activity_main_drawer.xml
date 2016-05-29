@@ -27,14 +27,11 @@
 
     </group>
 
-    <group
+    <group>
 
-        android:id="@+id/menu_bottom"
-        android:checkableBehavior="none">
-        <!--  <item
-              android:id="@+id/menu_item_settings"
-              android:icon="@drawable/ic_menu_share"
-              android:title="@string/menu_item_settings_title" /> -->
+        <!--android:id="@+id/menu_item_settings"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/menu_item_settings_title" /> -->
         <item
             android:id="@+id/menu_item_about"
             android:icon="@drawable/ic_menu_send"

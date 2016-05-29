@@ -6,4 +6,5 @@
     <item android:drawable="@color/green1_cheaptrip" android:state_checked="true" />
     <item android:drawable="@color/green1_cheaptrip" android:state_focused="true" />
     <item android:drawable="@color/green1_cheaptrip" android:state_activated="true" />
+
 </selector>
