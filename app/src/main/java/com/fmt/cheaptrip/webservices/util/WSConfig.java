@@ -40,6 +40,12 @@ public class WSConfig {
     public static final String PARAM_BAGAGGE_SIZE = "baggagesize";
     public static final String PARAM_DELAY_TOLERANCE = "delaytolerance";
 
+    //Vehicle Parametrs
+    public static final String PARAM_VEHICLE_BRAND = "brand";
+    public static final String PARAM_VEHICLE_MODEL = "model";
+    public static final String PARAM_VEHICLE_YEAR = "year";
+    public static final String PARAM_VEHICLE_SEATS_NUMBER = "numberofseats";
+
     //TRIPS ACTION
     public static final String ACTION_REGISTER_TRIP = "registerTrip";
     public static final String ACTION_FIND_TRIPS = "findTrips";
@@ -48,7 +54,8 @@ public class WSConfig {
     public static final String ACTION_SUBSCRIBE_TRIP = "subscribeTrip";
     public static final String ACTION_CONFIRM_TRIP = "confirmTrip";
 
-
+    //VEHICLES ACTION
+    public static final String ACTION_REGISTER_USER_VEHICLE = "registerUserVehicle";
     public static final String ACTION_GET_USER_VEHICLES = "getUserVehicles";
 
     // Create the MySQL datetime string

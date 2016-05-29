@@ -16,7 +16,6 @@ import com.fmt.cheaptrip.entities.Trip;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.entities.Vehicle;
 import com.fmt.cheaptrip.managers.UserAccountManager;
-import com.fmt.cheaptrip.utils.login.LoginUtils;
 import com.fmt.cheaptrip.webservices.request.CustomStringRequest;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
@@ -133,7 +132,7 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = UserAccountManager.getCurrentUserId(context.getApplicationContext());
 
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_RECEIVED_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
@@ -164,7 +163,7 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = UserAccountManager.getCurrentUserId(context.getApplicationContext());
 
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_SHARED_TRIPS);
         receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
@@ -173,7 +172,7 @@ public class TripWSInvoker {
         requestQueue.add(receivedTripsRequest);
     }
 
-    public static void getUserVehicles(final Context context, Integer userId, final WSResponseListener wsResponse) {
+    public static void getUserVehicles(final Context context, final WSResponseListener wsResponse) {
 
         CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.VEHICLES_URL,
                 new Response.Listener() {
@@ -195,8 +194,10 @@ public class TripWSInvoker {
                 }
         );
 
+        String currentUserId = UserAccountManager.getCurrentUserId(context);
+
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_GET_USER_VEHICLES);
-        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, userId.toString());
+        receivedTripsRequest.addParam(WSConfig.PARAM_USERID, currentUserId);
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);
@@ -315,11 +316,42 @@ public class TripWSInvoker {
                 }
         );
 
-        String currentUserId = String.valueOf(UserAccountManager.getCurrentUserId(context.getApplicationContext()));
+        String currentUserId = UserAccountManager.getCurrentUserId(context.getApplicationContext());
 
         receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_CONFIRM_TRIP);
         receivedTripsRequest.addParam(WSConfig.PARAM_TRIP_ID, tripId);
         receivedTripsRequest.addParam(WSConfig.PARAM_PASSENGER_ID, currentUserId);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
+    public static void registerUserVehicle(final Context context, Vehicle vehicle, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.VEHICLES_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        String currentUserId = UserAccountManager.getCurrentUserId(context.getApplicationContext());
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_REGISTER_USER_VEHICLE);
+        receivedTripsRequest.addParam(WSConfig.PARAM_DRIVER_ID, currentUserId);
+        receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_BRAND, vehicle.getBrand());
+        receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_MODEL, vehicle.getModel() );
+        receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_YEAR, vehicle.getYear());
+        receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_SEATS_NUMBER, String.valueOf(vehicle.getSeatsNumber()));
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);
