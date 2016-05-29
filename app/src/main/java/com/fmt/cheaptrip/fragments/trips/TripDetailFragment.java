@@ -152,6 +152,11 @@ public class TripDetailFragment extends Fragment {
                 qrCodeImageView.setVisibility(View.VISIBLE);
             } else if (DetailType.RECEIVED.equals(getDetailType())) {
                 confirmTrip.setVisibility(View.VISIBLE);
+
+                if(trip.getConfirmDate() != null) {
+                    confirmTrip.setText("Trip Confirmed");
+                    confirmTrip.setEnabled(false);
+                }
             }
 
 
