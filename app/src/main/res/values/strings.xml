@@ -37,7 +37,7 @@
     <string name="btn_revoke_access">Revoke Access</string>
 
     <!-- Menu strings -->
-    <string name="menu_item_home_title">Home</string>
+    <string name="menu_item_home_title">Go to map!</string>
     <string name="menu_item_received_trips_title">Received trips</string>
     <string name="menu_item_given_trips_title">Given trips</string>
     <string name="menu_item_profile_title">Profile</string>
