@@ -27,6 +27,7 @@ public class Trip implements Parcelable {
     private Integer Rank;
 
     //Contextual Information
+    private Date confirmedDate;
     private String vehicleBrand;
     private String vehicleModel;
 
@@ -134,6 +135,14 @@ public class Trip implements Parcelable {
         Rank = rank;
     }
 
+    public Date getConfirmDate() {
+        return confirmedDate;
+    }
+
+    public void setConfirmDate(Date confirmedDate) {
+        this.confirmedDate = confirmedDate;
+    }
+
     public String getVehicleBrand() {
         return vehicleBrand;
     }
@@ -169,6 +178,7 @@ public class Trip implements Parcelable {
         BaggageSize = in.readString();
         DelayTolerance = in.readByte() == 0x00 ? null : in.readInt();
         Rank = in.readByte() == 0x00 ? null : in.readInt();
+        confirmedDate = in.readByte() == 0x00 ? null : new Date(in.readLong());
     }
 
     @Override
@@ -220,6 +230,12 @@ public class Trip implements Parcelable {
         } else {
             dest.writeByte((byte) (0x01));
             dest.writeInt(Rank);
+        }
+        if(confirmedDate == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeLong(confirmedDate.getTime());
         }
     }
 

@@ -16,7 +16,10 @@ public class CustomJSONParser {
     private static Gson gson;
 
     private CustomJSONParser() {
-        gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+        gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setDateFormat(WSConfig.DATE_PATTERN)
+                .create();
     }
 
     public static CustomJSONParser getInstance() {

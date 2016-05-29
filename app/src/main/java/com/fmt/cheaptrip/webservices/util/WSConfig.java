@@ -58,8 +58,11 @@ public class WSConfig {
     public static final String ACTION_REGISTER_USER_VEHICLE = "registerUserVehicle";
     public static final String ACTION_GET_USER_VEHICLES = "getUserVehicles";
 
+
+
     // Create the MySQL datetime string
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    private static final SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
 
     public static String convertDateToString(Date date) {
         String dateString = sdf.format(date);
