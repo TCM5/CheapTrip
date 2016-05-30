@@ -18,7 +18,7 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Entre ou registe-se</string>
-    <string name="action_sign_in_short">Entrar</string>
+    <string name="action_sign_in_short">Registar</string>
     <string name="error_invalid_email">O email não é válido</string>
     <string name="error_invalid_password">Password demasiado curta</string>
     <string name="error_incorrect_password">Password incorreta</string>
