@@ -37,7 +37,7 @@ public class LocationEntry {
         //display_address = display_address.substring(0, display_address.length());
 
 
-        if (display_address == null || display_address.isEmpty() || display_address == "null") {
+        if (display_address == null || display_address.isEmpty() || display_address.equals("null")) {
             display_address = address.getFeatureName();
         }
 
