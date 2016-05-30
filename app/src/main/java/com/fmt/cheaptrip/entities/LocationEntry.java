@@ -24,8 +24,8 @@ public class LocationEntry {
      */
     public String getAddress() {
 
-        String display_address = "";
-        String countryAddress = "";
+        String display_address = address.getLocality();
+        String countryAddress = address.getCountryName();
 
         //display_address += address.getAddressLine(0) + "\n";
         /*
@@ -36,7 +36,12 @@ public class LocationEntry {
 
         //display_address = display_address.substring(0, display_address.length());
 
-        return address.getFeatureName() + ", " + address.getCountryName();
+
+        if (display_address == null || display_address.isEmpty() || display_address == "null") {
+            display_address = address.getFeatureName();
+        }
+
+        return display_address + ", " + countryAddress;
     }
 
     /**
@@ -55,7 +60,7 @@ public class LocationEntry {
         return address.getLongitude();
     }
 
-    public String getCity(){
+    public String getCity() {
         return address.getLocality();
     }
 
