@@ -272,7 +272,7 @@ public class NewTripFragment extends Fragment {
                 });
             } else {
 
-                Toast.makeText(getActivity(), R.string.accept_rules_msg, Toast.LENGTH_LONG);
+                Toast.makeText(getActivity(), R.string.accept_rules_msg, Toast.LENGTH_LONG).show();
             }
         }
 
