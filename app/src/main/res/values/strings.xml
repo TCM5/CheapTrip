@@ -76,7 +76,7 @@
     <!-- Profile Fragment Strings -->
 
     <string name="fragment_profile_signout_btn_txt">Logout</string>
-    <string name="fragment_profile_hardreset_btn_txt">Hard reset</string>
+    <string name="fragment_profile_hardreset_btn_txt">Reset</string>
     <string name="fragment_profile_account_tv_txt">Account</string>
     <string name="fragment_profile_add_car_tv_txt">Add car</string>
     <string name="fragment_profile_seats_txt">Seats</string>

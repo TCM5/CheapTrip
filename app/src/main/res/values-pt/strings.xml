@@ -29,7 +29,6 @@
     <string name="login_btn_text">Entrar com </string>
     <string name="activity_login_default_fragment_or_txt">Ou pode escolher outras opções</string>
 
-
     <!-- Default login -->
     <string name="lblName_txt">Nome</string>
     <string name="lblContactNumber_txt">Numero contato</string>
@@ -77,7 +76,7 @@
     <!-- Profile Fragment Strings -->
 
     <string name="fragment_profile_signout_btn_txt">Logout</string>
-    <string name="fragment_profile_hardreset_btn_txt">Limpar tud</string>
+    <string name="fragment_profile_hardreset_btn_txt">Desativar</string>
     <string name="fragment_profile_account_tv_txt">Conta</string>
     <string name="fragment_profile_add_car_tv_txt">Adicionar carro</string>
     <string name="fragment_profile_seats_txt">Lugares</string>
