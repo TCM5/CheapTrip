@@ -57,14 +57,15 @@ public class ProfileFragment extends Fragment {
         fragment_profile_year = (EditText) view.findViewById(R.id.fragment_profile_year);
         fragment_profile_seats = (EditText) view.findViewById(R.id.fragment_profile_seats);
 
+        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
+        fragment_profile_addcar_btn.setOnClickListener(addCarListener());
+
         fragment_profile_signout_btn = (TextView) view.findViewById(R.id.fragment_profile_signout_btn);
         fragment_profile_signout_btn.setOnClickListener(signOutListener());
 
         fragment_profile_hardreset_btn = (TextView) view.findViewById(R.id.fragment_profile_hardreset_btn);
         fragment_profile_hardreset_btn.setOnClickListener(hardResetListener());
 
-        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
-        fragment_profile_addcar_btn.setOnClickListener(addCarListener());
         return view;
     }
 
@@ -80,7 +81,7 @@ public class ProfileFragment extends Fragment {
 
                 if (brand == null || brand.isEmpty() || model == null || model.isEmpty() || year == null || year.isEmpty() || seats == null || seats.isEmpty()) {
 
-                    Toast.makeText(getContext(), R.string.empty_fields_msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.empty_fields_msg, Toast.LENGTH_SHORT).show();
 
                 } else {
 
@@ -107,9 +108,7 @@ public class ProfileFragment extends Fragment {
                     });
                 }
             }
-        }
-
-                ;
+        };
     }
 
     /**
