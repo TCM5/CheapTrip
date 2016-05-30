@@ -82,10 +82,7 @@ public class ProfileFragment extends Fragment {
         });
 
         fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
-        fragment_profile_addcar_btn.setOnClickListener(addCarListener());
-
-        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
-        fragment_profile_addcar_btn.setOnClickListener(addCarListener());
+        fragment_profile_addcar_btn.setOnClickListener(addCarListener(vehicleListAdapter));
 
         fragment_profile_signout_btn = (TextView) view.findViewById(R.id.fragment_profile_signout_btn);
         fragment_profile_signout_btn.setOnClickListener(signOutListener());
@@ -93,13 +90,6 @@ public class ProfileFragment extends Fragment {
         fragment_profile_hardreset_btn = (TextView) view.findViewById(R.id.fragment_profile_hardreset_btn);
         fragment_profile_hardreset_btn.setOnClickListener(hardResetListener());
 
-<<<<<<< Updated upstream
-=======
-
-        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
-        fragment_profile_addcar_btn.setOnClickListener(addCarListener(vehicleListAdapter));
-
->>>>>>> Stashed changes
         return view;
     }
 
@@ -111,7 +101,7 @@ public class ProfileFragment extends Fragment {
                 String brand = fragment_profile_brand.getText().toString();
                 String model = fragment_profile_model.getText().toString();
                 String year = fragment_profile_year.getText().toString();
-                String seats = fragment_profile_year.getText().toString();
+                String seats = fragment_profile_seats.getText().toString();
 
                 if (brand == null || brand.isEmpty() || model == null || model.isEmpty() || year == null || year.isEmpty() || seats == null || seats.isEmpty()) {
 
@@ -128,13 +118,7 @@ public class ProfileFragment extends Fragment {
                     TripWSInvoker.registerUserVehicle(getContext(), vehicle, new WSResponseListener() {
                         @Override
                         public void onResponse(WSResponseObject response) {
-<<<<<<< Updated upstream
                             if ("true".equalsIgnoreCase(response.getSuccess())) {
-                                Toast.makeText(getActivity(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getActivity(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
-=======
-                            if (response.getSuccess().equalsIgnoreCase("true")) {
                                 Toast.makeText(getContext(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
                                 vehicleListAdaptert.add(vehicle);
                                 vehicleListAdaptert.notifyDataSetChanged();
@@ -148,7 +132,6 @@ public class ProfileFragment extends Fragment {
                                 } else {
                                     Toast.makeText(getActivity(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
                                 }
->>>>>>> Stashed changes
                             }
                         }
 
