@@ -73,24 +73,30 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(!fragment_profile_brand.getText().toString().equals("")
-                        && !fragment_profile_model.getText().toString().equals("")
-                        && !fragment_profile_year.getText().toString().equals("")
-                        && !fragment_profile_seats.getText().toString().equals("")) {
+                String brand = fragment_profile_brand.getText().toString();
+                String model = fragment_profile_model.getText().toString();
+                String year = fragment_profile_year.getText().toString();
+                String seats = fragment_profile_year.getText().toString();
+
+                if (brand == null || brand.isEmpty() || model == null || model.isEmpty() || year == null || year.isEmpty() || seats == null || seats.isEmpty()) {
+
+                    Toast.makeText(getContext(), R.string.empty_fields_msg, Toast.LENGTH_SHORT).show();
+
+                } else {
 
                     final Vehicle vehicle = new Vehicle();
-                    vehicle.setBrand(fragment_profile_brand.getText().toString());
-                    vehicle.setModel(fragment_profile_model.getText().toString());
-                    vehicle.setYear(fragment_profile_year.getText().toString());
-                    vehicle.setSeatsNumber(Integer.parseInt(fragment_profile_seats.getText().toString()));
+                    vehicle.setBrand(brand);
+                    vehicle.setModel(brand);
+                    vehicle.setYear(year);
+                    vehicle.setSeatsNumber(Integer.valueOf(seats));
 
                     TripWSInvoker.registerUserVehicle(getContext(), vehicle, new WSResponseListener() {
                         @Override
                         public void onResponse(WSResponseObject response) {
-                            if (response.getSuccess().equalsIgnoreCase("true")) {
-                                Toast.makeText(getContext(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
+                            if ("true".equalsIgnoreCase(response.getSuccess())) {
+                                Toast.makeText(getActivity(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -99,16 +105,17 @@ public class ProfileFragment extends Fragment {
 
                         }
                     });
-                } else {
-                    Toast.makeText(getContext(), R.string.empty_fields_msg, Toast.LENGTH_SHORT).show();
                 }
             }
-        };
+        }
+
+                ;
     }
 
     /**
      * @return
      */
+
     private View.OnClickListener signOutListener() {
         return new View.OnClickListener() {
             @Override
