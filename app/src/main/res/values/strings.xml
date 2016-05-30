@@ -137,7 +137,10 @@
     <!-- Toast Messagens -->
     <string name="need_vehicle_msg">You need to register a Vehicle. Go to the Profile to register one</string>
     <string name="empty_fields_msg">Empty Fields</string>
-    <string name="trip_registered_msg">Trip Registered!</string>
+    <string name="trip_registered_msg">Trip Registered</string>
+    <string name="trip_confirmed_msg">Trip Confirmed</string>
+    <string name="trip_subscribed_msg">Subscribed</string>
+    <string name="trip_subscribed_notificacation_msg">You are now subscribed</string>
     <string name="accept_rules_msg">You have to agree with the rules</string>
     <string name="success_loggin_msg">You have been successfully logged in</string>
     <string name="vechicle_registered_msg">Vehicle Registed Successfully</string>

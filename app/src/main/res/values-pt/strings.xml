@@ -133,4 +133,16 @@
     <string name="new_trip_frag_confirm_txt">Confirmar</string>
     <string name="new_trip_frag_subscribe_txt">Participar</string>
 
+    <!-- Toast Messagens -->
+    <string name="need_vehicle_msg">Precisa registar um veiculo. Aceda ao Perfil para porder registar um</string>
+    <string name="empty_fields_msg">Campos vazios</string>
+    <string name="trip_registered_msg">Viagem Registada</string>
+    <string name="trip_confirmed_msg">Viagem Confirmada</string>
+    <string name="trip_subscribed_msg">Viagem Subscrita</string>
+    <string name="trip_subscribed_notificacation_msg">Está agora subscrito</string>
+    <string name="accept_rules_msg">Tem de aceitar as regras</string>
+    <string name="success_loggin_msg">Login com Sucesso</string>
+    <string name="vechicle_registered_msg">Veiculo Registado com Sucesso</string>
+    <string name="unknow_error_msg">Ocorreu um erro</string>
+
 </resources>

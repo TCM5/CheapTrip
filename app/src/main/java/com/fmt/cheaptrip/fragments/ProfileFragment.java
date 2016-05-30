@@ -9,8 +9,10 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +21,16 @@ import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.IntroductionActivity;
 import com.fmt.cheaptrip.activities.LoginActivity;
 import com.fmt.cheaptrip.activities.MainActivity;
+import com.fmt.cheaptrip.entities.Baggage;
 import com.fmt.cheaptrip.entities.Vehicle;
 import com.fmt.cheaptrip.managers.UserAccountManager;
 import com.fmt.cheaptrip.utils.LoginUtils;
 import com.fmt.cheaptrip.webservices.TripWSInvoker;
 import com.fmt.cheaptrip.webservices.response.WSResponseListener;
 import com.fmt.cheaptrip.webservices.response.WSResponseObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +49,8 @@ public class ProfileFragment extends Fragment {
     private TextView fragment_profile_hardreset_btn;
     private TextView fragment_profile_addcar_btn;
 
+    private ListView fragment_profile_vehicle_list;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -56,6 +64,25 @@ public class ProfileFragment extends Fragment {
         fragment_profile_model = (EditText) view.findViewById(R.id.fragment_profile_model);
         fragment_profile_year = (EditText) view.findViewById(R.id.fragment_profile_year);
         fragment_profile_seats = (EditText) view.findViewById(R.id.fragment_profile_seats);
+        fragment_profile_vehicle_list = (ListView) view.findViewById(R.id.fragment_profile_vehicle_list);
+
+        final List<Vehicle> vehicleList = new ArrayList<Vehicle>();
+        final ArrayAdapter<Vehicle> vehicleListAdapter = new ArrayAdapter<Vehicle>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, vehicleList);
+        fragment_profile_vehicle_list.setAdapter(vehicleListAdapter);
+
+        TripWSInvoker.getUserVehicles(getContext(), new WSResponseListener() {
+            @Override
+            public void onResponse(WSResponseObject response) {
+                vehicleListAdapter.addAll(response.getVehicles());
+                vehicleListAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onError(VolleyError error) {
+            }
+        });
+
+        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
+        fragment_profile_addcar_btn.setOnClickListener(addCarListener());
 
         fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
         fragment_profile_addcar_btn.setOnClickListener(addCarListener());
@@ -66,10 +93,17 @@ public class ProfileFragment extends Fragment {
         fragment_profile_hardreset_btn = (TextView) view.findViewById(R.id.fragment_profile_hardreset_btn);
         fragment_profile_hardreset_btn.setOnClickListener(hardResetListener());
 
+<<<<<<< Updated upstream
+=======
+
+        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
+        fragment_profile_addcar_btn.setOnClickListener(addCarListener(vehicleListAdapter));
+
+>>>>>>> Stashed changes
         return view;
     }
 
-    private View.OnClickListener addCarListener() {
+    private View.OnClickListener addCarListener(final ArrayAdapter<Vehicle> vehicleListAdaptert) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,10 +128,27 @@ public class ProfileFragment extends Fragment {
                     TripWSInvoker.registerUserVehicle(getContext(), vehicle, new WSResponseListener() {
                         @Override
                         public void onResponse(WSResponseObject response) {
+<<<<<<< Updated upstream
                             if ("true".equalsIgnoreCase(response.getSuccess())) {
                                 Toast.makeText(getActivity(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getActivity(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
+=======
+                            if (response.getSuccess().equalsIgnoreCase("true")) {
+                                Toast.makeText(getContext(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
+                                vehicleListAdaptert.add(vehicle);
+                                vehicleListAdaptert.notifyDataSetChanged();
+//                                fragment_profile_brand.setText("");
+//                                fragment_profile_model.setText("");
+//                                fragment_profile_year.setText("");
+//                                fragment_profile_seats.setText("");
+                                if ("true".equalsIgnoreCase(response.getSuccess())) {
+                                    Toast.makeText(getActivity(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    Toast.makeText(getActivity(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
+                                }
+>>>>>>> Stashed changes
                             }
                         }
 

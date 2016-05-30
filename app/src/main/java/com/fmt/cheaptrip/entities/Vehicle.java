@@ -11,6 +11,17 @@ public class Vehicle {
     private String year;
     private int seatsNumber;
 
+    public Vehicle() {
+
+    }
+
+    public Vehicle(String brand, String model, String year, int seatsNumber) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.seatsNumber = seatsNumber;
+    }
+
     public String getBrand() {
         return brand;
     }

@@ -168,7 +168,7 @@ public class TripDetailFragment extends Fragment {
                 confirmTrip.setVisibility(View.VISIBLE);
 
                 if (trip.getConfirmedDate() != null) {
-                    confirmTrip.setText("Trip Confirmed");
+                    confirmTrip.setText(R.string.trip_confirmed_msg);
                     confirmTrip.setEnabled(false);
                 }
             } else if (DetailType.SEARCHED.equals(getDetailType())) {
@@ -179,12 +179,12 @@ public class TripDetailFragment extends Fragment {
                             @Override
                             public void onResponse(WSResponseObject response) {
                                 if(response.getSuccess().equalsIgnoreCase("true")) {
-                                    Toast.makeText(getContext(), "You are now subscribed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), R.string.trip_subscribed_notificacation_msg, Toast.LENGTH_SHORT).show();
                                     joinTrip.setEnabled(false);
-                                    joinTrip.setText("Subscribed");
+                                    joinTrip.setText(R.string.trip_subscribed_msg);
                                 } else {
                                     Log.e("subscribeTrip", response.getError());
-                                    Toast.makeText(getContext(), "An error occurred", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -198,7 +198,7 @@ public class TripDetailFragment extends Fragment {
 
                 if(trip.getSubscribed().equalsIgnoreCase("1")) {
                     joinTrip.setEnabled(false);
-                    joinTrip.setText("Subscribed");
+                    joinTrip.setText(R.string.trip_subscribed_msg);
                 }
                 joinTrip.setVisibility(View.VISIBLE);
             }
@@ -229,8 +229,8 @@ public class TripDetailFragment extends Fragment {
                 TripWSInvoker.confirmTrip(getActivity().getApplicationContext(), tripId, new WSResponseListener() {
                     @Override
                     public void onResponse(WSResponseObject response) {
-                        Toast.makeText(getContext(), "Trip Confirmed", Toast.LENGTH_SHORT).show();
-                        confirmTrip.setText("Trip Confirmed");
+                        Toast.makeText(getContext(), R.string.trip_confirmed_msg, Toast.LENGTH_SHORT).show();
+                        confirmTrip.setText(R.string.trip_confirmed_msg);
                         confirmTrip.setEnabled(false);
                     }
 
