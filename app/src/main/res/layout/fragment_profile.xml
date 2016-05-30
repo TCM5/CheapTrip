@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,6 +12,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:orientation="vertical">
+
 
         <TextView
             android:layout_width="match_parent"
@@ -67,15 +69,16 @@
             android:textColorHint="@android:color/darker_gray" />
 
         <TextView
+            android:id="@+id/fragment_profile_addcar_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/green4_cheaptrip"
             android:elevation="10sp"
+            android:padding="5dp"
             android:text="@string/fragment_profile_add_car_tv_txt"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:id="@+id/fragment_profile_addcar_btn" />
+            android:textSize="25dp" />
 
 
         <TextView
@@ -106,7 +109,8 @@
                 android:padding="5dp"
                 android:text="@string/fragment_profile_signout_btn_txt"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
+
 
             <TextView
                 android:id="@+id/fragment_profile_hardreset_btn"
@@ -120,7 +124,7 @@
                 android:padding="5dp"
                 android:text="@string/fragment_profile_hardreset_btn_txt"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
         </LinearLayout>
 
 
