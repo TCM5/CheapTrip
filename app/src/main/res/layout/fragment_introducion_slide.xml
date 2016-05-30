@@ -53,11 +53,10 @@
 
         <ImageView
             android:id="@+id/fragment_introduction_slide_image_iv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:scaleType="fitEnd"
             android:src="@drawable/green" />
 
     </LinearLayout>
