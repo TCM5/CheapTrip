@@ -73,8 +73,10 @@ public class ProfileFragment extends Fragment {
         TripWSInvoker.getUserVehicles(getContext(), new WSResponseListener() {
             @Override
             public void onResponse(WSResponseObject response) {
-                vehicleListAdapter.addAll(response.getVehicles());
-                vehicleListAdapter.notifyDataSetChanged();
+                if(response.getVehicles() != null && response.getVehicles().size() > 0) {
+                    vehicleListAdapter.addAll(response.getVehicles());
+                    vehicleListAdapter.notifyDataSetChanged();
+                }
             }
             @Override
             public void onError(VolleyError error) {
@@ -111,7 +113,7 @@ public class ProfileFragment extends Fragment {
 
                     final Vehicle vehicle = new Vehicle();
                     vehicle.setBrand(brand);
-                    vehicle.setModel(brand);
+                    vehicle.setModel(model);
                     vehicle.setYear(year);
                     vehicle.setSeatsNumber(Integer.valueOf(seats));
 
@@ -126,12 +128,8 @@ public class ProfileFragment extends Fragment {
 //                                fragment_profile_model.setText("");
 //                                fragment_profile_year.setText("");
 //                                fragment_profile_seats.setText("");
-                                if ("true".equalsIgnoreCase(response.getSuccess())) {
-                                    Toast.makeText(getActivity(), R.string.vechicle_registered_msg, Toast.LENGTH_SHORT).show();
-
-                                } else {
-                                    Toast.makeText(getActivity(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
-                                }
+                            } else {
+                                Toast.makeText(getActivity(), R.string.unknow_error_msg, Toast.LENGTH_SHORT).show();
                             }
                         }
 
