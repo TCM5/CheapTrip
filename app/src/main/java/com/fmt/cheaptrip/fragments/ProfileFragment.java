@@ -253,6 +253,8 @@ public class ProfileFragment extends Fragment {
                                             vehicleListAdapter.remove(vehicle);
                                             vehicleListAdapter.notifyDataSetChanged();
                                             Toast.makeText(getContext(), vehicle.getBrand() + " " + vehicle.getModel() + " deleted", Toast.LENGTH_SHORT).show();
+                                            clearForm();
+                                            setFormEnabled(true);
                                         }
                                     }
 

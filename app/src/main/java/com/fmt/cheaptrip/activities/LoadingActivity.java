@@ -9,9 +9,11 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.managers.UserAccountManager;
+import com.fmt.cheaptrip.webservices.util.ServerStatus;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.logging.Logger;
@@ -45,7 +47,6 @@ public class LoadingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loading);
 
         activity_loading_pb = (ProgressBar) findViewById(R.id.activity_loading_pb);
-
 
         Thread thread = new Thread() {
 
@@ -88,8 +89,13 @@ public class LoadingActivity extends AppCompatActivity {
             }
 
         };
-        thread.start();
 
+        if(!ServerStatus.isServerAvailable(getApplicationContext())) {
+            Toast.makeText(getApplicationContext(), R.string.no_server_available, Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            thread.start();
+        }
     }
 
     /**

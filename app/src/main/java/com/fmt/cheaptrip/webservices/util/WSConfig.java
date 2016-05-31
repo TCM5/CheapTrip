@@ -10,6 +10,7 @@ import java.util.Date;
 public class WSConfig {
 
     //URL to our Web Services
+    public static final String SERVER_URL = "http://www.miguelnobre.com";
     public static final String LOGIN_URL = "http://miguelnobre.com/php/EasyTrip/EasyTripLogin.php";
     public static final String REGISTER_URL = "http://miguelnobre.com/php/EasyTrip/EasyTripRegister.php";
     public static final String TRIPS_URL = "http://miguelnobre.com/php/EasyTrip/Trip.php";

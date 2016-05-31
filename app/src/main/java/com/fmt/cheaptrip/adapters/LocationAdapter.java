@@ -134,7 +134,7 @@ public class LocationAdapter extends BaseAdapter implements Filterable {
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
 
-                if (results != null) {
+                if (results != null && results.values != null) {
                     setResultsList((ArrayList) results.values);
 
                     if (results.count > 0) {

@@ -3,10 +3,11 @@ package com.fmt.cheaptrip.webservices.util;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.StrictMode;
 import android.util.Log;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
 import java.net.URL;
 
 /**
@@ -19,20 +20,22 @@ public class ServerStatus {
 
         if (isNetworkAvailable(context)) {
             try {
-                URL url = new URL(WSConfig.LOGIN_URL);
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+
+                URL url = new URL(WSConfig.SERVER_URL);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
                 connection.setConnectTimeout(10000);
                 connection.connect();
                 isAvailable = connection.getResponseCode() == 200;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 isAvailable = false;
-                // TODO LATER
             }
         } else {
             isAvailable = false;
-            // TODO LATER
         }
-        return false;
+        return isAvailable;
     }
 
     private static boolean isNetworkAvailable(Context context) {
