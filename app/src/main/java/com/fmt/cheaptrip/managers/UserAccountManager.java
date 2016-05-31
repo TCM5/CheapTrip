@@ -6,7 +6,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 
+import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
 import com.fmt.cheaptrip.utils.login.FacebookLoginUtils;
@@ -57,18 +61,19 @@ public class UserAccountManager {
             userProfilePicture = FacebookLoginUtils.getCurrentUserProfile(context);
         }
         if (userProfilePicture == null) {
-            Bitmap.Config conf = Bitmap.Config.ARGB_8888;
-            userProfilePicture = Bitmap.createBitmap(160, 160, conf);
+            Drawable drawable = ContextCompat.getDrawable(context, R.drawable.developer);
+            Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+            userProfilePicture = Bitmap.createScaledBitmap(bitmap, 160, 160, false);
         }
 
         return userProfilePicture;
     }
 
     public static String getCurrentUserName(Context context) {
-        String userName = "N/A";
+        String userName = "";
 
         if (DefaultLoginUtils.isLogged(context)) {
-            userName =   DefaultLoginUtils.getUserName(context);
+            userName = DefaultLoginUtils.getUserName(context);
         } else if (GplusLoginUtils.isLogged(context)) {
             userName = GplusLoginUtils.getUserName(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
