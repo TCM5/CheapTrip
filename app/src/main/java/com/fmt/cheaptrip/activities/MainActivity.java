@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_main);
+
+        Bitmap currentProfile = UserAccountManager.getCurrentUserProfileImage(getApplicationContext());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         View view = navigationView.getHeaderView(0);
         ImageView profilePic = (ImageView) view.findViewById(R.id.nav_user_pic);
 
-        Bitmap currentProfile = UserAccountManager.getCurrentUserProfileImage(getApplicationContext());
+
         if (currentProfile != null) {
             profilePic.setImageBitmap(UserAccountManager.getCurrentUserProfileImage(getApplicationContext()));
         }

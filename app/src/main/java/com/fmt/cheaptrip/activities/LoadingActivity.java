@@ -102,10 +102,10 @@ public class LoadingActivity extends AppCompatActivity {
      *
      */
     public void redirectToMain() {
-        Bitmap currentProfile = UserAccountManager.getCurrentUserProfileImage(getApplicationContext());
+       // Bitmap currentProfile = UserAccountManager.getCurrentUserProfileImage(getApplicationContext());
 
         Intent intent = new Intent();
-        intent.putExtra("bitmapPic",currentProfile );
+       // intent.putExtra("bitmapPic",currentProfile );
         intent.setClass(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getApplicationContext().startActivity(intent);

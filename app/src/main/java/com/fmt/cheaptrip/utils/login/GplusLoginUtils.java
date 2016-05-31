@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.Base64;
@@ -14,7 +15,10 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -106,30 +110,26 @@ public class GplusLoginUtils extends LoginUtils {
 
     public static Bitmap getUserPic(Context context) {
         final String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
-        final Bitmap[] result = new Bitmap[1];
+        final Bitmap[] bitmaps = new Bitmap[1];
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
+             Picasso.with(context).load(pic).into(new Target() {
+              @Override
+              public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                  bitmaps[0] = bitmap;
+              }
 
-                try {
-                    URL url = new URL(pic);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    result[0] = BitmapFactory.decodeStream(input);
+              @Override
+              public void onBitmapFailed(Drawable errorDrawable) {
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+              }
 
-        thread.start();
+              @Override
+              public void onPrepareLoad(Drawable placeHolderDrawable) {
 
+              }
+          });
 
-        return result[0];
+        return bitmaps[0];
     }
 
 }

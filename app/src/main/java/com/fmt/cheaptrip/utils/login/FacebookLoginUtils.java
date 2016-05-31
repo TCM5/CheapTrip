@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,6 +21,8 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.json.JSONObject;
 
@@ -58,40 +61,32 @@ public class FacebookLoginUtils extends LoginUtils {
     }
 
 
-    public static Bitmap getUserPic(Context context) {
-
-        String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
-
-        byte[] decodedByte = Base64.decode(pic, 0);
-        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
-    }
-
     public static Bitmap getCurrentUserProfile(final Context context) {
-        final Bitmap[] result = new Bitmap[1];
+
+
         final String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
+        final Bitmap[] bitmaps = new Bitmap[1];
 
-                try {
+        Picasso.with(context).load(pic).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                bitmaps[0] = bitmap;
+            }
 
-                    URL url = new URL(pic);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
 
-                    result[0] = BitmapFactory.decodeStream(input);
+            }
 
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
 
+            }
+        });
 
-                    context.notifyAll();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-
-        return result[0];
-
+        return bitmaps[0];
     }
+
 
     public static void addUserName(Context context, String name) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
