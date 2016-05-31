@@ -153,7 +153,7 @@
     <string name="delete_car_msg">Tem a certeza que pretende apagar o seu carro</string>
     <string name="logout_title">Sair</string>
     <string name="logout_msg">Tem a certeza que pretende sair?</string>
-    <string name="hard_reset_title">Apagar</string>
+    <string name="hard_reset_title">Desativar</string>
     <string name="hard_reset_msg">"Todos os seus dados serão apagados. Pretende continuar?</string>
     <string name="delete_word">apagado</string>
 
