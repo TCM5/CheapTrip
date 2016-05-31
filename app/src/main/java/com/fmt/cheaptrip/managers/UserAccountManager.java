@@ -50,7 +50,7 @@ public class UserAccountManager {
         Bitmap userProfilePicture = null;
 
         if (DefaultLoginUtils.isLogged(context)) {
-            // DefaultLoginUtils.getCurrentUserName(context);
+            //
         } else if (GplusLoginUtils.isLogged(context)) {
             userProfilePicture = GplusLoginUtils.getUserPic(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
@@ -68,7 +68,7 @@ public class UserAccountManager {
         String userName = "N/A";
 
         if (DefaultLoginUtils.isLogged(context)) {
-            //  userName =   DefaultLoginUtils.getCurrentUserName(context);
+            userName =   DefaultLoginUtils.getUserName(context);
         } else if (GplusLoginUtils.isLogged(context)) {
             userName = GplusLoginUtils.getUserName(context);
         } else if (FacebookLoginUtils.isLogged(context)) {

@@ -88,14 +88,15 @@ public class FacebookLoginFragment extends Fragment {
                             } else {
                                 FacebookLoginUtils.fetchProfile(getActivity().getApplicationContext());
 
-                                User user = new User();
+                                final User user = new User();
                                 user.setName(FacebookLoginUtils.getUserName(getActivity().getApplicationContext()));
                                 user.setEmail(FacebookLoginUtils.getUserEmail(getActivity().getApplicationContext()));
+                                user.setContactNumber("N/A");
 
                                 TripWSInvoker.registerUser(getActivity().getApplicationContext(), user, new WSResponseListener() {
                                     @Override
                                     public void onResponse(WSResponseObject response) {
-                                        if (response.getSuccess().equalsIgnoreCase("true")) {
+                                        if ("true".equalsIgnoreCase(response.getSuccess())) {
 
                                             FacebookLoginUtils.login(getActivity().getApplicationContext());
 
@@ -105,13 +106,20 @@ public class FacebookLoginFragment extends Fragment {
                                             getActivity().startActivity(intent);
 
                                         } else {
-                                            Toast.makeText(getActivity().getApplicationContext(), response.getError(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getActivity().getApplicationContext(), "HERE" + response.getError(), Toast.LENGTH_LONG).show();
                                         }
                                     }
 
                                     @Override
                                     public void onError(VolleyError error) {
-                                        Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+
+                                        // Already registerd
+                                        FacebookLoginUtils.login(getActivity().getApplicationContext());
+
+                                        Intent intent = new Intent();
+                                        intent.setClass(getActivity(), MainActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        getActivity().startActivity(intent);
                                     }
                                 });
                             }

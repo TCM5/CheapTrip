@@ -66,15 +66,12 @@ public class FacebookLoginUtils extends LoginUtils {
         return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 
-    public static Bitmap getCurrentUserProfile(Context context) {
+    public static Bitmap getCurrentUserProfile(final Context context) {
         final Bitmap[] result = new Bitmap[1];
         final String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
                 try {
+
                     URL url = new URL(pic);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setDoInput(true);
@@ -83,13 +80,14 @@ public class FacebookLoginUtils extends LoginUtils {
 
                     result[0] = BitmapFactory.decodeStream(input);
 
+
+
+                    context.notifyAll();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
-        });
 
-        thread.start();
+
 
         return result[0];
 

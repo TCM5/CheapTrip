@@ -61,7 +61,8 @@ public class DefaultLoginFragment extends Fragment {
                             User user = response.getUser();
 
                             DefaultLoginUtils.login(getActivity().getApplicationContext());
-                            DefaultLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), user.getEmail());
+                            DefaultLoginUtils.addUserEmail(getActivity().getApplicationContext(), user.getEmail());
+                            DefaultLoginUtils.addUserName(getActivity().getApplicationContext(), user.getName());
                             DefaultLoginUtils.addCurrentUserId(getActivity().getApplicationContext(), String.valueOf(user.getUserId()));
 
                             Toast.makeText(getContext(), R.string.success_loggin_msg, Toast.LENGTH_SHORT).show();

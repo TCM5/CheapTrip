@@ -39,4 +39,35 @@ public class DefaultLoginUtils extends LoginUtils {
 
         editor.commit();
     }
+
+    public static void addUserName(Context context, String name) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("user_name", name);
+
+        editor.commit();
+    }
+
+    public static String getUserName(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        return sharedPref.getString("user_name", "");
+    }
+
+    public static void addUserEmail(Context context, String email) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("current_user_email", email);
+
+        editor.commit();
+    }
+
+    public static String getUserEmail(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        return sharedPref.getString("current_user_email", "");
+    }
+
 }

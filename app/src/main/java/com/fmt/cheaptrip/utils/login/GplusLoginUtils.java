@@ -105,8 +105,8 @@ public class GplusLoginUtils extends LoginUtils {
     }
 
     public static Bitmap getUserPic(Context context) {
-        final Bitmap[] result = new Bitmap[1];
         final String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
+        final Bitmap[] result = new Bitmap[1];
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -118,7 +118,6 @@ public class GplusLoginUtils extends LoginUtils {
                     connection.setDoInput(true);
                     connection.connect();
                     InputStream input = connection.getInputStream();
-
                     result[0] = BitmapFactory.decodeStream(input);
 
                 } catch (Exception e) {
@@ -128,6 +127,7 @@ public class GplusLoginUtils extends LoginUtils {
         });
 
         thread.start();
+
 
         return result[0];
     }

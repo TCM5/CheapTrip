@@ -2,6 +2,7 @@ package com.fmt.cheaptrip.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -78,6 +79,7 @@ public class LoadingActivity extends AppCompatActivity {
                 } else {
 
                     if (UserAccountManager.isLogged(getApplicationContext())) {
+
                         redirectToMain();
                     } else {
                         redirectToLogin();
@@ -94,7 +96,10 @@ public class LoadingActivity extends AppCompatActivity {
      *
      */
     public void redirectToMain() {
+        Bitmap currentProfile = UserAccountManager.getCurrentUserProfileImage(getApplicationContext());
+
         Intent intent = new Intent();
+        intent.putExtra("bitmapPic",currentProfile );
         intent.setClass(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getApplicationContext().startActivity(intent);
