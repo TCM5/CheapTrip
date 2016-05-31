@@ -149,5 +149,12 @@
     <string name="unknow_error_msg">Ocorreu um erro</string>
     <string name="cant_add_car_twice">Não pode registar 2 vezes o mesmo carro</string>
     <string name="no_server_available">Servidor Indisponivel</string>
+    <string name="delete_car_title">Apagar Carro</string>
+    <string name="delete_car_msg">Tem a certeza que pretende apagar o seu carro</string>
+    <string name="logout_title">Sair</string>
+    <string name="logout_msg">Tem a certeza que pretende sair?</string>
+    <string name="hard_reset_title">Apagar</string>
+    <string name="hard_reset_msg">"Todos os seus dados serão apagados. Pretende continuar?</string>
+    <string name="delete_word">apagado</string>
 
 </resources>
