@@ -77,7 +77,7 @@ public class FacebookLoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
-                Bundle params = new Bundle();
+/*                Bundle params = new Bundle();
                 params.putString("fields", "id,email,gender,cover,picture.type(large)");
                 new GraphRequest(AccessToken.getCurrentAccessToken(), "me", params, HttpMethod.GET,
                         new GraphRequest.Callback() {
@@ -88,14 +88,14 @@ public class FacebookLoginFragment extends Fragment {
                                         JSONObject data = response.getJSONObject();
                                         if (data.has("picture")) {
                                             String profilePicUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
-                                            FacebookLoginUtils.addPic(profilePicUrl, getActivity().getApplicationContext());
+                                          //  FacebookLoginUtils.addPic(profilePicUrl, getActivity().getApplicationContext());
                                         }
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
                                 }
                             }
-                        }).executeAsync();
+                        }).executeAsync();*/
 
                /* Uri uri = Profile.getCurrentProfile().getProfilePictureUri(200,200);
                 FacebookLoginUtils.addProfilePic(uri, getActivity());
@@ -123,6 +123,14 @@ public class FacebookLoginFragment extends Fragment {
 
                             } else {
                                 FacebookLoginUtils.fetchProfile(getActivity().getApplicationContext());
+
+
+                                FacebookLoginUtils.login(getActivity().getApplicationContext());
+
+                                Intent intent = new Intent();
+                                intent.setClass(getActivity(), MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                getActivity().startActivity(intent);
                             }
                         }
                     };
@@ -131,31 +139,6 @@ public class FacebookLoginFragment extends Fragment {
                 } else {
                     //TODO
                 }
-
-                String email = "";
-
-                GraphRequest.newMeRequest(
-                        loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject me, GraphResponse response) {
-                                if (response.getError() != null) {
-                                    //TODO later
-                                } else {
-                                    String email = me.optString("email");
-
-                                }
-                            }
-                        }).executeAsync();
-
-
-                FacebookLoginUtils.login(getActivity().getApplicationContext());
-                FacebookLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), email);
-                //    FacebookLoginUtils.addCurrentUserId(getActivity().getApplicationContext(), String.valueOf(user.getUserId()));
-
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getActivity().startActivity(intent);
 
             }
 

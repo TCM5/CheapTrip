@@ -57,14 +57,15 @@ public class FacebookLoginUtils extends LoginUtils {
         return sharedPref.getBoolean(SP_LOGIN_TYPE_ID, false) == true;
     }
 
-    public static Profile getUserProfile(Context context) {
-        initializeFacebookSdk(context);
 
-        Profile profile = Profile.getCurrentProfile();
-        return profile;
+    public static Bitmap getUserPic(Context context) {
+
+        String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
+
+        byte[] decodedByte = Base64.decode(pic, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 
-    @Deprecated
     public static Bitmap getCurrentUserProfile(Context context) {
         final Bitmap[] result = new Bitmap[1];
         final String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
@@ -80,7 +81,7 @@ public class FacebookLoginUtils extends LoginUtils {
                     connection.connect();
                     InputStream input = connection.getInputStream();
 
-                    result[0]= BitmapFactory.decodeStream(input);
+                    result[0] = BitmapFactory.decodeStream(input);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -94,22 +95,34 @@ public class FacebookLoginUtils extends LoginUtils {
 
     }
 
-    public static Bitmap getCurrentUserProfile1(Context context) {
+    public static void addUserName(Context context, String name) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
-        String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
+        editor.putString("user_name", name);
 
-        byte[] decodedByte = Base64.decode(pic, 0);
-        return BitmapFactory
-                .decodeByteArray(decodedByte, 0, decodedByte.length);
+        editor.commit();
     }
 
-    public static String getCurrentUserName(Context context) {
-        return getUserProfile(context).getName();
+    public static String getUserName(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        return sharedPref.getString("user_name", "");
     }
 
-    @Deprecated
-    public static String getCurrentUserEmail(Context context) {
-        return null;
+    public static void addUserEmail(Context context, String email) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("current_user_email", email);
+
+        editor.commit();
+    }
+
+    public static String getUserEmail(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        return sharedPref.getString("current_user_email", "");
     }
 
     public static void login(Context context) {
@@ -137,62 +150,11 @@ public class FacebookLoginUtils extends LoginUtils {
         editor.commit();
     }
 
-    public static void addPic(String url_str, Context context) {
-
+    private static void addPic(String url_str, Context context) {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
         editor.putString("pic", url_str);
         editor.commit();
-
-
- /*       try {
-            URL url = new URL(url_str);
-            InputStream in = url.openConnection().getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(in);
-
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-            byte[] b = baos.toByteArray();
-            String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
-
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
-            editor.putString("pic", imageEncoded);
-            editor.commit();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
-
-
     }
-
-    public static void addProfilePic(Uri uri, Context context) {
-     /*   Bitmap userProfileImage = null;
-
-        try {
-            ContentResolver cr = context.getContentResolver();
-            InputStream in = cr.openInputStream(uri);
-            userProfileImage = BitmapFactory.decodeStream(in, null, null);
-
-        } catch (IOException e) {
-            // TODO set default image;
-        }
-
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        userProfileImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] b = baos.toByteArray();
-        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
-
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        editor.putString("pic", imageEncoded);
-        editor.commit();
-*/
-
-    }
-
 
     public static void fetchProfile(final Context context) {
         GraphRequest request = GraphRequest.newMeRequest(
@@ -204,9 +166,22 @@ public class FacebookLoginUtils extends LoginUtils {
                         if (response != null) {
                             try {
                                 JSONObject data = response.getJSONObject();
+                                if (data.has("email")) {
+                                    String email = data.getString("email");
+                                    FacebookLoginUtils.addUserEmail(context, email);
+                                }
+
+                                if (data.has("first_name")) {
+                                    String firstName = data.getString("first_name");
+                                    String lastName = data.getString("last_name");
+
+                                    FacebookLoginUtils.addUserName(context, firstName + " " + lastName);
+                                }
+
                                 if (data.has("picture")) {
                                     String profilePicUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
                                     FacebookLoginUtils.addPic(profilePicUrl, context);
+
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -214,12 +189,20 @@ public class FacebookLoginUtils extends LoginUtils {
                         }
                     }
                 }
-
         );
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,email,gender,cover,picture.type(large)"); //write the fields you need
+        parameters.putString("fields", "id,email,first_name,last_name,picture.type(large)");
         request.setParameters(parameters);
         request.executeAsync();
+    }
+
+
+    @Deprecated
+    public static Profile getUserProfile(Context context) {
+        initializeFacebookSdk(context);
+
+        Profile profile = Profile.getCurrentProfile();
+        return profile;
     }
 }
 

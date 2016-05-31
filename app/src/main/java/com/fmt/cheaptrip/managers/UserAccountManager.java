@@ -56,13 +56,12 @@ public class UserAccountManager {
         } else if (FacebookLoginUtils.isLogged(context)) {
             userProfilePicture = FacebookLoginUtils.getCurrentUserProfile(context);
         }
-        if (userProfilePicture != null) {
-            return roundShape(userProfilePicture);
+        if (userProfilePicture == null) {
+            Bitmap.Config conf = Bitmap.Config.ARGB_8888;
+            userProfilePicture = Bitmap.createBitmap(160, 160, conf);
         }
 
-        Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
-        userProfilePicture = Bitmap.createBitmap(160, 160, conf);
-        return roundShape(userProfilePicture);
+        return userProfilePicture;
     }
 
     public static String getCurrentUserName(Context context) {
@@ -73,7 +72,7 @@ public class UserAccountManager {
         } else if (GplusLoginUtils.isLogged(context)) {
             // userName =  GplusLoginUtils.getCurrentUserName(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
-            //            userName = FacebookLoginUtils.getCurrentUserName(context);
+            userName = FacebookLoginUtils.getUserName(context);
         }
 
         return userName;
@@ -97,7 +96,8 @@ public class UserAccountManager {
         } else if (GplusLoginUtils.isLogged(context)) {
             GplusLoginUtils.revoke(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
-            FacebookLoginUtils.revoke(context);
+            FacebookLoginUtils.logout(context);
+
         }
     }
 
