@@ -2,6 +2,10 @@ package com.fmt.cheaptrip.managers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Rect;
 
 import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
@@ -52,18 +56,24 @@ public class UserAccountManager {
         } else if (FacebookLoginUtils.isLogged(context)) {
             userProfilePicture = FacebookLoginUtils.getCurrentUserProfile(context);
         }
-        return userProfilePicture;
+        if (userProfilePicture != null) {
+            return roundShape(userProfilePicture);
+        }
+
+        Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+        userProfilePicture = Bitmap.createBitmap(160, 160, conf);
+        return roundShape(userProfilePicture);
     }
 
     public static String getCurrentUserName(Context context) {
         String userName = "N/A";
 
         if (DefaultLoginUtils.isLogged(context)) {
-          //  userName =   DefaultLoginUtils.getCurrentUserName(context);
+            //  userName =   DefaultLoginUtils.getCurrentUserName(context);
         } else if (GplusLoginUtils.isLogged(context)) {
             // userName =  GplusLoginUtils.getCurrentUserName(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
-            userName = FacebookLoginUtils.getCurrentUserName(context);
+            //            userName = FacebookLoginUtils.getCurrentUserName(context);
         }
 
         return userName;
@@ -89,6 +99,30 @@ public class UserAccountManager {
         } else if (FacebookLoginUtils.isLogged(context)) {
             FacebookLoginUtils.revoke(context);
         }
+    }
+
+    private static Bitmap roundShape(Bitmap bitmap) {
+        int targetWidth = 50;
+        int targetHeight = 50;
+
+        Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
+                targetHeight, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(targetBitmap);
+        Path path = new Path();
+        path.addCircle(((float) targetWidth - 1) / 2,
+                ((float) targetHeight - 1) / 2,
+                (Math.min(((float) targetWidth),
+                        ((float) targetHeight)) / 2),
+                Path.Direction.CCW);
+
+        canvas.clipPath(path);
+        Bitmap sourceBitmap = bitmap;
+        canvas.drawBitmap(sourceBitmap,
+                new Rect(0, 0, sourceBitmap.getWidth(),
+                        sourceBitmap.getHeight()),
+                new Rect(0, 0, targetWidth, targetHeight), null);
+        return targetBitmap;
     }
 
 }

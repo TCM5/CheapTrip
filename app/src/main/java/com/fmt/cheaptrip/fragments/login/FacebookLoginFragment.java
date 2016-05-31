@@ -3,12 +3,14 @@ package com.fmt.cheaptrip.fragments.login;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.camera2.params.Face;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -18,6 +20,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
@@ -74,15 +77,42 @@ public class FacebookLoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
+                Bundle params = new Bundle();
+                params.putString("fields", "id,email,gender,cover,picture.type(large)");
+                new GraphRequest(AccessToken.getCurrentAccessToken(), "me", params, HttpMethod.GET,
+                        new GraphRequest.Callback() {
+                            @Override
+                            public void onCompleted(GraphResponse response) {
+                                if (response != null) {
+                                    try {
+                                        JSONObject data = response.getJSONObject();
+                                        if (data.has("picture")) {
+                                            String profilePicUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
+                                            FacebookLoginUtils.addPic(profilePicUrl, getActivity().getApplicationContext());
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }).executeAsync();
+
+               /* Uri uri = Profile.getCurrentProfile().getProfilePictureUri(200,200);
+                FacebookLoginUtils.addProfilePic(uri, getActivity());
+
                 ProfileTracker profileTracker = new ProfileTracker() {
                     @Override
                     protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
                         this.stopTracking();
+                        Uri uri = Profile.getCurrentProfile().getProfilePictureUri(200,200);
+                        FacebookLoginUtils.addProfilePic(uri, getActivity());
                         Profile.setCurrentProfile(currentProfile);
 
                     }
                 };
                 profileTracker.startTracking();
+
+                */
 
                 if (AccessToken.getCurrentAccessToken() != null) {
                     mAccessTokenTracker = new AccessTokenTracker() {
@@ -90,16 +120,9 @@ public class FacebookLoginFragment extends Fragment {
                         protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
                             mAccessTokenTracker.stopTracking();
                             if (currentAccessToken == null) {
-                                //(the user has revoked your permissions -
-                                //by going to his settings and deleted your app)
-                                //do the simple login to FaceBook
-                                //case 1
+
                             } else {
-                                //you've got the new access token now.
-                                //AccessToken.getToken() could be same for both
-                                //parameters but you should only use "currentAccessToken"
-                                //case 2
-                                FacebookLoginUtils.fetchProfile();
+                                FacebookLoginUtils.fetchProfile(getActivity().getApplicationContext());
                             }
                         }
                     };
@@ -127,7 +150,7 @@ public class FacebookLoginFragment extends Fragment {
 
                 FacebookLoginUtils.login(getActivity().getApplicationContext());
                 FacebookLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), email);
-            //    FacebookLoginUtils.addCurrentUserId(getActivity().getApplicationContext(), String.valueOf(user.getUserId()));
+                //    FacebookLoginUtils.addCurrentUserId(getActivity().getApplicationContext(), String.valueOf(user.getUserId()));
 
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MainActivity.class);

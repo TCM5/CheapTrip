@@ -92,6 +92,10 @@ public class ProfileFragment extends Fragment {
         fragment_profile_hardreset_btn = (TextView) view.findViewById(R.id.fragment_profile_hardreset_btn);
         fragment_profile_hardreset_btn.setOnClickListener(hardResetListener());
 
+
+        fragment_profile_addcar_btn = (TextView) view.findViewById(R.id.fragment_profile_addcar_btn);
+        fragment_profile_addcar_btn.setOnClickListener(addCarListener(vehicleListAdapter));
+
         return view;
     }
 
