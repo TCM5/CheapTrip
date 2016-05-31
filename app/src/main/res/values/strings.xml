@@ -148,5 +148,6 @@
     <string name="vechicle_registered_msg">Vehicle Registed Successfully</string>
     <string name="unknow_error_msg">An error occurred</string>
     <string name="cant_add_car_twice">Cannot register the same car twice</string>
+    <string name="no_server_available">No Server Available</string>
 
 </resources>
