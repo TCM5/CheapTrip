@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -29,8 +30,12 @@ import com.facebook.login.widget.LoginButton;
 
 import com.fmt.cheaptrip.R;
 import com.fmt.cheaptrip.activities.MainActivity;
+import com.fmt.cheaptrip.entities.User;
 import com.fmt.cheaptrip.utils.login.DefaultLoginUtils;
 import com.fmt.cheaptrip.utils.login.FacebookLoginUtils;
+import com.fmt.cheaptrip.webservices.TripWSInvoker;
+import com.fmt.cheaptrip.webservices.response.WSResponseListener;
+import com.fmt.cheaptrip.webservices.response.WSResponseObject;
 
 import org.json.JSONObject;
 
@@ -46,9 +51,6 @@ public class FacebookLoginFragment extends Fragment {
 
     private LoginButton loginButton;
 
-    /**
-     * Fragment requires a default constructor and should be the only constructor here.
-     */
     public FacebookLoginFragment() {
 
     }
@@ -56,7 +58,6 @@ public class FacebookLoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -77,43 +78,6 @@ public class FacebookLoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
-/*                Bundle params = new Bundle();
-                params.putString("fields", "id,email,gender,cover,picture.type(large)");
-                new GraphRequest(AccessToken.getCurrentAccessToken(), "me", params, HttpMethod.GET,
-                        new GraphRequest.Callback() {
-                            @Override
-                            public void onCompleted(GraphResponse response) {
-                                if (response != null) {
-                                    try {
-                                        JSONObject data = response.getJSONObject();
-                                        if (data.has("picture")) {
-                                            String profilePicUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
-                                          //  FacebookLoginUtils.addPic(profilePicUrl, getActivity().getApplicationContext());
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }
-                        }).executeAsync();*/
-
-               /* Uri uri = Profile.getCurrentProfile().getProfilePictureUri(200,200);
-                FacebookLoginUtils.addProfilePic(uri, getActivity());
-
-                ProfileTracker profileTracker = new ProfileTracker() {
-                    @Override
-                    protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
-                        this.stopTracking();
-                        Uri uri = Profile.getCurrentProfile().getProfilePictureUri(200,200);
-                        FacebookLoginUtils.addProfilePic(uri, getActivity());
-                        Profile.setCurrentProfile(currentProfile);
-
-                    }
-                };
-                profileTracker.startTracking();
-
-                */
-
                 if (AccessToken.getCurrentAccessToken() != null) {
                     mAccessTokenTracker = new AccessTokenTracker() {
                         @Override
@@ -124,13 +88,32 @@ public class FacebookLoginFragment extends Fragment {
                             } else {
                                 FacebookLoginUtils.fetchProfile(getActivity().getApplicationContext());
 
+                                User user = new User();
+                                user.setName(FacebookLoginUtils.getUserName(getActivity().getApplicationContext()));
+                                user.setEmail(FacebookLoginUtils.getUserEmail(getActivity().getApplicationContext()));
 
-                                FacebookLoginUtils.login(getActivity().getApplicationContext());
+                                TripWSInvoker.registerUser(getActivity().getApplicationContext(), user, new WSResponseListener() {
+                                    @Override
+                                    public void onResponse(WSResponseObject response) {
+                                        if (response.getSuccess().equalsIgnoreCase("true")) {
 
-                                Intent intent = new Intent();
-                                intent.setClass(getActivity(), MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                getActivity().startActivity(intent);
+                                            FacebookLoginUtils.login(getActivity().getApplicationContext());
+
+                                            Intent intent = new Intent();
+                                            intent.setClass(getActivity(), MainActivity.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            getActivity().startActivity(intent);
+
+                                        } else {
+                                            Toast.makeText(getActivity().getApplicationContext(), response.getError(), Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(VolleyError error) {
+                                        Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                });
                             }
                         }
                     };
@@ -139,18 +122,17 @@ public class FacebookLoginFragment extends Fragment {
                 } else {
                     //TODO
                 }
-
             }
 
             @Override
             public void onCancel() {
-                System.out.println("CANCELOU");
+                //TODO
 
             }
 
             @Override
             public void onError(FacebookException e) {
-                System.out.println("ERRO");
+                //TODO
 
             }
         });
@@ -173,6 +155,7 @@ public class FacebookLoginFragment extends Fragment {
 
     @Override
     public void onDetach() {
+
         super.onDetach();
     }
 
