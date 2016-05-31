@@ -15,6 +15,10 @@ import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  * Created by santostc on 26-05-2016.
  */
@@ -53,17 +57,7 @@ public class GplusLoginUtils extends LoginUtils {
 
     public static void revoke(Context context) {
 
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestProfile().requestEmail().requestScopes(Plus.SCOPE_PLUS_LOGIN, Plus.SCOPE_PLUS_PROFILE, new Scope("https://www.googleapis.com/auth/plus.profile.emails.read"))
-                .build();
-
-        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
-                .addApi(Plus.API)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions).build();
-
-        googleApiClient.connect();
-
-        PendingResult result = Auth.GoogleSignInApi.revokeAccess(googleApiClient);
+        //Revoke, no time for that :(
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -111,10 +105,31 @@ public class GplusLoginUtils extends LoginUtils {
     }
 
     public static Bitmap getUserPic(Context context) {
-        String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
+        final Bitmap[] result = new Bitmap[1];
+        final String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
 
-        byte[] decodedByte = Base64.decode(pic, 0);
-        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    URL url = new URL(pic);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    InputStream input = connection.getInputStream();
+
+                    result[0] = BitmapFactory.decodeStream(input);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+
+        return result[0];
     }
 
 }
