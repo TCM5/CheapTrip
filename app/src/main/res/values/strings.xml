@@ -149,5 +149,12 @@
     <string name="unknow_error_msg">An error occurred</string>
     <string name="cant_add_car_twice">Cannot register the same car twice</string>
     <string name="no_server_available">No Server Available</string>
+    <string name="delete_car_title">Delete Car</string>
+    <string name="delete_car_msg">Do you really want delete</string>
+    <string name="logout_title">Logout</string>
+    <string name="logout_msg">Do you really want to logout?</string>
+    <string name="hard_reset_title">"Hard reset"</string>
+    <string name="hard_reset_msg">"Do you really want to make an hardreset? If yes, all yout data will be cleared"</string>
+    <string name="delete_word">deleted</string>
 
 </resources>

@@ -167,8 +167,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
 
                 new AlertDialog.Builder(getActivity())
-                        .setTitle("Hard reset")
-                        .setMessage("Do you really want to logout?")
+                        .setTitle(R.string.logout_title)
+                        .setMessage(R.string.logout_msg)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
@@ -197,8 +197,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
 
                 new AlertDialog.Builder(getActivity())
-                        .setTitle("Hard reset")
-                        .setMessage("Do you really want to make an hardreset? If yes, all yout data will be cleared")
+                        .setTitle(R.string.hard_reset_title)
+                        .setMessage(R.string.hard_reset_msg)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
@@ -240,8 +240,8 @@ public class ProfileFragment extends Fragment {
                 final Vehicle vehicle = vehicleListAdapter.getItem(i);
 
                 new AlertDialog.Builder(getActivity())
-                        .setTitle("Delete Car")
-                        .setMessage("Do you really want delete " + vehicle.getBrand() + " " + vehicle.getModel() + " ?")
+                        .setTitle(R.string.delete_car_title)
+                        .setMessage(getString(R.string.delete_car_msg) + " " + vehicle.getBrand() + " " + vehicle.getModel() + " ?")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
@@ -252,7 +252,7 @@ public class ProfileFragment extends Fragment {
                                         if ("true".equalsIgnoreCase(response.getSuccess())) {
                                             vehicleListAdapter.remove(vehicle);
                                             vehicleListAdapter.notifyDataSetChanged();
-                                            Toast.makeText(getContext(), vehicle.getBrand() + " " + vehicle.getModel() + " deleted", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), vehicle.getBrand() + " " + vehicle.getModel() + " " + getString(R.string.delete_word), Toast.LENGTH_SHORT).show();
                                             clearForm();
                                             setFormEnabled(true);
                                         }
