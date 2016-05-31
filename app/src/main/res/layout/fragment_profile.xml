@@ -78,17 +78,38 @@
                     android:textColor="@android:color/darker_gray"
                     android:textColorHint="@android:color/darker_gray" />
 
-                <TextView
-                    android:id="@+id/fragment_profile_addcar_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/green4_cheaptrip"
-                    android:elevation="10sp"
-                    android:padding="5dp"
-                    android:text="@string/fragment_profile_add_car_tv_txt"
-                    android:textColor="@color/white"
-                    android:textSize="15dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/fragment_profile_addcar_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/green4_cheaptrip"
+                        android:elevation="10sp"
+                        android:padding="5dp"
+                        android:text="@string/fragment_profile_add_car_tv_txt"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/fragment_profile_clean_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/green4_cheaptrip"
+                        android:elevation="10sp"
+                        android:padding="5dp"
+                        android:text="@string/fragment_profile_clear_car_form"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
                 <ListView
                     android:layout_marginTop="10dp"

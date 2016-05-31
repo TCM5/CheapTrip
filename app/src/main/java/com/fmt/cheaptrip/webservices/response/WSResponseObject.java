@@ -15,6 +15,7 @@ public class WSResponseObject {
     private String success;
     private String error;
     private User user;
+    private Vehicle vehicle;
     private List<Trip> trips;
     private List<Vehicle> vehicles;
 
@@ -40,6 +41,14 @@ public class WSResponseObject {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public List<Trip> getTrips() {

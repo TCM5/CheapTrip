@@ -6,6 +6,7 @@ package com.fmt.cheaptrip.entities;
 
 public class Vehicle {
 
+    private Integer vehicleId;
     private String brand;
     private String model;
     private String year;
@@ -20,6 +21,14 @@ public class Vehicle {
         this.model = model;
         this.year = year;
         this.seatsNumber = seatsNumber;
+    }
+
+    public Integer getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(Integer vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
     public String getBrand() {

@@ -79,6 +79,7 @@
     <string name="fragment_profile_hardreset_btn_txt">Desativar</string>
     <string name="fragment_profile_account_tv_txt">Conta</string>
     <string name="fragment_profile_add_car_tv_txt">Adicionar carro</string>
+    <string name="fragment_profile_clear_car_form">Limpar</string>
     <string name="fragment_profile_seats_txt">Lugares</string>
     <string name="fragment_profile_year_txt">Ano</string>
     <string name="fragment_profile_model_txt">Modelo</string>
@@ -144,5 +145,6 @@
     <string name="success_loggin_msg">Login com Sucesso</string>
     <string name="vechicle_registered_msg">Veiculo Registado com Sucesso</string>
     <string name="unknow_error_msg">Ocorreu um erro</string>
+    <string name="cant_add_car_twice">Não pode registar 2 vezes o mesmo carro</string>
 
 </resources>

@@ -79,6 +79,7 @@
     <string name="fragment_profile_hardreset_btn_txt">Reset</string>
     <string name="fragment_profile_account_tv_txt">Account</string>
     <string name="fragment_profile_add_car_tv_txt">Add car</string>
+    <string name="fragment_profile_clear_car_form">Clear</string>
     <string name="fragment_profile_seats_txt">Seats</string>
     <string name="fragment_profile_year_txt">Year</string>
     <string name="fragment_profile_model_txt">Model</string>
@@ -145,5 +146,6 @@
     <string name="success_loggin_msg">You have been successfully logged in</string>
     <string name="vechicle_registered_msg">Vehicle Registed Successfully</string>
     <string name="unknow_error_msg">An error occurred</string>
+    <string name="cant_add_car_twice">Cannot register the same car twice</string>
 
 </resources>

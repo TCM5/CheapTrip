@@ -337,7 +337,14 @@ public class TripWSInvoker {
                 new Response.Listener() {
                     @Override
                     public void onResponse(Object response) {
+                        Vehicle vehicle = null;
                         WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+
+                        if("true".equalsIgnoreCase(responseObject.getSuccess())) {
+                            vehicle = CustomJSONParser.getInstance().stringToObject(response.toString(), Vehicle.class);
+                        }
+
+                        responseObject.setVehicle(vehicle);
                         wsResponse.onResponse(responseObject);
                     }
                 },
@@ -357,6 +364,31 @@ public class TripWSInvoker {
         receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_MODEL, vehicle.getModel() );
         receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_YEAR, vehicle.getYear());
         receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_SEATS_NUMBER, String.valueOf(vehicle.getSeatsNumber()));
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(receivedTripsRequest);
+    }
+
+    public static void deleteUserVehicle(final Context context, Integer vehicleId, final WSResponseListener wsResponse) {
+
+        CustomStringRequest receivedTripsRequest = new CustomStringRequest(Request.Method.POST, WSConfig.VEHICLES_URL,
+                new Response.Listener() {
+                    @Override
+                    public void onResponse(Object response) {
+                        WSResponseObject responseObject = CustomJSONParser.getInstance().stringToObject(response.toString(), WSResponseObject.class);
+                        wsResponse.onResponse(responseObject);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        wsResponse.onError(error);
+                    }
+                }
+        );
+
+        receivedTripsRequest.addParam(WSConfig.PARAM_ACTION, WSConfig.ACTION_DELETE_USER_VEHICLE);
+        receivedTripsRequest.addParam(WSConfig.PARAM_VEHICLE_ID, vehicleId.toString());
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(receivedTripsRequest);

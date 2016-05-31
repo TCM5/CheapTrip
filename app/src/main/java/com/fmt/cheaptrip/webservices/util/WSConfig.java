@@ -29,7 +29,6 @@ public class WSConfig {
     public static final String PARAM_TRIP_ID = "tripid";
     public static final String PARAM_DRIVER_ID = "driverid";
     public static final String PARAM_PASSENGER_ID = "passengerid";
-    public static final String PARAM_VEHICLE_ID = "vehicleid";
     public static final String PARAM_START_CITY = "startcity";
     public static final String PARAM_END_CITY = "endcity";
     public static final String PARAM_START_POINT = "startpoint";
@@ -41,6 +40,7 @@ public class WSConfig {
     public static final String PARAM_DELAY_TOLERANCE = "delaytolerance";
 
     //Vehicle Parametrs
+    public static final String PARAM_VEHICLE_ID = "vehicleid";
     public static final String PARAM_VEHICLE_BRAND = "brand";
     public static final String PARAM_VEHICLE_MODEL = "model";
     public static final String PARAM_VEHICLE_YEAR = "year";
@@ -57,7 +57,7 @@ public class WSConfig {
     //VEHICLES ACTION
     public static final String ACTION_REGISTER_USER_VEHICLE = "registerUserVehicle";
     public static final String ACTION_GET_USER_VEHICLES = "getUserVehicles";
-
+    public static final String ACTION_DELETE_USER_VEHICLE  = "deteleVehicle";
 
 
     // Create the MySQL datetime string
