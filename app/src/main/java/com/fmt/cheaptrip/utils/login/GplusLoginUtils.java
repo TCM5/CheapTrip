@@ -2,7 +2,11 @@ package com.fmt.cheaptrip.utils.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -68,6 +72,49 @@ public class GplusLoginUtils extends LoginUtils {
 
         editor.commit();
 
+    }
+
+    public static void addUserEmail(Context context, String email) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("current_user_email", email);
+
+        editor.commit();
+    }
+
+    public static String getUserEmail(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        return sharedPref.getString("current_user_email", "");
+    }
+
+    public static void addUserName(Context context, String name) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("user_name", name);
+
+        editor.commit();
+    }
+
+    public static String getUserName(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        return sharedPref.getString("user_name", "");
+    }
+
+    public static void addUserPic(Context context, Uri pic) {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        editor.putString("pic", pic.toString());
+        editor.commit();
+    }
+
+    public static Bitmap getUserPic(Context context) {
+        String pic = PreferenceManager.getDefaultSharedPreferences(context).getString("pic", "");
+
+        byte[] decodedByte = Base64.decode(pic, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 
 }

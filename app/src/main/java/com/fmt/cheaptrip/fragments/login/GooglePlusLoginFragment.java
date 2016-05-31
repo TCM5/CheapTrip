@@ -106,26 +106,24 @@ public class GooglePlusLoginFragment extends Fragment implements GoogleApiClient
 
             if (result.isSuccess()) {
                 GoogleSignInAccount gplusAccount = result.getSignInAccount();
-                //   gplusAccount.getDisplayName();
-                // gplusAccount.getEmail();
+
+                GplusLoginUtils.addUserEmail(getActivity().getApplicationContext(), gplusAccount.getEmail());
+                GplusLoginUtils.addUserName(getActivity().getApplicationContext(), gplusAccount.getDisplayName());
+                GplusLoginUtils.addUserPic(getActivity().getApplicationContext(), gplusAccount.getPhotoUrl());
 
                 GplusLoginUtils.login(getActivity().getApplicationContext());
-                GplusLoginUtils.addCurrentUserEmail(getActivity().getApplicationContext(), gplusAccount.getEmail());
-
-                Toast.makeText(getActivity(), gplusAccount.getEmail() + gplusAccount.getDisplayName(), Toast.LENGTH_LONG).show();
 
 
                 redirectToMain();
             }
         } else if (requestCode == RC_SIGN_OUT) {
             PendingResult result = Auth.GoogleSignInApi.signOut(googleApiClient);
-            //TODO
         }
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Toast.makeText(getActivity(), "Connected", Toast.LENGTH_LONG).show();
+        //TODO
     }
 
     @Override

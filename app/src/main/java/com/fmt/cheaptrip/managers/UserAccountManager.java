@@ -52,7 +52,7 @@ public class UserAccountManager {
         if (DefaultLoginUtils.isLogged(context)) {
             // DefaultLoginUtils.getCurrentUserName(context);
         } else if (GplusLoginUtils.isLogged(context)) {
-            //  GplusLoginUtils.getCurrentUserName(context);
+            userProfilePicture = GplusLoginUtils.getUserPic(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
             userProfilePicture = FacebookLoginUtils.getCurrentUserProfile(context);
         }
@@ -70,7 +70,7 @@ public class UserAccountManager {
         if (DefaultLoginUtils.isLogged(context)) {
             //  userName =   DefaultLoginUtils.getCurrentUserName(context);
         } else if (GplusLoginUtils.isLogged(context)) {
-            // userName =  GplusLoginUtils.getCurrentUserName(context);
+            userName = GplusLoginUtils.getUserName(context);
         } else if (FacebookLoginUtils.isLogged(context)) {
             userName = FacebookLoginUtils.getUserName(context);
         }
@@ -85,8 +85,6 @@ public class UserAccountManager {
     public static void clearAllData(Context context) {
         LoginUtils.removeCurrentUserEmail(context);
         logout(context);
-
-
     }
 
     public static void logout(Context context) {
@@ -99,30 +97,6 @@ public class UserAccountManager {
             FacebookLoginUtils.logout(context);
 
         }
-    }
-
-    private static Bitmap roundShape(Bitmap bitmap) {
-        int targetWidth = 50;
-        int targetHeight = 50;
-
-        Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
-                targetHeight, Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(targetBitmap);
-        Path path = new Path();
-        path.addCircle(((float) targetWidth - 1) / 2,
-                ((float) targetHeight - 1) / 2,
-                (Math.min(((float) targetWidth),
-                        ((float) targetHeight)) / 2),
-                Path.Direction.CCW);
-
-        canvas.clipPath(path);
-        Bitmap sourceBitmap = bitmap;
-        canvas.drawBitmap(sourceBitmap,
-                new Rect(0, 0, sourceBitmap.getWidth(),
-                        sourceBitmap.getHeight()),
-                new Rect(0, 0, targetWidth, targetHeight), null);
-        return targetBitmap;
     }
 
 }
